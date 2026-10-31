@@ -63,6 +63,7 @@ IMGBB_API_KEY = os.environ.get("IMGBB_API_KEY", "")
 # --- Secrets (fournis par GitHub Actions) ----------------------------------
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY", "")
+PIXABAY_API_KEY = os.environ.get("PIXABAY_API_KEY", "")
 SHEET_URL = os.environ.get("SHEET_URL", "")        # URL de l'application Web Apps Script
 SHEET_SECRET = os.environ.get("SHEET_SECRET", "")  # mot de passe partagé avec Apps Script
 IG_USER_ID = os.environ.get("IG_USER_ID", "")

@@ -1,4 +1,4 @@
-"""Recherche d'images libres de droits : Wikimedia Commons, puis Pexels.
+"""Recherche d'images libres de droits : Wikimedia Commons, puis Pixabay et Pexels.
 
 Seules les licences domaine public, CC0 et CC BY sont gardées (pas de CC BY-SA,
 qui imposerait la même licence au post). Jamais de photos d'agences de presse.
@@ -71,8 +71,25 @@ def pexels(requete, nombre=4):
     } for ph in photos]
 
 
+def pixabay(requete, nombre=4):
+    if not C.PIXABAY_API_KEY:
+        return []
+    try:
+        r = requests.get("https://pixabay.com/api/",
+                         params={"key": C.PIXABAY_API_KEY, "q": requete[:100], "image_type": "photo",
+                                 "per_page": max(3, nombre), "safesearch": "true", "min_width": 1000},
+                         timeout=60)
+        photos = r.json().get("hits", [])[:nombre]
+    except Exception:
+        return []
+    return [{
+        "url": ph["largeImageURL"], "titre": ph.get("tags", ""), "description": ph.get("tags", ""),
+        "credit": f"{ph.get('user', '')} (Pixabay)",
+    } for ph in photos]
+
+
 def candidats(requete):
-    return wikimedia(requete) + pexels(requete)
+    return wikimedia(requete) + pixabay(requete) + pexels(requete)
 
 
 def telecharger(url):
