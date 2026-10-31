@@ -1,0 +1,35 @@
+name: Carrousel
+
+on:
+  schedule:
+    - cron: "15 7 * * *"
+    - cron: "15 11 * * *"
+    - cron: "45 16 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: lmf-creation
+  cancel-in-progress: false
+
+jobs:
+  creer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      SHEET_URL: ${{ secrets.SHEET_URL }}
+      SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
+      IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: assets/Montserrat.ttf
+          key: montserrat-v1
+      - run: pip install -r requirements.txt
+      - name: Créer le post
+        run: python -m lmf.main carrousel
