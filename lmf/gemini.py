@@ -1,0 +1,88 @@
+"""Appels à Gemini (API REST, sans dépendance supplémentaire)."""
+import json
+import re
+import time
+
+import requests
+
+from . import config as C
+
+URL = "https://generativelanguage.googleapis.com/v1beta/models/{modele}:generateContent"
+
+
+class ErreurGemini(Exception):
+    pass
+
+
+def _noter(modele, statut):
+    """Compte chaque appel dans l'onglet Usage du Sheet (pour le récap quotidien)."""
+    try:
+        from . import sheet
+        sheet.appel("logUsage", modele=modele, statut=statut)
+    except Exception:
+        pass
+
+
+def _appel(corps, modele=None):
+    if not C.GEMINI_API_KEY:
+        raise ErreurGemini("GEMINI_API_KEY manquant dans les secrets GitHub")
+    modele = modele or C.GEMINI_MODELE
+    url = URL.format(modele=modele)
+    for essai in range(5):
+        r = requests.post(url, params={"key": C.GEMINI_API_KEY}, json=corps, timeout=180)
+        if r.status_code == 429:
+            _noter(modele, "quota dépassé (429)")
+            time.sleep(15 * (essai + 1))
+            continue
+        if r.status_code in (500, 503):
+            time.sleep(15 * (essai + 1))
+            continue
+        if r.status_code != 200:
+            _noter(modele, f"erreur {r.status_code}")
+            raise ErreurGemini(f"Gemini {r.status_code} : {r.text[:400]}")
+        _noter(modele, "ok")
+        data = r.json()
+        try:
+            parts = data["candidates"][0]["content"]["parts"]
+        except (KeyError, IndexError):
+            raise ErreurGemini(f"Réponse Gemini vide : {json.dumps(data)[:400]}")
+        return "".join(p.get("text", "") for p in parts)
+    raise ErreurGemini("Gemini indisponible après 5 essais (quota ? voir le mode opératoire)")
+
+
+def texte(prompt, recherche=False, temperature=0.4, modele=None):
+    """Réponse texte. recherche=True active la vérification par Google Search."""
+    corps = {
+        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+        "generationConfig": {"temperature": temperature},
+    }
+    if recherche:
+        corps["tools"] = [{"google_search": {}}]
+    return _appel(corps, modele)
+
+
+def json_(prompt, temperature=0.7, recherche=False, modele=None):
+    """Réponse JSON (dict)."""
+    corps = {
+        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+        "generationConfig": {"temperature": temperature},
+    }
+    if recherche:
+        # La recherche n'est pas compatible avec le mode JSON strict : on extrait le JSON du texte.
+        corps["tools"] = [{"google_search": {}}]
+    else:
+        corps["generationConfig"]["responseMimeType"] = "application/json"
+    brut = _appel(corps, modele)
+    return extraire_json(brut)
+
+
+def extraire_json(brut):
+    brut = brut.strip()
+    brut = re.sub(r"^```(?:json)?|```$", "", brut, flags=re.M).strip()
+    try:
+        return json.loads(brut)
+    except json.JSONDecodeError:
+        m = re.search(r"\{.*\}", brut, flags=re.S)
+        if not m:
+            raise ErreurGemini(f"JSON introuvable dans la réponse : {brut[:300]}")
+        return json.loads(m.group(0))
