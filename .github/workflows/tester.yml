@@ -1,0 +1,20 @@
+name: Tester les connexions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tester:
+    runs-on: ubuntu-latest
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      SHEET_URL: ${{ secrets.SHEET_URL }}
+      SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m lmf.main tester

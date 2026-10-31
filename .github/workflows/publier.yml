@@ -1,0 +1,26 @@
+name: Publication
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"   # toutes les 20 minutes : publie les posts validés ou arrivés à l'heure
+  workflow_dispatch:
+
+concurrency:
+  group: lmf-publier
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SHEET_URL: ${{ secrets.SHEET_URL }}
+      SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m lmf.main publier
