@@ -131,7 +131,9 @@ def _decor(img, fleche=True):
     _coller(img, os.path.join(ASSETS, "logo_pin.png"), 72, (-38, -36))
     if fleche:
         haut_logo = int(400 * 72 / 348)
-        _coller(img, os.path.join(ASSETS, "arrow.png"), 150, (-30, -(36 + haut_logo + 6)))
+        fleche_perso = os.path.join(ASSETS, "fleche.png")  # ta flèche, prioritaire si elle existe
+        chemin = fleche_perso if os.path.exists(fleche_perso) else os.path.join(ASSETS, "arrow.png")
+        _coller(img, chemin, 150, (-30, -(36 + haut_logo + 6)))
 
 
 def _assombrir_bas(img):
