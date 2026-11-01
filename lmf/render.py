@@ -94,7 +94,8 @@ def dessiner_bandeaux(img, texte, mots_rouges, fond, couleur_texte, taille, x, y
     pad_x, pad_y = int(taille * 0.28), int(taille * 0.16)
     hauteur_ligne = int(taille * 1.22)
     espace = f.getlength(" ")
-    y = y_bas - len(lignes) * (hauteur_ligne + 2 * pad_y - 4)
+    pas = hauteur_ligne + 2 * pad_y + C.ESPACE_ENTRE_BANDEAUX  # bandeaux séparés
+    y = y_bas - len(lignes) * pas
     d = ImageDraw.Draw(img)
     for ligne in lignes:
         texte_ligne = " ".join(ligne)
@@ -105,7 +106,7 @@ def dessiner_bandeaux(img, texte, mots_rouges, fond, couleur_texte, taille, x, y
             couleur = C.ROUGE if _normaliser(mot) in rouges else couleur_texte
             d.text((cx, y + pad_y + int(taille * 0.08)), mot, font=f, fill=couleur)
             cx += f.getlength(mot) + espace
-        y += hauteur_ligne + 2 * pad_y - 4
+        y += pas
     return img
 
 
@@ -121,9 +122,11 @@ def _coller(img, chemin, largeur, position):
 
 
 def _decor(img, fleche=True):
-    if fleche:
-        _coller(img, os.path.join(ASSETS, "arrow.png"), 200, (-120, -70))
+    # logo pin en bas à droite, flèche juste au-dessus
     _coller(img, os.path.join(ASSETS, "logo_pin.png"), 72, (-38, -36))
+    if fleche:
+        haut_logo = int(400 * 72 / 348)
+        _coller(img, os.path.join(ASSETS, "arrow.png"), 150, (-30, -(36 + haut_logo + 6)))
 
 
 def _assombrir_bas(img):
@@ -156,6 +159,11 @@ def slide_texte(photo, texte, mots_rouges):
 
 
 def slide_finale(question, mots_rouges):
+    # Si tu as déposé ta propre slide de fin dans assets/, on l'utilise telle quelle.
+    for nom in ("slide_finale.jpg", "slide_finale.jpeg", "slide_finale.png"):
+        chemin = os.path.join(ASSETS, nom)
+        if os.path.exists(chemin):
+            return recadrer(Image.open(chemin))
     img = Image.new("RGB", (C.LARGEUR, C.HAUTEUR), (250, 250, 248))
     # léger quadrillage de points, comme sur les slides finales actuelles
     d = ImageDraw.Draw(img)
