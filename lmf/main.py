@@ -149,7 +149,7 @@ def commande_actu():
     photo = photo or images.fond_uni()
 
     post_id = _id("actu")
-    img = render.slide_actu(photo, a["titre"], a.get("rouges"), a.get("etiquette", "Actu"), art.get("source", ""))
+    img = render.slide_actu(photo, a["titre"], a.get("rouges"), credit=credits[0] if credits else None)
     render.enregistrer(img, os.path.join(_dossier(post_id), "01.jpg"))
     post = {
         "id": post_id, "type": "Actu", "titre": a["titre"],
