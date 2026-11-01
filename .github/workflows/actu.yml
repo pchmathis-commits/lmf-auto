@@ -1,9 +1,6 @@
 name: Actualité
 
 on:
-  schedule:
-    - cron: "45 8 * * *"    # 9 h 45 (heure d'hiver) → publication 10 h 30
-    - cron: "15 14 * * *"   # 15 h 15 → publication 16 h
   workflow_dispatch:
 
 concurrency:
