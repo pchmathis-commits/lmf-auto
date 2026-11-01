@@ -280,4 +280,4 @@ def slide_actu(photo, titre, mots_rouges, etiquette=None, source=None, credit=No
 
 def enregistrer(img, chemin):
     os.makedirs(os.path.dirname(chemin), exist_ok=True)
-    img.convert("RGB").save(chemin, "JPEG", quality=92, optimize=True)
+    img.convert("RGB").save(chemin, "JPEG", quality=95, subsampling=0, optimize=True)  # texte net, rouge sans bavure
