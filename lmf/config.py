@@ -49,8 +49,8 @@ MARGE_GAUCHE = 48
 LARGEUR_TEXTE_MAX = 860          # laisse la place à la flèche en bas à droite
 
 # --- IA ---------------------------------------------------------------------
-GEMINI_MODELE = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")            # rédaction + vérification
-GEMINI_MODELE_LEGER = os.environ.get("GEMINI_MODEL_LITE", "gemini-2.5-flash-lite")  # choix des images
+GEMINI_MODELE = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")            # rédaction + vérification
+GEMINI_MODELE_LEGER = os.environ.get("GEMINI_MODEL_LITE", "gemini-3.5-flash-lite")  # choix des images
 
 # --- Instagram --------------------------------------------------------------
 GRAPH_VERSION = "v21.0"
