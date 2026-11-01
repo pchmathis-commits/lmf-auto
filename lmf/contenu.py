@@ -162,7 +162,8 @@ Interdit : {", ".join(C.SUJETS_INTERDITS)}. Si aucune ne convient, réponds {{"i
 
 Puis rédige un post en une seule image :
 - étiquette : « Actu · » + région ou ville (ex. « Actu · Bretagne »)
-- titre : 12 à 22 mots, factuel, uniquement ce que dit l'article, avec 1 ou 2 mots en rouge
+- titre : une phrase de 15 à 30 mots, en minuscules normales (pas tout en majuscules), factuelle,
+  uniquement ce que dit l'article, avec 1 à 3 mots ou chiffres importants à mettre en rouge
 - requête d'image Wikimedia Commons du LIEU concerné (jamais une photo de presse)
 - légende : 2 à 3 phrases qui résument l'info, puis « Source : <média> ».
 
