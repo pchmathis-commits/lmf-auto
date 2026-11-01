@@ -47,7 +47,11 @@ TAILLE_TEXTE_COUVERTURE = 68
 TAILLE_TEXTE_SLIDE = 58
 MARGE_GAUCHE = 48
 ESPACE_ENTRE_BANDEAUX = 10      # espace vide entre deux bandeaux (0 = un seul bloc)
-LARGEUR_TEXTE_MAX = 860          # laisse la place à la flèche en bas à droite
+LARGEUR_TEXTE_MAX = 860
+# Slide de fin (si assets/slide_finale_fond.png existe)
+TAILLE_TEXTE_FIN = 60
+ANGLE_BANDEAUX_FIN = 3           # inclinaison en degrés
+CENTRE_BANDEAUX_FIN = 300        # hauteur du centre des bandeaux (sur 1350)          # laisse la place à la flèche en bas à droite
 
 # --- IA ---------------------------------------------------------------------
 GEMINI_MODELE = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")            # rédaction + vérification
