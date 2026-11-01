@@ -1,8 +1,6 @@
 name: Publication
 
 on:
-  schedule:
-    - cron: "*/20 * * * *"   # toutes les 20 minutes : publie les posts validés ou arrivés à l'heure
   workflow_dispatch:
 
 concurrency:
