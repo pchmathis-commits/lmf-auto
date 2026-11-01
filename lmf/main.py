@@ -50,7 +50,8 @@ def _sauver(post):
 
 def _legende(base, hashtags, credits):
     credits = sorted({c for c in credits if c})
-    txt = base.strip() + "\n\n" + (hashtags or "").strip()
+    appel = f"👉 Abonne-toi à {C.COMPTE} : chaque jour, une histoire de France que tu ne connais pas."
+    txt = base.strip() + "\n\n" + appel + "\n\n" + (hashtags or "").strip()
     if credits:
         txt += "\n\nCrédits photos : " + " · ".join(credits)
     return txt[:2200]
