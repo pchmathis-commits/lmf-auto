@@ -72,7 +72,12 @@ def _mots_rouges(mots_rouges):
 
 
 def _couper_lignes(texte, f, largeur_max):
-    mots = texte.upper().split()
+    mots = []
+    for m in texte.upper().split():  # « ? », « ! », « : » ne restent jamais seuls en début de ligne
+        if mots and m in ("?", "!", ":", ";", "»"):
+            mots[-1] += " " + m
+        else:
+            mots.append(m)
     lignes, courante = [], []
     for mot in mots:
         essai = " ".join(courante + [mot])
@@ -158,8 +163,50 @@ def slide_texte(photo, texte, mots_rouges):
     return img
 
 
+def _bandeaux_inclines(question, largeur_max, taille):
+    """Bandeaux centrés et inclinés, en alternance bleu marine / rouge / bleu marine, texte blanc."""
+    f = police(taille)
+    lignes = _couper_lignes(question, f, largeur_max)
+    while len(lignes) > 3 and taille > 40:
+        taille -= 4
+        f = police(taille)
+        lignes = _couper_lignes(question, f, largeur_max)
+    # équilibre les lignes (évite une ligne très longue suivie d'une très courte)
+    n = len(lignes)
+    while largeur_max > 400:
+        essai = _couper_lignes(question, f, largeur_max - 20)
+        if len(essai) > n:
+            break
+        largeur_max -= 20
+        lignes = essai
+    pad_x, pad_y = int(taille * 0.3), int(taille * 0.14)
+    h = int(taille * 1.2) + 2 * pad_y
+    calque = Image.new("RGBA", (C.LARGEUR, len(lignes) * (h + 8) + 40), (0, 0, 0, 0))
+    d = ImageDraw.Draw(calque)
+    y = 20
+    for i, ligne in enumerate(lignes):
+        txt = " ".join(ligne)
+        larg = f.getlength(txt)
+        x = (C.LARGEUR - larg) / 2 + (i - (len(lignes) - 1) / 2) * 24  # léger décalage, comme sur ta slide
+        fond = C.ROUGE if i % 2 == 1 else C.BLEU_MARINE
+        d.rectangle([x - pad_x, y, x + larg + pad_x, y + h], fill=fond)
+        d.text((x, y + pad_y + int(taille * 0.06)), txt, font=f, fill=C.BLANC)
+        y += h + 8
+    return calque.rotate(C.ANGLE_BANDEAUX_FIN, expand=True, resample=Image.BICUBIC)
+
+
 def slide_finale(question, mots_rouges):
-    # Si tu as déposé ta propre slide de fin dans assets/, on l'utilise telle quelle.
+    # 1) Ton fond de slide de fin (sans les bandeaux du haut) : on y ajoute la question.
+    for nom in ("slide_finale_fond.png", "slide_finale_fond.jpg", "slide_finale_fond.jpeg"):
+        chemin = os.path.join(ASSETS, nom)
+        if os.path.exists(chemin):
+            img = recadrer(Image.open(chemin)).convert("RGBA")
+            calque = _bandeaux_inclines(question, 900, C.TAILLE_TEXTE_FIN)
+            x = (C.LARGEUR - calque.width) // 2
+            y = C.CENTRE_BANDEAUX_FIN - calque.height // 2
+            img.paste(calque, (x, y), calque)
+            return img.convert("RGB")
+    # 2) Ta slide de fin complète, utilisée telle quelle.
     for nom in ("slide_finale.jpg", "slide_finale.jpeg", "slide_finale.png"):
         chemin = os.path.join(ASSETS, nom)
         if os.path.exists(chemin):
