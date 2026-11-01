@@ -48,6 +48,9 @@ TAILLE_TEXTE_SLIDE = 58
 MARGE_GAUCHE = 48
 ESPACE_ENTRE_BANDEAUX = 10      # espace vide entre deux bandeaux (0 = un seul bloc)
 LARGEUR_TEXTE_MAX = 860
+# Post actu (template Orion)
+TAILLE_TEXTE_ACTU = 62
+FOND_ACTU = (14, 22, 48)        # bleu nuit du fondu en bas
 # Slide de fin (si assets/slide_finale_fond.png existe)
 TAILLE_TEXTE_FIN = 60
 ANGLE_BANDEAUX_FIN = 3           # inclinaison en degrés
