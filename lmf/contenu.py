@@ -10,13 +10,40 @@ from . import gemini
 
 STYLE = """Tu écris pour Le Média Français, un compte Instagram de 210 000 abonnés (80 % de 18-34 ans)
 qui raconte l'histoire et le patrimoine de la France en carrousels.
+
+LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
+- Partir de quelque chose que le lecteur connaît ou utilise : un objet, un geste, un mot, une habitude,
+  une chose célèbre dans le monde. Lui révéler l'origine française cachée ou l'histoire derrière.
+- Couverture : ne JAMAIS nommer le sujet. Utiliser « ce Français », « cet homme », « ce geste », « cet objet »,
+  « un truc que tu utilises encore »… La réponse arrive dans les slides, jamais sur la couverture.
+- Parler au lecteur (« tu », « vous ») et créer un léger choc : « c'est une loi », « interdit en France »,
+  « il n'a jamais été aboli », « tu l'utilises tous les jours ».
+- Exemples de couvertures qui ont cartonné (pour le TON uniquement, ne reprends jamais ces sujets) :
+  « Ce Français a inventé l'objet le plus vendu de l'histoire » ; « Pourquoi dit-on que le roi d'Espagne est français ? » ;
+  « Le pire embouteillage en France a créé un truc que tu utilises encore » ; « Ce geste que les serveurs font sans vous
+  le dire… c'est une loi » ; « Le président est co-prince d'Andorre ».
+- À ÉVITER (ça a fait des flops) : les sujets lointains et explicatifs (« comment X est devenu… », « pourquoi la France
+  envoie des fusées… »), les couvertures qui donnent déjà la réponse, le ton scolaire.
 Style : phrases courtes, percutantes, faciles à lire sur téléphone, en français impeccable.
-Ce qui marche le mieux : la France face au monde (son influence cachée, son poids face aux grandes
-puissances) et les énigmes à réponse simple (« pourquoi il n'y a pas de département 20 ? »).
-La couverture garde la réponse secrète et donne envie de swiper (souvent avec « … »).
 Jamais de vulgarité, jamais de parti pris politique, jamais d'emoji dans les slides."""
 
-FAMILLES = "La France face au monde ; Énigme à réponse simple ; Histoire méconnue d'un lieu ou d'un personnage"
+# Familles en rotation (poids = fréquence relative quand le programme choisit lui-même un sujet)
+FAMILLES = [
+    ("Le quotidien caché : un objet, un mot ou un geste de tous les jours dont l'origine est française", 4),
+    ("La France derrière quelque chose de célèbre à l'étranger (un roi, une ville, un monument, une marque)", 3),
+    ("Une règle ou une loi française étonnante, toujours en vigueur ou jamais abolie", 2),
+    ("Un paradoxe sur la France qui paraît faux mais qui est vrai", 2),
+]
+
+THEMES_TON_MOIS = ["personnage historique français", "château français", "ville française", "plat régional français",
+                   "roi ou reine de France", "invention française", "monument français", "région française",
+                   "écrivain français", "village français", "fromage français", "île française"]
+
+
+def famille_du_jour(n):
+    """Choisit une famille selon une rotation pondérée (n = numéro du créneau)."""
+    roue = [f for f, poids in FAMILLES for _ in range(poids)]
+    return roue[n % len(roue)]
 
 
 # ---------------------------------------------------------------------------
@@ -82,12 +109,13 @@ Termine par une dernière ligne : VERDICT: OK (tout est OK) ou VERDICT: A_VERIFI
     return ok, resume
 
 
-def proposer_sujet(titres_existants):
+def proposer_sujet(titres_existants, famille=None):
     """Quand la banque de sujets est vide : propose un nouveau sujet sourcé."""
     deja = "\n".join(f"- {t}" for t in titres_existants[-150:])
+    famille = famille or famille_du_jour(len(titres_existants))
     prompt = f"""{STYLE}
 
-Propose UN nouveau sujet de carrousel dans l'une de ces familles : {FAMILLES}.
+Propose UN nouveau sujet de carrousel dans cette famille : {famille}.
 Il doit être surprenant, vérifiable, sans polémique, et différent de ces sujets déjà traités :
 {deja}
 
@@ -97,6 +125,33 @@ Utilise la recherche Google pour rassembler 8 à 12 faits précis et vérifiés,
 Réponds uniquement en JSON :
 {{"famille": "...", "sujet": "...", "couverture": "...", "faits": "- fait 1\\n- fait 2 ...", "sources": "url1 ; url2"}}"""
     return gemini.json_(prompt, temperature=0.9, recherche=True)
+
+
+def rediger_ton_mois(titres_existants):
+    """Format « Ton mois de naissance = ton … » : 12 réponses, 2 par slide."""
+    deja = "\n".join(f"- {t}" for t in titres_existants[-150:])
+    prompt = f"""{STYLE}
+
+Crée un carrousel « TON MOIS DE NAISSANCE = TON … » (format jeu, fait pour être partagé entre amis).
+Choisis UN thème parmi : {", ".join(THEMES_TON_MOIS)}, qui ne figure pas déjà ici :
+{deja}
+
+Pour chacun des 12 mois, associe un élément réel et connu de ce thème (un nom précis, pas d'invention).
+Regroupe-les par 2 : 6 slides (janvier-février, mars-avril, etc.), au format « JANVIER : X. FÉVRIER : Y. »
+Couverture : « TON MOIS = TON … » (5 mots maximum). Pour chaque slide, le mot rouge = les deux réponses.
+Image de chaque slide : une requête Wikimedia Commons pour le PREMIER élément de la slide.
+Légende : 2 phrases, puis « Identifie quelqu'un et dis-nous ce que tu as eu 👇 ».
+
+Réponds uniquement en JSON :
+{{"theme": "...", "couverture": {{"texte": "...", "rouges": ["..."], "image": "..."}},
+  "slides": [{{"texte": "...", "rouges": ["..."], "image": "..."}}],
+  "question_finale": {{"texte": "Et toi, tu as eu quoi ?", "rouges": ["quoi"]}},
+  "legende": "...", "hashtags": "#... #..."}}"""
+    contenu = gemini.json_(prompt, temperature=0.9)
+    contenu["slides"] = contenu.get("slides", [])[:6]
+    if len(contenu["slides"]) < 6:
+        raise ValueError("Format Ton mois incomplet")
+    return contenu
 
 
 # ---------------------------------------------------------------------------
