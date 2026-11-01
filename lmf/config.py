@@ -46,6 +46,7 @@ POIDS_POLICE = 800               # ExtraBold
 TAILLE_TEXTE_COUVERTURE = 68
 TAILLE_TEXTE_SLIDE = 58
 MARGE_GAUCHE = 48
+ESPACE_ENTRE_BANDEAUX = 10      # espace vide entre deux bandeaux (0 = un seul bloc)
 LARGEUR_TEXTE_MAX = 860          # laisse la place à la flèche en bas à droite
 
 # --- IA ---------------------------------------------------------------------
