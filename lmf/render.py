@@ -30,19 +30,21 @@ def _assurer_police():
 _cache_polices = {}
 
 
-def police(taille):
-    if taille in _cache_polices:
-        return _cache_polices[taille]
+def police(taille, poids=None):
+    poids = poids or C.POIDS_POLICE
+    cle = (taille, poids)
+    if cle in _cache_polices:
+        return _cache_polices[cle]
     chemin = os.environ.get("LMF_POLICE_LOCALE")  # pour tester sans réseau
     if not chemin:
         _assurer_police()
         chemin = C.POLICE_FICHIER
     f = ImageFont.truetype(chemin, taille)
     try:  # police variable : on règle la graisse
-        f.set_variation_by_axes([C.POIDS_POLICE])
+        f.set_variation_by_axes([poids])
     except Exception:
         pass
-    _cache_polices[taille] = f
+    _cache_polices[cle] = f
     return f
 
 
@@ -229,22 +231,50 @@ def slide_finale(question, mots_rouges):
     return img
 
 
-def slide_actu(photo, titre, mots_rouges, etiquette, source):
-    """Post d'actualité en une slide (template Orion adapté à la DA du Média Français)."""
-    img = _assombrir_bas(recadrer(photo))
+def _fondu_bas(img, couleur, debut=0.42):
+    """Fondu vers une couleur sombre sur le bas de l'image (template Orion)."""
+    h = img.height
+    masque = Image.new("L", (1, h))
+    for y in range(h):
+        t = max(0.0, (y - h * debut) / (h * (1 - debut)))
+        masque.putpixel((0, y), int(min(1.0, t * 1.35) ** 1.2 * 255))
+    masque = masque.resize(img.size)
+    return Image.composite(Image.new("RGB", img.size, couleur), img, masque)
+
+
+def slide_actu(photo, titre, mots_rouges, etiquette=None, source=None, credit=None):
+    """Post d'actualité en une slide : template Orion, bleu clair remplacé par le rouge."""
+    img = _fondu_bas(recadrer(photo), C.FOND_ACTU)
     d = ImageDraw.Draw(img)
-    # étiquette rouge en haut à gauche
-    f_et = police(30)
-    et = etiquette.upper()
-    larg = f_et.getlength(et)
-    d.rectangle([C.MARGE_GAUCHE, 60, C.MARGE_GAUCHE + larg + 36, 60 + 58], fill=C.ROUGE)
-    d.text((C.MARGE_GAUCHE + 18, 70), et, font=f_et, fill=C.BLANC)
-    dessiner_bandeaux(img, titre, mots_rouges, C.BLEU_MARINE, C.BLANC, 56,
-                      C.MARGE_GAUCHE, C.HAUTEUR - 170, C.LARGEUR_TEXTE_MAX)
-    if source:
-        f_src = police(24)
-        d.text((C.MARGE_GAUCHE, C.HAUTEUR - 120), f"SOURCE : {source.upper()}"[:60], font=f_src, fill=C.BLANC)
-    _decor(img, fleche=False)
+    f = police(C.TAILLE_TEXTE_ACTU, 700)
+    rouges = _mots_rouges(mots_rouges)
+    marge = 62
+    mots = titre.split()
+    lignes, courante = [], []
+    for mot in mots:
+        if courante and f.getlength(" ".join(courante + [mot])) > C.LARGEUR - 2 * marge:
+            lignes.append(courante)
+            courante = [mot]
+        else:
+            courante.append(mot)
+    if courante:
+        lignes.append(courante)
+    interligne = int(C.TAILLE_TEXTE_ACTU * 1.2)
+    y_barre = C.HAUTEUR - 170
+    y = y_barre - 40 - len(lignes) * interligne
+    espace = f.getlength(" ")
+    for ligne in lignes:
+        x = marge
+        for mot in ligne:
+            couleur = C.ROUGE if _normaliser(mot) in rouges else C.BLANC
+            d.text((x, y), mot, font=f, fill=couleur)
+            x += f.getlength(mot) + espace
+        y += interligne
+    d.rectangle([marge - 4, y_barre, marge + 52, y_barre + 9], fill=C.ROUGE)
+    if credit:
+        fc = police(17, 500)
+        txt = f"Image : {credit}"[:110]
+        d.text((C.LARGEUR - 34 - fc.getlength(txt), C.HAUTEUR - 46), txt, font=fc, fill=(200, 204, 214))
     return img
 
 
