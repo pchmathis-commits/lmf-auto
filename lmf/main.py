@@ -58,12 +58,16 @@ def _legende(base, hashtags, credits):
 
 
 # ---------------------------------------------------------------------------
-def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_ligne=False):
+def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_ligne=False, c=None):
     post_id = _id("carrousel")
-    c = contenu.rediger_carrousel(fiche)
+    c = c or contenu.rediger_carrousel(fiche)
     textes = [c["couverture"]["texte"]] + [s["texte"] for s in c["slides"]]
 
-    ok, rapport = contenu.verifier(textes, fiche.get("sujet", ""))
+    contexte = fiche.get("sujet", "")
+    if fiche.get("famille") == "Ton mois":
+        contexte = ("Jeu « ton mois de naissance = ton … » : l'association mois → élément est un jeu, pas une affirmation. "
+                    "Vérifie seulement que chaque élément cité existe réellement et appartient bien au thème.")
+    ok, rapport = contenu.verifier(textes, contexte)
 
     requetes = [c["couverture"].get("image", fiche["sujet"])] + [s.get("image", fiche["sujet"]) for s in c["slides"]]
     cands = [[] for _ in requetes] if sans_reseau else [images.candidats(q) for q in requetes]
@@ -106,8 +110,23 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     return post
 
 
+def _ton_mois_aujourdhui():
+    """Une fois par semaine : le premier carrousel du dimanche."""
+    m = _maintenant()
+    return m.weekday() == 6 and m.hour < 11
+
+
 def commande_carrousel():
     from . import sheet
+    if _ton_mois_aujourdhui():
+        titres = sheet.titres_sujets()
+        c = contenu.rediger_ton_mois(titres)
+        fiche = {"statut": "Utilisé", "famille": "Ton mois", "sujet": f"Ton mois = {c.get('theme', '')}",
+                 "couverture": c["couverture"]["texte"], "faits": "", "sources": ""}
+        fiche["row"] = sheet.ajouter_sujet(fiche)
+        post = creer_carrousel(fiche, fiche["row"], c=c)
+        sheet.ajouter_post(post)
+        return
     sujet = sheet.prendre_sujet()
     if not sujet:
         print("Banque de sujets vide : proposition automatique d'un sujet.")
