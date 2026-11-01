@@ -28,8 +28,20 @@ def _appel(corps, modele=None):
         raise ErreurGemini("GEMINI_API_KEY manquant dans les secrets GitHub")
     modele = modele or C.GEMINI_MODELE
     url = URL.format(modele=modele)
+    corps = dict(corps)
+    gc = dict(corps.get("generationConfig", {}))
+    gc.setdefault("thinkingConfig", {"thinkingLevel": "low"})  # réponses plus rapides
+    corps["generationConfig"] = gc
     for essai in range(5):
-        r = requests.post(url, params={"key": C.GEMINI_API_KEY}, json=corps, timeout=180)
+        try:
+            r = requests.post(url, params={"key": C.GEMINI_API_KEY}, json=corps, timeout=300)
+        except requests.exceptions.RequestException as e:  # délai dépassé, coupure réseau
+            _noter(modele, "délai dépassé")
+            time.sleep(20 * (essai + 1))
+            continue
+        if r.status_code == 400 and "thinking" in r.text.lower() and "thinkingConfig" in corps["generationConfig"]:
+            corps["generationConfig"].pop("thinkingConfig")  # modèle qui ne connaît pas ce réglage
+            continue
         if r.status_code == 429:
             _noter(modele, "quota dépassé (429)")
             time.sleep(15 * (essai + 1))
