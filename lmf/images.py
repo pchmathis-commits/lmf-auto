@@ -30,7 +30,7 @@ def wikimedia(requete, nombre=6):
     params = {
         "action": "query", "format": "json", "generator": "search",
         "gsrsearch": f"{requete} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 15,
-        "prop": "imageinfo", "iiprop": "url|extmetadata|size", "iiurlwidth": 1600,
+        "prop": "imageinfo", "iiprop": "url|extmetadata|size", "iiurlwidth": 2160,
     }
     try:
         r = requests.get(COMMONS, params=params, headers=UA, timeout=60)
@@ -42,7 +42,7 @@ def wikimedia(requete, nombre=6):
         info = (p.get("imageinfo") or [{}])[0]
         meta = info.get("extmetadata", {})
         lic = meta.get("LicenseShortName", {}).get("value", "")
-        if not _licence_ok(lic) or info.get("width", 0) < 800:
+        if not _licence_ok(lic) or info.get("width", 0) < 1400:
             continue
         resultats.append({
             "url": info.get("thumburl") or info.get("url"),
@@ -77,7 +77,7 @@ def pixabay(requete, nombre=4):
     try:
         r = requests.get("https://pixabay.com/api/",
                          params={"key": C.PIXABAY_API_KEY, "q": requete[:100], "image_type": "photo",
-                                 "per_page": max(3, nombre), "safesearch": "true", "min_width": 1000},
+                                 "per_page": max(3, nombre), "safesearch": "true", "min_width": 1400},
                          timeout=60)
         photos = r.json().get("hits", [])[:nombre]
     except Exception:
