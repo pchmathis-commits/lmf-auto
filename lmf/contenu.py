@@ -22,17 +22,24 @@ LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
   « Ce Français a inventé l'objet le plus vendu de l'histoire » ; « Pourquoi dit-on que le roi d'Espagne est français ? » ;
   « Le pire embouteillage en France a créé un truc que tu utilises encore » ; « Ce geste que les serveurs font sans vous
   le dire… c'est une loi » ; « Le président est co-prince d'Andorre ».
+- CE QUI FAIT LE PLUS S'ABONNER : un héros français méconnu montré en portrait, avec une couverture du type
+  « Grâce à lui, … », « L'homme dont le nom est devenu… », « Ce Français a inventé… ». Quand le sujet est une personne,
+  la couverture parle de lui sans le nommer et son image est son portrait.
 - À ÉVITER (ça a fait des flops) : les sujets lointains et explicatifs (« comment X est devenu… », « pourquoi la France
   envoie des fusées… »), les couvertures qui donnent déjà la réponse, le ton scolaire.
 Style : phrases courtes, percutantes, faciles à lire sur téléphone, en français impeccable.
 Jamais de vulgarité, jamais de parti pris politique, jamais d'emoji dans les slides."""
 
-# Familles en rotation (poids = fréquence relative quand le programme choisit lui-même un sujet)
+# Familles en rotation (poids = fréquence relative quand le programme choisit lui-même un sujet).
+# Classées d'après les abonnés gagnés par post sur 180 jours (Poubelle 6 100, Bic 3 700, eau du robinet 1 900…).
 FAMILLES = [
-    ("Le quotidien caché : un objet, un mot ou un geste de tous les jours dont l'origine est française", 4),
-    ("La France derrière quelque chose de célèbre à l'étranger (un roi, une ville, un monument, une marque)", 3),
-    ("Une règle ou une loi française étonnante, toujours en vigueur ou jamais abolie", 2),
-    ("Un paradoxe sur la France qui paraît faux mais qui est vrai", 2),
+    ("Le héros français méconnu derrière ton quotidien : UNE personne précise (inventeur, savant, ingénieur, préfet…) "
+     "grâce à qui un objet, un geste ou un confort de tous les jours existe", 5),
+    ("Le quotidien caché : un objet, un geste ou une habitude de tous les jours dont l'origine est française", 3),
+    ("L'origine d'un mot ou d'une expression que tout le monde utilise (« Pourquoi dit-on… ? »)", 2),
+    ("La France face au monde ou derrière quelque chose de célèbre à l'étranger (un roi, une ville, une décision historique)", 2),
+    ("Une règle ou une loi française étonnante, toujours en vigueur ou jamais abolie", 1),
+    ("Un paradoxe sur la France qui paraît faux mais qui est vrai", 1),
 ]
 
 THEMES_TON_MOIS = ["personnage historique français", "château français", "ville française", "plat régional français",
@@ -42,7 +49,9 @@ THEMES_TON_MOIS = ["personnage historique français", "château français", "vil
 
 def famille_du_jour(n):
     """Choisit une famille selon une rotation pondérée (n = numéro du créneau)."""
-    roue = [f for f, poids in FAMILLES for _ in range(poids)]
+    # répartit chaque famille régulièrement dans la roue (pas deux fois la même d'affilée)
+    places = sorted(((k + 0.5) / poids, i) for i, (f, poids) in enumerate(FAMILLES) for k in range(poids))
+    roue = [FAMILLES[i][0] for _, i in places]
     return roue[n % len(roue)]
 
 
@@ -67,12 +76,14 @@ Règles :
 - Pour chaque slide, 1 ou 2 mots importants à mettre en rouge (copiés exactement depuis le texte).
 - Pour chaque slide, une requête d'image pour Wikimedia Commons : concrète (nom d'un personnage, d'un lieu, d'un tableau,
   d'une carte), en anglais si c'est plus courant, sans mots abstraits.
+- Si le sujet tourne autour d'une personne précise : l'image de la COUVERTURE est son portrait (« Prénom Nom portrait »)
+  et "portrait" vaut true. Sinon "portrait" vaut false.
 - Une question finale courte pour faire réagir en commentaire (ex. « Et toi, tu le savais ? »).
 - Une légende Instagram de 2 à 4 phrases qui donne envie de lire, puis « Envoie ce post à quelqu'un qui… ».
 - 5 hashtags pertinents.
 
 Réponds uniquement en JSON :
-{{"couverture": {{"texte": "...", "rouges": ["..."], "image": "..."}},
+{{"couverture": {{"texte": "...", "rouges": ["..."], "image": "...", "portrait": false}},
   "slides": [{{"texte": "...", "rouges": ["..."], "image": "..."}}],
   "question_finale": {{"texte": "...", "rouges": ["..."]}},
   "legende": "...", "hashtags": "#... #..."}}"""
