@@ -10,6 +10,7 @@ import os
 CARROUSELS_PAR_JOUR = 3          # créneaux définis dans .github/workflows/carrousel.yml
 ACTUS_PAR_JOUR = 2               # créneaux définis dans .github/workflows/actu.yml
 DELAI_AVANT_PUBLICATION_MIN = 45   # temps laissé pour supprimer un post après le mail
+VERIFICATION_AUTO = False        # True = relecture par Gemini + Google (coûte beaucoup de quota)
 
 # --- Contenu ----------------------------------------------------------------
 SLIDES_PAR_CARROUSEL = 10        # couverture + 8 slides + slide finale (max API Instagram : 10)
