@@ -23,7 +23,24 @@ def _noter(modele, statut):
         pass
 
 
+SECOURS = ["gemini-3.6-flash", "gemini-3.5-flash-lite"]  # modèles de repli si le principal est saturé
+
+
 def _appel(corps, modele=None):
+    """Essaie le modèle demandé, puis les modèles de secours (quotas séparés par modèle)."""
+    derniere = None
+    for m in [modele or C.GEMINI_MODELE] + [x for x in SECOURS if x != (modele or C.GEMINI_MODELE)]:
+        try:
+            return _appel_modele(corps, m)
+        except ErreurGemini as e:
+            derniere = e
+            if "indisponible" not in str(e) and "429" not in str(e) and "404" not in str(e):
+                raise
+            print(f"{m} indisponible, passage au modèle de secours…")
+    raise derniere
+
+
+def _appel_modele(corps, modele=None):
     if not C.GEMINI_API_KEY:
         raise ErreurGemini("GEMINI_API_KEY manquant dans les secrets GitHub")
     modele = modele or C.GEMINI_MODELE
@@ -32,12 +49,12 @@ def _appel(corps, modele=None):
     gc = dict(corps.get("generationConfig", {}))
     gc.setdefault("thinkingConfig", {"thinkingLevel": "low"})  # réponses plus rapides
     corps["generationConfig"] = gc
-    for essai in range(5):
+    for essai in range(3):
         try:
             r = requests.post(url, params={"key": C.GEMINI_API_KEY}, json=corps, timeout=300)
         except requests.exceptions.RequestException as e:  # délai dépassé, coupure réseau
             _noter(modele, "délai dépassé")
-            time.sleep(20 * (essai + 1))
+            time.sleep(15 * (essai + 1))
             continue
         if r.status_code == 400 and "thinking" in r.text.lower() and "thinkingConfig" in corps["generationConfig"]:
             corps["generationConfig"].pop("thinkingConfig")  # modèle qui ne connaît pas ce réglage
@@ -59,7 +76,7 @@ def _appel(corps, modele=None):
         except (KeyError, IndexError):
             raise ErreurGemini(f"Réponse Gemini vide : {json.dumps(data)[:400]}")
         return "".join(p.get("text", "") for p in parts)
-    raise ErreurGemini("Gemini indisponible après 5 essais (quota ? voir le mode opératoire)")
+    raise ErreurGemini(f"{modele} indisponible après 3 essais (quota ? voir le mode opératoire)")
 
 
 def texte(prompt, recherche=False, temperature=0.4, modele=None):
@@ -98,3 +115,4 @@ def extraire_json(brut):
         if not m:
             raise ErreurGemini(f"JSON introuvable dans la réponse : {brut[:300]}")
         return json.loads(m.group(0))
+
