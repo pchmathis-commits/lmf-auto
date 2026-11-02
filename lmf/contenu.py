@@ -139,6 +139,63 @@ Réponds uniquement en JSON :
     return gemini.json_(prompt, temperature=0.9, recherche=True)
 
 
+# Série hebdomadaire « Ton département = … » : un épisode = une région (8 départements max), un thème.
+LOTS_DEPARTEMENTS = [
+    ("Bretagne", "22 Côtes-d'Armor, 29 Finistère, 35 Ille-et-Vilaine, 56 Morbihan"),
+    ("Normandie", "14 Calvados, 27 Eure, 50 Manche, 61 Orne, 76 Seine-Maritime"),
+    ("Hauts-de-France", "02 Aisne, 59 Nord, 60 Oise, 62 Pas-de-Calais, 80 Somme"),
+    ("Île-de-France", "75 Paris, 77 Seine-et-Marne, 78 Yvelines, 91 Essonne, 92 Hauts-de-Seine, 93 Seine-Saint-Denis, 94 Val-de-Marne, 95 Val-d'Oise"),
+    ("Grand Est (1)", "08 Ardennes, 10 Aube, 51 Marne, 52 Haute-Marne, 54 Meurthe-et-Moselle"),
+    ("Grand Est (2)", "55 Meuse, 57 Moselle, 67 Bas-Rhin, 68 Haut-Rhin, 88 Vosges"),
+    ("Bourgogne-Franche-Comté", "21 Côte-d'Or, 25 Doubs, 39 Jura, 58 Nièvre, 70 Haute-Saône, 71 Saône-et-Loire, 89 Yonne, 90 Territoire de Belfort"),
+    ("Centre-Val de Loire", "18 Cher, 28 Eure-et-Loir, 36 Indre, 37 Indre-et-Loire, 41 Loir-et-Cher, 45 Loiret"),
+    ("Pays de la Loire", "44 Loire-Atlantique, 49 Maine-et-Loire, 53 Mayenne, 72 Sarthe, 85 Vendée"),
+    ("Nouvelle-Aquitaine (1)", "16 Charente, 17 Charente-Maritime, 19 Corrèze, 23 Creuse, 24 Dordogne, 33 Gironde"),
+    ("Nouvelle-Aquitaine (2)", "40 Landes, 47 Lot-et-Garonne, 64 Pyrénées-Atlantiques, 79 Deux-Sèvres, 86 Vienne, 87 Haute-Vienne"),
+    ("Occitanie (1)", "09 Ariège, 11 Aude, 12 Aveyron, 30 Gard, 31 Haute-Garonne, 32 Gers, 34 Hérault"),
+    ("Occitanie (2)", "46 Lot, 48 Lozère, 65 Hautes-Pyrénées, 66 Pyrénées-Orientales, 81 Tarn, 82 Tarn-et-Garonne"),
+    ("Auvergne-Rhône-Alpes (1)", "01 Ain, 03 Allier, 07 Ardèche, 15 Cantal, 26 Drôme, 38 Isère"),
+    ("Auvergne-Rhône-Alpes (2)", "42 Loire, 43 Haute-Loire, 63 Puy-de-Dôme, 69 Rhône, 73 Savoie, 74 Haute-Savoie"),
+    ("Provence-Alpes-Côte d'Azur et Corse", "04 Alpes-de-Haute-Provence, 05 Hautes-Alpes, 06 Alpes-Maritimes, 13 Bouches-du-Rhône, 83 Var, 84 Vaucluse, 2A Corse-du-Sud, 2B Haute-Corse"),
+    ("Outre-mer", "971 Guadeloupe, 972 Martinique, 973 Guyane, 974 La Réunion, 976 Mayotte"),
+]
+THEMES_DEPARTEMENT = ["sa spécialité culinaire", "son personnage célèbre", "son lieu à voir absolument",
+                      "son record ou sa bizarrerie"]
+
+
+def rediger_departement(episode):
+    """Épisode n de la série : une région, un thème, une slide par département."""
+    region, depts = LOTS_DEPARTEMENTS[episode % len(LOTS_DEPARTEMENTS)]
+    theme = THEMES_DEPARTEMENT[(episode // len(LOTS_DEPARTEMENTS)) % len(THEMES_DEPARTEMENT)]
+    region_nom = region.split(" (")[0]
+    prompt = f"""{STYLE}
+
+Écris l'épisode {episode + 1} de la série « TON DÉPARTEMENT = … » (format série, fait pour être partagé entre amis).
+Région : {region_nom}. Départements (numéro et nom, à reprendre tels quels) : {depts}.
+Thème de l'épisode : pour chaque département, {theme}. Un élément réel, connu et vérifiable par département.
+
+- Couverture (12 mots max) : donne envie de chercher son département, sans donner les réponses.
+  Exemple de ton : « Ton département en {region_nom} a {theme}… tu le connais ? »
+- Puis UNE slide par département, dans l'ordre des numéros, au format « 29 · FINISTÈRE : X » suivi d'une courte phrase
+  (20 mots max au total). Le mot rouge = X.
+- Image de chaque slide : une requête Wikimedia Commons de X (ou du département si X n'est pas photographiable).
+- Question finale : « Et ton département, il a quoi ? »
+- Légende : 2 phrases, puis « Identifie quelqu'un de ton département 👇 », puis « Épisode {episode + 1} : abonne-toi pour ne
+  pas rater le tien. »
+
+Réponds uniquement en JSON :
+{{"couverture": {{"texte": "...", "rouges": ["..."], "image": "...", "portrait": false}},
+  "slides": [{{"texte": "...", "rouges": ["..."], "image": "..."}}],
+  "question_finale": {{"texte": "Et ton département, il a quoi ?", "rouges": ["département"]}},
+  "legende": "...", "hashtags": "#... #..."}}"""
+    contenu = gemini.json_(prompt, temperature=0.6)
+    contenu["slides"] = contenu.get("slides", [])[:8]
+    if len(contenu["slides"]) < 3:
+        raise ValueError("Épisode département incomplet")
+    contenu["sujet"] = f"Ton département – {region_nom} – {theme} (épisode {episode + 1})"
+    return contenu
+
+
 def rediger_ton_mois(titres_existants):
     """Format « Ton mois de naissance = ton … » : 12 réponses, 2 par slide."""
     deja = "\n".join(f"- {t}" for t in titres_existants[-150:])
