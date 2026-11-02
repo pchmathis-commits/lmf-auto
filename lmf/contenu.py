@@ -22,7 +22,9 @@ LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
   « Ce Français a inventé l'objet le plus vendu de l'histoire » ; « Pourquoi dit-on que le roi d'Espagne est français ? » ;
   « Le pire embouteillage en France a créé un truc que tu utilises encore » ; « Ce geste que les serveurs font sans vous
   le dire… c'est une loi » ; « Le président est co-prince d'Andorre ».
-- CE QUI FAIT LE PLUS S'ABONNER : un héros français méconnu montré en portrait, avec une couverture du type
+- CE QUI FAIT LE PLUS S'ABONNER (abonnés gagnés par post) : la langue française (« Ces mots français qui n'existent
+  dans aucune autre langue », « Quand un avion est en détresse, le pilote crie… en français », « Pourquoi dit-on allô ? »)
+  et un héros français méconnu montré en portrait, avec une couverture du type
   « Grâce à lui, … », « L'homme dont le nom est devenu… », « Ce Français a inventé… ». Quand le sujet est une personne,
   la couverture parle de lui sans le nommer et son image est son portrait.
 - À ÉVITER (ça a fait des flops) : les sujets lointains et explicatifs (« comment X est devenu… », « pourquoi la France
@@ -34,12 +36,13 @@ Jamais de vulgarité, jamais de parti pris politique, jamais d'emoji dans les sl
 # Classées d'après les abonnés gagnés par post sur 180 jours (Poubelle 6 100, Bic 3 700, eau du robinet 1 900…).
 FAMILLES = [
     ("Le héros français méconnu derrière ton quotidien : UNE personne précise (inventeur, savant, ingénieur, préfet…) "
-     "grâce à qui un objet, un geste ou un confort de tous les jours existe", 5),
-    ("Le quotidien caché : un objet, un geste ou une habitude de tous les jours dont l'origine est française", 3),
-    ("L'origine d'un mot ou d'une expression que tout le monde utilise (« Pourquoi dit-on… ? »)", 2),
-    ("La France face au monde ou derrière quelque chose de célèbre à l'étranger (un roi, une ville, une décision historique)", 2),
+     "grâce à qui un objet, un geste ou un confort de tous les jours existe", 4),
+    ("La langue française : un mot, une expression ou un usage du français que tout le monde connaît, son origine "
+     "surprenante, ou l'influence cachée du français dans le monde (« Pourquoi dit-on… ? », « Ce mot français que… »)", 4),
+    ("Le quotidien caché : un objet, un geste ou une habitude de tous les jours dont l'origine est française", 2),
     ("Une règle ou une loi française étonnante, toujours en vigueur ou jamais abolie", 1),
     ("Un paradoxe sur la France qui paraît faux mais qui est vrai", 1),
+    ("La France face au monde ou derrière quelque chose de célèbre à l'étranger", 1),
 ]
 
 THEMES_TON_MOIS = ["personnage historique français", "château français", "ville française", "plat régional français",
