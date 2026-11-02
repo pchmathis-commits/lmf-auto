@@ -130,8 +130,24 @@ def _ton_mois_aujourdhui():
     return m.weekday() == 6 and m.hour < 11
 
 
+def _departement_aujourdhui():
+    """Une fois par semaine : le premier carrousel du mercredi."""
+    m = _maintenant()
+    return m.weekday() == 2 and m.hour < 11
+
+
 def commande_carrousel():
     from . import sheet
+    if _departement_aujourdhui():
+        titres = sheet.titres_sujets()
+        episode = sum(1 for t in titres if str(t).startswith("Ton département"))
+        c = contenu.rediger_departement(episode)
+        fiche = {"statut": "Utilisé", "famille": "Ton département", "sujet": c["sujet"],
+                 "couverture": c["couverture"]["texte"], "faits": "", "sources": ""}
+        fiche["row"] = sheet.ajouter_sujet(fiche)
+        post = creer_carrousel(fiche, fiche["row"], c=c)
+        sheet.ajouter_post(post)
+        return
     if _ton_mois_aujourdhui():
         titres = sheet.titres_sujets()
         c = contenu.rediger_ton_mois(titres)
