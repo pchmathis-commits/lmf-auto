@@ -100,6 +100,8 @@ def verifier(textes, contexte):
 
     Renvoie (ok: bool, rapport: str). Au moindre doute, ok = False.
     """
+    if not C.VERIFICATION_AUTO:
+        return True, "Vérification automatique désactivée : relis le post avant l'heure de publication."
     lignes = "\n".join(f"{i + 1}. {t}" for i, t in enumerate(textes))
     prompt = f"""Tu es vérificateur de faits pour un média d'histoire. Contexte : {contexte}
 
