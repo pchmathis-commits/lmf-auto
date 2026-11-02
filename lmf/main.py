@@ -73,21 +73,35 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     cands = [[] for _ in requetes] if sans_reseau else [images.candidats(q) for q in requetes]
     choix = contenu.choisir_images(requetes, cands, fiche["sujet"]) if not sans_reseau else [None] * len(requetes)
 
-    photos, credits, precedente = [], [], None
-    for ch in choix:
-        img = None
-        if ch:
-            try:
-                img = images.telecharger(ch["url"])
-                credits.append(ch["credit"])
-            except Exception:
-                img = None
-        img = img or precedente or images.fond_uni()
-        precedente = img
-        photos.append(img)
+    # Une image différente et nette par slide : jamais deux fois la même photo dans un carrousel.
+    deja, photos, credits = set(), [], []
+    reserve = [x for liste in cands for x in liste]  # toutes les images trouvées, en secours
+
+    def _essayer(candidat):
+        if not candidat or candidat["url"] in deja:
+            return None
+        deja.add(candidat["url"])
+        try:
+            im = images.telecharger(candidat["url"])
+        except Exception:
+            return None
+        if min(im.size) < 700:  # trop petite : elle serait floue en 1080 × 1350
+            return None
+        credits.append(candidat["credit"])
+        return im
+
+    for i, ch in enumerate(choix):
+        img = _essayer(ch)
+        for autre in (cands[i] if not img else []):
+            img = img or _essayer(autre)
+        for autre in (reserve if not img else []):
+            img = img or _essayer(autre)
+        photos.append(img or images.fond_uni())
 
     dossier = _dossier(post_id)
     fichiers = []
+    if c["couverture"].get("portrait") and choix and choix[0]:
+        photos[0] = photos[0].convert("L").convert("RGB")  # portrait d'archive en noir et blanc
     slides = [render.slide_couverture(photos[0], c["couverture"]["texte"], c["couverture"].get("rouges"))]
     for photo, s in zip(photos[1:], c["slides"]):
         slides.append(render.slide_texte(photo, s["texte"], s.get("rouges")))
