@@ -75,7 +75,8 @@ Règles :
 - La dernière slide de texte conclut avec une chute marquante.
 - Pour chaque slide, 1 ou 2 mots importants à mettre en rouge (copiés exactement depuis le texte).
 - Pour chaque slide, une requête d'image pour Wikimedia Commons : concrète (nom d'un personnage, d'un lieu, d'un tableau,
-  d'une carte), en anglais si c'est plus courant, sans mots abstraits.
+  d'une carte), en anglais si c'est plus courant, sans mots abstraits. Chaque slide a une requête DIFFÉRENTE
+  (jamais deux fois la même), pour que chaque slide ait sa propre photo.
 - Si le sujet tourne autour d'une personne précise : l'image de la COUVERTURE est son portrait (« Prénom Nom portrait »)
   et "portrait" vaut true. Sinon "portrait" vaut false.
 - Une question finale courte pour faire réagir en commentaire (ex. « Et toi, tu le savais ? »).
