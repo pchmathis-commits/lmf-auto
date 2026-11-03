@@ -215,7 +215,7 @@ def commande_actu():
         "images": [_url(post_id, "01.jpg")],
         "legende": _legende(a.get("legende", ""), a.get("hashtags", ""), credits),
         "verification_ok": ok, "verification": rapport,
-        "lien_source": art["lien"], "ligne_sujet": None,
+        "lien_source": f"{art['lien']} | {art['titre']} {a['titre']}", "ligne_sujet": None,
         "publication_prevue": (_maintenant() + dt.timedelta(minutes=C.DELAI_AVANT_PUBLICATION_MIN)).isoformat(),
     }
     _sauver(post)
