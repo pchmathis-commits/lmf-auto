@@ -14,7 +14,7 @@ VERIFICATION_AUTO = False        # True = relecture par Gemini + Google (coûte 
 
 # --- Contenu ----------------------------------------------------------------
 SLIDES_PAR_CARROUSEL = 10        # couverture + 8 slides + slide finale (max API Instagram : 10)
-MOTS_MAX_PAR_SLIDE = 22
+MOTS_MAX_PAR_SLIDE = 16
 ABONNES_AFFICHES = "210K"        # affiché sur la slide finale
 COMPTE = "@lemediafrancais"
 
