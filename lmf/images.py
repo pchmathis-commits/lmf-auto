@@ -89,7 +89,12 @@ def pixabay(requete, nombre=4):
 
 
 def candidats(requete):
-    return wikimedia(requete) + pixabay(requete) + pexels(requete)
+    # Wikimedia d'abord (vrais lieux, personnes, documents). Les banques d'images génériques
+    # (Pixabay, Pexels) ne servent qu'en secours, sinon on récupère des photos hors sujet.
+    w = wikimedia(requete)
+    if len(w) >= 2:
+        return w
+    return w + pixabay(requete) + pexels(requete)
 
 
 def telecharger(url):
