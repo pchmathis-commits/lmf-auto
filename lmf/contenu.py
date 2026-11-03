@@ -260,8 +260,19 @@ Réponds uniquement en JSON : {{"choix": [index_slide0, index_slide1, ...]}}"""
 # ---------------------------------------------------------------------------
 # Actualité locale
 # ---------------------------------------------------------------------------
+def _mots(t):
+    return {m for m in re.findall(r"[a-zà-ÿ]{5,}", (t or "").lower())}
+
+
 def actualites(liens_deja_utilises):
-    articles, vus = [], set(liens_deja_utilises)
+    """Articles du jour, sans ceux déjà utilisés — ni le même lien, ni la même histoire reprise par un autre média."""
+    vus, titres_vus = set(), []
+    for x in liens_deja_utilises:
+        lien, _, titre = str(x).partition(" | ")
+        vus.add(lien.strip())
+        if titre:
+            titres_vus.append(_mots(titre))
+    articles = []
     for q in C.REQUETES_ACTU:
         url = f"https://news.google.com/rss/search?q={quote(q + ' when:1d')}&hl=fr&gl=FR&ceid=FR:fr"
         try:
@@ -270,11 +281,16 @@ def actualites(liens_deja_utilises):
             continue
         for item in racine.iter("item"):
             lien = item.findtext("link", "")
+            titre = item.findtext("title", "")
             if lien in vus:
                 continue
+            m = _mots(titre)
+            if any(len(m & t) >= 3 or (m and len(m & t) / len(m) >= 0.4) for t in titres_vus):
+                continue  # même histoire déjà traitée
             vus.add(lien)
+            titres_vus.append(m)
             articles.append({
-                "titre": item.findtext("title", ""),
+                "titre": titre,
                 "lien": lien,
                 "source": item.findtext("source", ""),
                 "resume": re.sub(r"<[^>]+>", " ", item.findtext("description", ""))[:300],
