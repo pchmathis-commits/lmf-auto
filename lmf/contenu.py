@@ -73,13 +73,16 @@ FAITS VÉRIFIÉS (tu ne dois utiliser QUE ces faits, aucun autre chiffre, nom ou
 {fiche.get('faits')}
 
 Règles :
-- Couverture : 10 à 20 mots, accroche qui garde la réponse secrète.
+- Couverture : 6 à 12 mots MAXIMUM (4 lignes à l'écran au plus), une seule idée choc qui garde la réponse secrète.
+  Exemples de longueur : « Ce Français a inventé l'objet le plus vendu de l'histoire » ; « Ce geste des serveurs… c'est une loi ».
 - Puis exactement {n} slides de texte : une idée par slide, {C.MOTS_MAX_PAR_SLIDE} mots maximum, qui se suivent comme une histoire.
 - La dernière slide de texte conclut avec une chute marquante.
 - Pour chaque slide, 1 ou 2 mots importants à mettre en rouge (copiés exactement depuis le texte).
 - Pour chaque slide, une requête d'image pour Wikimedia Commons : concrète (nom d'un personnage, d'un lieu, d'un tableau,
   d'une carte), en anglais si c'est plus courant, sans mots abstraits. Chaque slide a une requête DIFFÉRENTE
   (jamais deux fois la même), pour que chaque slide ait sa propre photo.
+- Images : jamais d'animal, d'objet générique ou de photo d'illustration « stock ». Toujours le vrai lieu, la vraie
+  personne, le vrai objet ou un document d'époque.
 - Si le sujet tourne autour d'une personne précise : l'image de la COUVERTURE est son portrait (« Prénom Nom portrait »)
   et "portrait" vaut true. Sinon "portrait" vaut false.
 - Une question finale courte pour faire réagir en commentaire (ex. « Et toi, tu le savais ? »).
@@ -239,7 +242,7 @@ def choisir_images(requetes, candidats_par_slide, sujet):
         blocs.append(f"Slide {i} (recherche « {req} ») :\n{options}")
     prompt = f"""Sujet du carrousel : {sujet}
 Pour chaque slide, choisis l'image qui illustre le mieux le texte (personnage, lieu ou objet exact).
-Réponds -1 si aucune ne convient (image hors sujet, anachronique, logo, document illisible).
+Réponds -1 si aucune ne convient (image hors sujet, animal, photo d'illustration générique, anachronique, logo, document illisible). Dans le doute, -1.
 {chr(10).join(blocs)}
 
 Réponds uniquement en JSON : {{"choix": [index_slide0, index_slide1, ...]}}"""
