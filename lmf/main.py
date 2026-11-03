@@ -61,6 +61,15 @@ def _legende(base, hashtags, credits):
 def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_ligne=False, c=None):
     post_id = _id("carrousel")
     c = c or contenu.rediger_carrousel(fiche)
+    if len(c["couverture"]["texte"].split()) > 14:  # garde-fou : couverture trop longue → on la fait raccourcir
+        try:
+            court = contenu.gemini.texte(
+                "Raccourcis cette accroche Instagram à 12 mots maximum, même sens, garde le mystère, "
+                "réponds uniquement avec la phrase : " + c["couverture"]["texte"], temperature=0.3).strip().strip('"«» ')
+            if 3 <= len(court.split()) <= 14:
+                c["couverture"]["texte"] = court
+        except Exception:
+            pass
     textes = [c["couverture"]["texte"]] + [s["texte"] for s in c["slides"]]
 
     contexte = fiche.get("sujet", "")
