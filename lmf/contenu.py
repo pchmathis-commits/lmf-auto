@@ -187,7 +187,13 @@ Utilise la recherche Google pour rassembler 8 à 12 faits précis et vérifiés,
 
 Réponds uniquement en JSON :
 {{"famille": "...", "sujet": "...", "couverture": "...", "faits": "- fait 1\\n- fait 2 ...", "sources": "url1 ; url2"}}"""
-    return gemini.json_(prompt, temperature=0.9, recherche=True)
+    try:
+        return gemini.json_(prompt, temperature=0.9, recherche=True)
+    except gemini.ErreurGemini:
+        # quota de recherche Google épuisé : on demande des faits très établis, sans recherche
+        return gemini.json_(prompt.replace("Utilise la recherche Google pour rassembler",
+                                           "Sans recherche, rassemble uniquement des faits très connus et certains :"),
+                            temperature=0.6)
 
 
 # Série hebdomadaire « Ton département = … » : un épisode = une région (8 départements max), un thème.
