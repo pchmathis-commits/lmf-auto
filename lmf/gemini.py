@@ -23,7 +23,7 @@ def _noter(modele, statut):
         pass
 
 
-SECOURS = ["gemini-3.6-flash", "gemini-3.5-flash-lite"]  # modèles de repli si le principal est saturé
+SECOURS = ["gemini-3.6-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite"]  # modèles de repli si le principal est saturé
 
 
 def _appel(corps, modele=None):
@@ -115,4 +115,3 @@ def extraire_json(brut):
         if not m:
             raise ErreurGemini(f"JSON introuvable dans la réponse : {brut[:300]}")
         return json.loads(m.group(0))
-
