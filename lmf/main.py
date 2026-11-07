@@ -174,9 +174,37 @@ def commande_carrousel():
         sheet.ajouter_post(post)
         return
     if _serie_ce_soir():
-        titres = sheet.titres_sujets()
-        n = sum(1 for t in titres if str(t).startswith("[Les Français cachés #")) + 1
-        sujet = contenu.proposer_sujet(titres, famille=contenu.FAMILLES[0][0])
+        try:
+            return _episode_serie(sheet)
+        except Exception as e:  # si la série échoue, on publie quand même un carrousel de la banque
+            print(f"Série « Les Français cachés » impossible ({e}) : carrousel de la banque à la place.")
+    _carrousel_banque(sheet)
+
+
+def _episode_serie(sheet):
+    titres = sheet.titres_sujets()
+    n = sum(1 for t in titres if str(t).startswith("[Les Français cachés #")) + 1
+    sujet = None
+    # 1) d'abord les épisodes préparés et vérifiés (data/francais_caches.json)
+    try:
+        with open(os.path.join(RACINE, "data", "francais_caches.json"), encoding="utf-8") as f:
+            prets = json.load(f)
+        deja = " ".join(str(t) for t in titres)
+        sujet = next((dict(x) for x in prets if x["sujet"] not in deja), None)
+    except Exception as e:
+        print(f"Banque de la série illisible : {e}")
+    # 2) sinon, Gemini en trouve un nouveau
+    for essai in range(3 if not sujet else 0):
+        try:
+            sujet = contenu.proposer_sujet(titres, famille=contenu.FAMILLES[0][0])
+            if sujet.get("sujet") and sujet.get("faits"):
+                break
+        except Exception as e:
+            print(f"Proposition de sujet ratée (essai {essai + 1}) : {e}")
+            sujet = None
+    if not sujet:
+        raise RuntimeError("aucun sujet trouvé")
+    if True:
         sujet["sujet"] = f"[Les Français cachés #{n}] " + sujet.get("sujet", "")
         sujet["statut"] = "Utilisé"
         sujet["row"] = sheet.ajouter_sujet(sujet)
@@ -185,7 +213,9 @@ def commande_carrousel():
         post = creer_carrousel(sujet, sujet["row"])
         post["legende"] = post["legende"].replace("👉 Abonne-toi", f"👉 Épisode {n + 1} demain soir. Abonne-toi", 1)
         sheet.ajouter_post(post)
-        return
+
+
+def _carrousel_banque(sheet):
     sujet = sheet.prendre_sujet()
     if not sujet:
         print("Banque de sujets vide : proposition automatique d'un sujet.")
