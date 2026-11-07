@@ -58,7 +58,7 @@ ANGLE_BANDEAUX_FIN = 3           # inclinaison en degrés
 CENTRE_BANDEAUX_FIN = 300        # hauteur du centre des bandeaux (sur 1350)          # laisse la place à la flèche en bas à droite
 
 # --- IA ---------------------------------------------------------------------
-GEMINI_MODELE = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")            # rédaction + vérification
+GEMINI_MODELE = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")            # rédaction + vérification
 GEMINI_MODELE_LEGER = os.environ.get("GEMINI_MODEL_LITE", "gemini-3.5-flash-lite")  # choix des images
 
 # --- Instagram --------------------------------------------------------------
