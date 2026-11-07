@@ -151,8 +151,18 @@ def _assombrir_bas(img):
 # ---------------------------------------------------------------------------
 # Slides
 # ---------------------------------------------------------------------------
-def slide_couverture(photo, texte, mots_rouges):
+def _etiquette(img, texte):
+    f = police(30)
+    d = ImageDraw.Draw(img)
+    larg = f.getlength(texte)
+    d.rectangle([C.MARGE_GAUCHE, 70, C.MARGE_GAUCHE + larg + 36, 70 + 56], fill=C.ROUGE)
+    d.text((C.MARGE_GAUCHE + 18, 79), texte, font=f, fill=C.BLANC)
+
+
+def slide_couverture(photo, texte, mots_rouges, etiquette=None):
     img = _assombrir_bas(recadrer(photo))
+    if etiquette:
+        _etiquette(img, etiquette)
     dessiner_bandeaux(img, texte, mots_rouges, C.BLANC, C.BLEU_MARINE,
                       C.TAILLE_TEXTE_COUVERTURE, C.MARGE_GAUCHE, C.HAUTEUR - 190, C.LARGEUR_TEXTE_MAX)
     _decor(img)
