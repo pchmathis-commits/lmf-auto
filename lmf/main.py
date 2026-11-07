@@ -61,6 +61,7 @@ def _legende(base, hashtags, credits):
 def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_ligne=False, c=None):
     post_id = _id("carrousel")
     c = c or contenu.rediger_carrousel(fiche)
+    c = contenu.controler_carrousel(c)
     if len(c["couverture"]["texte"].split()) > 14:  # garde-fou : couverture trop longue → on la fait raccourcir
         try:
             court = contenu.gemini.texte(
@@ -111,7 +112,8 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     fichiers = []
     if c["couverture"].get("portrait") and choix and choix[0]:
         photos[0] = photos[0].convert("L").convert("RGB")  # portrait d'archive en noir et blanc
-    slides = [render.slide_couverture(photos[0], c["couverture"]["texte"], c["couverture"].get("rouges"))]
+    slides = [render.slide_couverture(photos[0], c["couverture"]["texte"], c["couverture"].get("rouges"),
+                                      etiquette=fiche.get("etiquette"))]
     for photo, s in zip(photos[1:], c["slides"]):
         slides.append(render.slide_texte(photo, s["texte"], s.get("rouges")))
     q = c.get("question_finale") or {"texte": "Et toi, tu le savais ?", "rouges": ["savais"]}
@@ -124,7 +126,7 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     post = {
         "id": post_id, "type": "Carrousel", "titre": c["couverture"]["texte"],
         "images": [_url(post_id, f, sans_reseau or sans_mise_en_ligne) for f in fichiers],
-        "legende": _legende(c.get("legende", ""), c.get("hashtags", ""), credits),
+        "legende": _legende((fiche.get("prefixe_legende", "") + c.get("legende", "")), c.get("hashtags", ""), credits),
         "verification_ok": ok, "verification": rapport,
         "lien_source": fiche.get("sources", ""), "ligne_sujet": ligne_sujet,
         "publication_prevue": (_maintenant() + dt.timedelta(minutes=C.DELAI_AVANT_PUBLICATION_MIN)).isoformat(),
@@ -143,6 +145,11 @@ def _departement_aujourdhui():
     """Une fois par semaine : le premier carrousel du mercredi."""
     m = _maintenant()
     return m.weekday() == 2 and m.hour < 11
+
+
+def _serie_ce_soir():
+    """Le carrousel du soir (après 16 h) est un épisode de la série « Les Français cachés »."""
+    return _maintenant().hour >= 16
 
 
 def commande_carrousel():
@@ -164,6 +171,19 @@ def commande_carrousel():
                  "couverture": c["couverture"]["texte"], "faits": "", "sources": ""}
         fiche["row"] = sheet.ajouter_sujet(fiche)
         post = creer_carrousel(fiche, fiche["row"], c=c)
+        sheet.ajouter_post(post)
+        return
+    if _serie_ce_soir():
+        titres = sheet.titres_sujets()
+        n = sum(1 for t in titres if str(t).startswith("[Les Français cachés #")) + 1
+        sujet = contenu.proposer_sujet(titres, famille=contenu.FAMILLES[0][0])
+        sujet["sujet"] = f"[Les Français cachés #{n}] " + sujet.get("sujet", "")
+        sujet["statut"] = "Utilisé"
+        sujet["row"] = sheet.ajouter_sujet(sujet)
+        sujet["etiquette"] = f"LES FRANÇAIS CACHÉS #{n}"
+        sujet["prefixe_legende"] = f"Les Français cachés · épisode {n}\n\n"
+        post = creer_carrousel(sujet, sujet["row"])
+        post["legende"] = post["legende"].replace("👉 Abonne-toi", f"👉 Épisode {n + 1} demain soir. Abonne-toi", 1)
         sheet.ajouter_post(post)
         return
     sujet = sheet.prendre_sujet()
