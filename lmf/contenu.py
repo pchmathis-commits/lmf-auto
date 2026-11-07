@@ -27,6 +27,13 @@ LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
   et un héros français méconnu montré en portrait, avec une couverture du type
   « Grâce à lui, … », « L'homme dont le nom est devenu… », « Ce Français a inventé… ». Quand le sujet est une personne,
   la couverture parle de lui sans le nommer et son image est son portrait.
+- PUBLIC : 80 % d'hommes de 18 à 34 ans. Ce qui les accroche : marques et objets célèbres, automobile, sport,
+  géopolitique, armée, records, rivalité France / grandes puissances.
+- LE NOM DU SUJET EST OBLIGATOIRE DANS LE POST : seule la couverture garde le mystère. La personne, le lieu ou l'objet
+  est nommé clairement dès la slide 2 ou 3 (en rouge). Quand le sujet est une femme, elle est nommée et mise en avant
+  (jamais « une personne », « un scientifique » pour la désigner).
+- L'IMAGE DE COUVERTURE NE DOIT PAS DÉVOILER LA RÉPONSE : si la réponse est un monument, un tableau, un objet ou une
+  marque célèbre et reconnaissable, la couverture montre autre chose (le Français méconnu, un tableau d'époque, un détail).
 - À ÉVITER (ça a fait des flops) : les sujets lointains et explicatifs (« comment X est devenu… », « pourquoi la France
   envoie des fusées… »), les couvertures qui donnent déjà la réponse, le ton scolaire.
 Style : phrases courtes, percutantes, faciles à lire sur téléphone, en français impeccable.
@@ -35,14 +42,12 @@ Jamais de vulgarité, jamais de parti pris politique, jamais d'emoji dans les sl
 # Familles en rotation (poids = fréquence relative quand le programme choisit lui-même un sujet).
 # Classées d'après les abonnés gagnés par post sur 180 jours (Poubelle 6 100, Bic 3 700, eau du robinet 1 900…).
 FAMILLES = [
-    ("Le héros français méconnu derrière ton quotidien : UNE personne précise (inventeur, savant, ingénieur, préfet…) "
-     "grâce à qui un objet, un geste ou un confort de tous les jours existe", 4),
-    ("La langue française : un mot, une expression ou un usage du français que tout le monde connaît, son origine "
-     "surprenante, ou l'influence cachée du français dans le monde (« Pourquoi dit-on… ? », « Ce mot français que… »)", 4),
-    ("Le quotidien caché : un objet, un geste ou une habitude de tous les jours dont l'origine est française", 2),
-    ("Une règle ou une loi française étonnante, toujours en vigueur ou jamais abolie", 1),
-    ("Un paradoxe sur la France qui paraît faux mais qui est vrai", 1),
-    ("La France face au monde ou derrière quelque chose de célèbre à l'étranger", 1),
+    ("Les Français cachés : un Français méconnu derrière une chose célèbre dans le monde entier (une marque, une ville, "
+     "une compétition sportive, une institution, une invention) — c'est le format qui gagne le plus d'abonnés", 5),
+    ("La France face aux grandes puissances : une décision, une rivalité ou un record où la France tient tête au monde", 3),
+    ("Le héros français méconnu derrière ton quotidien : une personne précise grâce à qui un objet ou un geste existe", 3),
+    ("La langue française : un mot ou une expression que tout le monde connaît et son origine surprenante", 2),
+    ("Une règle ou une loi française étonnante, toujours en vigueur", 1),
 ]
 
 THEMES_TON_MOIS = ["personnage historique français", "château français", "ville française", "plat régional français",
@@ -90,7 +95,8 @@ Règles :
 - 5 hashtags pertinents.
 
 Réponds uniquement en JSON :
-{{"couverture": {{"texte": "...", "rouges": ["..."], "image": "...", "portrait": false}},
+{{"nom_sujet": "le nom exact de la personne, du lieu ou de l'objet dont parle le post",
+  "couverture": {{"texte": "...", "rouges": ["..."], "image": "...", "portrait": false}},
   "slides": [{{"texte": "...", "rouges": ["..."], "image": "..."}}],
   "question_finale": {{"texte": "...", "rouges": ["..."]}},
   "legende": "...", "hashtags": "#... #..."}}"""
@@ -99,6 +105,43 @@ Réponds uniquement en JSON :
     if len(contenu["slides"]) < n:
         raise ValueError(f"Gemini a rendu {len(contenu['slides'])} slides au lieu de {n}")
     return contenu
+
+
+def _normal(t):
+    import unicodedata
+    t = unicodedata.normalize("NFD", (t or "").lower())
+    return "".join(ch for ch in t if unicodedata.category(ch) != "Mn")
+
+
+REPONSE_DONNEE = re.compile(r"(c['’]est (la|le|l['’]|les|un|une) )|(\bc['’]est\b.*$)", re.I)
+
+
+def controler_carrousel(c):
+    """Garde-fous : la couverture ne donne pas la réponse ; le nom du sujet apparaît bien dans les slides."""
+    nom = (c.get("nom_sujet") or "").strip()
+    couv = c["couverture"]["texte"]
+    mots_nom = [m for m in re.findall(r"[\wÀ-ÿ'-]{4,}", nom)]
+    revele = bool(re.search(r"c['’]est (la france|lui|elle|la|le|l['’])", couv, re.I)) or any(
+        _normal(m) in _normal(couv) for m in mots_nom if m[:1].isupper())
+    if revele:
+        try:
+            nouveau = gemini.texte(
+                "Réécris cette accroche de couverture Instagram en 12 mots maximum pour qu'elle garde le MYSTÈRE : "
+                f"ne cite pas « {nom} », ne donne pas la réponse, finis par un suspense (« … »). "
+                "Réponds uniquement avec la phrase.\nAccroche : " + couv, temperature=0.5).strip().strip('"«» ')
+            if 3 <= len(nouveau.split()) <= 14 and not any(_normal(m) in _normal(nouveau) for m in mots_nom if m[:1].isupper()):
+                c["couverture"]["texte"] = nouveau
+                c["couverture"]["rouges"] = [w for w in c["couverture"].get("rouges", []) if _normal(w) in _normal(nouveau)]
+        except Exception:
+            pass
+    if nom and mots_nom:
+        cle = max(mots_nom, key=len)
+        if not any(_normal(cle) in _normal(sl["texte"]) for sl in c["slides"]):
+            i = 1 if len(c["slides"]) > 1 else 0
+            t = c["slides"][i]["texte"]
+            c["slides"][i]["texte"] = f"{nom} : " + (t[:1].lower() + t[1:] if t[:2].istitle() else t)
+            c["slides"][i]["rouges"] = list(c["slides"][i].get("rouges", [])) + [nom]
+    return c
 
 
 def verifier(textes, contexte):
@@ -148,59 +191,40 @@ Réponds uniquement en JSON :
 
 
 # Série hebdomadaire « Ton département = … » : un épisode = une région (8 départements max), un thème.
-LOTS_DEPARTEMENTS = [
-    ("Bretagne", "22 Côtes-d'Armor, 29 Finistère, 35 Ille-et-Vilaine, 56 Morbihan"),
-    ("Normandie", "14 Calvados, 27 Eure, 50 Manche, 61 Orne, 76 Seine-Maritime"),
-    ("Hauts-de-France", "02 Aisne, 59 Nord, 60 Oise, 62 Pas-de-Calais, 80 Somme"),
-    ("Île-de-France", "75 Paris, 77 Seine-et-Marne, 78 Yvelines, 91 Essonne, 92 Hauts-de-Seine, 93 Seine-Saint-Denis, 94 Val-de-Marne, 95 Val-d'Oise"),
-    ("Grand Est (1)", "08 Ardennes, 10 Aube, 51 Marne, 52 Haute-Marne, 54 Meurthe-et-Moselle"),
-    ("Grand Est (2)", "55 Meuse, 57 Moselle, 67 Bas-Rhin, 68 Haut-Rhin, 88 Vosges"),
-    ("Bourgogne-Franche-Comté", "21 Côte-d'Or, 25 Doubs, 39 Jura, 58 Nièvre, 70 Haute-Saône, 71 Saône-et-Loire, 89 Yonne, 90 Territoire de Belfort"),
-    ("Centre-Val de Loire", "18 Cher, 28 Eure-et-Loir, 36 Indre, 37 Indre-et-Loire, 41 Loir-et-Cher, 45 Loiret"),
-    ("Pays de la Loire", "44 Loire-Atlantique, 49 Maine-et-Loire, 53 Mayenne, 72 Sarthe, 85 Vendée"),
-    ("Nouvelle-Aquitaine (1)", "16 Charente, 17 Charente-Maritime, 19 Corrèze, 23 Creuse, 24 Dordogne, 33 Gironde"),
-    ("Nouvelle-Aquitaine (2)", "40 Landes, 47 Lot-et-Garonne, 64 Pyrénées-Atlantiques, 79 Deux-Sèvres, 86 Vienne, 87 Haute-Vienne"),
-    ("Occitanie (1)", "09 Ariège, 11 Aude, 12 Aveyron, 30 Gard, 31 Haute-Garonne, 32 Gers, 34 Hérault"),
-    ("Occitanie (2)", "46 Lot, 48 Lozère, 65 Hautes-Pyrénées, 66 Pyrénées-Orientales, 81 Tarn, 82 Tarn-et-Garonne"),
-    ("Auvergne-Rhône-Alpes (1)", "01 Ain, 03 Allier, 07 Ardèche, 15 Cantal, 26 Drôme, 38 Isère"),
-    ("Auvergne-Rhône-Alpes (2)", "42 Loire, 43 Haute-Loire, 63 Puy-de-Dôme, 69 Rhône, 73 Savoie, 74 Haute-Savoie"),
-    ("Provence-Alpes-Côte d'Azur et Corse", "04 Alpes-de-Haute-Provence, 05 Hautes-Alpes, 06 Alpes-Maritimes, 13 Bouches-du-Rhône, 83 Var, 84 Vaucluse, 2A Corse-du-Sud, 2B Haute-Corse"),
-    ("Outre-mer", "971 Guadeloupe, 972 Martinique, 973 Guyane, 974 La Réunion, 976 Mayotte"),
-]
-THEMES_DEPARTEMENT = ["sa spécialité culinaire", "son personnage célèbre", "son lieu à voir absolument",
-                      "son record ou sa bizarrerie"]
+THEMES_REGION = ["sa spécialité culinaire culte", "son personnage célèbre", "son monument incontournable",
+                 "son record ou sa bizarrerie", "son mot ou son expression typique", "sa marque ou son produit célèbre"]
+REGIONS = ("Hauts-de-France, Normandie, Bretagne, Île-de-France, Grand Est, Pays de la Loire, Centre-Val de Loire, "
+           "Bourgogne-Franche-Comté, Nouvelle-Aquitaine, Auvergne-Rhône-Alpes, Occitanie, Provence-Alpes-Côte d'Azur, "
+           "Corse, Outre-mer")
 
 
 def rediger_departement(episode):
-    """Épisode n de la série : une région, un thème, une slide par département."""
-    region, depts = LOTS_DEPARTEMENTS[episode % len(LOTS_DEPARTEMENTS)]
-    theme = THEMES_DEPARTEMENT[(episode // len(LOTS_DEPARTEMENTS)) % len(THEMES_DEPARTEMENT)]
-    region_nom = region.split(" (")[0]
+    """Série hebdomadaire « Ta région = … » : toute la France dans un seul carrousel (chacun y trouve son coin)."""
+    theme = THEMES_REGION[episode % len(THEMES_REGION)]
     prompt = f"""{STYLE}
 
-Écris l'épisode {episode + 1} de la série « TON DÉPARTEMENT = … » (format série, fait pour être partagé entre amis).
-Région : {region_nom}. Départements (numéro et nom, à reprendre tels quels) : {depts}.
-Thème de l'épisode : pour chaque département, {theme}. Un élément réel, connu et vérifiable par département.
+Écris l'épisode {episode + 1} de la série « TA RÉGION = … » : pour chaque région de France, {theme}.
+Régions, dans cet ordre : {REGIONS}.
+Un élément réel, connu et vérifiable par région, nommé précisément.
 
-- Couverture (12 mots max) : donne envie de chercher son département, sans donner les réponses.
-  Exemple de ton : « Ton département en {region_nom} a {theme}… tu le connais ? »
-- Puis UNE slide par département, dans l'ordre des numéros, au format « 29 · FINISTÈRE : X » suivi d'une courte phrase
-  (20 mots max au total). Le mot rouge = X.
-- Image de chaque slide : une requête Wikimedia Commons de X (ou du département si X n'est pas photographiable).
-- Question finale : « Et ton département, il a quoi ? »
-- Légende : 2 phrases, puis « Identifie quelqu'un de ton département 👇 », puis « Épisode {episode + 1} : abonne-toi pour ne
-  pas rater le tien. »
+- Couverture (10 mots max) : donne envie de chercher sa région, sans donner de réponse. Ex. de ton : « Chaque région
+  a {theme}… tu connais la tienne ? »
+- Puis exactement 8 slides : 7 slides de 2 régions chacune, au format « BRETAGNE : X. NORMANDIE : Y. » (16 mots max),
+  les mots rouges = les deux réponses ; et une 8e slide de conclusion qui pose une question (« Laquelle manque ? »).
+- Image de chaque slide : une requête Wikimedia Commons du premier élément de la slide.
+- Question finale : « Et dans ta région, on dit quoi ? » ou adaptée au thème.
+- Légende : 2 phrases, puis « Identifie quelqu'un de ta région 👇 », puis « Épisode {episode + 1} : abonne-toi pour la suite. »
 
 Réponds uniquement en JSON :
-{{"couverture": {{"texte": "...", "rouges": ["..."], "image": "...", "portrait": false}},
+{{"nom_sujet": "", "couverture": {{"texte": "...", "rouges": ["..."], "image": "map of France regions", "portrait": false}},
   "slides": [{{"texte": "...", "rouges": ["..."], "image": "..."}}],
-  "question_finale": {{"texte": "Et ton département, il a quoi ?", "rouges": ["département"]}},
+  "question_finale": {{"texte": "...", "rouges": ["..."]}},
   "legende": "...", "hashtags": "#... #..."}}"""
     contenu = gemini.json_(prompt, temperature=0.6)
     contenu["slides"] = contenu.get("slides", [])[:8]
-    if len(contenu["slides"]) < 3:
-        raise ValueError("Épisode département incomplet")
-    contenu["sujet"] = f"Ton département – {region_nom} – {theme} (épisode {episode + 1})"
+    if len(contenu["slides"]) < 6:
+        raise ValueError("Épisode « Ta région » incomplet")
+    contenu["sujet"] = f"Ton département – Ta région = {theme} (épisode {episode + 1})"
     return contenu
 
 
@@ -302,17 +326,23 @@ def rediger_actu(articles):
     liste = "\n".join(f"{i}. {a['titre']} ({a['source']}) — {a['resume']}" for i, a in enumerate(articles))
     prompt = f"""{STYLE}
 
-Voici des actualités françaises récentes. Choisis LA plus intéressante pour notre audience :
-une découverte, un patrimoine, un lieu, une tradition, une histoire positive ou insolite liée à un territoire.
+Voici des actualités françaises récentes. Choisis LA plus INSOLITE pour notre audience (hommes 18-34 ans) :
+une découverte surprenante, un record, une histoire étonnante ou un clin d'œil France / monde
+(exemples qui ont marché : un temple romain découvert en creusant pour un observatoire ; un artiste qui s'affiche à
+Times Square pour un concert dans un village de la Sarthe).
+À ÉVITER (flops) : annonces de travaux, restaurations, anniversaires d'institutions, inscriptions administratives,
+sujets morbides. Mieux vaut répondre -1 qu'une actu banale.
 Interdit : {", ".join(C.SUJETS_INTERDITS)}. Si aucune ne convient, réponds {{"index": -1}}.
 
 {liste}
 
 Puis rédige un post en une seule image :
 - étiquette : « Actu · » + région ou ville (ex. « Actu · Bretagne »)
-- titre : une phrase de 15 à 30 mots, en minuscules normales (pas tout en majuscules), factuelle,
+- titre : une phrase de 15 à 30 mots, avec les majuscules normales du français (majuscule en début de phrase et aux
+  noms propres : Touraine, Charles Perrault…), pas tout en majuscules, factuelle,
   uniquement ce que dit l'article, avec 1 à 3 mots ou chiffres importants à mettre en rouge
-- requête d'image Wikimedia Commons du LIEU concerné (jamais une photo de presse)
+- requête d'image Wikimedia Commons du LIEU ou de l'OBJET exact concerné (jamais une photo de presse, jamais une
+  image générique : si rien ne correspond exactement, l'image du lieu le plus proche)
 - légende : 2 à 3 phrases qui résument l'info, puis « Source : <média> ».
 
 Réponds uniquement en JSON :
