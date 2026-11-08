@@ -47,11 +47,14 @@ def concurrents():
     abonnes = {p.get("username", "").lower(): p.get("followersCount") or 0 for p in profils}
     posts = _apify({"directUrls": urls, "resultsType": "posts", "resultsLimit": C.POSTS_PAR_COMPTE,
                     "onlyPostsNewerThan": f"{C.JOURS_VEILLE} days"})
+    suivis = {c.lstrip("@").lower() for c in C.COMPTES_SURVEILLES}
     propres = []
     for p in posts:
         if p.get("error"):
             continue
         compte = (p.get("ownerUsername") or "").lower()
+        if compte not in suivis:
+            continue  # post en collaboration publié par un autre compte (France TV, Arte…) : on l'ignore
         propres.append({
             "compte": compte, "abonnes": abonnes.get(compte, 0),
             "type": "Reel" if p.get("productType") == "clips" or p.get("type") == "Video" else
@@ -168,6 +171,11 @@ def rapport():
                                "types": ", ".join(sorted({p["type"] for p in ps}))})
             md.append(_md_tableau(lignes, [("Compte", "compte"), ("Abonnés", "abonnes"), ("Posts 7 j", "posts"),
                                            ("Likes médians", "likes_med"), ("Formats", "types")]))
+            vus = {p["compte"] for p in posts}
+            manquants = [c for c in C.COMPTES_SURVEILLES if c.lstrip("@").lower() not in vus]
+            if manquants:
+                md.append("\nAucun post récupéré cette semaine pour : " + ", ".join(manquants)
+                          + " (pas de post en 7 jours, compte privé, nom mal écrit ou blocage Apify).")
         except Exception as ex:
             md.append(f"\n## Concurrents\n\n⚠️ Apify indisponible : {ex}")
     else:
