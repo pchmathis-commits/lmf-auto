@@ -127,3 +127,13 @@ MAIL_SERVEUR = os.environ.get("MAIL_SERVEUR", "")          # serveur Zimbra (SMT
 MAIL_UTILISATEUR = os.environ.get("MAIL_UTILISATEUR", "")  # mathis@lemediafrancais.fr
 MAIL_MOT_DE_PASSE = os.environ.get("MAIL_MOT_DE_PASSE", "")
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
+
+# --- Veille hebdo (samedi matin) -------------------------------------------
+APIFY_TOKEN = os.environ.get("APIFY_TOKEN", "")
+POSTS_PAR_COMPTE = 20      # 15 comptes × 20 posts ≈ 300 résultats/semaine (crédit gratuit Apify : ~1 850/mois)
+JOURS_VEILLE = 7
+COMPTES_SURVEILLES = [
+    "gardedupatrimoine", "lecoqsavant", "emilien_au_chateau", "amineleconquerant", "sellme.media",
+    "cultination", "sauvegardeartfrancais", "france_patrimoine", "chateauxdefrance", "villagesdefrance",
+    "alchimie.media", "revelation.patrimoine", "legendary.france", "culture.prime", "beauxartsmag",
+]
