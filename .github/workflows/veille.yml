@@ -1,0 +1,33 @@
+name: Veille hebdo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    env:
+      SHEET_URL: ${{ secrets.SHEET_URL }}
+      SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m lmf.veille
+      - name: Sauvegarder le rapport
+        if: always()
+        run: |
+          git config user.name "lmf-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/veille data/prospection.json 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Rapport hebdo"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && exit 0; sleep 5; done
