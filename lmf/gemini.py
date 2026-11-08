@@ -27,22 +27,28 @@ SECOURS = ["gemini-3.6-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite"]  # m
 
 
 def _appel(corps, modele=None):
-    """Essaie le modèle demandé, puis les modèles de secours (quotas séparés par modèle)."""
+    """Essaie chaque clé (projets Google séparés = quotas séparés), et pour chaque clé
+    le modèle demandé puis les modèles de secours."""
+    cles = C.cles_gemini()
+    if not cles:
+        raise ErreurGemini("GEMINI_API_KEY manquant dans les secrets GitHub")
     derniere = None
-    for m in [modele or C.GEMINI_MODELE] + [x for x in SECOURS if x != (modele or C.GEMINI_MODELE)]:
-        try:
-            return _appel_modele(corps, m)
-        except ErreurGemini as e:
-            derniere = e
-            if "indisponible" not in str(e) and "429" not in str(e) and "404" not in str(e):
-                raise
-            print(f"{m} indisponible, passage au modèle de secours…")
+    principal = modele or C.GEMINI_MODELE
+    for i, cle in enumerate(cles):
+        for m in [principal] + [x for x in SECOURS if x != principal]:
+            try:
+                return _appel_modele(corps, m, cle)
+            except ErreurGemini as e:
+                derniere = e
+                if "indisponible" not in str(e) and "429" not in str(e) and "404" not in str(e):
+                    raise
+                print(f"{m} indisponible (clé {i + 1}), passage au modèle de secours…")
+        if i + 1 < len(cles):
+            print("Quota épuisé sur cette clé, passage à la clé suivante…")
     raise derniere
 
 
-def _appel_modele(corps, modele=None):
-    if not C.GEMINI_API_KEY:
-        raise ErreurGemini("GEMINI_API_KEY manquant dans les secrets GitHub")
+def _appel_modele(corps, modele=None, cle=None):
     modele = modele or C.GEMINI_MODELE
     url = URL.format(modele=modele)
     corps = dict(corps)
@@ -51,7 +57,7 @@ def _appel_modele(corps, modele=None):
     corps["generationConfig"] = gc
     for essai in range(3):
         try:
-            r = requests.post(url, params={"key": C.GEMINI_API_KEY}, json=corps, timeout=300)
+            r = requests.post(url, params={"key": cle or C.GEMINI_API_KEY}, json=corps, timeout=300)
         except requests.exceptions.RequestException as e:  # délai dépassé, coupure réseau
             _noter(modele, "délai dépassé")
             time.sleep(15 * (essai + 1))
