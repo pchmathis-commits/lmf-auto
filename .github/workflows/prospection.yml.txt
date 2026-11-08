@@ -1,0 +1,45 @@
+name: Prospection
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "tick = fonctionnement normal, test = mail de test à toi-même"
+        default: "tick"
+
+concurrency:
+  group: lmf-prospection
+  cancel-in-progress: false
+
+jobs:
+  prospection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+      SHEET_URL: ${{ secrets.SHEET_URL }}
+      SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
+      MAIL_SERVEUR: ${{ secrets.MAIL_SERVEUR }}
+      MAIL_UTILISATEUR: ${{ secrets.MAIL_UTILISATEUR }}
+      MAIL_MOT_DE_PASSE: ${{ secrets.MAIL_MOT_DE_PASSE }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt dnspython
+      - name: Prospection (mails, relances, réponses)
+        run: python -m lmf.prospection ${{ github.event.inputs.mode || 'tick' }}
+      - name: Sauvegarder le suivi
+        if: always()
+        run: |
+          git config user.name "lmf-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/prospection.json 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Prospection : suivi mis à jour"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && exit 0; sleep 5; done
