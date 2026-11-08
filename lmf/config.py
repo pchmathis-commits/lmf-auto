@@ -71,8 +71,59 @@ IMGBB_API_KEY = os.environ.get("IMGBB_API_KEY", "")
 
 # --- Secrets (fournis par GitHub Actions) ----------------------------------
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+GEMINI_API_KEY_2 = os.environ.get("GEMINI_API_KEY_2", "")   # clé d'un autre projet Google (ex. Orion) = quota en plus
+CLE_2_EN_PREMIER = False                                    # la prospection passe ce réglage à True
+
+
+def cles_gemini():
+    cles = [k for k in (GEMINI_API_KEY, GEMINI_API_KEY_2) if k]
+    return cles[::-1] if CLE_2_EN_PREMIER else cles
 PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY", "")
 PIXABAY_API_KEY = os.environ.get("PIXABAY_API_KEY", "")
 SHEET_URL = os.environ.get("SHEET_URL", "")        # URL de l'application Web Apps Script
 SHEET_SECRET = os.environ.get("SHEET_SECRET", "")  # mot de passe partagé avec Apps Script
 IG_USER_ID = os.environ.get("IG_USER_ID", "")
+
+# --- Prospection (mails de partenariat) -----------------------------------
+PROSPECTION_ACTIVE = True
+MAILS_PAR_JOUR = 3                        # du lundi au vendredi → 15 par semaine
+HEURES_ENVOI = ["09:45", "10:45", "13:45"]  # prêts à ces heures, partent au passage suivant de l'horloge (≈ 10 h, 11 h, 14 h)
+RELANCE_APRES_JOURS = 7                   # une seule relance si pas de réponse
+EXPEDITEUR_NOM = "Mathis Pouchol – Le Média Français"
+SIGNATURE = """Mathis Pouchol
+Fondateur – Le Média Français
+lemediafrancais.fr · instagram.com/lemediafrancais"""
+MEDIA_KIT = os.path.join(os.path.dirname(__file__), "..", "assets", "media_kit.pdf")
+# Chiffres du media kit (octobre 2026) utilisés dans les mails
+CHIFFRES = """- 210 000 abonnés Instagram, 82 000 sur TikTok et Threads
+- 24 millions de vues par mois, record : 800 000 vues sur un seul carrousel
+- Audience : 80 % ont entre 18 et 34 ans, 75 % d'hommes, 83 % en France
+- Exemples de posts : origine française de Cadillac (plus de 90 000 vues), OTAN (plus de 95 000 vues)
+- Étude de cas : Région Normandie, Millenium 2027 (1000 ans de Guillaume le Conquérant) : 65 000 vues, 3,5 % d'engagement, 25 000 vues de la story avec lien
+- Offres : carrousel sponsorisé 2 000 €, story dédiée 800 €, lien exclusif un mois 2 200 € ; diffusion TikTok et Threads offerte"""
+# Types de cibles, en rotation pour varier
+CATEGORIES_CIBLES = [
+    "marque française grand public (mode, accessoires, art de vivre) qui met en avant son histoire",
+    "marque française automobile, moto, vélo ou mobilité",
+    "marque française alimentaire ou boisson à forte histoire (biscuiterie, fromagerie, spiritueux, eaux…)",
+    "musée français (national ou régional) avec une programmation active",
+    "château, abbaye ou monument français géré par une structure qui communique",
+    "office de tourisme, département ou ville française qui fait des campagnes d'attractivité",
+    "entreprise industrielle française historique (aéronautique, verrerie, coutellerie, porcelaine, horlogerie…)",
+    "maison d'édition, festival ou événement culturel ou sportif français",
+    "marque française outdoor, sport ou équipement",
+    "institution ou établissement public culturel français",
+]
+# Déjà contactés ou à ne jamais contacter (ajoute une ligne quand tu veux)
+EXCLUS = [
+    "Élysée", "Ministère de la Culture", "Opinel", "Alpine", "Monnaie de Paris", "Château de Versailles",
+    "Marine nationale", "Armée de l'Air et de l'Espace", "Le Coq Sportif", "Musée de l'Armée",
+    "Musée de l'Air et de l'Espace", "Centre des monuments nationaux", "Le Slip Français", "Saint James",
+    "Région Normandie", "Saint-Malo Cryptors",
+]
+
+# --- Secrets de la prospection ---------------------------------------------
+MAIL_SERVEUR = os.environ.get("MAIL_SERVEUR", "")          # serveur Zimbra (SMTP et IMAP)
+MAIL_UTILISATEUR = os.environ.get("MAIL_UTILISATEUR", "")  # mathis@lemediafrancais.fr
+MAIL_MOT_DE_PASSE = os.environ.get("MAIL_MOT_DE_PASSE", "")
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
