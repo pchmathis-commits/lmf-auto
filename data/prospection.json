@@ -1,0 +1,9 @@
+{
+ "active": true,
+ "telegram_chat": null,
+ "telegram_offset": 0,
+ "telegram_messages": {},
+ "jours_generes": [],
+ "contacts": [],
+ "mails_traites": []
+}
