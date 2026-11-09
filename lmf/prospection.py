@@ -69,12 +69,17 @@ def charger():
     e.setdefault("jours_generes", [])
     e.setdefault("contacts", [])
     e.setdefault("mails_traites", [])
+    e.setdefault("mails_divers", {})   # id court -> Message-ID (rien d'autre : le dépôt est public)
+    e.setdefault("brouillons", {})
+    e.setdefault("mails_depuis", None)
     return e
 
 
 def sauver(e):
     e["mails_traites"] = e["mails_traites"][-500:]
     e["jours_generes"] = e["jours_generes"][-60:]
+    if len(e["mails_divers"]) > 80:
+        e["mails_divers"] = dict(list(e["mails_divers"].items())[-80:])
     if len(e["telegram_messages"]) > 300:
         e["telegram_messages"] = dict(list(e["telegram_messages"].items())[-300:])
     with open(FICHIER_ETAT, "w", encoding="utf-8") as f:
@@ -170,6 +175,12 @@ def lire_telegram(e):
             continue
         cible = m.get("reply_to_message")
         lien = e["telegram_messages"].get(str(cible["message_id"])) if cible else None
+        if lien and lien["type"] == "mail":
+            try:
+                traiter_mail(e, lien["contact"], texte)
+            except Exception as ex:
+                dire(e, f"⚠️ Problème : {ex}")
+            continue
         if not lien:
             dire(e, "Réponds directement au message concerné (appui long → Répondre), sinon je ne sais pas de quel contact tu parles.")
             continue
@@ -333,8 +344,9 @@ def _sans_citation(t):
 
 def lire_reponses(e):
     envoyes = [c for c in e["contacts"] if c.get("message_id")]
-    if not envoyes:
-        return
+    if not e["mails_depuis"]:
+        e["mails_depuis"] = iso(maintenant())  # on ne remonte pas les vieux mails à l'activation
+    depuis_activation = lire_date(e["mails_depuis"])
     par_id = {}
     for c in envoyes:
         par_id[c["message_id"]] = c
@@ -376,6 +388,13 @@ def lire_reponses(e):
             if d not in {domaine_base(x) for x in MESSAGERIES_PERSO}:
                 c = next((x for x in reversed(envoyes) if domaine_base(domaine_mail(x["email"])) == d), None)
         if not c:
+            try:
+                quand = email.utils.parsedate_to_datetime(msg.get("Date"))
+            except Exception:
+                quand = None
+            if quand and quand.tzinfo and quand < depuis_activation:
+                continue
+            signaler_mail(e, msg, exp, mid, corps)
             continue
         objet = _decoder(msg.get("Subject"))
         auto = (msg.get("Auto-Submitted", "no").lower() != "no" or msg.get("X-Autoreply") or msg.get("X-Autorespond")
@@ -409,6 +428,92 @@ def lire_reponses(e):
             message += "👉 Réponds à CE message avec ta réponse, je l'envoie."
         dire(e, message, (c["id"], "reponse"))
     im.logout()
+
+
+def _est_masse(msg, exp):
+    """Newsletters, notifications, pubs, spams : pas de message Telegram."""
+    if msg.get("List-Unsubscribe") or msg.get("List-Id"):
+        return True
+    if (msg.get("Precedence", "").lower() in ("bulk", "list", "junk")
+            or msg.get("X-Spam-Flag", "").lower() == "yes"
+            or msg.get("Auto-Submitted", "no").lower() != "no"):
+        return True
+    return bool(re.search(r"no-?reply|ne-?pas-?repondre|newsletter|notification|mailer|news@|marketing@|"
+                          r"bounce|alert|digest", exp))
+
+
+def signaler_mail(e, msg, exp, mid, corps):
+    if _est_masse(msg, exp):
+        return
+    nom = email.utils.parseaddr(msg.get("From", ""))[0] or exp
+    objet = _decoder(msg.get("Subject"))
+    apercu = re.sub(r"\s+", " ", _sans_citation(corps)).strip()[:500]
+    cle = f"m{random.randint(10000, 99999)}"
+    e["mails_divers"][cle] = mid
+    dire(e, f"✉️ Nouveau mail de {nom} <{exp}>\nObjet : {objet}\n\n{apercu}\n\n"
+            "👉 Réponds à CE message : « brouillon » pour que je t'en propose un, ou écris ta réponse et je l'envoie.",
+         (cle, "mail"))
+
+
+def _relire_mail(mid):
+    im = imaplib.IMAP4_SSL(C.MAIL_SERVEUR, 993)
+    im.login(C.MAIL_UTILISATEUR, C.MAIL_MOT_DE_PASSE)
+    im.select("INBOX", readonly=True)
+    typ, data = im.search(None, f'(HEADER Message-ID "{mid}")')
+    msg = None
+    if typ == "OK" and data[0]:
+        typ, brut = im.fetch(data[0].split()[-1], "(BODY.PEEK[])")
+        if typ == "OK" and brut and isinstance(brut[0], tuple):
+            msg = email.message_from_bytes(brut[0][1])
+    im.logout()
+    if not msg:
+        raise RuntimeError("mail introuvable dans la boîte (supprimé ou déplacé ?)")
+    return msg
+
+
+def traiter_mail(e, cle, texte):
+    mid = e["mails_divers"].get(cle)
+    if not mid:
+        dire(e, "Je ne retrouve plus ce mail.")
+        return
+    msg = _relire_mail(mid)
+    exp = email.utils.parseaddr(msg.get("From", ""))[1]
+    objet = _decoder(msg.get("Subject"))
+    bas = texte.lower().strip(" .!")
+    if bas.startswith("brouillon") or bas.startswith("modif"):
+        consigne = texte.split(":", 1)[-1].strip() if ":" in texte else ""
+        prompt = f"""Mathis Pouchol, fondateur du Média Français (média Instagram de 210 000 abonnés sur l'histoire et le
+patrimoine français), a reçu ce mail de {exp} (objet : {objet}) :
+\"\"\"{_sans_citation(_texte(msg))[:3000]}\"\"\"
+
+Informations utiles si c'est une demande de partenariat :
+{C.CHIFFRES}
+
+Écris sa réponse : précise, courtoise, 30 à 140 mots ; s'il manque une information, pose la question au lieu d'inventer.
+Termine par « Bien cordialement, » puis :
+{C.SIGNATURE}
+{REGLES_STYLE}
+{('Consigne de Mathis : ' + consigne) if consigne else ''}
+Réponds en JSON : {{"brouillon": "..."}}"""
+        b = gemini.json_(prompt, temperature=0.5)["brouillon"]
+        e["brouillons"][cle] = b
+        dire(e, f"✍️ Brouillon pour {exp} :\n\n{b}\n\nRéponds « ok » pour l'envoyer, « modif : … » pour le retoucher, "
+                "ou écris ta propre réponse.", (cle, "mail"))
+        return
+    if bas in ("ok", "oui", "go", "envoie", "envoyer", "valide"):
+        corps = e["brouillons"].get(cle)
+        if not corps:
+            dire(e, "Pas de brouillon pour ce mail : réponds « brouillon » ou écris ta réponse.")
+            return
+    else:
+        corps = texte
+        if "Mathis" not in corps[-200:]:
+            corps = corps.rstrip() + "\n\nBien cordialement,\n\n" + C.SIGNATURE
+    if not objet.lower().startswith("re"):
+        objet = "Re: " + objet
+    envoyer(exp, objet, corps, en_reponse_a=mid, references=msg.get("References"))
+    e["brouillons"].pop(cle, None)
+    dire(e, f"✅ Réponse envoyée à {exp}.")
 
 
 # --------------------------------------------------------------------------
@@ -650,8 +755,9 @@ def envoyer_apercu(e, c):
          (c["id"], "apercu"))
 
 
-def generer_du_jour(e):
-    jour = maintenant().date()
+def generer_du_jour(e, jour=None, apercus=True):
+    """Prépare les mails d'un jour (par défaut aujourd'hui ; la veille au soir avec jour=demain)."""
+    jour = jour or maintenant().date()
     noms, domaines = deja_vus(e)
     retenus, essais = [], 0
     heures = list(C.HEURES_ENVOI)[: C.MAILS_PAR_JOUR]
@@ -687,18 +793,36 @@ def generer_du_jour(e):
                 print(f"   rédaction ratée : {ex}")
                 continue
             hh, mm = map(int, heures[len(retenus)].split(":"))
-            prevu = maintenant().replace(hour=hh, minute=mm, second=0, microsecond=0) + dt.timedelta(minutes=random.randint(0, 12))
+            prevu = dt.datetime(jour.year, jour.month, jour.day, hh, mm, tzinfo=PARIS) + dt.timedelta(minutes=random.randint(0, 12))
             if prevu < maintenant() + dt.timedelta(minutes=30):
                 prevu = maintenant() + dt.timedelta(minutes=30 + 40 * len(retenus))
             c.update({"objet": m["objet"], "corps": m["corps"], "nom_contact": m.get("nom_contact"),
                       "prevu_le": iso(prevu), "repondre_a": adresse})
+            c["jeton"] = f"{random.getrandbits(48):012x}"
             e["contacts"].append(c)
             retenus.append(c)
-            envoyer_apercu(e, c)
+            if apercus:
+                envoyer_apercu(e, c)
             print(f"   ✓ {adresse}")
     e["jours_generes"].append(jour.isoformat())
-    if len(retenus) < C.MAILS_PAR_JOUR:
+    if apercus and len(retenus) < C.MAILS_PAR_JOUR:
         dire(e, f"ℹ️ Aujourd'hui je n'ai trouvé que {len(retenus)} adresse(s) fiable(s) sur {C.MAILS_PAR_JOUR}.")
+    return retenus
+
+
+def annulations_du_mail(e):
+    """Prospects annulés depuis le mail récap (bouton « Annuler »)."""
+    try:
+        from . import sheet
+        annules = sheet.appel("cancelledProspects") or []
+    except Exception as ex:
+        print(f"Annulations illisibles : {ex}")
+        return
+    for a in annules:
+        c = contact(e, a.get("pid"))
+        if c and c.get("jeton") == a.get("t") and c["statut"] == "planifié":
+            c["statut"] = "annulé"
+            print(f"Annulé depuis le mail : {c['organisation']}")
 
 
 def envoyer_les_mails_dus(e):
@@ -759,6 +883,7 @@ def tick():
             except Exception as ex:
                 e["jours_generes"].append(m.date().isoformat())
                 dire(e, f"⚠️ Préparation des mails du jour ratée : {ex}")
+        annulations_du_mail(e)
         envoyer_les_mails_dus(e)
         relancer(e)
         try:
