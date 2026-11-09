@@ -130,10 +130,8 @@ TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
 
 # --- Veille hebdo (samedi matin) -------------------------------------------
 APIFY_TOKEN = os.environ.get("APIFY_TOKEN", "")
-POSTS_PAR_COMPTE = 20      # 15 comptes × 20 posts ≈ 300 résultats/semaine (crédit gratuit Apify : ~1 850/mois)
+POSTS_PAR_COMPTE = 30      # 5 comptes × 30 posts max ≈ 150 résultats/semaine (crédit gratuit Apify : ~1 850/mois)
 JOURS_VEILLE = 7
 COMPTES_SURVEILLES = [
-    "gardedupatrimoine", "lecoqsavant", "emilien_au_chateau", "amineleconquerant", "sellme.media",
-    "cultination", "sauvegardeartfrancais", "france_patrimoine", "chateauxdefrance", "villagesdefrance",
-    "alchimie.media", "revelation.patrimoine", "legendary.france", "culture.prime", "beauxartsmag",
+    "sellmeparis", "le_coq_savant", "cultination.fr", "gardedupatrimoine", "villages_et_patrimoine",
 ]
