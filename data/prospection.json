@@ -2,8 +2,54 @@
  "active": true,
  "telegram_chat": 5843826791,
  "telegram_offset": 576319861,
- "telegram_messages": {},
- "jours_generes": [],
- "contacts": [],
+ "telegram_messages": {
+  "12": {
+   "contact": "2026-11-09-1-822",
+   "type": "apercu"
+  },
+  "13": {
+   "contact": "2026-11-09-2-239",
+   "type": "apercu"
+  }
+ },
+ "jours_generes": [
+  "2026-11-09"
+ ],
+ "contacts": [
+  {
+   "id": "2026-11-09-1-822",
+   "organisation": "Festival Interceltique de Lorient",
+   "type": "Festival ou événement culturel",
+   "site": "https://www.festival-interceltique.bzh",
+   "idee": "Explorer l'histoire et les origines des traditions celtiques ancrées dans le patrimoine breton.",
+   "email": "jordan@festival-interceltique.bzh",
+   "contexte_adresse": "rgez la brochure En savoir plus ? N’hésitez pas à nous contacter pour en discuter. Nous avons à cœur de créer des partenariats qui ont du sens pour nos partenaires et pour le festival, d’écrire de belles histoires ensemble. Jordan Eusen Responsable Partenariat, Mécénat et Marketing 02 97 21 24 29 - jordan@festival-interceltique.bzh ©2026 Festival Interceltique de Lorient - Réalisé par Lagenceopens",
+   "contexte": "Le Festival Interceltique de Lorient en Bretagne Sud +33 (0)2 97 21 24 29 festival@festival-interceltique.bzh Actualités Programmation Billetterie Festival engagé BZH Festival Etrekeltiek An Oriant ENGLISH : FESTIVAL INTERCELTIQUE Español : Festival Intercéltico Lorient Sélectionner Une Page × #interceltique26 Programmation FIL Le FIL d’Automne Les Echappées Interceltiques Boutique Click & collect Supports Pratique Billetterie Badge de Soutien FAQ Tous les lieux – Plan Venir et circuler Hébergements Celticash Espaces dédiés Devenez bénévole Partenariat et Mécénat Faire un don Nos soutiens Location de matériel Recrutement Espace presse/pro Contact Festival engagé Actions culturelles Actions environnementales Égalité femmes-hommes Lutte contre les VSS Prévention Accessibilité La place de la Langue bretonne Le FIL Présentation Historique L’interceltisme Mémoires & Archives Médiathèque Vidéos Slider2027-visuelcompplet FEST-NOZ1 Slider2027-premiersnoms Festival Interceltique de Lorient 2026 Jour(s) : Heure(s) : Minute(s) : Seconde(s) Découvrez le Festival Interceltique Lorient Année 2026 Mémoire / Archives Les bénévoles Boutique Soutenez le FIL Faites un don Les Actualités Le FIL en vidéo Découvrez toutes nos vidéos sur notre chaine Youtube Actualités Disparition de Dónal Lunny Oct 23, 2026 C’est avec une infinie tristesse que nous apprenons aujourd’hui le décès de Dónal Lunny, l'une des figures majeures du renouveau de la musique... lire plus Marché Interceltique 2027 Sep 24, 2026 Les candidatures pour le Marché Interceltique seront ouvertes courant avril 2027. En attendant, voici le formulaire de contact à remplir afin d'être... lire plus Disparition de Paddy Keenan Sep 10, 2026 C’est avec une grande tristesse que nous avons appris aujourd’hui le décès de Paddy Keenan, l’un des musiciens traditionnels les plus doués et les... lire plus Espace Presse/Pro ©2026 Festival Interceltique de Lorient - Réalisé par Lagenceopensource.fr - Mentions légales - Politique de confidentialité - Politique Cookies Inscrivez-vous à notre Newsletter Rejoignez notre liste pour ne rien manquer des actualités et bons plans du festival ! Bien joué, vous êtes inscrits ! Pin It on Pinterest Share This https://www.facebook.com/festival.interceltique.lorient/ LinkedInhttps://www.linkedin.com/company/26269403\n\nPartenariat et Mécénat. - 55ème Festival Interceltique de Lorient +33 (0)2 97 21 24 29 festival@festival-interceltique.bzh Actualités Programmation Billetterie Festival engagé BZH Festival Etrekeltiek An Oriant ENGLISH : FESTIVAL INTERCELTIQUE Español : Festival Intercéltico Lorient Sélectionner Une Page × #interceltique26 Programmation FIL Le FIL d’Automne Les Echappées Interceltiques Boutique Click & collect Supports Pratique Billetterie Badge de Soutien FAQ Tous les lieux – Plan Venir et circuler Hébergements Celticash Espaces dédiés Devenez bénévole Partenariat et Mécénat Faire un don Nos soutiens Location de matériel Recrutement Espace presse/pro Contact Festival enga",
+   "cree_le": "2026-11-09T08:12+01:00",
+   "statut": "planifié",
+   "objet": "Partenariat Le Média Français x Festival Interceltique de Lorient",
+   "corps": "Bonjour Monsieur Eusen,\n\nVous indiquez sur votre site avoir à cœur d'écrire de belles histoires avec vos partenaires pour faire rayonner l'interceltisme et le patrimoine breton. C'est précisément la mission du Média Français : nous racontons l'histoire et les savoir-faire de nos territoires à plus de 210 000 abonnés sur Instagram, en totalisant 24 millions de vues par mois.\n\nNotre audience est jeune et passionnée (80 % ont entre 18 et 34 ans). Comme nous l'avons fait pour la Région Normandie lors du Millénaire 2027 (65 000 vues), nous aimerions mettre en lumière l'histoire et les origines des traditions celtiques ancrées en Bretagne Sud à travers un contenu dédié.\n\nJe vous joins notre media kit pour vous présenter nos formats et nos cas d'études.\n\nSeriez-vous disponible pour un rapide échange téléphonique de 15 minutes cette semaine ou la semaine prochaine afin d'en discuter ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
+   "nom_contact": "Monsieur Eusen",
+   "prevu_le": "2026-11-09T09:45+01:00",
+   "repondre_a": "jordan@festival-interceltique.bzh"
+  },
+  {
+   "id": "2026-11-09-2-239",
+   "organisation": "Éditions Paulsen",
+   "type": "Maison d'édition",
+   "site": "https://www.editionspaulsen.com",
+   "idee": "Mettre en lumière les grands explorateurs français à travers les récits d'archives de la maison.",
+   "email": "boutique@editionspaulsen.com",
+   "contexte_adresse": "al de 285.000 euros Siège social et bureau de Paris : 216, Boulevard Saint Germain - 75007 PARIS Tél : + 33 (0)1 53 63 12 20 Fax : + 33 (0)1 53 63 12 29 E-mail : admin@editionspaulsen.com Boutique et bureau de Chamonix : 30, avenue du Mont-Blanc - 74400 CHAMONIX Tél : + 33 (0)4 50 53 74 74 E-mail : boutique@editionspaulsen.com RCS PARIS n° 482 442 167 CONDITIONS GENERALES D’UTILISATION Propriété d",
+   "contexte": "Editions Paulsen, littérature et aventure Catalogue Auteurs Actualités Qui sommes-nous ? Catalogue Voir tout Auteurs Nouveautés À paraître Thématiques Genres Nos domaines Nos territoires Thématiques Voir tout Aventure Escalade Exploration Marche Mer Montagne Nature Trail Voyage Genres Voir tout Récit Biographie Autobiographie Roman Polar Beau livre Bande dessinée Guide Essai Autres Nos domaines Voir tout Guérin La Grande Ourse Paulsen Jeunesse Démarches Paulsen Poche Hors collection Nos territoires Voir tout Alpes Himalaya Russie Régions polaires France Afrique Russie Asie Amérique Monde Actualités Voir tout La revue de presse Nos soirées rencontres Concours de nouvelles 2026 Votre panier est vide Menu Catalogue Auteurs Nouveautés À paraître Thématiques Aventure Escalade Exploration Marche Mer Montagne Nature Trail Voyage Genres Récit Biographie Autobiographie Roman Polar Beau livre Bande dessinée Guide Essai Autres Nos domaines Guérin La Grande Ourse Paulsen Jeunesse Démarches Paulsen Poche Hors collection Nos territoires Alpes Himalaya Russie Régions polaires France Afrique Russie Asie Amérique Monde Auteurs Actualités La revue de presse Nos soirées rencontres Concours de nouvelles 2026 Qui sommes-nous ? Nouveautés Les écrits de jeunesse de Gaston Rébuffat, en texte et en images. Nouveauté LE CHANT DES MONTAGNES, Des Calanques à l’Annapurna Gaston Rebuffat Prix 59,00 € La première biographie illustrée de l’aventurière et océanographe Anita Conti. Nouveauté Anita Conti, La grande dame de la mer Frédéric Brunnquell Prix 39,90 € Une expédition mythique, une histoire de l'exploration, une réflexion sur la condition humaine. Nouveauté Pôle Nord – Histoire d’une obsession Erling Kagge Prix 24,90 € Un grand voyage en images autour du mont Blanc dans un format mini. Nouveauté Mini Mont Blanc Pascal Tournaire Prix 16,00 € Un voyage illustré au cœur des grandes aventures spatiales. Nouveauté Carnets de l'espace Dallas Campbell Prix 38,50 € Un homme, un sommet, une quête. Nouveauté LE SOMMET DES DIEUX Baku Yumemakura Prix 16,00 € Un safari sanglant sur l’île la plus éloignée de toute civilisation. Nouveauté Mastodonte Anaïs Pélier Prix 22,00 € L’incroyable destin de James Holman, voyageur aveugle qui fit le tour du monde. Nouveauté L'écho du monde Jason Roberts Prix 24,00 € Pour arriver au sommet de l’Everest sans oxygène, Melissa Arnot Reid doit vaincre ses démons intérieurs : un voyage au bout de l’effort et de la rédemption. Nouveauté La zone de la vie Melissa A\n\nQui sommes-nous ? Catalogue Auteurs Actualités Qui sommes-nous ? Catalogue Voir tout Auteurs Nouveautés À paraître Thématiques Genres Nos domaines Nos territoires Thématiques Voir tout Aventure Escalade Exploration Marche Mer Montagne Nature Trail Voyage Genres Voir tout Récit Biographie Autobiographie Roman Polar Beau livre Bande dessinée Guide Essai Autres Nos domaines Voir tout Guérin La Grande Ourse Paulsen Jeunesse Démarches Paulsen Poche Hors collection Nos territoires Voir tout Alpes Hi",
+   "cree_le": "2026-11-09T08:12+01:00",
+   "statut": "planifié",
+   "objet": "Éditions Paulsen x Le Média Français : mettre en lumière nos grands explorateurs",
+   "corps": "Bonjour,\n\nDe la passion partagée entre Michel Guérin et Frederik Paulsen aux récits d'Anita Conti, vos éditions font vibrer l'imaginaire des amoureux d'aventure et de patrimoine. Chez Le Média Français, nous partageons cet attachement profond aux grandes figures et aux récits d'exploration.\n\nChaque mois, nous racontons l'histoire et les savoir-faire français à plus de 210 000 abonnés sur Instagram, en totalisant 24 millions de vues mensuelles. Notre communauté, composée à 80 % de jeunes de 18 à 34 ans, est particulièrement réceptive aux archives et aux destins hors du commun.\n\nNous pourrions concevoir un carrousel sponsorisé captivant dédié à l'histoire des grands explorateurs français, en nous appuyant sur les récits de votre catalogue pour faire découvrir vos ouvrages à notre audience passionnée.\n\nJe vous joins notre media kit pour vous présenter notre travail plus en détail.\n\nSeriez-vous disponible pour un échange téléphonique de 15 minutes cette semaine ou la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
+   "nom_contact": null,
+   "prevu_le": "2026-11-09T10:45+01:00",
+   "repondre_a": "boutique@editionspaulsen.com"
+  }
+ ],
  "mails_traites": []
 }
