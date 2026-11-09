@@ -10,6 +10,8 @@ jobs:
     permissions:
       contents: write
     env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
       SHEET_URL: ${{ secrets.SHEET_URL }}
       SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
