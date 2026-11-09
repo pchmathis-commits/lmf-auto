@@ -133,6 +133,40 @@ def _md_tableau(lignes, colonnes):
     return "\n".join(out)
 
 
+def audit_auto(rapport_md, jour):
+    """Audit écrit par Gemini à partir du rapport de la semaine et de celui de la semaine d'avant."""
+    precedents = sorted(f for f in os.listdir(DOSSIER) if f.endswith(".md") and f[:10] < jour)
+    avant = ""
+    if precedents:
+        with open(os.path.join(DOSSIER, precedents[-1]), encoding="utf-8") as f:
+            avant = f.read()[:12000]
+    try:
+        from . import gemini
+        C.CLE_2_EN_PREMIER = True
+        return gemini.texte(f"""Tu es le conseiller stratégique du compte Instagram « Le Média Français » (histoire, patrimoine,
+marques et actus insolites françaises ; 80 % d'hommes 18-34 ans). Objectif : arrêter la perte d'abonnés et atteindre
+250 000 abonnés, avec un système 100 % automatique (2 carrousels + 3 actus par jour, prospection de partenaires).
+
+Rapport de cette semaine :
+\"\"\"{rapport_md[:20000]}\"\"\"
+
+Rapport de la semaine précédente (pour comparer) :
+\"\"\"{avant or '(aucun)'}\"\"\"
+
+Écris un audit en français, direct et chiffré, sans flatterie :
+1. Bilan en 4 lignes : abonnés, vues, ce qui progresse ou recule par rapport à la semaine d'avant.
+2. Top 3 et flop 3 de la semaine, avec l'hypothèse qui explique chaque résultat (sujet, accroche, image, format, heure).
+3. Ce qui marche chez les concurrents et qu'on pourrait adapter (sujets, formats), en citant le compte.
+4. Prospection : ce que disent les chiffres.
+5. 5 à 8 PROPOSITIONS numérotées, concrètes et applicables dans le code ou le planning (format, rythme, horaires,
+   familles de sujets, règles d'accroche ou d'image, cibles de prospection). Pour chacune : ce qu'on change, pourquoi,
+   l'effet attendu. Pas de proposition qui demande du travail manuel quotidien.
+Texte simple, sans tableau, 400 mots maximum.""", temperature=0.4)
+    except Exception as ex:
+        print(f"Audit automatique impossible : {ex}")
+        return None
+
+
 def rapport():
     jour = P.maintenant().date().isoformat()
     os.makedirs(DOSSIER, exist_ok=True)
@@ -194,7 +228,16 @@ def rapport():
         json.dump(donnees, f, ensure_ascii=False, indent=1)
     with open(os.path.join(DOSSIER, f"{jour}.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(md) + "\n")
-    P.dire(e, f"📊 Rapport hebdo prêt (data/veille/{jour}.md).\nQuand tu veux, écris à Claude : « on lance l'analyse ».")
+    audit = audit_auto("\n".join(md), jour)
+    if audit:
+        with open(os.path.join(DOSSIER, f"{jour}.md"), "a", encoding="utf-8") as f:
+            f.write("\n## Audit automatique\n\n" + audit + "\n")
+        for i in range(0, len(audit), 3800):
+            P.dire(e, ("🧠 Audit de la semaine\n\n" if i == 0 else "") + audit[i:i + 3800])
+        P.dire(e, "👉 Envoie à Claude les numéros des propositions qui t'intéressent "
+                  "(ex. « on applique 1, 3 et 5 ») et il fait les modifs.")
+    else:
+        P.dire(e, f"📊 Rapport hebdo prêt (data/veille/{jour}.md).\nQuand tu veux, écris à Claude : « on lance l'analyse ».")
     P.sauver(e)
     print("\n".join(md))
 
