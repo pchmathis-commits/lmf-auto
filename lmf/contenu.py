@@ -357,3 +357,60 @@ Réponds uniquement en JSON :
 {{"index": 0, "etiquette": "...", "titre": "...", "rouges": ["..."], "images": ["précise", "commune", "région"],
   "legende": "...", "hashtags": "#..."}}"""
     return gemini.json_(prompt, temperature=0.5)
+
+
+# ---------------------------------------------------------------------------
+# Actu racontée en carrousel
+# ---------------------------------------------------------------------------
+def rediger_actu_carrousel(articles):
+    """Choisit l'actu locale la plus insolite et la raconte en 6 slides avec suspense."""
+    liste = "\n".join(f"{i}. {a['titre']} ({a['source']}) — {a['resume']}" for i, a in enumerate(articles))
+    choix = gemini.json_(f"""{STYLE}
+
+Voici des actualités françaises récentes. Choisis LA plus INSOLITE et LOCALE (un village, une ville, un
+personnage, une découverte, un record, une histoire décalée) qui peut se raconter comme une histoire avec du
+suspense. À ÉVITER : travaux, restaurations, anniversaires d'institutions, sujets administratifs ou morbides.
+Interdit : {", ".join(C.SUJETS_INTERDITS)}. Si aucune ne convient, réponds {{"index": -1}}.
+
+{liste}
+
+Réponds en JSON : {{"index": 0, "recherche": "requête pour retrouver cette histoire sur le web"}}""", temperature=0.4)
+    idx = choix.get("index", -1)
+    if not isinstance(idx, int) or not 0 <= idx < len(articles):
+        return None, None
+    art = articles[idx]
+    try:
+        faits = gemini.texte(f"""Rassemble les faits précis et vérifiés de cette actualité française (qui, où, quand,
+comment, chiffres, contexte historique ou local, réactions) : « {art['titre']} » ({art['source']}).
+Recherche : {choix.get('recherche', art['titre'])}. Liste à puces, 8 à 14 faits, uniquement ce que disent les sources.""",
+                             recherche=True, temperature=0.2)
+    except gemini.ErreurGemini:
+        faits = art["resume"]  # sans recherche : on s'en tient au résumé de l'article
+    c = gemini.json_(f"""{STYLE}
+
+Raconte cette actualité en carrousel Instagram de 7 slides : couverture + 5 slides de récit + slide finale.
+ACTU : {art['titre']} ({art['source']})
+FAITS (n'utilise QUE ceux-là) :
+{faits}
+
+Règles :
+- Couverture : 6 à 12 mots, une accroche qui intrigue SANS donner la fin de l'histoire.
+- 5 slides de récit, {C.MOTS_MAX_PAR_SLIDE} mots maximum chacune, qui font monter la curiosité slide après slide
+  (contexte → l'élément surprenant → le détail fou → le rebondissement → la chute). Le lieu exact est cité dès la slide 1.
+- 1 ou 2 mots en rouge par slide (copiés exactement du texte).
+- Une requête d'image Wikimedia Commons DIFFÉRENTE par slide : le lieu exact, la commune, un monument ou paysage du
+  département (jamais une photo de presse, jamais d'animal ni d'image générique).
+- Slide finale : un appel à s'abonner court et donnant-donnant, ex. « Abonne-toi : chaque jour, une pépite de France ».
+- Région ou ville pour l'étiquette (ex. « Bretagne »).
+- Légende : 2 à 3 phrases, puis « Source : {art['source']} ».
+
+Réponds uniquement en JSON :
+{{"nom_sujet": "lieu ou personne principale", "region": "...",
+  "couverture": {{"texte": "...", "rouges": ["..."], "image": "...", "portrait": false}},
+  "slides": [{{"texte": "...", "rouges": ["..."], "image": "..."}}],
+  "question_finale": {{"texte": "...", "rouges": ["..."]}},
+  "legende": "...", "hashtags": "#... #..."}}""", temperature=0.6)
+    c["slides"] = c.get("slides", [])[:5]
+    if len(c["slides"]) < 4:
+        raise ValueError("Récit trop court")
+    return art, c
