@@ -189,6 +189,8 @@ def traiter_consigne(e, c, type_, texte):
             if c["statut"] == "planifié":
                 c["statut"] = "annulé"
                 dire(e, f"🗑 Annulé : {c['organisation']}")
+            elif c["statut"] == "annulé":
+                pass  # déjà annulé (stop envoyé deux fois)
             else:
                 dire(e, f"Trop tard, le mail à {c['organisation']} est déjà parti.")
         elif bas.startswith("modif"):
@@ -418,18 +420,19 @@ def deja_vus(e):
     return noms, domaines
 
 
-def proposer_cibles(e, nb=12):
+def proposer_cibles(e, nb=20):
     jour = maintenant().toordinal()
     cats = [C.CATEGORIES_CIBLES[(jour * 3 + i) % len(C.CATEGORIES_CIBLES)] for i in range(3)]
     noms, _ = deja_vus(e)
     prompt = f"""Tu aides le média Instagram « Le Média Français » (histoire, patrimoine, savoir-faire et marques
 françaises ; 210 000 abonnés, 80 % de 18-34 ans, 75 % d'hommes) à trouver des partenaires.
 
-Propose {nb} organisations françaises différentes, réparties à peu près également entre ces types :
+Propose {nb} ENTREPRISES françaises différentes (uniquement des entreprises : pas de musée, festival, association,
+collectivité ou maison d'édition), réparties à peu près également entre ces niches :
 {chr(10).join('- ' + x for x in cats)}
 
 Règles :
-- organisations qui existent vraiment, actives aujourd'hui, avec un site officiel ;
+- entreprises qui existent vraiment, actives aujourd'hui, avec un site officiel et un budget marketing ;
 - qui ont un lien naturel avec l'histoire ou le patrimoine français et un intérêt à toucher des jeunes ;
 - privilégie les tailles moyennes et les acteurs régionaux (plus de chances de réponse) aux géants mondiaux ;
 - évite toute organisation en difficulté financière connue, controversée, politique ou religieuse ;
@@ -653,7 +656,7 @@ def generer_du_jour(e):
     retenus, essais = [], 0
     heures = list(C.HEURES_ENVOI)[: C.MAILS_PAR_JOUR]
     debut = time.time()
-    while len(retenus) < C.MAILS_PAR_JOUR and essais < 3 and time.time() - debut < 15 * 60:
+    while len(retenus) < C.MAILS_PAR_JOUR and essais < 4 and time.time() - debut < 22 * 60:
         essais += 1
         try:
             cibles = proposer_cibles(e)
@@ -661,7 +664,7 @@ def generer_du_jour(e):
             print(f"Propositions de cibles ratées : {ex}")
             continue
         for cible in cibles:
-            if len(retenus) >= C.MAILS_PAR_JOUR or time.time() - debut > 15 * 60:
+            if len(retenus) >= C.MAILS_PAR_JOUR or time.time() - debut > 22 * 60:
                 break
             if not cible.get("site") or not cible.get("organisation"):
                 continue
