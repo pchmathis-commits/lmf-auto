@@ -3,6 +3,7 @@
 Commandes :
   carrousel        crée un carrousel, le met en ligne et envoie le mail de validation
   actu             crée un post d'actualité en une image (même chose)
+  actu_carrousel   raconte une actu locale insolite en carrousel de 7 slides
   notifier         renvoie au Sheet le dernier post créé (si l'envoi du mail a échoué)
   publier          publie les posts arrivés à échéance (ou validés)
   prolonger-jeton  prolonge le jeton Instagram (chaque semaine)
@@ -293,6 +294,24 @@ def _image_actu(a):
     return images.fond_uni(), []
 
 
+def commande_actu_carrousel():
+    from . import sheet
+    articles = contenu.actualites(sheet.liens_utilises())
+    if not articles:
+        print("Aucune actualité trouvée.")
+        return
+    art, c = contenu.rediger_actu_carrousel(articles)
+    if not c:
+        print("Aucune actu assez insolite : actu classique à la place.")
+        return commande_actu()
+    region = (c.get("region") or "").strip()
+    fiche = {"sujet": art["titre"], "famille": "Actu carrousel",
+             "etiquette": f"ACTU · {region.upper()}" if region else "ACTU",
+             "sources": f"{art['lien']} | {art['titre']} {c['couverture']['texte']}"}
+    post = creer_carrousel(fiche, c=c)
+    sheet.ajouter_post(post)
+
+
 def commande_notifier():
     from . import sheet
     if not os.path.exists(OUT):
@@ -346,6 +365,7 @@ def commande_demo():
 
 COMMANDES = {
     "carrousel": commande_carrousel, "actu": commande_actu, "notifier": commande_notifier,
+    "actu_carrousel": commande_actu_carrousel,
     "publier": commande_publier, "tester": commande_tester, "demo": commande_demo,
     "prolonger-jeton": lambda: __import__("lmf.instagram", fromlist=["x"]).prolonger_jeton(),
 }
