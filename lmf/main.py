@@ -245,17 +245,7 @@ def commande_actu():
     art = articles[idx]
     ok, rapport = contenu.verifier([a["titre"]], f"Actualité : {art['titre']} ({art['source']})")
 
-    photo = None
-    cands = images.candidats(a.get("image", ""))
-    ch = contenu.choisir_images([a.get("image", "")], [cands], a["titre"])[0]
-    credits = []
-    if ch:
-        try:
-            photo = images.telecharger(ch["url"])
-            credits.append(ch["credit"])
-        except Exception:
-            photo = None
-    photo = photo or images.fond_uni()
+    photo, credits = _image_actu(a)
 
     post_id = _id("actu")
     img = render.slide_actu(photo, a["titre"], a.get("rouges"), credit=credits[0] if credits else None)
@@ -270,6 +260,37 @@ def commande_actu():
     }
     _sauver(post)
     sheet.ajouter_post(post)
+
+
+def _image_actu(a):
+    """Image de fond d'une actu : de la plus précise à la plus large, jamais de fond vide si on peut l'éviter."""
+    requetes = [q for q in (a.get("images") or []) + [a.get("image", "")] if q]
+    region = (a.get("etiquette") or "").split("·")[-1].strip()
+    if region:
+        requetes.append(f"{region} paysage")
+    secours = None
+    for q in requetes:
+        try:
+            cands = images.candidats(q)
+        except Exception:
+            continue
+        if not cands:
+            continue
+        ch = contenu.choisir_images([q], [cands], a["titre"])[0]
+        for c in ([ch] if ch else []):
+            try:
+                return images.telecharger(c["url"]), [c["credit"]]
+            except Exception:
+                pass
+        if secours is None:
+            secours = next((c for c in cands if "Wikimedia" in c.get("credit", "")), None)
+    if secours:  # aucune image « parfaite » : on prend la meilleure photo Wikimedia du lieu plutôt qu'un fond vide
+        try:
+            return images.telecharger(secours["url"]), [secours["credit"]]
+        except Exception:
+            pass
+    print("Aucune image trouvée pour l'actu : fond uni.")
+    return images.fond_uni(), []
 
 
 def commande_notifier():
