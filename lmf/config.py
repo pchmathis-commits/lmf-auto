@@ -86,8 +86,8 @@ IG_USER_ID = os.environ.get("IG_USER_ID", "")
 
 # --- Prospection (mails de partenariat) -----------------------------------
 PROSPECTION_ACTIVE = True
-MAILS_PAR_JOUR = 3                        # du lundi au vendredi → 15 par semaine
-HEURES_ENVOI = ["09:45", "10:45", "13:45"]  # prêts à ces heures, partent au passage suivant de l'horloge (≈ 10 h, 11 h, 14 h)
+MAILS_PAR_JOUR = 5                        # du lundi au vendredi → 25 par semaine
+HEURES_ENVOI = ["09:45", "10:45", "11:45", "13:45", "14:45"]  # partent au passage suivant de l'horloge (≈ 10 h → 15 h)
 RELANCE_APRES_JOURS = 7                   # une seule relance si pas de réponse
 EXPEDITEUR_NOM = "Mathis Pouchol – Le Média Français"
 SIGNATURE = """Mathis Pouchol
@@ -102,17 +102,21 @@ CHIFFRES = """- 210 000 abonnés Instagram, 82 000 sur TikTok et Threads
 - Étude de cas : Région Normandie, Millenium 2027 (1000 ans de Guillaume le Conquérant) : 65 000 vues, 3,5 % d'engagement, 25 000 vues de la story avec lien
 - Offres : carrousel sponsorisé 2 000 €, story dédiée 800 €, lien exclusif un mois 2 200 € ; diffusion TikTok et Threads offerte"""
 # Types de cibles, en rotation pour varier
-CATEGORIES_CIBLES = [
-    "marque française grand public (mode, accessoires, art de vivre) qui met en avant son histoire",
-    "marque française automobile, moto, vélo ou mobilité",
-    "marque française alimentaire ou boisson à forte histoire (biscuiterie, fromagerie, spiritueux, eaux…)",
-    "musée français (national ou régional) avec une programmation active",
-    "château, abbaye ou monument français géré par une structure qui communique",
-    "office de tourisme, département ou ville française qui fait des campagnes d'attractivité",
-    "entreprise industrielle française historique (aéronautique, verrerie, coutellerie, porcelaine, horlogerie…)",
-    "maison d'édition, festival ou événement culturel ou sportif français",
-    "marque française outdoor, sport ou équipement",
-    "institution ou établissement public culturel français",
+CATEGORIES_CIBLES = [   # uniquement des entreprises ; 3 niches différentes chaque jour, en rotation
+    "constructeur ou équipementier automobile, moto ou vélo français",
+    "marque française de spiritueux, vin, champagne ou bière",
+    "marque française alimentaire à forte histoire (biscuiterie, confiserie, fromagerie, charcuterie, épicerie fine)",
+    "marque française de mode masculine, chaussures, maroquinerie ou montres",
+    "marque française outdoor, sport, chasse, pêche ou équipement",
+    "entreprise industrielle française historique (coutellerie, verrerie, porcelaine, cristallerie, fonderie)",
+    "entreprise française de défense, aéronautique ou spatial (PME et ETI de préférence)",
+    "marque française d'art de vivre, maison, jardin ou outillage",
+    "marque française de cosmétique, parfum ou rasage pour hommes",
+    "entreprise française de tourisme, hôtellerie de caractère, croisière ou transport (train, bateau)",
+    "start-up ou PME française « made in France » qui relocalise sa production",
+    "banque, assurance ou mutuelle française qui communique auprès des jeunes",
+    "éditeur de jeux de société, jeux vidéo ou maquettes français",
+    "marque française d'objets du quotidien iconiques (stylos, briquets, papeterie, ustensiles)",
 ]
 # Déjà contactés ou à ne jamais contacter (ajoute une ligne quand tu veux)
 EXCLUS = [
