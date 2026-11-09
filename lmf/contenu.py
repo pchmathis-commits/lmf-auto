@@ -347,10 +347,13 @@ Puis rédige un post en une seule image :
 - titre : une phrase de 15 à 30 mots, avec les majuscules normales du français (majuscule en début de phrase et aux
   noms propres : Touraine, Charles Perrault…), pas tout en majuscules, factuelle,
   uniquement ce que dit l'article, avec 1 à 3 mots ou chiffres importants à mettre en rouge
-- requête d'image Wikimedia Commons du LIEU ou de l'OBJET exact concerné (jamais une photo de presse, jamais une
-  image générique : si rien ne correspond exactement, l'image du lieu le plus proche)
+- 3 requêtes d'image Wikimedia Commons, de la plus précise à la plus large (jamais une photo de presse) :
+  1) le LIEU ou l'OBJET exact (ex. « Temple de Mercure puy de Dôme ») ;
+  2) la commune ou le site (ex. « Puy de Dôme summit ») ;
+  3) un paysage ou monument emblématique du département ou de la région (ex. « Chaîne des Puys landscape »)
 - légende : 2 à 3 phrases qui résument l'info, puis « Source : <média> ».
 
 Réponds uniquement en JSON :
-{{"index": 0, "etiquette": "...", "titre": "...", "rouges": ["..."], "image": "...", "legende": "...", "hashtags": "#..."}}"""
+{{"index": 0, "etiquette": "...", "titre": "...", "rouges": ["..."], "images": ["précise", "commune", "région"],
+  "legende": "...", "hashtags": "#..."}}"""
     return gemini.json_(prompt, temperature=0.5)
