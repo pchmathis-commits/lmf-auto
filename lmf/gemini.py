@@ -26,7 +26,7 @@ def _noter(modele, statut):
 SECOURS = ["gemini-3.6-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite"]  # modèles de repli si le principal est saturé
 
 
-def _appel(corps, modele=None):
+def _appel(corps, modele=None, rapide=False):
     """Essaie chaque clé (projets Google séparés = quotas séparés), et pour chaque clé
     le modèle demandé puis les modèles de secours."""
     cles = C.cles_gemini()
@@ -37,7 +37,7 @@ def _appel(corps, modele=None):
     for i, cle in enumerate(cles):
         for m in [principal] + [x for x in SECOURS if x != principal]:
             try:
-                return _appel_modele(corps, m, cle)
+                return _appel_modele(corps, m, cle, essais=1 if rapide else 3)
             except ErreurGemini as e:
                 derniere = e
                 if "indisponible" not in str(e) and "429" not in str(e) and "404" not in str(e):
@@ -48,29 +48,30 @@ def _appel(corps, modele=None):
     raise derniere
 
 
-def _appel_modele(corps, modele=None, cle=None):
+def _appel_modele(corps, modele=None, cle=None, essais=3):
     modele = modele or C.GEMINI_MODELE
     url = URL.format(modele=modele)
     corps = dict(corps)
     gc = dict(corps.get("generationConfig", {}))
     gc.setdefault("thinkingConfig", {"thinkingLevel": "low"})  # réponses plus rapides
     corps["generationConfig"] = gc
-    for essai in range(3):
+    for essai in range(essais):
         try:
-            r = requests.post(url, params={"key": cle or C.GEMINI_API_KEY}, json=corps, timeout=300)
+            r = requests.post(url, params={"key": cle or C.GEMINI_API_KEY}, json=corps,
+                              timeout=60 if essais == 1 else 300)
         except requests.exceptions.RequestException as e:  # délai dépassé, coupure réseau
             _noter(modele, "délai dépassé")
-            time.sleep(15 * (essai + 1))
+            time.sleep(0 if essais == 1 else 15 * (essai + 1))
             continue
         if r.status_code == 400 and "thinking" in r.text.lower() and "thinkingConfig" in corps["generationConfig"]:
             corps["generationConfig"].pop("thinkingConfig")  # modèle qui ne connaît pas ce réglage
             continue
         if r.status_code == 429:
             _noter(modele, "quota dépassé (429)")
-            time.sleep(15 * (essai + 1))
+            time.sleep(0 if essais == 1 else 15 * (essai + 1))
             continue
         if r.status_code in (500, 503):
-            time.sleep(15 * (essai + 1))
+            time.sleep(0 if essais == 1 else 15 * (essai + 1))
             continue
         if r.status_code != 200:
             _noter(modele, f"erreur {r.status_code}")
@@ -82,7 +83,7 @@ def _appel_modele(corps, modele=None, cle=None):
         except (KeyError, IndexError):
             raise ErreurGemini(f"Réponse Gemini vide : {json.dumps(data)[:400]}")
         return "".join(p.get("text", "") for p in parts)
-    raise ErreurGemini(f"{modele} indisponible après 3 essais (quota ? voir le mode opératoire)")
+    raise ErreurGemini(f"{modele} indisponible après {essais} essai(s) (quota ? voir le mode opératoire)")
 
 
 def texte(prompt, recherche=False, temperature=0.4, modele=None):
@@ -96,7 +97,7 @@ def texte(prompt, recherche=False, temperature=0.4, modele=None):
     return _appel(corps, modele)
 
 
-def json_(prompt, temperature=0.7, recherche=False, modele=None):
+def json_(prompt, temperature=0.7, recherche=False, modele=None, rapide=False):
     """Réponse JSON (dict)."""
     corps = {
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
@@ -107,7 +108,7 @@ def json_(prompt, temperature=0.7, recherche=False, modele=None):
         corps["tools"] = [{"google_search": {}}]
     else:
         corps["generationConfig"]["responseMimeType"] = "application/json"
-    brut = _appel(corps, modele)
+    brut = _appel(corps, modele, rapide=rapide)
     return extraire_json(brut)
 
 
