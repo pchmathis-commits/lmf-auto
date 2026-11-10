@@ -49,8 +49,10 @@ INTERDITES = ["rgpd", "dpo", "privacy", "donnees", "cnil", "recrut", "job", "emp
               "abuse", "postmaster", "billing", "invoice", "service-client", "serviceclient", "reservation"]
 MOTS_PAGES = ["contact", "presse", "press", "media", "partenari", "partner", "mentions", "legal",
               "qui-sommes", "about", "a-propos", "apropos", "equipe", "communication"]
-CHEMINS = ["contact", "nous-contacter", "contactez-nous", "presse", "espace-presse", "press", "fr/contact",
-           "fr/presse", "mentions-legales", "partenariats", "fr/mentions-legales"]
+CHEMINS = ["contact", "nous-contacter", "contactez-nous", "contact-us", "presse", "espace-presse", "press",
+           "presse-medias", "medias", "fr/contact", "fr/presse", "mentions-legales", "fr/mentions-legales",
+           "partenariats", "partenaires", "espace-pro", "professionnels", "groupes"]
+RECHERCHE = {"hs": False}   # la recherche Google de Gemini est coupée pour la journée dès qu'elle échoue
 
 
 # --------------------------------------------------------------------------
@@ -126,12 +128,14 @@ def tg(methode, **params):
         return None
 
 
-def dire(e, texte, lien=None):
-    """Envoie un message Telegram ; `lien` = (id_contact, type) pour savoir à quoi il répond."""
+def dire(e, texte, lien=None, boutons=None):
+    """Envoie un message Telegram ; `lien` = (id_contact, type) pour savoir à quoi il répond ;
+    `boutons` = [(libellé, données), …] affichés sous le message."""
     if not e.get("telegram_chat"):
         print("(Telegram pas encore relié) " + texte[:200])
         return None
-    rep = tg("sendMessage", chat_id=e["telegram_chat"], text=texte[:4000], disable_web_page_preview=True)
+    extra = {"reply_markup": {"inline_keyboard": [[{"text": t, "callback_data": d} for t, d in boutons]]}} if boutons else {}
+    rep = tg("sendMessage", chat_id=e["telegram_chat"], text=texte[:4000], disable_web_page_preview=True, **extra)
     if rep and rep.get("ok") and lien:
         e["telegram_messages"][str(rep["result"]["message_id"])] = {"contact": lien[0], "type": lien[1]}
     return rep
@@ -141,12 +145,52 @@ def contact(e, cid):
     return next((c for c in e["contacts"] if c["id"] == cid), None)
 
 
-def lire_telegram(e):
+def _mises_a_jour(e):
+    """Messages Telegram à traiter. Depuis l'étape 6, c'est le Sheet (horloge, toutes les 5 min) qui lit Telegram
+    et nous transmet la file ; sinon on lit Telegram directement."""
+    if C.SHEET_URL and C.SHEET_SECRET:
+        try:
+            from . import sheet
+            file = sheet.appel("tgInbox")
+            if file is not None:
+                return file
+        except Exception as ex:
+            print(f"File Telegram du Sheet indisponible ({ex}), lecture directe.")
     rep = tg("getUpdates", offset=e["telegram_offset"] + 1, timeout=0)
     if not rep or not rep.get("ok"):
-        return
+        return []
     for u in rep["result"]:
         e["telegram_offset"] = max(e["telegram_offset"], u["update_id"])
+    return rep["result"]
+
+
+def _action_synthetique(e, u):
+    """Boutons des aperçus de prospection, relayés par le Sheet."""
+    if "bouton" in u:
+        action, _, cid = u["bouton"].partition(":")
+        c = contact(e, cid)
+        if c and action == "ps":
+            if c["statut"] == "planifié":
+                c["statut"] = "annulé"
+            else:
+                dire(e, f"Trop tard, le mail à {c['organisation']} est déjà parti.")
+        return True
+    if "modif_prospect" in u:
+        c = contact(e, u["modif_prospect"])
+        if c:
+            traiter_consigne(e, c, "apercu", "modif : " + u.get("texte", ""))
+        return True
+    return False
+
+
+def lire_telegram(e):
+    for u in _mises_a_jour(e):
+        try:
+            if _action_synthetique(e, u):
+                continue
+        except Exception as ex:
+            dire(e, f"⚠️ Problème : {ex}")
+            continue
         m = u.get("message")
         if not m or "text" not in m:
             continue
@@ -525,28 +569,42 @@ def deja_vus(e):
     return noms, domaines
 
 
+def quotas_du_jour():
+    n_t = round(C.MAILS_PAR_JOUR * C.PART_TOURISME)
+    return {"tourisme": n_t, "industrie": C.MAILS_PAR_JOUR - n_t}
+
+
 def proposer_cibles(e, nb=20):
     jour = maintenant().toordinal()
-    cats = [C.CATEGORIES_CIBLES[(jour * 3 + i) % len(C.CATEGORIES_CIBLES)] for i in range(3)]
+    tour = [C.CATEGORIES_TOURISME[(jour * 3 + i) % len(C.CATEGORIES_TOURISME)] for i in range(3)]
+    indu = [C.CATEGORIES_INDUSTRIE[(jour * 2 + i) % len(C.CATEGORIES_INDUSTRIE)] for i in range(2)]
+    nb_t = round(nb * 0.6)
     noms, _ = deja_vus(e)
     prompt = f"""Tu aides le média Instagram « Le Média Français » (histoire, patrimoine, savoir-faire et marques
-françaises ; 210 000 abonnés, 80 % de 18-34 ans, 75 % d'hommes) à trouver des partenaires.
+françaises ; 210 000 abonnés, 80 % de 18-34 ans, 75 % d'hommes) à trouver des partenaires qui paient
+des posts sponsorisés ou des campagnes.
 
-Propose {nb} ENTREPRISES françaises différentes (uniquement des entreprises : pas de musée, festival, association,
-collectivité ou maison d'édition), réparties à peu près également entre ces niches :
-{chr(10).join('- ' + x for x in cats)}
+Propose {nb} organisations françaises différentes :
+- {nb_t} dans le TOURISME et le PATRIMOINE, réparties entre :
+{chr(10).join('  - ' + x for x in tour)}
+- {nb - nb_t} dans l'INDUSTRIE, réparties entre :
+{chr(10).join('  - ' + x for x in indu)}
 
 Règles :
-- entreprises qui existent vraiment, actives aujourd'hui, avec un site officiel et un budget marketing ;
-- qui ont un lien naturel avec l'histoire ou le patrimoine français et un intérêt à toucher des jeunes ;
+- organisations qui existent vraiment, actives aujourd'hui, avec un site officiel et un budget communication ;
+- pas de musée national, d'association, de festival culturel ni de maison d'édition ;
 - privilégie les tailles moyennes et les acteurs régionaux (plus de chances de réponse) aux géants mondiaux ;
 - évite toute organisation en difficulté financière connue, controversée, politique ou religieuse ;
 - n'en propose AUCUNE de cette liste (déjà contactées) : {', '.join(sorted(set(noms)))[:3500]}
 
-Réponds en JSON : {{"cibles": [{{"organisation": "...", "type": "...", "site": "https://... (page d'accueil officielle)",
+Réponds en JSON : {{"cibles": [{{"organisation": "...", "famille": "tourisme ou industrie", "type": "...",
+"site": "https://... (page d'accueil officielle)",
 "idee": "une idée de contenu en une phrase qui ferait le lien entre eux et l'histoire de France"}}]}}"""
     r = gemini.json_(prompt, temperature=0.9)
-    return r.get("cibles", [])
+    cibles = r.get("cibles", [])
+    for c in cibles:
+        c["famille"] = "industrie" if "indus" in str(c.get("famille", "")).lower() else "tourisme"
+    return cibles
 
 
 def _cfemail(code):
@@ -626,9 +684,15 @@ def explorer_site(site):
         if domaine_base(urlparse(cible).netloc) == base and any(m in etiquette for m in MOTS_PAGES):
             a_voir.append(cible)
     a_voir += [urljoin(site, "/" + ch) for ch in CHEMINS]
+    try:  # plan du site : on y repère les pages contact / presse
+        plan = requests.get(urljoin(site, "/sitemap.xml"), headers=NAVIGATEUR, timeout=8).text
+        a_voir[1:1] = [u for u in re.findall(r"<loc>([^<]+)</loc>", plan)
+                       if any(m in u.lower() for m in ("contact", "presse", "press", "partenai"))][:4]
+    except requests.RequestException:
+        pass
     pages = 0
     for url in a_voir:
-        if url in vues or pages >= 7:
+        if url in vues or pages >= 9:
             continue
         vues.add(url)
         try:
@@ -657,18 +721,22 @@ def trouver_adresse(cible):
         a = notees[0][1]
         return a, adresses[a], texte
     # Dernier essai : recherche Google via Gemini, acceptée seulement si l'adresse est sur le domaine officiel
+    if RECHERCHE["hs"]:
+        return None, "", texte
     try:
         base = domaine_base(urlparse(cible["site"]).netloc)
         r = gemini.json_(f"""Trouve l'adresse e-mail publique du service presse, communication, marketing ou
 partenariats de « {cible['organisation']} » (site officiel : {cible['site']}).
 Uniquement une adresse publiée par l'organisation elle-même. Si tu n'es pas certain, mets null.
 Réponds en JSON : {{"email": "... ou null", "nom": "nom de la personne si l'adresse est nominative, sinon null"}}""",
-                         temperature=0.1, recherche=True)
+                         temperature=0.1, recherche=True, rapide=True)
         a = (r.get("email") or "").lower().strip()
         if a and domaine_base(domaine_mail(a)) == base and _note(a) >= 0 and _mx_ok(domaine_mail(a)):
             return a, f"Contact : {r.get('nom') or ''} {a}", texte
     except Exception as ex:
         print(f"Recherche d'adresse ratée pour {cible['organisation']} : {ex}")
+        if isinstance(ex, gemini.ErreurGemini):
+            RECHERCHE["hs"] = True
     return None, "", texte
 
 
@@ -749,10 +817,11 @@ Réponds en JSON : {{"resume": "...", "brouillon": "..."}}"""
 
 
 def envoyer_apercu(e, c):
-    heure = lire_date(c["prevu_le"]).strftime("%H:%M")
-    dire(e, f"📤 Prévu à {heure} → {c['organisation']} ({c['email']})\nObjet : {c['objet']}\n\n{c['corps']}\n\n"
-            "👉 Réponds « stop » à ce message pour l'annuler, ou « modif : ta consigne » pour le réécrire.",
-         (c["id"], "apercu"))
+    prevu = lire_date(c["prevu_le"])
+    quand = ("demain " if prevu.date() > maintenant().date() else "") + prevu.strftime("%H:%M")
+    dire(e, f"📤 {quand} → {c['organisation']} ({c['email']})\nObjet : {c['objet']}\n\n{c['corps']}",
+         (c["id"], "apercu"),
+         boutons=[("✅ Valider", f"pv:{c['id']}"), ("✏️ Modifier", f"pm:{c['id']}"), ("🗑 Supprimer", f"ps:{c['id']}")])
 
 
 def generer_du_jour(e, jour=None, apercus=True):
@@ -761,31 +830,41 @@ def generer_du_jour(e, jour=None, apercus=True):
     noms, domaines = deja_vus(e)
     retenus, essais = [], 0
     heures = list(C.HEURES_ENVOI)[: C.MAILS_PAR_JOUR]
+    quotas = quotas_du_jour()
     debut = time.time()
-    while len(retenus) < C.MAILS_PAR_JOUR and essais < 4 and time.time() - debut < 22 * 60:
+    while len(retenus) < C.MAILS_PAR_JOUR and essais < 4 and time.time() - debut < 15 * 60:
         essais += 1
         try:
             cibles = proposer_cibles(e)
         except Exception as ex:
             print(f"Propositions de cibles ratées : {ex}")
             continue
+        # 1) on écarte les déjà-vus, 2) on explore tous les sites en parallèle (bien plus rapide)
+        a_explorer = []
         for cible in cibles:
-            if len(retenus) >= C.MAILS_PAR_JOUR or time.time() - debut > 22 * 60:
-                break
             if not cible.get("site") or not cible.get("organisation"):
                 continue
             d = domaine_base(urlparse(cible["site"] if "//" in cible["site"] else "https://" + cible["site"]).netloc)
             if d in domaines or cible["organisation"].lower() in noms:
                 continue
             domaines.add(d)
-            print(f"→ {cible['organisation']} ({cible['site']})")
-            adresse, ctx, texte = trouver_adresse(cible)
+            a_explorer.append(cible)
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            trouves = list(pool.map(trouver_adresse, a_explorer))
+        for cible, (adresse, ctx, texte) in zip(a_explorer, trouves):
+            if len(retenus) >= C.MAILS_PAR_JOUR or time.time() - debut > 15 * 60:
+                break
+            fam = cible.get("famille", "tourisme")
+            if sum(1 for x in retenus if x.get("famille") == fam) >= quotas.get(fam, 0):
+                continue  # quota du jour atteint pour cette famille (60 % tourisme, 40 % industrie)
+            print(f"→ {cible['organisation']} ({cible['site']}) : {adresse or 'pas d adresse'}")
             if not adresse:
                 print("   pas d'adresse fiable, cible suivante")
                 continue
             c = {"id": f"{jour.isoformat()}-{len(retenus) + 1}-{random.randint(100, 999)}",
                  "organisation": cible["organisation"], "type": cible.get("type", ""), "site": cible["site"],
-                 "idee": cible.get("idee", ""), "email": adresse, "contexte_adresse": ctx, "contexte": texte[:3000],
+                 "idee": cible.get("idee", ""), "famille": cible.get("famille", "tourisme"), "email": adresse, "contexte_adresse": ctx, "contexte": texte[:3000],
                  "cree_le": iso(maintenant()), "statut": "planifié"}
             try:
                 m = rediger(c, texte)
