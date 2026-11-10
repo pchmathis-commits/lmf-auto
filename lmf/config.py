@@ -12,6 +12,16 @@ ACTUS_PAR_JOUR = 2               # créneaux définis dans .github/workflows/act
 DELAI_AVANT_PUBLICATION_MIN = 45   # temps laissé pour supprimer un post après le mail
 VERIFICATION_AUTO = False        # True = relecture par Gemini + Google (coûte beaucoup de quota)
 
+# Planning du lendemain, préparé chaque soir vers 21 h (heure de PUBLICATION, type de post)
+# types : carrousel · actu · actu_carrousel. Le carrousel du soir (après 16 h) est « Les Français cachés ».
+PLANNING = [
+    ("09:00", "carrousel"),
+    ("11:30", "actu"),
+    ("15:00", "actu_carrousel"),
+    ("18:30", "carrousel"),
+    ("20:30", "actu"),
+]
+
 # --- Contenu ----------------------------------------------------------------
 SLIDES_PAR_CARROUSEL = 10        # couverture + 8 slides + slide finale (max API Instagram : 10)
 MOTS_MAX_PAR_SLIDE = 16
@@ -102,22 +112,27 @@ CHIFFRES = """- 210 000 abonnés Instagram, 82 000 sur TikTok et Threads
 - Étude de cas : Région Normandie, Millenium 2027 (1000 ans de Guillaume le Conquérant) : 65 000 vues, 3,5 % d'engagement, 25 000 vues de la story avec lien
 - Offres : carrousel sponsorisé 2 000 €, story dédiée 800 €, lien exclusif un mois 2 200 € ; diffusion TikTok et Threads offerte"""
 # Types de cibles, en rotation pour varier
-CATEGORIES_CIBLES = [   # uniquement des entreprises ; 3 niches différentes chaque jour, en rotation
-    "constructeur ou équipementier automobile, moto ou vélo français",
-    "marque française de spiritueux, vin, champagne ou bière",
-    "marque française alimentaire à forte histoire (biscuiterie, confiserie, fromagerie, charcuterie, épicerie fine)",
-    "marque française de mode masculine, chaussures, maroquinerie ou montres",
-    "marque française outdoor, sport, chasse, pêche ou équipement",
-    "entreprise industrielle française historique (coutellerie, verrerie, porcelaine, cristallerie, fonderie)",
-    "entreprise française de défense, aéronautique ou spatial (PME et ETI de préférence)",
-    "marque française d'art de vivre, maison, jardin ou outillage",
-    "marque française de cosmétique, parfum ou rasage pour hommes",
-    "entreprise française de tourisme, hôtellerie de caractère, croisière ou transport (train, bateau)",
-    "start-up ou PME française « made in France » qui relocalise sa production",
-    "banque, assurance ou mutuelle française qui communique auprès des jeunes",
-    "éditeur de jeux de société, jeux vidéo ou maquettes français",
-    "marque française d'objets du quotidien iconiques (stylos, briquets, papeterie, ustensiles)",
+PART_TOURISME = 0.6   # 60 % tourisme et patrimoine, 40 % industrie (5 mails/jour → 3 + 2)
+CATEGORIES_TOURISME = [   # 3 différentes chaque jour, en rotation
+    "office de tourisme ou agence d'attractivité d'une ville, d'un département ou d'une région française",
+    "château, abbaye, citadelle ou site patrimonial privé ouvert à la visite",
+    "parc à thème historique ou site de reconstitution (type Puy du Fou, Guédelon)",
+    "hôtel de caractère, château-hôtel ou groupe hôtelier patrimonial français",
+    "croisière fluviale ou maritime, train touristique ou ligne historique en France",
+    "domaine viticole, maison de champagne ou distillerie qui se visite",
+    "station de montagne ou destination balnéaire française qui communique sur son histoire",
+    "agence de voyages ou tour-opérateur spécialisé dans le patrimoine français",
+    "musée privé, mémorial ou site de visite d'entreprise (manufacture, fromagerie, coutellerie qui se visite)",
 ]
+CATEGORIES_INDUSTRIE = [  # 2 différentes chaque jour, en rotation
+    "entreprise française de l'aéronautique, du spatial ou de la défense (PME et ETI de préférence)",
+    "constructeur ou équipementier automobile, moto ou vélo français",
+    "entreprise industrielle française historique (coutellerie, verrerie, porcelaine, cristallerie, fonderie)",
+    "chantier naval, constructeur ferroviaire ou entreprise française de l'énergie",
+    "PME « made in France » qui relocalise sa production",
+    "marque française historique d'outillage, d'équipement ou d'objets du quotidien",
+]
+CATEGORIES_CIBLES = CATEGORIES_TOURISME + CATEGORIES_INDUSTRIE   # compatibilité
 # Déjà contactés ou à ne jamais contacter (ajoute une ligne quand tu veux)
 EXCLUS = [
     "Élysée", "Ministère de la Culture", "Opinel", "Alpine", "Monnaie de Paris", "Château de Versailles",
