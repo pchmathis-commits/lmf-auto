@@ -10,10 +10,15 @@
   "13": {
    "contact": "2026-11-09-2-239",
    "type": "apercu"
+  },
+  "21": {
+   "contact": "2026-11-10-1-674",
+   "type": "apercu"
   }
  },
  "jours_generes": [
-  "2026-11-09"
+  "2026-11-09",
+  "2026-11-10"
  ],
  "contacts": [
   {
@@ -50,6 +55,24 @@
    "repondre_a": "boutique@editionspaulsen.com",
    "message_id": "<179421851206.2433.3495987876569720956@lemediafrancais.fr>",
    "envoye_le": "2026-11-09T11:01+01:00"
+  },
+  {
+   "id": "2026-11-10-1-674",
+   "organisation": "Arianespace",
+   "type": "entreprise française de défense, aéronautique ou spatial",
+   "site": "https://www.arianespace.com",
+   "idee": "Raconter comment la France est devenue le pionnier de l'aventure spatiale européenne depuis la base de Kourou.",
+   "email": "juliette.poisson@ariane.group",
+   "contexte_adresse": "ave offices in Washington D.C., Tokyo and Singapore to work closely with our customers in support of their projects. Arianespace is a wholly owned subsidiary of ArianeGroup. Contact us Julie Lenoir Chief Brand & Communications Officer j.lenoir@arianespace.com Juliette Poisson Media Relations Leader juliette.poisson@ariane.group Launch Services Any mission to any orbit Launch services experts Groun",
+   "contexte": "Launching Ambitions | Arianespace en fr Shop ABOUT US Profile in short Governance Legacy ARIANE 6 LAUNCH SERVICES Any mission to any orbit Launch services experts Ground services experts The Guiana Space Center UPDATES Road to Space Press CAREERS ABOUT US Profile in short Governance Legacy ARIANE 6 LAUNCH SERVICES Any mission to any orbit Launch services experts Ground services experts The Guiana Space Center UPDATES Road to Space Press CAREERS en fr Shop OK VA271 Amazon Leo LE-04 Arianespace to launch 36 Amazon Leo satellites on November 23 at the earliest, for 10th Ariane 6 flight Learn more Any mission to any orbit Launch solutions for every mission, to every orbit For over 40 years, Arianespace has partnered with commercial and institutional customers, offering a versatile family of launchers that delivers satellites for telecommunications, navigation, Earth observation, scientific research and technology demonstrations. DISCOVER OUR SOLUTIONS launch services We are the experts in launch services Arianespace dedicates all of its expertise to fulfilling its customers’ space ambitions. With flexible launch solutions and personalized support, our experts ensure your missions are a success, making each project a unique, memorable adventure. Discover our launch services ARIANE 6 The perfect launch vehicle for all your missions and orbit requirements Ariane 6 862T Typical lift-off mass Discover Ariane 6, the new-generation heavy launcher that combines reliability, versatility, and performance, operated by Arianespace. This launcher is designed to efficiently meet the diverse needs of our customers. With its advanced technical capabilities and enhanced performance, Ariane 6 offers an optimal solution for a wide range of space missions. Discover Ariane 6 Ground services experts We are the experts in ground services Arianespace relies on the expertise of its teams to orchestrate each launch with precision and rigor. From logistics to the meticulous preparation of satellites, every stage is carefully managed to ensure the success of our customers' missions and to meet the highest standards of the space industry. Discover our ground services Latest News 15 press-releases 26.10.2026 Arianespace appoints Filipe de Oliveira as Chief Commercial Officer Read more news 26.10.2026 Arianespace appoints Filipe de Oliveira as Chief Commercial Officer Read more folder Ariane 6 16.10.2026 Flight VA271 - Amazon Leo LE-04 Read more press-releases 14.10.2026 Arianespace to laun\n\nArianespace uses space for a better life on Earth en fr Shop ABOUT US Profile in short Governance Legacy ARIANE 6 LAUNCH SERVICES Any mission to any orbit Launch services experts Ground services experts The Guiana Space Center UPDATES Road to Space Press CAREERS ABOUT US Profile in short Governance Legacy ARIANE 6 LAUNCH SERVICES Any mission to any orbit Launch services experts Ground services experts The Guiana Space Center UPDATES Road to Space Press CAREERS en fr Shop OK Launching ambitions",
+   "cree_le": "2026-11-10T12:12+01:00",
+   "statut": "planifié",
+   "objet": "Arianespace x Le Média Français : l'épopée spatiale depuis Kourou",
+   "corps": "Bonjour Madame Poisson,\n\nAlors que l'Europe spatiale s'apprête à passer un nouveau cap avec les vols d'Ariane 6, le Centre Spatial Guyanais de Kourou demeure l'un des plus beaux symboles de notre souveraineté et de notre savoir-faire.\n\nJe suis\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
+   "nom_contact": "Madame Poisson",
+   "prevu_le": "2026-11-10T12:43+01:00",
+   "repondre_a": "juliette.poisson@ariane.group",
+   "jeton": "ebed29f24abc"
   }
  ],
  "mails_traites": [
