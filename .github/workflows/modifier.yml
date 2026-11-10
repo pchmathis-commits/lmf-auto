@@ -1,0 +1,39 @@
+name: Modifier un post
+
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "Identifiant du post"
+        required: true
+      consigne:
+        description: "Ce qui ne va pas"
+        required: true
+
+jobs:
+  modifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+      SHEET_URL: ${{ secrets.SHEET_URL }}
+      SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
+      IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      MODIF_ID: ${{ inputs.id }}
+      MODIF_CONSIGNE: ${{ inputs.consigne }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: assets/Montserrat.ttf
+          key: montserrat-v1
+      - run: pip install -r requirements.txt
+      - name: Refaire le post
+        run: python -m lmf.main modifier
