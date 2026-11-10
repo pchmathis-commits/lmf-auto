@@ -4,6 +4,8 @@ Commandes :
   carrousel        crée un carrousel, le met en ligne et envoie le mail de validation
   actu             crée un post d'actualité en une image (même chose)
   actu_carrousel   raconte une actu locale insolite en carrousel de 7 slides
+  preparer         prépare tous les posts et les prospects du lendemain, aperçus sur Telegram
+  modifier         refait un post selon une consigne (MODIF_ID, MODIF_CONSIGNE)
   notifier         renvoie au Sheet le dernier post créé (si l'envoi du mail a échoué)
   publier          publie les posts arrivés à échéance (ou validés)
   prolonger-jeton  prolonge le jeton Instagram (chaque semaine)
@@ -13,6 +15,7 @@ Commandes :
 import datetime as dt
 import json
 import os
+import random
 import sys
 import traceback
 import zoneinfo
@@ -25,12 +28,25 @@ RACINE = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(RACINE, "out", "post.json")
 
 
+# Quand on prépare les posts la veille : date « simulée » de création, heure de publication, pas de mail.
+CONTEXTE = {"quand": None, "prevu": None, "silencieux": False}
+
+
 def _maintenant():
     return dt.datetime.now(PARIS)
 
 
+def _quand():
+    return CONTEXTE["quand"] or _maintenant()
+
+
+def _prevu():
+    return CONTEXTE["prevu"] or (_maintenant() + dt.timedelta(minutes=C.DELAI_AVANT_PUBLICATION_MIN))
+
+
 def _id(type_):
-    return _maintenant().strftime("%Y%m%d-%H%M") + ("-c" if type_ == "carrousel" else "-a")
+    base = (CONTEXTE["prevu"] or _maintenant()).strftime("%Y%m%d-%H%M")
+    return f"{base}-{'c' if type_ == 'carrousel' else 'a'}{random.randint(10, 99)}"
 
 
 def _dossier(post_id):
@@ -63,6 +79,9 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     post_id = _id("carrousel")
     c = c or contenu.rediger_carrousel(fiche)
     c = contenu.controler_carrousel(c)
+    donnees = {"genre": "carrousel", "c": c,
+               "fiche": {k: fiche.get(k) for k in ("sujet", "famille", "etiquette", "prefixe_legende", "sources",
+                                                    "couverture", "faits") if fiche.get(k)}}
     if len(c["couverture"]["texte"].split()) > 14:  # garde-fou : couverture trop longue → on la fait raccourcir
         try:
             court = contenu.gemini.texte(
@@ -130,7 +149,8 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
         "legende": _legende((fiche.get("prefixe_legende", "") + c.get("legende", "")), c.get("hashtags", ""), credits),
         "verification_ok": ok, "verification": rapport,
         "lien_source": fiche.get("sources", ""), "ligne_sujet": ligne_sujet,
-        "publication_prevue": (_maintenant() + dt.timedelta(minutes=C.DELAI_AVANT_PUBLICATION_MIN)).isoformat(),
+        "publication_prevue": _prevu().isoformat(),
+        "silencieux": CONTEXTE["silencieux"], "donnees": json.dumps(donnees, ensure_ascii=False)[:45000],
     }
     _sauver(post)
     return post
@@ -138,19 +158,19 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
 
 def _ton_mois_aujourdhui():
     """Une fois par semaine : le premier carrousel du dimanche."""
-    m = _maintenant()
+    m = _quand()
     return m.weekday() == 6 and m.hour < 11
 
 
 def _departement_aujourdhui():
     """Une fois par semaine : le premier carrousel du mercredi."""
-    m = _maintenant()
+    m = _quand()
     return m.weekday() == 2 and m.hour < 11
 
 
 def _serie_ce_soir():
     """Le carrousel du soir (après 16 h) est un épisode de la série « Les Français cachés »."""
-    return _maintenant().hour >= 16
+    return _quand().hour >= 16
 
 
 def commande_carrousel():
@@ -244,10 +264,12 @@ def commande_actu():
         print("Aucune actualité adaptée aujourd'hui (garde-fou).")
         return
     art = articles[idx]
+    sheet.ajouter_post(creer_actu(a, art))
+
+
+def creer_actu(a, art):
     ok, rapport = contenu.verifier([a["titre"]], f"Actualité : {art['titre']} ({art['source']})")
-
     photo, credits = _image_actu(a)
-
     post_id = _id("actu")
     img = render.slide_actu(photo, a["titre"], a.get("rouges"), credit=credits[0] if credits else None)
     render.enregistrer(img, os.path.join(_dossier(post_id), "01.jpg"))
@@ -257,10 +279,12 @@ def commande_actu():
         "legende": _legende(a.get("legende", ""), a.get("hashtags", ""), credits),
         "verification_ok": ok, "verification": rapport,
         "lien_source": f"{art['lien']} | {art['titre']} {a['titre']}", "ligne_sujet": None,
-        "publication_prevue": (_maintenant() + dt.timedelta(minutes=C.DELAI_AVANT_PUBLICATION_MIN)).isoformat(),
+        "publication_prevue": _prevu().isoformat(),
+        "silencieux": CONTEXTE["silencieux"],
+        "donnees": json.dumps({"genre": "actu", "a": a, "art": art}, ensure_ascii=False)[:45000],
     }
     _sauver(post)
-    sheet.ajouter_post(post)
+    return post
 
 
 def _image_actu(a):
@@ -310,6 +334,133 @@ def commande_actu_carrousel():
              "sources": f"{art['lien']} | {art['titre']} {c['couverture']['texte']}"}
     post = creer_carrousel(fiche, c=c)
     sheet.ajouter_post(post)
+
+
+# ---------------------------------------------------------------------------
+# Préparation la veille + aperçus Telegram
+# ---------------------------------------------------------------------------
+TYPES = {"carrousel": "commande_carrousel", "actu": "commande_actu", "actu_carrousel": "commande_actu_carrousel"}
+
+
+def apercu_telegram(e, post):
+    """Envoie les slides puis un message avec les boutons Valider / Modifier / Supprimer."""
+    from . import prospection as P
+    if not e.get("telegram_chat"):
+        return
+    imgs = [u for u in post.get("images", []) if str(u).startswith("http")]
+    if len(imgs) >= 2:
+        P.tg("sendMediaGroup", chat_id=e["telegram_chat"], media=[{"type": "photo", "media": u} for u in imgs[:10]])
+    elif imgs:
+        P.tg("sendPhoto", chat_id=e["telegram_chat"], photo=imgs[0])
+    heure = dt.datetime.fromisoformat(post["publication_prevue"]).astimezone(PARIS).strftime("%H:%M")
+    doute = "" if post.get("verification_ok", True) else "\n⚠️ La relecture a un doute : il ne partira qu'avec « Valider »."
+    texte = f"🕘 {heure} · {post['type']}\n{post['titre']}{doute}\n\n{post.get('legende', '')[:900]}"
+    P.tg("sendMessage", chat_id=e["telegram_chat"], text=texte[:4000], disable_web_page_preview=True,
+         reply_markup={"inline_keyboard": [[
+             {"text": "✅ Valider", "callback_data": f"v:{post['id']}"},
+             {"text": "✏️ Modifier", "callback_data": f"m:{post['id']}"},
+             {"text": "🗑 Supprimer", "callback_data": f"s:{post['id']}"}]]})
+
+
+def _creer(type_, prevu):
+    """Crée un post du type demandé pour l'heure `prevu`, sans mail. Renvoie le post ou None."""
+    CONTEXTE.update(quand=prevu - dt.timedelta(minutes=C.DELAI_AVANT_PUBLICATION_MIN), prevu=prevu, silencieux=True)
+    if os.path.exists(OUT):
+        os.remove(OUT)
+    globals()[TYPES[type_]]()
+    if not os.path.exists(OUT):
+        return None
+    with open(OUT, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def commande_preparer():
+    from . import prospection as P
+    demain = (_maintenant() + dt.timedelta(days=1)).date()
+    e = P.charger()
+    bilan, rates = [], 0
+    for heure, type_ in C.PLANNING:
+        hh, mm = map(int, heure.split(":"))
+        prevu = dt.datetime.combine(demain, dt.time(hh, mm), PARIS)
+        try:
+            post = None
+            for essai in ([type_, type_] if type_ == "carrousel" else [type_, "actu"]):  # un 2e essai en secours
+                try:
+                    post = _creer(essai, prevu)
+                except Exception as ex:
+                    print(f"{essai} raté ({ex}), nouvel essai…")
+                if post:
+                    break
+            if not post:
+                raise RuntimeError("aucun sujet adapté trouvé")
+            apercu_telegram(e, post)
+            bilan.append(f"✅ {heure} · {post['type']}")
+        except Exception as ex:
+            traceback.print_exc()
+            rates += 1
+            bilan.append(f"❌ {heure} · {type_} : {str(ex)[:150]}")
+    CONTEXTE.update(quand=None, prevu=None, silencieux=False)
+    nb_prospects = 0
+    if demain.weekday() < 5 and C.PROSPECTION_ACTIVE and e["active"] and demain.isoformat() not in e["jours_generes"]:
+        try:
+            C.CLE_2_EN_PREMIER = True
+            avant = len(e["contacts"])
+            P.generer_du_jour(e, jour=demain)
+            nb_prospects = len(e["contacts"]) - avant
+        except Exception as ex:
+            traceback.print_exc()
+            P.dire(e, f"⚠️ Prospects de demain ratés : {ex}")
+    P.dire(e, f"📋 Demain ({demain.strftime('%d/%m')}) :\n" + "\n".join(bilan)
+              + (f"\n📤 {nb_prospects} prospects" if nb_prospects else "")
+              + "\n\nSans action de ta part, tout part aux heures prévues."
+              + ("\nPour un post raté, lance « Carrousel » ou « Actualité » à la main dans GitHub si tu veux le remplacer."
+                 if rates else ""))
+    P.sauver(e)
+
+
+def commande_modifier():
+    from . import prospection as P
+    from . import sheet
+    pid = os.environ.get("MODIF_ID", "").strip()
+    consigne = os.environ.get("MODIF_CONSIGNE", "").strip()
+    e = P.charger()
+    row = sheet.appel("getPost", id=pid)
+    if not row:
+        P.dire(e, f"Post {pid} introuvable.")
+        return
+    if row.get("statut") in ("Publié", "Publication en cours", "Supprimé", "Remplacé"):
+        P.dire(e, f"Ce post est déjà « {row['statut']} », je ne le modifie pas.")
+        return
+    prevu = dt.datetime.fromisoformat(str(row["prevue"]).replace("Z", "+00:00")).astimezone(PARIS)
+    CONTEXTE.update(quand=prevu - dt.timedelta(minutes=C.DELAI_AVANT_PUBLICATION_MIN), prevu=prevu, silencieux=True)
+    try:
+        d = json.loads(row.get("donnees") or "{}")
+    except ValueError:
+        d = {}
+    post = None
+    if d:
+        r = contenu.modifier_contenu(d, consigne)
+        if not r.get("nouveau_sujet") and r.get("contenu"):
+            if d["genre"] == "carrousel":
+                fiche = d.get("fiche", {})
+                post = creer_carrousel(fiche, c=r["contenu"])
+                if str(fiche.get("etiquette", "")).startswith("LES FRANÇAIS CACHÉS #"):
+                    n = int(fiche["etiquette"].split("#")[-1])
+                    post["legende"] = post["legende"].replace("👉 Abonne-toi", f"👉 Épisode {n + 1} demain soir. Abonne-toi", 1)
+            else:
+                post = creer_actu(r["contenu"], d["art"])
+            sheet.ajouter_post(post)
+    if not post:  # nouveau sujet demandé (ou pas de données) : on refait un post du même type
+        type_ = "actu" if row.get("type") == "Actu" else (
+            "actu_carrousel" if d.get("fiche", {}).get("famille") == "Actu carrousel" else "carrousel")
+        post = _creer(type_, prevu)
+    if not post:
+        P.dire(e, "Je n'ai pas réussi à refaire ce post. L'ancien reste prévu : supprime-le si tu n'en veux pas.")
+        return
+    sheet.maj_post(pid, statut="Remplacé")
+    P.dire(e, "✏️ Voici la nouvelle version (l'ancienne est annulée) :")
+    apercu_telegram(e, post)
+    P.sauver(e)
 
 
 def commande_notifier():
@@ -365,7 +516,7 @@ def commande_demo():
 
 COMMANDES = {
     "carrousel": commande_carrousel, "actu": commande_actu, "notifier": commande_notifier,
-    "actu_carrousel": commande_actu_carrousel,
+    "actu_carrousel": commande_actu_carrousel, "preparer": commande_preparer, "modifier": commande_modifier,
     "publier": commande_publier, "tester": commande_tester, "demo": commande_demo,
     "prolonger-jeton": lambda: __import__("lmf.instagram", fromlist=["x"]).prolonger_jeton(),
 }
