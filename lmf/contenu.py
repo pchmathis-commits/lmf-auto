@@ -1,4 +1,5 @@
 """Rédaction des carrousels et des actus, avec garde-fous."""
+import json
 import re
 import xml.etree.ElementTree as ET
 from urllib.parse import quote
@@ -414,3 +415,29 @@ Réponds uniquement en JSON :
     if len(c["slides"]) < 4:
         raise ValueError("Récit trop court")
     return art, c
+
+
+# ---------------------------------------------------------------------------
+# Modification d'un post préparé, d'après la consigne de Mathis (bouton « Modifier » sur Telegram)
+# ---------------------------------------------------------------------------
+def modifier_contenu(donnees, consigne):
+    contenu_actuel = donnees.get("c") if donnees.get("genre") == "carrousel" else donnees.get("a")
+    prompt = f"""{STYLE}
+
+Voici le contenu JSON d'un post Instagram du Média Français, prêt à être publié :
+{json.dumps(contenu_actuel, ensure_ascii=False)[:12000]}
+
+Mathis n'est pas satisfait. Sa consigne : « {consigne} »
+
+- Si la consigne demande clairement un AUTRE SUJET (« change de sujet », « autre actu », « pas intéressant »…),
+  réponds {{"nouveau_sujet": true}}.
+- Sinon, applique la consigne et renvoie le contenu modifié dans EXACTEMENT la même structure JSON, en gardant tel quel
+  tout ce que la consigne ne concerne pas. Mêmes règles : couverture de 6 à 12 mots, {C.MOTS_MAX_PAR_SLIDE} mots
+  maximum par slide, mots en rouge copiés exactement du texte, requêtes d'image Wikimedia concrètes et différentes
+  (si la consigne parle d'une image, change la requête d'image concernée). N'invente aucun fait.
+
+Réponds uniquement en JSON : {{"nouveau_sujet": false, "contenu": {{...}}}}"""
+    r = gemini.json_(prompt, temperature=0.5)
+    if donnees.get("genre") == "carrousel" and r.get("contenu") and not r["contenu"].get("slides"):
+        r["contenu"] = None  # réponse incomplète : on refera un post neuf
+    return r
