@@ -34,6 +34,10 @@
   "60": {
    "contact": "2026-11-11-5-548",
    "type": "apercu"
+  },
+  "63": {
+   "contact": "m15706",
+   "type": "mail"
   }
  },
  "jours_generes": [
@@ -206,9 +210,12 @@
   "<179412506213.23055.12012900209181895528@eatingmuffin.com>",
   "<reply-1411529-1794207625-530003@eatingmuffin.com>",
   "<202611090729.86647383181@smtp-relay.mailin.fr>",
-  "<179417678846.2220.6561202605287901827@lemediafrancais.fr>"
+  "<179417678846.2220.6561202605287901827@lemediafrancais.fr>",
+  "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>"
  ],
- "mails_divers": {},
+ "mails_divers": {
+  "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>"
+ },
  "brouillons": {},
  "mails_depuis": "2026-11-09T14:01+01:00"
 }
