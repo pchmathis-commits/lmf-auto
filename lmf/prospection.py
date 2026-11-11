@@ -763,18 +763,24 @@ Texte de leur site (pour personnaliser) :
 Nos chiffres (n'utilise que ceux-là, 2 ou 3 maximum, les plus parlants pour eux) :
 {C.CHIFFRES}
 
-Contenu du mail :
+Contenu du mail (le mail parle d'EUX et de ce qu'ils y gagnent, pas de Mathis) :
 1. Salutation : « Bonjour Madame Nom, » ou « Bonjour Monsieur Nom, » UNIQUEMENT si le contexte nomme clairement
    la personne derrière cette adresse ; sinon « Bonjour, ».
-2. Une accroche qui montre qu'on les connaît : une actualité, un produit, un lieu ou un pan de leur histoire tiré de leur site.
-3. Qui on est, en une phrase, avec les chiffres choisis.
-4. Une proposition concrète et spécifique à eux : une histoire précise qu'on raconterait dans un carrousel
-   (marque : carrousel sponsorisé ; musée, monument, institution, territoire : collaboration, tournage sur place
-   ou campagne d'attractivité comme celle faite avec la Région Normandie).
-5. « Je vous joins notre media kit. » Ne donne AUCUN prix.
-6. Une question de fin simple pour obtenir un échange (un appel de 15 minutes cette semaine ou la suivante).
+2. Une phrase d'accroche sur EUX, factuelle et précise (un lieu, un produit, un pan de leur histoire tiré de leur site),
+   sans compliment appuyé.
+3. L'idée concrète tout de suite : l'histoire précise qu'on raconterait sur eux dans un carrousel, et ce que ça leur
+   apporte (faire découvrir X à un public jeune, attirer des visiteurs, etc.).
+   Marque ou entreprise : carrousel sponsorisé. Tourisme, site, territoire : collaboration, tournage sur place ou
+   campagne d'attractivité (référence possible : la campagne faite avec la Région Normandie).
+4. Le média en UNE phrase, présenté comme un média et non comme une personne : « Le Média Français, c'est … » avec
+   2 chiffres maximum choisis pour eux. INTERDIT : « Je suis Mathis », « je m'appelle », « fondateur de ».
+5. « Je vous joins notre media kit. » Aucun prix.
+6. Une question de fin simple et légère (« Est-ce que ça vous parlerait d'en discuter 10 minutes ? »).
 7. Termine par « Bien cordialement, » (la signature est ajoutée ensuite, ne l'écris pas).
-Longueur : 120 à 190 mots. Objet : court (moins de 70 caractères), précis, sans majuscules partout, avec leur nom.
+Ton : sobre, direct, d'égal à égal, comme un mail qu'un humain écrit en 5 minutes. Pas de « captivant »,
+« passionnant », « à merveille », « exceptionnel », « incarne ». Utilise « nous » pour le média, « je » au plus une fois.
+Longueur : 80 à 130 mots. Objet : moins de 60 caractères, concret, qui donne envie d'ouvrir, avec leur nom ou le sujet
+(ex. « Arcachon, la Ville d'Hiver de Napoléon III en carrousel ? »).
 {REGLES_STYLE}
 {('Consigne de Mathis pour cette version : ' + consigne) if consigne else ''}
 
