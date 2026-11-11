@@ -38,12 +38,33 @@
   "63": {
    "contact": "m15706",
    "type": "mail"
+  },
+  "92": {
+   "contact": "2026-11-12-1-419",
+   "type": "apercu"
+  },
+  "93": {
+   "contact": "2026-11-12-2-235",
+   "type": "apercu"
+  },
+  "94": {
+   "contact": "2026-11-12-3-509",
+   "type": "apercu"
+  },
+  "95": {
+   "contact": "2026-11-12-4-155",
+   "type": "apercu"
+  },
+  "96": {
+   "contact": "2026-11-12-5-105",
+   "type": "apercu"
   }
  },
  "jours_generes": [
   "2026-11-09",
   "2026-11-10",
-  "2026-11-11"
+  "2026-11-11",
+  "2026-11-12"
  ],
  "contacts": [
   {
@@ -199,6 +220,101 @@
    "jeton": "0b68da155493",
    "message_id": "<179440571746.2245.5117314355873451080@lemediafrancais.fr>",
    "envoye_le": "2026-11-11T15:02+01:00"
+  },
+  {
+   "id": "2026-11-12-1-419",
+   "organisation": "Megève Tourisme",
+   "type": "station de montagne ou destination balnéaire",
+   "site": "https://www.megeve.com",
+   "idee": "Raconter comment le baron de Rothschild a créé cette station dans les années 1920 pour rivaliser avec la Suisse, façonnant le style alpin français.",
+   "famille": "tourisme",
+   "email": "u003epresse@megeve.fr",
+   "contexte_adresse": "",
+   "contexte": "Megève, station village au cœur des Alpes - Megève Tourisme Aller au contenu Ouvrir le menu Découvrir Voir plus Précedent Découvrir Village de Megève Gastronomie Infrastructures Blog Skier Voir plus Précedent Skier Sports d'hiver Station de ski Achats de forfaits Skier en famille Écoles de ski Location de matériel Activités Voir plus Précedent Activités Outdoor Indoor Bien-être & détente Aquatiques Culture & découverte Aériennes Restaurants & vie nocturne Mon séjour Voir plus Précedent Mon séjour Hébergements Accès et mobilité Station accessible Station familiale Infos pratiques Voir plus Précedent Infos pratiques Infos live Brochures App mobile megève Nos engagements Commerces & services Webcams Météo Agenda FR FR Ouvrir la barre de recherche Agenda Live Antoine Barbot Hôtel Appartement et Chalet Résidence Activités Hôtel Appartement et Chalet Résidence Activités 1 chambre, 2 adultes Chambre 1 Nombre d'adultes Nombre d'enfants Age de l'enfant ##child_number## 0 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 Ajouter une chambre Rechercher Rechercher Rechercher Toutes les activités Raquettes Ski Insolite Randonnée VTT Activités pour enfants Escalade Cani-balade Excursion Multi-activités Rechercher Découvrez Megève Hébergements Au cœur des Alpes, Megève vous propose un large choix d’hébergements pour tous les goûts et tous les séjours. Explorez nos hébergements Village de Megève Avec ses ruelles pavées, ses places animées, ses chalets traditionnels, ses boutiques élégantes et sa vue sur les montagnes environnantes, Megève fait partie des villages les plus emblématiques de Haute-Savoie. Découvrez le village Domaines skiables Découvrez les 400 kilomètres de pistes sur les domaines skiables de Megève. Décrouvrez les domaines skiables Jacadi x Megève Megève et Jacadi Paris donnent naissance à une collaboration pleine de tendresse qui célèbre la magie des fêtes à la montagne. Découvrez la collaboration Mettre en pause la vidéo Afficher la vidéo en plein écran Explorez les activités Ski & Snow Que vous soyez adepte de ski alpin, de snowboard, de freeride ou simplement curieux de découvrir la montagne autrement, Megève regorge de commerces spécialisés pour vous équiper, vous conseiller et vous accompagner sur les pistes. Préparez votre séjour en toute sérénité et trouvez facilement les adresses incontournables grâce à cette liste actualisée. FAQ location skis... En savoir plus Bien-être / Détente Et si vous preniez le temps de ralentir ? À Megève, la détente est un art de\n\nPage non trouvée - Megève Tourisme Aller au contenu Ouvrir le menu Découvrir Voir plus Précedent Découvrir Village de Megève Gastronomie Infrastructures Blog Skier Voir plus Précedent Skier Sports d'hiver Station de ski Achats de forfaits Skier en famille Écoles de ski Location de matériel Activités Voir plus Précedent Activités Outdoor Indoor Bien-être & détente Aquatiques Culture & découverte Aériennes Restaurants & vie nocturne Mon séjour Voir plus Précedent Mon séjour Hébergements Accès et",
+   "cree_le": "2026-11-11T21:09+01:00",
+   "statut": "planifié",
+   "objet": "Mise en lumière de l'histoire de Megève sur Le Média Français",
+   "corps": "Bonjour,\n\nMegève incarne l'élégance de la montagne française avec ses ruelles pavées et ses chalets traditionnels. Peu de gens savent pourtant que la station a été façonnée dans les années 1920 par la baronne Noémie de Rothschild pour offrir une alternative française aux stations suisses.\n\nJe suis\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
+   "nom_contact": null,
+   "prevu_le": "2026-11-12T09:56+01:00",
+   "repondre_a": "u003epresse@megeve.fr",
+   "jeton": "27287165b2c6"
+  },
+  {
+   "id": "2026-11-12-2-235",
+   "organisation": "Arcachon Tourisme",
+   "type": "station de montagne ou destination balnéaire",
+   "site": "https://www.arcachon.com",
+   "idee": "Explorer l'histoire de la Ville d'Hiver d'Arcachon, conçue au XIXe siècle sous Napoléon III pour soigner les malades grâce au climat balnéaire.",
+   "famille": "tourisme",
+   "email": "virginie.dochez@arcachon.com",
+   "contexte_adresse": "",
+   "contexte": "Tourisme | Destination Arcachon Aller au contenu principal --° Recherche fr Tourisme Culture Palais des Congrès Port Mairie MA•AT Destination Arcachon Je dors Hébergements Hôtels Chambres d'hôtes Meublés de tourisme Résidences de Tourisme et locations de vacances Camping Agences immobilières Disponibilités meublés Hôtel © Hôtel Tous les hébergements Je mange Se régaler Restaurants toutes spécialités Restaurants gastronomiques et bistronomiques Poissons / Fruits de mer Glaciers, salons de thé, produits gourmands Spécialités locales Restaurants toutes spécialités Je découvre Lieux d'exception Arcachon Ville Impériale La Dune du Pilat Ville d'Hiver Le Banc d'Arguin La Ville d'Hiver et son belvédère Cap Ferret Basilique Notre-Dame L'île aux Oiseaux Le Parc Mauresque Les coups de cœur Les Cabanes Tchanquées Le Port d'Arcachon Le Pescatourisme Rendez-vous à la criée Coucher de soleil Visites guidées Zoom sur... Visite guidée © Visite guidée 12 mois 12 visites Vue de l'eau Palais de Congres Queue baleine © Vue de l'eau Arcachon en automne Exposition © Exposition Galeries, expositions et ateliers La Ville D Ete © La Ville D Ete Chouette il pleut ! Je bouge Activites Nautique Voile Voilier Kevin Biette 22 © Activites Nautique Voile Voilier Kevin Biette 22 Activités nautiques Pinasse © Pinasse Balades en mer Velo Pereire © Velo Pereire Balades à vélo Loisirs en plein air Détente et relaxation Dans les airs Enfants Parents Jeux Manege © Enfants Parents Jeux Manege Pour les enfants Pratique Stationnez malin ! Arcachon, destination durable Venir, se déplacer La Boutique Tourisme Accessible La webcam L'Office de tourisme utilise le roadbook pour apporter aux visiteurs un contenu personnalisé, actualisé et ludique. © Accueil et boutique de l'Office de Tourisme Office de Tourisme d'Arcachon Guide 2026 © Guide 2026 Brochures Shopping Groupes & Affaires Destination Arcachon Deux personnes roulent à vélo sur un chemin de terre en forêt. Les arbres, aux feuilles jaunes et orangées, forment une voûte au-dessus du sentier. Le premier cycliste porte une veste sombre et un casque, tandis que le second, légèrement en retrait, est vêtu d'une veste orange. La lumière filtrée crée des ombres douces sur le sol recouvert de feuilles mortes. Deux personnes circulent à vélo sur un chemin de terre en forêt. Les arbres, aux feuilles jaunes et orangées, forment une voûte au-dessus du sentier. Le premier cycliste porte un blouson sombre et un casque, tandis que le second, légèrement en retra\n\nOffice de Tourisme d’Arcachon | Destination Arcachon Aller au contenu principal --° Recherche fr Tourisme Culture Palais des Congrès Port Mairie MA•AT Destination Arcachon Je dors Hébergements Hôtels Chambres d'hôtes Meublés de tourisme Résidences de Tourisme et locations de vacances Camping Agences immobilières Disponibilités meublés Hôtel © Hôtel Tous les hébergements Je mange Se régaler Restaurants toutes spécialités Restaurants gastronomiques et bistronomiques Poissons / Fruits de mer Glac",
+   "cree_le": "2026-11-11T21:09+01:00",
+   "statut": "planifié",
+   "objet": "Mise en valeur du patrimoine d'Arcachon auprès des jeunes passionnés",
+   "corps": "Bonjour Madame Dochez,\n\nL'histoire d'Arcachon, Ville Impériale façonnée sous Napoléon III, offre un récit passionnant, notamment à travers la création de sa Ville d'Hiver pensée pour soigner les visiteurs grâce à son climat.\n\nJe suis\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
+   "nom_contact": "Madame Dochez",
+   "prevu_le": "2026-11-12T10:49+01:00",
+   "repondre_a": "virginie.dochez@arcachon.com",
+   "jeton": "3e07c548dc7f"
+  },
+  {
+   "id": "2026-11-12-3-509",
+   "organisation": "Safrans du Monde",
+   "type": "agence de voyages ou tour-opérateur",
+   "site": "https://www.safransdumonde.com",
+   "idee": "Présenter l'art du voyage d'exception à la française à travers l'histoire des grands explorateurs et des lignes mythiques.",
+   "famille": "tourisme",
+   "email": "info@safransdumonde.com",
+   "contexte_adresse": "jasthan en Version Grand Luxe L'Amérique du Sud en Version Grand Luxe Tour de France Tout Tour de France Voyages sur mesure en France Bespoke travel in France Voyages sur mesure à travers le monde Pourquoi Safrans du Monde Our French Savoir-Faire À propos Notre équipe Testimonials +33 1 48 78 71 51 info@safransdumonde.com Contactez-nous Menu FR EN FR +33 1 48 78 71 51 CONTACTEZ-NOUS Le voyage d'un",
+   "contexte": "Safrans Du Monde: Agence de voyage sur mesure - Tours du Monde Voyages en avion privé Le Tour du Monde Grands Classiques Le Tour du Monde Édition Spéciale 2028 7 Merveilles d'Asie Ultra-Symphonie du Nouvel An Tous les voyages en avion privé Notre avion privé Voyages en petit groupe Le Japon en Version Grand Luxe Majesté d'Afrique Australe Le Rajasthan en Version Grand Luxe L'Amérique du Sud en Version Grand Luxe Tour de France Tout Tour de France Voyages sur mesure en France Bespoke travel in France Voyages sur mesure à travers le monde Pourquoi Safrans du Monde Our French Savoir-Faire À propos Notre équipe Testimonials +33 1 48 78 71 51 info@safransdumonde.com Contactez-nous Menu FR EN FR +33 1 48 78 71 51 CONTACTEZ-NOUS Le voyage d'une vie, en Avion Privé Voyagez dans un Esprit Palace Voyages en Avion Privé Tours du Monde Découvrir Voyages en petits groupes La Collection Précieuse Découvrir Voyages en petits groupes La Collection Palaces Découvrir sur mesure Sur Mesure Découvrir Sur Mesure La France Découvrir Du week-end de luxe jusqu'au Tour du Monde en palaces, en passant par une croisière à bord d'un train d'exception, ce même esprit participe à créer des expériences uniques pour un petit groupe ou dans le cadre d'un voyage sur mesure individuel. Safrans Du Monde œuvre depuis 2003 à créer des voyages uniques, spécialisé dans le sur mesure haut de gamme, les Tours du Monde et les Croisières Aériennes, avec toujours ce soin du détail, pour une expérience en version Grand Luxe. Guy Bigiaoui, et son équipe composée de passionnés du Voyage sauront vous faire vivre une expérience inoubliable autour du monde. Que vous souhaitiez organiser votre voyage de noces, faire un cadeau à un proche ou simplement vous évader en toute sérénité. Rêvez, dites-nous tout, et nous vous accompagnerons dans la réalisation d'un voyage à votre image. Voyagez dans un Esprit Palace ! Tours du Monde DÉCOUVRIR -discover - La Collection Palaces DÉCOUVRIR - DÉCOUVRIR - La Collection Précieuse DÉCOUVRIR -DÉCOUVRIR - La France DÉCOUVRIR - DÉCOUVRIR - Sur Mesure DÉCOUVRIR Notre Savoir Faire Croisières Aériennes Embarquez pour une aventure exclusive avec l'une de nos Expéditions en Jet Privé. Découvrez un voyage fluide comme vous n’en avez jamais connu. Laissez vos soucis derrière vous et rejoignez-nous pour un périple unique dans une vie. Nos Tours du Monde en Jet Privé offrent un luxe inégalé, des itinéraires soigneusement conçus et un accès VIP aux destinations les plus spectaculaires \n\nContactez-Nous - Safrans du Monde Voyages en avion privé Le Tour du Monde Grands Classiques Le Tour du Monde Édition Spéciale 2028 7 Merveilles d'Asie Ultra-Symphonie du Nouvel An Tous les voyages en avion privé Notre avion privé Voyages en petit groupe Le Japon en Version Grand Luxe Majesté d'Afrique Australe Le Rajasthan en Version Grand Luxe L'Amérique du Sud en Version Grand Luxe Tour de France Tout Tour de France Voyages sur mesure en France Bespoke travel in France Voyages sur mesure à t",
+   "cree_le": "2026-11-11T21:09+01:00",
+   "statut": "planifié",
+   "objet": "Safrans du Monde x Le Média Français : l'art du voyage d'exception",
+   "corps": "Bonjour,\n\nVotre approche du voyage en « Version Grand Luxe » et la valorisation du savoir-faire français à travers des croisières aériennes d'exception ont retenu toute mon attention, notamment le parcours initié par Guy Bigiaoui.\n\nJe suis\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
+   "nom_contact": null,
+   "prevu_le": "2026-11-12T11:48+01:00",
+   "repondre_a": "info@safransdumonde.com",
+   "jeton": "dffc6602743c"
+  },
+  {
+   "id": "2026-11-12-4-155",
+   "organisation": "Chamatex Group",
+   "type": "PME made in France relocalisée",
+   "site": "https://www.chamatex.net",
+   "idee": "Mettre en avant l'usine Advanced Shoe Factory 4.0 en Ardèche qui relocalise la production de chaussures de sport en France.",
+   "famille": "industrie",
+   "email": "contact@chamatex.fr",
+   "contexte_adresse": " ® une solution textile pour les métiers à hauts risques de la protection et de la sécurité 2 sites industriels 105 collaborateurs en savoir plus sur Le groupe millions de m 2 de textiles produits en France chaque année 1285, Route de St-Romain-d'Ay - 07290 Ardoix, France Tél. : +33 (0) 475 698 500 contact@chamatex.fr © Tous droits réservés - Politique de confidentialité - Mentions légales - Créat",
+   "contexte": "Chamatex - Créateur, fabricant et producteur de textile --> Marchés Industrie & Santé Ameublement Sport & luxe EPI & Racing Corporate Fils & Chaînes Marques Acker® MATRYX® KARAPACE® SUSPENDOR® Expertise Groupe Carrières Fr En Fr En CHAMATEX, FABRICANT DE TEXTILES Nous visons l’excellence dans la fabrication de textiles techniques depuis 1980. Notre expertise s’étend sur 6 marchés principaux Industrie & Santé Ameublement Sport & luxe EPI & Racing Corporate Fils & Chaînes Innovation, R&D, maîtrise industrielle, qualité et démarche environnementale, Chamatex offre une expertise globale. en savoir plus sur notre Expertise Afin de répondre aux attentes et exigences du marché, Chamatex segmente son offre avec ses propres marques spécialisées. Acker ® délivre une offre de textile haut de gamme pour l'ameublement, l'hôtellerie, les établissements de santé et le nautisme (IMO). MATRYX ® est un matériau textile hautement performant à destination des marques de sport. KARAPACE ® une solution textile pour les métiers à hauts risques de la protection et de la sécurité 2 sites industriels 105 collaborateurs en savoir plus sur Le groupe millions de m 2 de textiles produits en France chaque année 1285, Route de St-Romain-d'Ay - 07290 Ardoix, France Tél. : +33 (0) 475 698 500 contact@chamatex.fr © Tous droits réservés - Politique de confidentialité - Mentions légales - Création : Agence Tyméo Gérer le consentement Pour offrir les meilleures expériences, nous utilisons des technologies telles que les cookies pour stocker et/ou accéder aux informations des appareils. Le fait de consentir à ces technologies nous permettra de traiter des données telles que le comportement de navigation ou les ID uniques sur ce site. Le fait de ne pas consentir ou de retirer son consentement peut avoir un effet négatif sur certaines caractéristiques et fonctions. Fonctionnel Fonctionnel Toujours activé L’accès ou le stockage technique est strictement nécessaire dans la finalité d’intérêt légitime de permettre l’utilisation d’un service spécifique explicitement demandé par l’abonné ou l’utilisateur, ou dans le seul but d’effectuer la transmission d’une communication sur un réseau de communications électroniques. Préférences Préférences L’accès ou le stockage technique est nécessaire dans la finalité d’intérêt légitime de stocker des préférences qui ne sont pas demandées par l’abonné ou l’internaute. Statistiques Statistiques Le stockage ou l’accès technique qui est utilisé exclusivement à des fi\n\nContact - Chamatex - Créateur, fabricant et producteur de textile --> Marchés Industrie & Santé Ameublement Sport & luxe EPI & Racing Corporate Fils & Chaînes Marques Acker® MATRYX® KARAPACE® SUSPENDOR® Expertise Groupe Carrières Fr En Fr En Toute l’équipe Chamatex est à votre disposition et à votre écoute. Accueil > Contact Chamatex Group 1285, Route de St-Romain-d'Ay 07290 Ardoix, France Tél. : +33 (0) 475 698 500 contact@chamatex.fr Via Google Maps Prendre contact Profil Professionnel Parti",
+   "cree_le": "2026-11-11T21:09+01:00",
+   "statut": "planifié",
+   "objet": "Mettre en lumière la relocalisation de Chamatex",
+   "corps": "Bonjour,\n\nVotre initiative avec l'usine Advanced Shoe Factory 4.0 en Ardèche, qui relocalise la production de chaussures de sport en France, incarne parfaitement l'excellence et le renouveau de notre industrie textile.\n\nJe suis\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
+   "nom_contact": null,
+   "prevu_le": "2026-11-12T13:49+01:00",
+   "repondre_a": "contact@chamatex.fr",
+   "jeton": "bfcc3a664182"
+  },
+  {
+   "id": "2026-11-12-5-105",
+   "organisation": "Mobils (Mephisto)",
+   "type": "marque française historique",
+   "site": "https://www.mephisto.com",
+   "idee": "Raconter l'histoire du maître chausseur alsacien créé en 1965 et le maintien de la fabrication artisanale en Moselle.",
+   "famille": "industrie",
+   "email": "presse@mephisto.com",
+   "contexte_adresse": "EZ MEPHISTO Acheter par marque Chaussures d'Exception Pays/région France Allemagne Autriche Belgique Espagne France Italie Pays-Bas Royaume-Uni Suisse Recherche Connexion Panier ADA Demandes de presse En tant que professionnel des médias, vous pouvez nous contacter par e-mail à l'adresse suivante : presse@mephisto.com ou par téléphone au : 0033 387 23 30 00. Veuillez noter que nous ne pouvons répo",
+   "contexte": "MEPHISTO Boutique en Ligne Officielle France - Chaussures directement du fabricant | Mephisto.com Votre panier est vide Fermer Continuer les achats Vous possédez un compte ? Connectez-vous pour payer plus vite. panier Fermer Chargement en cours... Épuisé Total estimé €0,00 € Taxe incluse, frais d’expédition et réductions calculés à l’étape du paiement Checkout + | €0,00 € UK SHIPMENTS: Duties & taxes now included in the purchase price! Livraison gratuite* avec compte client (*hors îles et zone de montagne) Boutique Officielle | Retours gratuits | Paiement sécurisé Recherche Femme Femme Les Nouveautés Tout explorer Sneaker Chaussures Slip-Ons Ballerines Goodyear Welt / Norvegien Outdoor Shoes Bottines Sandales Sandales à voûte liège Iconics Homme Homme Les Nouveautés Tout explorer Chaussures Chaussures Ville Chaussures Outdoor Chaussures Bateau Goodyear Welt / Norvegien Sneaker Mocassins Sandales Sandales à voûte liège Bottines Iconics Accessoires Accessoires Tout explorer Chaussettes Produits d'entretien À Propos de Nous À Propos de Nous Notre histoire Collaborations Point de vente Carrière Contact Société & Presse Pays/région FR DE AT BE ES FR IT NL GB CH Nouvelles et événements Point de vente Connexion Recherche Femme Les Nouveautés Tout explorer Sneaker Chaussures Slip-Ons Ballerines Goodyear Welt / Norvegien Outdoor Shoes Bottines Sandales Sandales à voûte liège Iconics LA VILLE COMME TERRAIN DE JEU Acheter par marque Chaussures d'Exception Homme Les Nouveautés Tout explorer Chaussures Chaussures Ville Chaussures Outdoor Chaussures Bateau Goodyear Welt / Norvegien Sneaker Mocassins Sandales Sandales à voûte liège Bottines Iconics DÉCOUVRE LES MEPHISTO ICONICS Acheter par marque Chaussures d'Exception Accessoires Tout explorer Chaussettes Produits d'entretien Tous les accessoires Produits d'entretien Nos Marques Notre histoire Chaussures d'Exception À Propos de Nous Notre histoire Collaborations Point de vente Carrière Contact Société & Presse NOTRE HISTOIRE CARRIÈRE CHEZ MEPHISTO Acheter par marque Chaussures d'Exception Pays/région France Allemagne Autriche Belgique Espagne France Italie Pays-Bas Royaume-Uni Suisse Recherche Connexion Panier LA VILLE COMME TERRAIN DE JEU Mephisto Sneakers - Votre style. Votre signature. Votre choix. Mephisto Sneakers - Votre style. Votre signature. Votre choix. POUR FEMME POUR HOMME Le Rainbow a été sélectionné parmi « Les 100 Icônes du Style Français » — l'étiquette, été 2026 \"Ces chaussures veilleront à ce que vos p\n\nEspace Presse | Mephisto.com Votre panier est vide Fermer Continuer les achats Vous possédez un compte ? Connectez-vous pour payer plus vite. panier Fermer Chargement en cours... Épuisé Total estimé €0,00 € Taxe incluse, frais d’expédition et réductions calculés à l’étape du paiement Checkout + | €0,00 € UK SHIPMENTS: Duties & taxes now included in the purchase price! Livraison gratuite* avec compte client (*hors îles et zone de montagne) Boutique Officielle | Retours gratuits | Paiement sécur",
+   "cree_le": "2026-11-11T21:09+01:00",
+   "statut": "planifié",
+   "objet": "Le Média Français x Mephisto : raconter l'histoire du maître chausseur",
+   "corps": "Bonjour,\n\nDepuis 1965 et sa création en Moselle à Sarrebourg, Mephisto incarne le savoir-faire du maître chausseur français, de la confection artisanale jusqu'au succès du modèle Rainbow, récemment salué parmi les icônes du style.\n\nJe suis\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
+   "nom_contact": null,
+   "prevu_le": "2026-11-12T14:52+01:00",
+   "repondre_a": "presse@mephisto.com",
+   "jeton": "edddff3427a2"
   }
  ],
  "mails_traites": [
