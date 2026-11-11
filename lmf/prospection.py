@@ -628,6 +628,7 @@ def _emails(html_brut):
         trouves.add(m)
     propres = set()
     for a in trouves:
+        a = re.sub(r"^(\\?u003[ce]|\\?x3[ce]|%3[ce]|3e|3c)+", "", a.strip(), flags=re.I)
         a = a.strip().strip(".").lower()
         if re.search(r"\.(png|jpe?g|gif|svg|webp|css|js)$", a) or "example" in a or "sentry" in a:
             continue
@@ -779,11 +780,26 @@ Longueur : 120 à 190 mots. Objet : court (moins de 70 caractères), précis, sa
 
 Réponds en JSON : {{"objet": "...", "corps": "...", "nom_contact": "Madame/Monsieur Nom ou null"}}"""
     m = gemini.json_(prompt, temperature=0.7)
-    corps = m["corps"].strip()
-    corps = re.sub(r"\n*Mathis Pouchol.*$", "", corps, flags=re.S).rstrip()
-    m["corps"] = (corps + "\n\n" + C.SIGNATURE +
-                  "\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.")
+    m["corps"] = _avec_signature(m["corps"])
     return m
+
+
+def _avec_signature(corps):
+    """Coupe une éventuelle signature écrite par Gemini APRÈS « Bien cordialement » (jamais le corps du mail :
+    « Je suis Mathis Pouchol… » doit rester !), puis ajoute la vraie signature."""
+    corps = corps.strip()
+    i = corps.rfind("Bien cordialement")
+    if i >= 0:
+        corps = corps[:i].rstrip() + "\n\nBien cordialement,"
+    else:
+        corps = re.sub(r"\n+Mathis Pouchol[^\n]*(\n[^\n]*){0,3}\s*\Z", "", corps).rstrip()
+        corps = re.sub(r"\n+(très |bien )?cordialement,?\s*\Z", "", corps, flags=re.I).rstrip() + "\n\nBien cordialement,"
+    return (corps + "\n\n" + C.SIGNATURE +
+            "\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.")
+
+
+def _tronque(corps):
+    return "Bien cordialement" not in (corps or "")
 
 
 def brouillon_reponse(c, leur_message, consigne=""):
@@ -945,6 +961,36 @@ def relancer(e):
 
 
 # --------------------------------------------------------------------------
+def reparer(e):
+    """Mails coupés après « Je suis » (bug corrigé le 11/11) : on réécrit ceux qui sont prévus, et on envoie la
+    version complète, avec un mot d'excuse, dans le même fil à ceux qui sont déjà partis."""
+    m = maintenant()
+    for c in e["contacts"]:
+        c["email"] = re.sub(r"^(u003[ce]|x3[ce])+", "", c.get("email", ""))
+        c["repondre_a"] = re.sub(r"^(u003[ce]|x3[ce])+", "", c.get("repondre_a", c["email"]))
+        if not _tronque(c.get("corps")) or c.get("repare"):
+            continue
+        try:
+            if c["statut"] == "planifié":
+                nouveau = rediger(c, c.get("contexte", ""))
+                c["objet"], c["corps"] = nouveau["objet"], nouveau["corps"]
+                c["repare"] = True
+                envoyer_apercu(e, c)
+            elif c["statut"] in ("envoyé", "relancé") and c.get("message_id") and m.weekday() < 5 and 9 <= m.hour < 18:
+                nouveau = rediger(c, c.get("contexte", ""))
+                lignes = nouveau["corps"].split("\n", 1)
+                corps = (lignes[0] + "\n\nMon précédent message est parti incomplet, toutes mes excuses. Le voici en entier :"
+                         + ("\n" + lignes[1] if len(lignes) > 1 else ""))
+                envoyer(c["email"], "Re: " + c["objet"], corps, piece_jointe=True,
+                        en_reponse_a=c["message_id"], references=c["message_id"])
+                c["corps"], c["repare"] = corps, True
+                c["envoye_le"] = iso(m)  # la relance repart de zéro
+                dire(e, f"🔁 Version complète renvoyée à {c['organisation']} (le 1er mail était coupé).")
+                time.sleep(5)
+        except Exception as ex:
+            print(f"Réparation ratée pour {c['organisation']} : {ex}")
+
+
 def tick():
     manque = [n for n in ("MAIL_SERVEUR", "MAIL_UTILISATEUR", "MAIL_MOT_DE_PASSE") if not getattr(C, n)]
     if manque:
@@ -954,6 +1000,7 @@ def tick():
     e = charger()
     try:
         lire_telegram(e)
+        reparer(e)
         m = maintenant()
         if (C.PROSPECTION_ACTIVE and e["active"] and m.weekday() < 5 and 8 <= m.hour < 14
                 and m.date().isoformat() not in e["jours_generes"]):
