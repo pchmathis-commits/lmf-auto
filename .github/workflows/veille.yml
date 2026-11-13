@@ -33,3 +33,26 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -q -m "Rapport hebdo"
           for i in 1 2 3; do git pull --rebase -q && git push -q && exit 0; sleep 5; done
+
+      - name: Relevé vers La Carte
+        if: always()
+        continue-on-error: true
+        env:
+          PASSERELLE: ${{ secrets.LMF_PASSERELLE }}
+          STATUT: ${{ job.status == 'success' && 'ok' || 'erreur' }}
+        run: |
+          [ -z "$PASSERELLE" ] && exit 0
+          ARGS=(--data-urlencode "statut=$STATUT")
+          [ "$STATUT" = "erreur" ] && ARGS+=(--data-urlencode "message=La tâche « ${{ github.workflow }} » a échoué (détail dans GitHub Actions)")
+          if [ "$STATUT" = "ok" ]; then
+            F=$(ls -1 data/veille/*.json 2>/dev/null | tail -1)
+            if [ -n "$F" ]; then
+              A=$(python3 -c "import json,sys;m=json.load(open(sys.argv[1])).get('moi',{});print(m.get('abonnes') or '')" "$F" 2>/dev/null)
+              N=$(python3 -c "import json,sys;m=json.load(open(sys.argv[1])).get('moi',{});print(len(m['posts']) if m.get('posts') is not None else '')" "$F" 2>/dev/null)
+              D=$(python3 -c "import json,sys;m=json.load(open(sys.argv[1])).get('moi',{});p=sorted(m.get('posts',[]),key=lambda x:x.get('date',''));print(p[-1]['legende'][:120] if p else '')" "$F" 2>/dev/null)
+              [ -n "$A" ] && ARGS+=(--data-urlencode "abonnes=$A")
+              [ -n "$N" ] && ARGS+=(--data-urlencode "publications7=$N")
+              [ -n "$D" ] && ARGS+=(--data-urlencode "derniere=$D")
+            fi
+          fi
+          curl -sSL -G --max-time 30 "$PASSERELLE" "${ARGS[@]}" || true
