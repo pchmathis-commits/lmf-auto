@@ -21,3 +21,15 @@ jobs:
         with:
           name: carrousel-demo
           path: out/posts/
+
+      - name: Relevé vers La Carte
+        if: always()
+        continue-on-error: true
+        env:
+          PASSERELLE: ${{ secrets.LMF_PASSERELLE }}
+          STATUT: ${{ job.status == 'success' && 'ok' || 'erreur' }}
+        run: |
+          [ -z "$PASSERELLE" ] && exit 0
+          ARGS=(--data-urlencode "statut=$STATUT")
+          [ "$STATUT" = "erreur" ] && ARGS+=(--data-urlencode "message=La tâche « ${{ github.workflow }} » a échoué (détail dans GitHub Actions)")
+          curl -sSL -G --max-time 30 "$PASSERELLE" "${ARGS[@]}" || true
