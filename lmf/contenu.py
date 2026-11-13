@@ -88,8 +88,11 @@ def tendances():
                 posts = json.load(f).get("concurrents", [])
             top = sorted(posts, key=lambda p: p.get("x_mediane", 0), reverse=True)[:8]
             if top:
-                lignes.append("Posts des comptes concurrents qui ont le mieux marché cette semaine :\n" + "\n".join(
-                    f"- @{p['compte']} (×{p['x_mediane']}) : {p['legende'][:150]}" for p in top))
+                # sans les noms des comptes : on ne retient que le THÈME, et ces sujets précis sont interdits
+                lignes.append("Sujets qui ont très bien marché chez d'autres comptes cette semaine. Ils sont INTERDITS "
+                              "pour nous (ni le même sujet, ni la même anecdote, ni la même accroche) : inspire-toi "
+                              "seulement du THÈME général qui intéresse le public.\n" + "\n".join(
+                                  f"- {p['legende'][:150]}" for p in top))
     except Exception as e:
         print(f"Veille illisible : {e}")
     return "\n".join(lignes)
@@ -107,7 +110,8 @@ def proposer_sujet_tendance(titres_existants):
 
 Propose UN sujet de carrousel du Média Français qui surfe sur une de ces tendances ou s'en inspire
 (un angle histoire, patrimoine, armée, souveraineté, marque ou record français lié à ce dont les gens parlent),
-pour un public d'hommes de 18-34 ans. Pas de copie des concurrents : notre propre angle, surprenant et vérifiable.
+pour un public d'hommes de 18-34 ans. JAMAIS le même sujet ni la même anecdote qu'un autre compte : notre propre sujet, surprenant et vérifiable.
+Ne cite jamais d'autre compte Instagram ou média, ni dans les slides ni dans la légende.
 Sujets interdits : {", ".join(C.SUJETS_INTERDITS)} ; pas de politique, pas de drame récent exploité.
 Différent de ces sujets déjà traités :
 {deja}
@@ -116,9 +120,18 @@ Utilise la recherche Google pour rassembler 8 à 12 faits précis et vérifiés,
 Réponds uniquement en JSON :
 {{"famille": "Tendance", "sujet": "...", "couverture": "...", "faits": "- fait 1\\n- fait 2 ...", "sources": "url1 ; url2"}}"""
     try:
-        return gemini.json_(prompt, temperature=0.8, recherche=True)
+        sujet = gemini.json_(prompt, temperature=0.8, recherche=True)
     except gemini.ErreurGemini:
         return None
+    # garde-fou anti-copie : si le sujet ressemble trop à un post concurrent de la semaine, on l'écarte
+    mots_sujet = _mots(sujet.get("sujet", "") + " " + sujet.get("couverture", ""))
+    for ligne in tend.splitlines():
+        if ligne.startswith("- ") and mots_sujet:
+            commun = mots_sujet & _mots(ligne)
+            if len(commun) >= 2 and len(commun) / len(mots_sujet) >= 0.25:
+                print(f"Sujet écarté (trop proche d'un post concurrent) : {sujet.get('sujet')}")
+                return None
+    return sujet
 
 
 def famille_du_jour(n):
