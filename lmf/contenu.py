@@ -1,5 +1,6 @@
 """Rédaction des carrousels et des actus, avec garde-fous."""
 import json
+import os
 import re
 import xml.etree.ElementTree as ET
 from urllib.parse import quote
@@ -37,14 +38,23 @@ LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
   marque célèbre et reconnaissable, la couverture montre autre chose (le Français méconnu, un tableau d'époque, un détail).
 - À ÉVITER (ça a fait des flops) : les sujets lointains et explicatifs (« comment X est devenu… », « pourquoi la France
   envoie des fusées… »), les couvertures qui donnent déjà la réponse, le ton scolaire.
+- RÈGLE D'OR : LE POST DONNE TOUJOURS LA RÉPONSE. Le lecteur doit repartir en sachant exactement QUOI, QUI, OÙ :
+  le nom de la commune, de la personne, de l'objet, la condition exacte, le mot exact, le chiffre exact.
+  INTERDIT dans les slides et les actus : « une commune bretonne », « certaines conditions », « une langue »,
+  « un mystérieux… » sans dire lequel. Si on ne connaît pas l'info précise, on ne fait pas le post.
 Style : phrases courtes, percutantes, faciles à lire sur téléphone, en français impeccable.
 Jamais de vulgarité, jamais de parti pris politique, jamais d'emoji dans les slides."""
+
+VAGUE = re.compile(r"\b(une|un|cette|ce|certaines?|certains) (commune|village|ville|r[ée]gion|langue|conditions?|"
+                   r"personne|homme|femme|entreprise|lieu|d[ée]partement|mot|objet)\b(?! (de|du|d'|des|nomm|appel))", re.I)
 
 # Familles en rotation (poids = fréquence relative quand le programme choisit lui-même un sujet).
 # Classées d'après les abonnés gagnés par post sur 180 jours (Poubelle 6 100, Bic 3 700, eau du robinet 1 900…).
 FAMILLES = [
+    ("Armée, défense et souveraineté : porte-avions, Rafale, nucléaire, spatial, secrets et fonds d'État, projets géants "
+     "français — ce sont les posts qui font le plus de vues et d'abonnés en ce moment", 5),
     ("Les Français cachés : un Français méconnu derrière une chose célèbre dans le monde entier (une marque, une ville, "
-     "une compétition sportive, une institution, une invention) — c'est le format qui gagne le plus d'abonnés", 5),
+     "une compétition sportive, une institution, une invention)", 3),
     ("La France face aux grandes puissances : une décision, une rivalité ou un record où la France tient tête au monde", 3),
     ("Le héros français méconnu derrière ton quotidien : une personne précise grâce à qui un objet ou un geste existe", 3),
     ("La langue française : un mot ou une expression que tout le monde connaît et son origine surprenante", 2),
@@ -54,6 +64,61 @@ FAMILLES = [
 THEMES_TON_MOIS = ["personnage historique français", "château français", "ville française", "plat régional français",
                    "roi ou reine de France", "invention française", "monument français", "région française",
                    "écrivain français", "village français", "fromage français", "île française"]
+
+
+def tendances():
+    """Ce qui marche en ce moment : recherches Google en France aujourd'hui + posts des concurrents qui ont
+    surperformé dans la dernière veille. Sert à choisir des sujets dans l'air du temps."""
+    import glob
+    import xml.etree.ElementTree as ET
+    import requests as rq
+    lignes = []
+    try:
+        r = rq.get("https://trends.google.com/trending/rss?geo=FR", timeout=20,
+                   headers={"User-Agent": "Mozilla/5.0"})
+        titres = [i.findtext("title") for i in ET.fromstring(r.content).iter("item")][:20]
+        if titres:
+            lignes.append("Recherches Google les plus fortes en France aujourd'hui : " + ", ".join(t for t in titres if t))
+    except Exception as e:
+        print(f"Google Trends indisponible : {e}")
+    try:
+        fichiers = sorted(glob.glob(os.path.join(os.path.dirname(__file__), "..", "data", "veille", "*.json")))
+        if fichiers:
+            with open(fichiers[-1], encoding="utf-8") as f:
+                posts = json.load(f).get("concurrents", [])
+            top = sorted(posts, key=lambda p: p.get("x_mediane", 0), reverse=True)[:8]
+            if top:
+                lignes.append("Posts des comptes concurrents qui ont le mieux marché cette semaine :\n" + "\n".join(
+                    f"- @{p['compte']} (×{p['x_mediane']}) : {p['legende'][:150]}" for p in top))
+    except Exception as e:
+        print(f"Veille illisible : {e}")
+    return "\n".join(lignes)
+
+
+def proposer_sujet_tendance(titres_existants):
+    """Sujet de carrousel inspiré des tendances du moment, traité à la manière du Média Français."""
+    tend = tendances()
+    if not tend:
+        return None
+    deja = "\n".join(f"- {t}" for t in titres_existants[-150:])
+    prompt = f"""{STYLE}
+
+{tend}
+
+Propose UN sujet de carrousel du Média Français qui surfe sur une de ces tendances ou s'en inspire
+(un angle histoire, patrimoine, armée, souveraineté, marque ou record français lié à ce dont les gens parlent),
+pour un public d'hommes de 18-34 ans. Pas de copie des concurrents : notre propre angle, surprenant et vérifiable.
+Sujets interdits : {", ".join(C.SUJETS_INTERDITS)} ; pas de politique, pas de drame récent exploité.
+Différent de ces sujets déjà traités :
+{deja}
+
+Utilise la recherche Google pour rassembler 8 à 12 faits précis et vérifiés, avec leurs sources (URL).
+Réponds uniquement en JSON :
+{{"famille": "Tendance", "sujet": "...", "couverture": "...", "faits": "- fait 1\\n- fait 2 ...", "sources": "url1 ; url2"}}"""
+    try:
+        return gemini.json_(prompt, temperature=0.8, recherche=True)
+    except gemini.ErreurGemini:
+        return None
 
 
 def famille_du_jour(n):
@@ -133,6 +198,20 @@ def controler_carrousel(c):
             if 3 <= len(nouveau.split()) <= 14 and not any(_normal(m) in _normal(nouveau) for m in mots_nom if m[:1].isupper()):
                 c["couverture"]["texte"] = nouveau
                 c["couverture"]["rouges"] = [w for w in c["couverture"].get("rouges", []) if _normal(w) in _normal(nouveau)]
+        except Exception:
+            pass
+    # Règle d'or : pas de formulation vague (« une commune », « certaines conditions »…) sans la réponse
+    vagues = [i for i, sl in enumerate(c["slides"]) if VAGUE.search(sl.get("texte", ""))]
+    if vagues:
+        try:
+            r = gemini.json_(f"""Voici les slides d'un carrousel Instagram (JSON) :
+{json.dumps(c["slides"], ensure_ascii=False)}
+Les slides {vagues} restent vagues (« une commune », « certaines conditions », « une langue »…) au lieu de donner
+l'information. Réécris UNIQUEMENT ces slides pour qu'elles donnent le nom, le lieu, la condition ou le mot exact
+(16 mots maximum, mots rouges copiés du texte). Garde les autres telles quelles.
+Réponds en JSON : {{"slides": [...]}} (toutes les slides, dans l'ordre).""", temperature=0.3)
+            if len(r.get("slides", [])) == len(c["slides"]):
+                c["slides"] = r["slides"]
         except Exception:
             pass
     if nom and mots_nom:
@@ -265,7 +344,7 @@ Réponds uniquement en JSON :
 # ---------------------------------------------------------------------------
 # Images
 # ---------------------------------------------------------------------------
-def choisir_images(requetes, candidats_par_slide, sujet):
+def choisir_images(requetes, candidats_par_slide, sujet, strict=False):
     """Demande à Gemini de choisir, pour chaque slide, l'image la plus pertinente."""
     blocs = []
     for i, (req, cands) in enumerate(zip(requetes, candidats_par_slide)):
@@ -274,6 +353,7 @@ def choisir_images(requetes, candidats_par_slide, sujet):
     prompt = f"""Sujet du carrousel : {sujet}
 Pour chaque slide, choisis l'image qui illustre le mieux le texte (personnage, lieu ou objet exact).
 Réponds -1 si aucune ne convient (image hors sujet, animal, photo d'illustration générique, anachronique, logo, document illisible). Dans le doute, -1.
+{"STRICT : l'image doit montrer EXACTEMENT le lieu, l'objet ou la personne de l'information (pas une vue générale de la ville ou du pays, pas un tableau ancien d'un lieu voisin). Sinon -1." if strict else ""}
 {chr(10).join(blocs)}
 
 Réponds uniquement en JSON : {{"choix": [index_slide0, index_slide1, ...]}}"""
@@ -283,7 +363,7 @@ Réponds uniquement en JSON : {{"choix": [index_slide0, index_slide1, ...]}}"""
         choix = []
     resultat = []
     for i, cands in enumerate(candidats_par_slide):
-        j = choix[i] if i < len(choix) and isinstance(choix[i], int) else (0 if cands else -1)
+        j = choix[i] if i < len(choix) and isinstance(choix[i], int) else (-1 if strict else (0 if cands else -1))
         resultat.append(cands[j] if 0 <= j < len(cands) else None)
     return resultat
 
@@ -330,34 +410,60 @@ def actualites(liens_deja_utilises):
 
 
 def rediger_actu(articles):
+    """Choisit l'actu la plus forte, va chercher les faits précis, puis écrit un post qui DONNE l'info.
+    Si l'info précise (qui, quoi, où) est introuvable, l'actu est écartée et on passe à la suivante."""
     liste = "\n".join(f"{i}. {a['titre']} ({a['source']}) — {a['resume']}" for i, a in enumerate(articles))
-    prompt = f"""{STYLE}
+    tend = tendances()
+    choix = gemini.json_(f"""{STYLE}
 
-Voici des actualités françaises récentes. Choisis LA plus INSOLITE pour notre audience (hommes 18-34 ans) :
-une découverte surprenante, un record, une histoire étonnante ou un clin d'œil France / monde
-(exemples qui ont marché : un temple romain découvert en creusant pour un observatoire ; un artiste qui s'affiche à
-Times Square pour un concert dans un village de la Sarthe).
-À ÉVITER (flops) : annonces de travaux, restaurations, anniversaires d'institutions, inscriptions administratives,
-sujets morbides. Mieux vaut répondre -1 qu'une actu banale.
-Interdit : {", ".join(C.SUJETS_INTERDITS)}. Si aucune ne convient, réponds {{"index": -1}}.
+{tend}
+
+Voici des actualités françaises récentes. Classe les 3 MEILLEURES pour notre audience (hommes 18-34 ans), de la
+meilleure à la moins bonne. PRIORITÉ (ce qui fait nos meilleurs chiffres) : armée, défense, souveraineté, secrets
+d'État, sommes d'argent folles, records, rivalité France / monde, découverte spectaculaire, histoire insolite avec
+un vrai enjeu, sujet dont tout le monde parle aujourd'hui.
+À ÉVITER (flops) : petit fait local sans enjeu (un fossile, un règlement), travaux, restaurations, anniversaires
+d'institutions, sujets administratifs ou morbides. Interdit : {", ".join(C.SUJETS_INTERDITS)}.
+Si aucune ne convient, réponds {{"indices": []}}.
 
 {liste}
 
-Puis rédige un post en une seule image :
-- étiquette : « Actu · » + région ou ville (ex. « Actu · Bretagne »)
-- titre : une phrase de 15 à 30 mots, avec les majuscules normales du français (majuscule en début de phrase et aux
-  noms propres : Touraine, Charles Perrault…), pas tout en majuscules, factuelle,
-  uniquement ce que dit l'article, avec 1 à 3 mots ou chiffres importants à mettre en rouge
-- 3 requêtes d'image Wikimedia Commons, de la plus précise à la plus large (jamais une photo de presse) :
-  1) le LIEU ou l'OBJET exact (ex. « Temple de Mercure puy de Dôme ») ;
-  2) la commune ou le site (ex. « Puy de Dôme summit ») ;
-  3) un paysage ou monument emblématique du département ou de la région (ex. « Chaîne des Puys landscape »)
-- légende : 2 à 3 phrases qui résument l'info, puis « Source : <média> ».
+Réponds en JSON : {{"indices": [0, 3, 5]}}""", temperature=0.3)
+    for idx in [i for i in choix.get("indices", []) if isinstance(i, int) and 0 <= i < len(articles)][:3]:
+        art = articles[idx]
+        try:
+            faits = gemini.texte(f"""Rassemble les faits précis et vérifiés de cette actualité française : « {art['titre']} »
+({art['source']}). Il me faut OBLIGATOIREMENT : le lieu exact (commune et département), les noms, le chiffre exact,
+la chose exacte (le mot, la condition, l'objet…). Liste à puces, uniquement ce que disent les sources.""",
+                                 recherche=True, temperature=0.1, rapide=True)
+        except gemini.ErreurGemini:
+            faits = art["resume"]
+        a = gemini.json_(f"""{STYLE}
+
+ACTU : {art['titre']} ({art['source']}) — {art['resume']}
+FAITS :
+{faits}
+
+Rédige un post en une seule image :
+- etiquette : « Actu · » + région ou ville (ex. « Actu · Bretagne »)
+- titre : une phrase de 15 à 30 mots, avec les majuscules normales du français, factuelle, qui DONNE l'information :
+  le nom de la commune ou du lieu, la chose exacte, le chiffre. Jamais « une commune », « certaines conditions »…
+  1 à 3 mots ou chiffres importants à mettre en rouge.
+- lieu_exact : la commune ou le lieu précis ; info_cle : la chose précise que le lecteur apprend. Si les faits ne les
+  donnent pas, mets "" (le post sera alors abandonné).
+- 2 requêtes d'image Wikimedia Commons qui montrent EXACTEMENT le sujet (l'objet, le bâtiment, le lieu précis de
+  l'info, la personne) : 1) le plus précis, 2) le lieu exact de l'info. Jamais une région en général.
+- legende : 2 à 3 phrases qui donnent tous les détails (où, quoi, combien, qui), puis « Source : <média> ».
 
 Réponds uniquement en JSON :
-{{"index": 0, "etiquette": "...", "titre": "...", "rouges": ["..."], "images": ["précise", "commune", "région"],
-  "legende": "...", "hashtags": "#..."}}"""
-    return gemini.json_(prompt, temperature=0.5)
+{{"etiquette": "...", "titre": "...", "rouges": ["..."], "lieu_exact": "...", "info_cle": "...",
+  "images": ["...", "..."], "legende": "...", "hashtags": "#..."}}""", temperature=0.4)
+        if not a.get("lieu_exact") or not a.get("info_cle") or VAGUE.search(a.get("titre", "")):
+            print(f"Actu écartée (info trop vague) : {art['titre']}")
+            continue
+        a["index"] = idx
+        return a
+    return {"index": -1}
 
 
 # ---------------------------------------------------------------------------
@@ -397,7 +503,8 @@ FAITS (n'utilise QUE ceux-là) :
 Règles :
 - Couverture : 6 à 12 mots, une accroche qui intrigue SANS donner la fin de l'histoire.
 - 5 slides de récit, {C.MOTS_MAX_PAR_SLIDE} mots maximum chacune, qui font monter la curiosité slide après slide
-  (contexte → l'élément surprenant → le détail fou → le rebondissement → la chute). Le lieu exact est cité dès la slide 1.
+  (contexte → l'élément surprenant → le détail fou → le rebondissement → la chute). Le lieu exact est cité dès la slide 1,
+  et la chute DONNE la réponse précise (le nom, la condition, le chiffre) : jamais de mystère non résolu.
 - 1 ou 2 mots en rouge par slide (copiés exactement du texte).
 - Une requête d'image Wikimedia Commons DIFFÉRENTE par slide : le lieu exact, la commune, un monument ou paysage du
   département (jamais une photo de presse, jamais d'animal ni d'image générique).
