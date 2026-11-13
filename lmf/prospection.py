@@ -5,7 +5,7 @@
 - chaque mail est écrit pour la cible, avec le media kit en pièce jointe ;
 - une relance au bout de 7 jours sans réponse ;
 - les réponses arrivent sur Telegram avec un résumé et un brouillon :
-  réponds « ok » pour l'envoyer, « modif : … » pour le retoucher, ou écris ta réponse.
+  réponds « ok » pour l'envoyer, ou écris ce qu'il faut changer (rien ne part sans « ok »).
 
 Lancé toutes les heures (8 h – 20 h) par l'horloge du Sheet : tâche « Prospection »
 L'état (contacts, envois, réponses) est gardé dans data/prospection.json.
@@ -200,7 +200,7 @@ def lire_telegram(e):
             e["telegram_chat"] = chat
             dire(e, "✅ C'est relié ! Ici tu recevras :\n• l'aperçu de chaque mail avant envoi (réponds « stop » "
                     "à un aperçu pour l'annuler) ;\n• les réponses des contacts, avec un brouillon : réponds « ok » "
-                    "pour l'envoyer, « modif : … » pour le retoucher, ou écris directement ta réponse.\n\n"
+                    "pour l'envoyer, ou écris ce qu'il faut changer : rien ne part sans « ok ».\n\n"
                     "Commandes : /liste, /pause, /reprise")
             continue
         if chat != e["telegram_chat"]:
@@ -264,16 +264,16 @@ def traiter_consigne(e, c, type_, texte):
         if not corps:
             dire(e, "Je n'ai plus de brouillon pour ce contact, écris ta réponse.")
             return
-    elif bas.startswith("modif"):
-        b = brouillon_reponse(c, c.get("derniere_reponse", ""), consigne=texte.split(":", 1)[-1].strip())
-        c["brouillon"] = b["brouillon"]
-        dire(e, f"✍️ Nouveau brouillon pour {c['organisation']} :\n\n{b['brouillon']}\n\n"
-                "Réponds « ok » pour l'envoyer, ou « modif : … » encore.", (c["id"], "reponse"))
-        return
     else:
-        corps = texte
-        if "Mathis" not in corps[-200:]:
-            corps = corps.rstrip() + "\n\nBien cordialement,\n\n" + C.SIGNATURE
+        # Sécurité : rien ne part sans « ok ». Le texte de Mathis (consigne OU réponse rédigée) donne un brouillon.
+        consigne = texte.split(":", 1)[-1].strip() if bas.startswith("modif") else texte
+        b = brouillon_reponse(c, c.get("derniere_reponse", ""),
+                              consigne="Voici ce que Mathis veut dire ou changer (consigne, ou réponse à remettre au propre "
+                                       "sans en changer le sens) : " + consigne)
+        c["brouillon"] = b["brouillon"]
+        dire(e, f"✍️ Brouillon pour {c['organisation']} (rien n'est parti) :\n\n{b['brouillon']}\n\n"
+                "👉 « ok » pour l'envoyer, sinon écris ce qu'il faut changer.", (c["id"], "reponse"))
+        return
     envoyer_reponse(c, corps)
     c["brouillon"] = None
     c.pop("derniere_reponse", None)  # on ne garde pas leurs messages dans le suivi
@@ -466,10 +466,10 @@ def lire_reponses(e):
                    f"— Leur message —\n{texte[:1500]}\n\n")
         if c["brouillon"]:
             message += (f"✍️ Brouillon de réponse :\n\n{c['brouillon']}\n\n"
-                        "👉 Réponds à CE message : « ok » pour l'envoyer, « modif : … » pour le retoucher, "
-                        "ou écris directement ta réponse.")
+                        "👉 Réponds à CE message : « ok » pour l'envoyer, ou écris ce qu'il faut changer. "
+                        "Rien ne part sans « ok ».")
         else:
-            message += "👉 Réponds à CE message avec ta réponse, je l'envoie."
+            message += "👉 Réponds à CE message avec ce que tu veux dire : je te montre le mail avant, rien ne part sans « ok »."
         dire(e, message, (c["id"], "reponse"))
     im.logout()
 
@@ -495,7 +495,7 @@ def signaler_mail(e, msg, exp, mid, corps):
     cle = f"m{random.randint(10000, 99999)}"
     e["mails_divers"][cle] = mid
     dire(e, f"✉️ Nouveau mail de {nom} <{exp}>\nObjet : {objet}\n\n{apercu}\n\n"
-            "👉 Réponds à CE message : « brouillon » pour que je t'en propose un, ou écris ta réponse et je l'envoie.",
+            "👉 Réponds à CE message : « brouillon », ou écris ce que tu veux répondre. Je te montre le mail avant, rien ne part sans « ok ».",
          (cle, "mail"))
 
 
@@ -524,8 +524,15 @@ def traiter_mail(e, cle, texte):
     exp = email.utils.parseaddr(msg.get("From", ""))[1]
     objet = _decoder(msg.get("Subject"))
     bas = texte.lower().strip(" .!")
-    if bas.startswith("brouillon") or bas.startswith("modif"):
-        consigne = texte.split(":", 1)[-1].strip() if ":" in texte else ""
+    if bas not in ("ok", "oui", "go", "envoie", "envoyer", "valide"):
+        # Sécurité : rien ne part sans « ok ». Tout autre texte (consigne ou réponse rédigée) donne un brouillon.
+        if bas.startswith("brouillon") or bas.startswith("modif"):
+            consigne = texte.split(":", 1)[-1].strip() if ":" in texte else ""
+        else:
+            consigne = ("voici ce que Mathis veut dire ou changer (consigne, ou réponse à remettre au propre "
+                        "sans en changer le sens) : " + texte)
+        if e["brouillons"].get(cle):
+            consigne += "\nBrouillon précédent à reprendre : " + e["brouillons"][cle][:1500]
         prompt = f"""Mathis Pouchol, fondateur du Média Français (média Instagram de 210 000 abonnés sur l'histoire et le
 patrimoine français), a reçu ce mail de {exp} (objet : {objet}) :
 \"\"\"{_sans_citation(_texte(msg))[:3000]}\"\"\"
@@ -541,18 +548,13 @@ Termine par « Bien cordialement, » puis :
 Réponds en JSON : {{"brouillon": "..."}}"""
         b = gemini.json_(prompt, temperature=0.5)["brouillon"]
         e["brouillons"][cle] = b
-        dire(e, f"✍️ Brouillon pour {exp} :\n\n{b}\n\nRéponds « ok » pour l'envoyer, « modif : … » pour le retoucher, "
-                "ou écris ta propre réponse.", (cle, "mail"))
+        dire(e, f"✍️ Brouillon pour {exp} (rien n'est parti) :\n\n{b}\n\n"
+                "👉 « ok » pour l'envoyer, sinon écris ce qu'il faut changer.", (cle, "mail"))
         return
-    if bas in ("ok", "oui", "go", "envoie", "envoyer", "valide"):
-        corps = e["brouillons"].get(cle)
-        if not corps:
-            dire(e, "Pas de brouillon pour ce mail : réponds « brouillon » ou écris ta réponse.")
-            return
-    else:
-        corps = texte
-        if "Mathis" not in corps[-200:]:
-            corps = corps.rstrip() + "\n\nBien cordialement,\n\n" + C.SIGNATURE
+    corps = e["brouillons"].get(cle)
+    if not corps:
+        dire(e, "Pas de brouillon pour ce mail : écris ce que tu veux répondre, je te prépare un brouillon.")
+        return
     if not objet.lower().startswith("re"):
         objet = "Re: " + objet
     envoyer(exp, objet, corps, en_reponse_a=mid, references=msg.get("References"))
@@ -592,6 +594,9 @@ Propose {nb} organisations françaises différentes :
 
 Règles :
 - organisations qui existent vraiment, actives aujourd'hui, avec un site officiel et un budget communication ;
+- EN PRIORITÉ celles qui travaillent déjà avec des créateurs de contenu ou des médias Instagram (posts sponsorisés,
+  campagnes d'influence, accueils d'influenceurs, offices de tourisme qui invitent des créateurs) : ce sont
+  elles qui répondent ;
 - pas de musée national, d'association, de festival culturel ni de maison d'édition ;
 - privilégie les tailles moyennes et les acteurs régionaux (plus de chances de réponse) aux géants mondiaux ;
 - évite toute organisation en difficulté financière connue, controversée, politique ou religieuse ;
@@ -716,7 +721,16 @@ def explorer_site(site):
 
 def trouver_adresse(cible):
     adresses, texte = explorer_site(cible["site"])
-    notees = sorted(((_note(a), a) for a in adresses), reverse=True)
+    def note(a):
+        n = _note(a)
+        ctx = (adresses.get(a) or "").lower()
+        local = a.split("@")[0]
+        # une personne nommée, responsable com / marketing / presse / partenariats : c'est elle qu'on veut joindre
+        if n >= 0 and "." in local and re.search(r"communication|marketing|presse|press|partenariat|relations|"
+                                                  r"influence|brand|digital|réseaux sociaux|social media", ctx):
+            return 5
+        return n
+    notees = sorted(((note(a), a) for a in adresses), reverse=True)
     notees = [(n, a) for n, a in notees if n >= 0 and _mx_ok(domaine_mail(a))]
     if notees:
         a = notees[0][1]
