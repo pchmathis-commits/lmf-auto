@@ -1,4 +1,4 @@
-name: Actu en carrousel
+name: Carrousel
 
 on:
   workflow_dispatch:
@@ -30,7 +30,7 @@ jobs:
           key: montserrat-v1
       - run: pip install -r requirements.txt
       - name: Créer le post
-        run: python -m lmf.main actu_carrousel
+        run: python -m lmf.main carrousel
 
       - name: Relevé vers La Carte
         if: always()
