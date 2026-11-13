@@ -62,6 +62,10 @@
   "106": {
    "contact": "m90052",
    "type": "mail"
+  },
+  "143": {
+   "contact": "m89205",
+   "type": "mail"
   }
  },
  "jours_generes": [
@@ -340,11 +344,13 @@
   "<202611090729.86647383181@smtp-relay.mailin.fr>",
   "<179417678846.2220.6561202605287901827@lemediafrancais.fr>",
   "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
-  "<800293499.43757.1794470695601@mib-daemon-engine-large-6868f88bbb-8hfqn>"
+  "<800293499.43757.1794470695601@mib-daemon-engine-large-6868f88bbb-8hfqn>",
+  "<CAL1RtXmoOfqTp57dkCJNpSKByeSZLZkSSjrBf-b6MkMKAYp2Wg@mail.gmail.com>"
  ],
  "mails_divers": {
   "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
-  "m90052": "<800293499.43757.1794470695601@mib-daemon-engine-large-6868f88bbb-8hfqn>"
+  "m90052": "<800293499.43757.1794470695601@mib-daemon-engine-large-6868f88bbb-8hfqn>",
+  "m89205": "<CAL1RtXmoOfqTp57dkCJNpSKByeSZLZkSSjrBf-b6MkMKAYp2Wg@mail.gmail.com>"
  },
  "brouillons": {},
  "mails_depuis": "2026-11-09T14:01+01:00"
