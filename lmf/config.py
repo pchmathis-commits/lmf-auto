@@ -12,13 +12,15 @@ ACTUS_PAR_JOUR = 2               # créneaux définis dans .github/workflows/act
 DELAI_AVANT_PUBLICATION_MIN = 45   # temps laissé pour supprimer un post après le mail
 VERIFICATION_AUTO = False        # True = relecture par Gemini + Google (coûte beaucoup de quota)
 
+SERIE_ACTIVE = False   # « Les Français cachés » : arrêtée le 13/11 (épisodes sous 25 000 vues)
+
 # Planning du lendemain, préparé chaque soir vers 21 h (heure de PUBLICATION, type de post)
 # types : carrousel · actu · actu_carrousel. Le carrousel du soir (après 16 h) est « Les Français cachés ».
 PLANNING = [
     ("09:00", "carrousel"),
     ("11:30", "actu"),
     ("15:00", "actu_carrousel"),
-    ("18:30", "carrousel"),
+    ("18:30", "carrousel"),   # carrousel classique (tendance / armée-souveraineté), plus la série
     ("20:30", "actu"),
 ]
 
