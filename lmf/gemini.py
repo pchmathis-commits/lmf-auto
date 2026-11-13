@@ -86,7 +86,7 @@ def _appel_modele(corps, modele=None, cle=None, essais=3):
     raise ErreurGemini(f"{modele} indisponible après {essais} essai(s) (quota ? voir le mode opératoire)")
 
 
-def texte(prompt, recherche=False, temperature=0.4, modele=None):
+def texte(prompt, recherche=False, temperature=0.4, modele=None, rapide=False):
     """Réponse texte. recherche=True active la vérification par Google Search."""
     corps = {
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
@@ -94,7 +94,7 @@ def texte(prompt, recherche=False, temperature=0.4, modele=None):
     }
     if recherche:
         corps["tools"] = [{"google_search": {}}]
-    return _appel(corps, modele)
+    return _appel(corps, modele, rapide=rapide)
 
 
 def json_(prompt, temperature=0.7, recherche=False, modele=None, rapide=False):
