@@ -66,6 +66,10 @@
   "143": {
    "contact": "m89205",
    "type": "mail"
+  },
+  "145": {
+   "contact": "m89205",
+   "type": "mail"
   }
  },
  "jours_generes": [
@@ -352,6 +356,8 @@
   "m90052": "<800293499.43757.1794470695601@mib-daemon-engine-large-6868f88bbb-8hfqn>",
   "m89205": "<CAL1RtXmoOfqTp57dkCJNpSKByeSZLZkSSjrBf-b6MkMKAYp2Wg@mail.gmail.com>"
  },
- "brouillons": {},
+ "brouillons": {
+  "m89205": "Bonjour Anne,\n\nMerci pour votre message. Le Média Français n'est pas une agence de représentation de créateurs, mais un média indépendant suivi par 210 000 abonnés sur Instagram et 82 000 sur TikTok et Threads. Nous cumulons 24 millions de vues par mois.\n\nNotre audience est composée à 80 % de 18-34 ans et à 75 % d'hommes résidant en France. Nous traitons d'histoire et de patrimoine français. Si notre ligne éditoriale peut s'intégrer à votre campagne, nos tarifs sont les suivants : 2 000 € pour un carrousel sponsorisé et 800 € pour une story dédiée (diffusions TikTok et Threads offertes).\n\nSouhaitez-vous adapter votre proposition à la ligne éditoriale de notre propre média ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais"
+ },
  "mails_depuis": "2026-11-09T14:01+01:00"
 }
