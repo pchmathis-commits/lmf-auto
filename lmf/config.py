@@ -114,7 +114,7 @@ CHIFFRES = """- 210 000 abonnés Instagram, 82 000 sur TikTok et Threads
 - Étude de cas : Région Normandie, Millenium 2027 (1000 ans de Guillaume le Conquérant) : 65 000 vues, 3,5 % d'engagement, 25 000 vues de la story avec lien
 - Offres : carrousel sponsorisé 2 000 €, story dédiée 800 €, lien exclusif un mois 2 200 € ; diffusion TikTok et Threads offerte"""
 # Types de cibles, en rotation pour varier
-PART_TOURISME = 0.6   # 60 % tourisme et patrimoine, 40 % industrie (5 mails/jour → 3 + 2)
+PART_TOURISME = 0.4   # 40 % tourisme, 60 % marques et industrie (5 mails/jour → 2 + 3) — audit du 14/11
 CATEGORIES_TOURISME = [   # 3 différentes chaque jour, en rotation
     "office de tourisme ou agence d'attractivité d'une ville, d'un département ou d'une région française",
     "château, abbaye, citadelle ou site patrimonial privé ouvert à la visite",
@@ -126,13 +126,14 @@ CATEGORIES_TOURISME = [   # 3 différentes chaque jour, en rotation
     "agence de voyages ou tour-opérateur spécialisé dans le patrimoine français",
     "musée privé, mémorial ou site de visite d'entreprise (manufacture, fromagerie, coutellerie qui se visite)",
 ]
-CATEGORIES_INDUSTRIE = [  # 2 différentes chaque jour, en rotation
+CATEGORIES_INDUSTRIE = [  # marques de produits physiques qui parlent aux hommes 18-34 ans + industrie ; 2 par jour
+    "coutellerie, horlogerie ou montres françaises",
+    "habillement, chaussures ou maroquinerie masculine made in France",
     "entreprise française de l'aéronautique, du spatial ou de la défense (PME et ETI de préférence)",
     "constructeur ou équipementier automobile, moto ou vélo français",
-    "entreprise industrielle française historique (coutellerie, verrerie, porcelaine, cristallerie, fonderie)",
-    "chantier naval, constructeur ferroviaire ou entreprise française de l'énergie",
-    "PME « made in France » qui relocalise sa production",
-    "marque française historique d'outillage, d'équipement ou d'objets du quotidien",
+    "spiritueux, bière ou épicerie fine française de marque",
+    "outillage, équipement outdoor, chasse ou pêche de marque française",
+    "entreprise industrielle française historique (verrerie, porcelaine, fonderie, chantier naval)",
 ]
 CATEGORIES_CIBLES = CATEGORIES_TOURISME + CATEGORIES_INDUSTRIE   # compatibilité
 # Déjà contactés ou à ne jamais contacter (ajoute une ligne quand tu veux)
