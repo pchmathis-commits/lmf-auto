@@ -38,6 +38,9 @@ LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
   marque célèbre et reconnaissable, la couverture montre autre chose (le Français méconnu, un tableau d'époque, un détail).
 - À ÉVITER (ça a fait des flops) : les sujets lointains et explicatifs (« comment X est devenu… », « pourquoi la France
   envoie des fusées… »), les couvertures qui donnent déjà la réponse, le ton scolaire.
+- ACCROCHES QUI MARCHENT (nos 3 meilleurs posts) : un SECRET (« le fonds secret de l'État… »), un MONTANT ou un
+  CHIFFRE CHOC dès les premiers mots (« 6 millions d'euros pour… », « 15 654 milliards… »), un PROJET GÉANT ou MILITAIRE.
+  Toujours vrai et vérifiable : le chiffre ou le secret est expliqué dans le post.
 - RÈGLE D'OR : LE POST DONNE TOUJOURS LA RÉPONSE. Le lecteur doit repartir en sachant exactement QUOI, QUI, OÙ :
   le nom de la commune, de la personne, de l'objet, la condition exacte, le mot exact, le chiffre exact.
   INTERDIT dans les slides et les actus : « une commune bretonne », « certaines conditions », « une langue »,
@@ -52,9 +55,11 @@ VAGUE = re.compile(r"\b(une|un|cette|ce|certaines?|certains) (commune|village|vi
 # Classées d'après les abonnés gagnés par post sur 180 jours (Poubelle 6 100, Bic 3 700, eau du robinet 1 900…).
 FAMILLES = [
     ("Armée, défense et souveraineté : porte-avions, Rafale, nucléaire, spatial, secrets et fonds d'État, projets géants "
-     "français — ce sont les posts qui font le plus de vues et d'abonnés en ce moment", 5),
+     "français — ce sont les posts qui font le plus de vues et d'abonnés en ce moment", 6),
+    ("Héroïsme et exploits français : un acte de bravoure, un soldat, un pilote, un explorateur ou un ingénieur français "
+     "et ce qu'il a accompli de fou (jamais d'événement tragique récent ni de sujet politique)", 3),
     ("Les Français cachés : un Français méconnu derrière une chose célèbre dans le monde entier (une marque, une ville, "
-     "une compétition sportive, une institution, une invention)", 3),
+     "une compétition sportive, une institution, une invention)", 2),
     ("La France face aux grandes puissances : une décision, une rivalité ou un record où la France tient tête au monde", 3),
     ("Le héros français méconnu derrière ton quotidien : une personne précise grâce à qui un objet ou un geste existe", 3),
     ("La langue française : un mot ou une expression que tout le monde connaît et son origine surprenante", 2),
@@ -435,7 +440,8 @@ Voici des actualités françaises récentes. Classe les 3 MEILLEURES pour notre 
 meilleure à la moins bonne. PRIORITÉ (ce qui fait nos meilleurs chiffres) : armée, défense, souveraineté, secrets
 d'État, sommes d'argent folles, records, rivalité France / monde, découverte spectaculaire, histoire insolite avec
 un vrai enjeu, sujet dont tout le monde parle aujourd'hui.
-À ÉVITER (flops) : petit fait local sans enjeu (un fossile, un règlement), travaux, restaurations, anniversaires
+À ÉVITER (flops) : petit fait local sans enjeu, fossiles et fouilles archéologiques ordinaires (sauf découverte
+vraiment spectaculaire, comme un temple romain entier), règlements, travaux, restaurations, anniversaires
 d'institutions, sujets administratifs ou morbides. Interdit : {", ".join(C.SUJETS_INTERDITS)}.
 Si aucune ne convient, réponds {{"indices": []}}.
 
