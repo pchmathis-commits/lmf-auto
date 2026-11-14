@@ -576,6 +576,64 @@ def quotas_du_jour():
     return {"tourisme": n_t, "industrie": C.MAILS_PAR_JOUR - n_t}
 
 
+# ---------------------------------------------------------------------------
+# Liste des exposants du MIF Expo 2026 : prioritaire tant qu'il en reste
+# ---------------------------------------------------------------------------
+MIF_URL = ("https://www.mifexpo.fr/wp-admin/admin-ajax.php?lang=fr&action=ajax_search_exposants&pavillon_id=NaN"
+           "&region_id=NaN&secteur_id=NaN&salon_id=952944&actionsearch=true")
+MIF_POIDS = {"80": 3, "92": 3, "95": 3, "96": 3, "98": 3, "97": 2, "62": 3, "68": 3, "69": 4, "66": 2, "67": 1,
+             "38": 1, "48": 2, "108": 4, "93": 2, "94": 1, "103": 1, "72": 1}
+MIF_MOTS = re.compile(r"knife|knives|couteau|coutell|watch|horlog|pipe|whisk|rum\b|beer|bière|brasser|cognac|calvados|"
+                      r"spirit|distill|moto|bike|vélo|velo|outdoor|hunting|chasse|navy|marine|military|militaire|"
+                      r"aviation|guitar|billiard|leather|cuir|boots|bottes|béret|beret|\bhat|chapeau|denim|jeans|"
+                      r"tourism|tourist|attractivit", re.I)
+MIF_EXCLUS = re.compile(r"women|baby|bébé|child|enfant|lingerie|makeup", re.I)
+
+
+def cibles_mif(e):
+    """Exposants du MIF Expo 2026 qui parlent à notre public, du plus pertinent au moins pertinent.
+    La liste est téléchargée une fois puis gardée dans le suivi (data/prospection.json)."""
+    if e.get("cibles_mif"):
+        return e["cibles_mif"]
+    page = requests.get(MIF_URL, headers=NAVIGATEUR, timeout=60).text
+    liste = []
+    for bloc in re.split(r'(?=<div data-exposantid=)', page)[1:]:
+        nom = html.unescape((re.search(r'data-name="([^"]*)"', bloc) or [None, ""])[1]).strip()
+        site = (re.search(r'class="exposants-site">\s*<a href="([^"]+)"', bloc) or [None, ""])[1].strip()
+        produits = html.unescape((re.search(r'data-produits="([^"]*)"', bloc) or [None, ""])[1])
+        desc = html.unescape((re.search(r'data-produits-desc="([^"]*)"', bloc) or [None, ""])[1])
+        secteurs = re.findall(r"##(\d+)##", (re.search(r'data-secteurs="([^"]*)"', bloc) or [None, ""])[1])
+        if not nom or not re.match(r"^https?://(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}(/|$)", site, re.I):
+            continue
+        note = sum(MIF_POIDS.get(x, 0) for x in secteurs) + (4 if MIF_MOTS.search(produits + " " + desc) else 0) \
+            - (4 if MIF_EXCLUS.search(produits) else 0)
+        if note >= 5:
+            liste.append({"organisation": nom.title() if nom.isupper() else nom, "site": site, "note": note,
+                          "type": "marque exposante au MIF Expo 2026", "famille": "mif",
+                          "idee": f"Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : {produits[:200]}"})
+    liste.sort(key=lambda x: -x["note"])
+    if liste:
+        e["cibles_mif"] = liste
+    print(f"Liste MIF Expo : {len(liste)} exposants retenus")
+    return liste
+
+
+def prochaines_cibles_mif(e, nb):
+    noms, domaines = deja_vus(e)
+    domaines |= set(e.get("mif_essayes", []))   # exposants déjà explorés sans adresse fiable : on ne les retente pas
+    exclus = [x.lower() for x in C.EXCLUS]
+    choisies = []
+    for c in cibles_mif(e):
+        d = domaine_base(urlparse(c["site"]).netloc)
+        nom = c["organisation"].lower()
+        if d in domaines or nom in noms or any(x in nom or nom in x for x in exclus):
+            continue
+        choisies.append(dict(c))
+        if len(choisies) >= nb:
+            break
+    return choisies
+
+
 def proposer_cibles(e, nb=20):
     jour = maintenant().toordinal()
     tour = [C.CATEGORIES_TOURISME[(jour * 3 + i) % len(C.CATEGORIES_TOURISME)] for i in range(3)]
@@ -771,6 +829,7 @@ def rediger(c, contexte, consigne=""):
 Destinataire : {c['organisation']} ({c['type']}), adresse {c['email']}.
 Contexte autour de l'adresse sur leur site : {c.get('contexte_adresse', '')[:400]}
 Idée de départ : {c.get('idee', '')}
+{"Point de contact : nous avons repéré leur marque parmi les exposants du MIF Expo 2026 (le salon du Made in France, Porte de Versailles, 12-15 novembre). Mentionne-le simplement en ouverture, sans dire qu'on les a rencontrés sur place. Proposition adaptée : un carrousel sponsorisé qui raconte leur fabrication en France et l'histoire de leur savoir-faire." if c.get("famille") == "mif" else ""}
 Texte de leur site (pour personnaliser) :
 \"\"\"{contexte[:5000]}\"\"\"
 
@@ -814,8 +873,7 @@ def _avec_signature(corps):
     else:
         corps = re.sub(r"\n+Mathis Pouchol[^\n]*(\n[^\n]*){0,3}\s*\Z", "", corps).rstrip()
         corps = re.sub(r"\n+(très |bien )?cordialement,?\s*\Z", "", corps, flags=re.I).rstrip() + "\n\nBien cordialement,"
-    return (corps + "\n\n" + C.SIGNATURE +
-            "\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.")
+    return corps + "\n\n" + C.SIGNATURE
 
 
 def _tronque(corps):
@@ -871,10 +929,18 @@ def generer_du_jour(e, jour=None, apercus=True):
     while len(retenus) < C.MAILS_PAR_JOUR and essais < 4 and time.time() - debut < 15 * 60:
         essais += 1
         try:
-            cibles = proposer_cibles(e)
+            # d'abord les exposants du MIF Expo, jusqu'à la fin de la liste ; ensuite les cibles proposées par Gemini
+            cibles = prochaines_cibles_mif(e, 15) if C.PRIORITE_MIF else []
+            mif = bool(cibles)
+            if not cibles:
+                cibles = proposer_cibles(e)
         except Exception as ex:
             print(f"Propositions de cibles ratées : {ex}")
-            continue
+            mif = False
+            try:
+                cibles = proposer_cibles(e)
+            except Exception:
+                continue
         # 1) on écarte les déjà-vus, 2) on explore tous les sites en parallèle (bien plus rapide)
         a_explorer = []
         for cible in cibles:
@@ -885,6 +951,8 @@ def generer_du_jour(e, jour=None, apercus=True):
                 continue
             domaines.add(d)
             a_explorer.append(cible)
+            if cible.get("famille") == "mif":
+                e.setdefault("mif_essayes", []).append(d)
         from concurrent.futures import ThreadPoolExecutor
         with ThreadPoolExecutor(max_workers=6) as pool:
             trouves = list(pool.map(trouver_adresse, a_explorer))
@@ -892,7 +960,7 @@ def generer_du_jour(e, jour=None, apercus=True):
             if len(retenus) >= C.MAILS_PAR_JOUR or time.time() - debut > 15 * 60:
                 break
             fam = cible.get("famille", "tourisme")
-            if sum(1 for x in retenus if x.get("famille") == fam) >= quotas.get(fam, 0):
+            if fam != "mif" and sum(1 for x in retenus if x.get("famille") == fam) >= quotas.get(fam, 0):
                 continue  # quota du jour atteint pour cette famille (60 % tourisme, 40 % industrie)
             print(f"→ {cible['organisation']} ({cible['site']}) : {adresse or 'pas d adresse'}")
             if not adresse:
