@@ -114,6 +114,7 @@ CHIFFRES = """- 210 000 abonnés Instagram, 82 000 sur TikTok et Threads
 - Étude de cas : Région Normandie, Millenium 2027 (1000 ans de Guillaume le Conquérant) : 65 000 vues, 3,5 % d'engagement, 25 000 vues de la story avec lien
 - Offres : carrousel sponsorisé 2 000 €, story dédiée 800 €, lien exclusif un mois 2 200 € ; diffusion TikTok et Threads offerte"""
 # Types de cibles, en rotation pour varier
+PRIORITE_MIF = True   # exposants du MIF Expo 2026 d'abord (5 par jour), jusqu'à la fin de la liste
 PART_TOURISME = 0.4   # 40 % tourisme, 60 % marques et industrie (5 mails/jour → 2 + 3) — audit du 14/11
 CATEGORIES_TOURISME = [   # 3 différentes chaque jour, en rotation
     "office de tourisme ou agence d'attractivité d'une ville, d'un département ou d'une région française",
