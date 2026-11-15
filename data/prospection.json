@@ -78,6 +78,26 @@
   "151": {
    "contact": "m89205",
    "type": "mail"
+  },
+  "375": {
+   "contact": "2026-11-16-1-167",
+   "type": "apercu"
+  },
+  "376": {
+   "contact": "2026-11-16-2-694",
+   "type": "apercu"
+  },
+  "377": {
+   "contact": "2026-11-16-3-622",
+   "type": "apercu"
+  },
+  "378": {
+   "contact": "2026-11-16-4-897",
+   "type": "apercu"
+  },
+  "379": {
+   "contact": "2026-11-16-5-649",
+   "type": "apercu"
   }
  },
  "jours_generes": [
@@ -85,7 +105,8 @@
   "2026-11-10",
   "2026-11-11",
   "2026-11-12",
-  "2026-11-13"
+  "2026-11-13",
+  "2026-11-16"
  ],
  "contacts": [
   {
@@ -341,6 +362,101 @@
    "prevu_le": "2026-11-12T14:52+01:00",
    "repondre_a": "presse@mephisto.com",
    "jeton": "edddff3427a2"
+  },
+  {
+   "id": "2026-11-16-1-167",
+   "organisation": "Auvergne-Rhône-Alpes Tourisme",
+   "type": "office de tourisme ou agence d'attractivité",
+   "site": "https://www.auvergnerhonealpes-tourisme.com",
+   "idee": "Un carrousel retraçant l'histoire des grands cols alpines et des routes historiques de la région.",
+   "famille": "tourisme",
+   "email": "contact@auvergnerhonealpes-tourisme.com",
+   "contexte_adresse": "Mentions légales - Auvergne-Rhône-Alpes Tourisme Bienvenue en Auvergne-Rhône-Alpes Retour Mentions légales Date de la dernière version : 20/10/2025 Éditeur Auvergne-Rhône-Alpes Tourisme 11 Bis quai Perrache, 69002 Lyon, FRANCE Association Loi 1901 Email : contact@auvergnerhonealpes-tourisme.com https://www.auvergnerhonealpes-tourisme.com/ N° Siret : 8244",
+   "contexte": "Page d’accueil - Auvergne-Rhône-Alpes Tourisme Tourisme en Auvergne Rhône Alpes Bienvenue en Auvergne-Rhône-Alpes Escapades au fil des saisons Auvergne Culture et patrimoine TER Escapade à Clermont-Ferrand : city break en Auvergne Clermont-Ferrand J'en profite ! Découvez nos escapades automnales Toutes nos escapades En couple Activités nature Escapade en amoureux dans le Haut-Bugey Haut-Bugey Bien-être thermal Escapade ressourçante à Chaudes-Aigues Chaudes-Aigues Activités montagne Culture et patrimoine Escapade dans le Vercors, terre de savoir-faire et de rencontres Vercors Toutes nos escapades Auvergne-Rhône-Alpes selon vos envies Le Grand Tour Auvergne-Rhône-Alpes Le Grand Tour Auvergne-Rhône-Alpes, c’est 3 000 km de road trip pour vivre, en 28 étapes, le meilleur et le plus vibrant de la région. En chemin, 43 espaces naturels, paysages, lieux d’histoire, d’art et de terroirs. Autant de sites incontournables qui font l’âme et l’authenticité du territoire. Road trip en Auvergne-Rhône-Alpes 12h12 : 12 activités par semaine, zéro ennui Chaque jeudi à 12h12, découvrez une sélection exclusive de 12 activités et hébergements à vivre dans la région. Expériences insolites, ressourçantes, en plein air, à vivre en famille ou entre amis : impossible de s'ennuyer en Auvergne-Rhône-Alpes ! Découvrir la sélection de la semaine Explorer local, voyager durable Envie de vous évader tout en voyageant de manière plus responsable ? Que vous soyez d’humeur détente, sportive, culturelle, festive ou gourmande, Partir-ici.fr vous aide à découvrir Auvergne-Rhône-Alpes autrement. Plus de 4 000 activités et hébergements sélectionnés pour leur engagement pour un tourisme durable. Explorer local, voyager durable Savourer la Gastronomie Partez pour un voyage gourmand de 620km avec la Vallée de la Gastronomie . Avec sa grande diversité de paysages où se succèdent vignobles, vergers et pâturages, venez partager des expériences uniques avec des hommes et des femmes de talents qui révèlent des produits d’exception. Découvrir la Vallée de la Gastronomie Tourisme et handicap Que ce soit en station de haute-montagne ou en campagne, l’offre adaptée progresse de plus en plus. Entre randonnées en joëlette, Cimgo, Handiski et activités insolites, la Région Auvergne-Rhône-Alpes vous emmènera sur les plus hauts sommets. Découvrir les offres adaptées Partir en itinérance Amoureux de la petite reine, préparez-vous à découvrir un véritable « concentré de France ». Panoramas alpins, villages pittore\n\nMentions légales - Auvergne-Rhône-Alpes Tourisme Bienvenue en Auvergne-Rhône-Alpes Retour Mentions légales Date de la dernière version : 20/10/2025 Éditeur Auvergne-Rhône-Alpes Tourisme 11 Bis quai Perrache, 69002 Lyon, FRANCE Association Loi 1901 Email : contact@auvergnerhonealpes-tourisme.com https://www.auvergnerhonealpes-tourisme.com/ N° Siret : 82443386600046 Code APE : Autres organisations fonctionnant par adhésion volontaire (9499Z) N° TVA INTRACOMMUNAUTAIRE : FR72824433866 Représentant",
+   "cree_le": "2026-11-15T21:39+01:00",
+   "statut": "planifié",
+   "objet": "Le Grand Tour et les cols des Alpes en carrousel ?",
+   "corps": "Bonjour,\n\nVotre itinéraire du Grand Tour et l'histoire des grands cols alpines représentent un ancrage patrimonial fort pour Auvergne-Rhône-Alpes.\n\nNous aimerions valoriser ce récit à travers un carrousel retraçant l'histoire de vos routes historiques pour donner envie à notre communauté de parcourir la région. Nous avons récemment mené une campagne similaire d'attractivité territoriale pour la Région Normandie (65 000 vues).\n\nLe Média Français est un média dédié au patrimoine qui rassemble 210 000 abonnés sur Instagram, dont 80 % ont entre 18 et 34 ans.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-16T09:53+01:00",
+   "repondre_a": "contact@auvergnerhonealpes-tourisme.com",
+   "jeton": "133298a0cf01"
+  },
+  {
+   "id": "2026-11-16-2-694",
+   "organisation": "ADT Alsace (Alsace Destination Tourisme)",
+   "type": "office de tourisme ou agence d'attractivité",
+   "site": "https://www.visit.alsace",
+   "idee": "Une vidéo style 'Le saviez-vous' sur les origines des cités fortifiées alsaciennes et leurs châteaux forts.",
+   "famille": "tourisme",
+   "email": "bug@visit.alsace",
+   "contexte_adresse": " l'Agence Régionale du Tourisme du Grand-Est et d'Alsace Destination Tourisme. Toute image utilisée sans le consentement de l’auteur pourra donc faire l’objet de poursuite. Si la mention d'un copyright est erronée ou manquante, nous vous invitons à nous contacter afin d'apporter les modifications : bug@visit.alsace Loi applicable Tant le présent site que les modalités et conditions de son utilisat",
+   "contexte": "Page d’accueil - Visit Alsace Page d’accueil - Visit Alsace NOËL EN ALSACE Itinéraires inspirants, expériences à vivre, dates des marchés de Noël, concerts, expos etc. Retrouvez toutes les idées et infos sur le site web www.noel.alsace DECOUVRIR Menu Retour Retour Retour Retour Retour Retour Retour Retour Explorer Voyager écoresponsable Destinations Expériences Agenda Préparer Le blog de Liesel Itinéraires Sites incontournables En toute saison Par Passion Strasbourg Colmar Mulhouse pépite créative en Alsace La Route des Vins d’Alsace Massif des Vosges Alsace du Nord Vosges du Nord et Alsace Bossue Plaine d’Alsace Sundgau Bâle – Trois Pays Temps forts en Alsace Idées événements Vie nocturne Divertissement Venir en Alsace Se déplacer Brochures Restaurants Hébergements Séjours Se laisser guider Bons plans Printemps Eté Automne Hiver Châteaux d'Alsace Activités et loisirs Culture et traditions Vins et gastronomie Nature et bien-être Patrimoine et Histoire Hôtels Résidences de tourisme Locations de vacances Chambres d'hôtes Campings Campings cars Refuges et gîtes d’étapes Hébergements collectifs Hébergements à thèmes Visites guidées, circuits et excursions Guides et accompagnateurs Saisissez votre recherche ... Rechercher... Météo Carte interactive Géolocalisation fr en de es it nl Français English Deutsch Español Italiano Nederlands Menu L'Alsace, un voyage unique... comme vous ! Bienvenue sur le site officiel de destination #VisitAlsace Embarquer © Max Coquard - Best Jobers - ADT L'Alsace, un voyage fantastique... comme vous ! Châteaux d'Alsace, un patrimoine unique en Europe Bienvenue sur le site officiel de destination #VisitAlsace Percer le secret ©Eric Wilhelmy - - CCHLPP L'Alsace, un voyage merveilleux... comme vous ! Ici tout est prétexte à la fête, au partage et à la joie de se retrouver. Au fil des saisons, les festivités se succèdent. Bienvenue sur le site officiel de destination #VisitAlsace Entrer dans la fête © Fabien Voileau - ADT L'Alsace, des expériences à vivre et à partager tout au long de l'année Toutes les expériences Pour célébrer le retour de l'automne © Max Coquard - Best Jobers - ADT Bien-être Faire le plein de bonnes énergies © Bartosch Salmanski - 128db.fr Nature & montagne Rencontrer la faune sauvage : chamois, chevreuils, daims A.Sarremejane - ADT Histoire & patrimoine Bibliothèques d’Alsace : 3 bâtiments classiques à découvrir C. Fleckinger - ADT Vélo & randonnée Découvrir la beauté de l’Alsace à vélo dans la forêt d’Haguenau © J. \n\nEspace presse - Visit Alsace Espace presse - Visit Alsace NOËL EN ALSACE Itinéraires inspirants, expériences à vivre, dates des marchés de Noël, concerts, expos etc. Retrouvez toutes les idées et infos sur le site web www.noel.alsace DECOUVRIR Menu Retour Retour Retour Retour Retour Retour Retour Retour Explorer Voyager écoresponsable Destinations Expériences Agenda Préparer Le blog de Liesel Itinéraires Sites incontournables En toute saison Par Passion Strasbourg Colmar Mulhouse pépite créati",
+   "cree_le": "2026-11-15T21:40+01:00",
+   "statut": "planifié",
+   "objet": "Les cités fortifiées d'Alsace au menu du Média Français ?",
+   "corps": "Bonjour,\n\nAvec plus de 500 châteaux et cités fortifiées, l'Alsace possède un patrimoine médiéval unique en Europe. Pour valoriser cette richesse auprès d'une audience jeune et curieuse, nous pourrions concevoir un carrousel « Le saviez-vous ? » dédié aux origines et aux secrets de ces forteresses alsaciennes, à l'image du dispositif d'attractivité réalisé avec la Région Normandie.\n\nLe Média Français, c'est une communauté de 210 000 abonnés sur Instagram et 24 millions de vues mensuelles autour de l'histoire et du patrimoine.\n\nJe vous joins notre media kit pour consulter nos réalisations.\n\nEst-ce que ça vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-16T10:53+01:00",
+   "repondre_a": "bug@visit.alsace",
+   "jeton": "b810712cd1b6"
+  },
+  {
+   "id": "2026-11-16-3-622",
+   "organisation": "LIP",
+   "type": "coutellerie, horlogerie ou montres françaises",
+   "site": "https://www.lip.fr",
+   "idee": "Un carrousel sur la saga d'une marque iconique de Besançon qui a équipé les présidents et les héros de l'aviation.",
+   "famille": "industrie",
+   "email": "contact@lip.fr",
+   "contexte_adresse": "l Conditions générales de vente Mentions légales Mentions légales ÉDITEUR DU SITE INTERNET Le présent Site Internet est exploité par : S.M.B. Horlogerie SAS Siège Social : ZAE du Pré Brenot, 12 Chemin de Maurapans, 25870 Châtillon-le-Duc Téléphone : 03 81 48 48 00 Adresse de courrier électronique : contact@lip.fr Société par actions simplifiée au capital social de € 1.500.000 Immatriculée au Regis",
+   "contexte": "Montres LIP - Boutique officielle fr en it clear Téléphone La Maison LIP clear Montres Hommes Sélection Nouveautés Editions spéciales Montres quartz Montres automatiques Montres chronographes Montres de plongée Collections Churchill Himalaya Général de Gaulle Nautic Ski Nautic 3 Rallye Mach 2000 Big TV Mythic Courage Minilip Voir toutes les montres hommes Collection Churchill Découvrir Montres Hommes Voir tout Collections Collections Churchill Himalaya Général de Gaulle Nautic Ski Nautic 3 Rallye Mach 2000 Big TV Mythic Courage Minilip Sélection Sélection Nouveautés Editions spéciales Montres quartz Montres automatiques Montres chronographes Montres de plongée Montres Femmes Sélection Nouveautés Editions spéciales Montres quartz Montres automatiques Montres en cuir Montres en acier Collections Churchill Himalaya Henriette Juliette Général de Gaulle Minilip Mach 2000 Courage Nautic 3 Voir toutes les montres femmes Collection Henriette Découvrir Montres Femmes Voir tout Collections Collections Churchill Himalaya Henriette Juliette Général de Gaulle Minilip Mach 2000 Courage Nautic 3 Sélection Sélection Nouveautés Editions spéciales Montres quartz Montres automatiques Montres en cuir Montres en acier Montres de mouvement exclusif MOUVEMENT AUTOMATIQUE LIP R26 Découvrir Type 14 Voir la collection Nautic 666 Voir la collection Annapurna Voir la collection Montres de mouvement exclusif MOUVEMENT AUTOMATIQUE LIP R26 Découvrir Type 14 Voir la collection Nautic 666 Voir la collection Annapurna Voir la collection Bracelets & accessoires Bracelets Accessoires Bagagerie Bracelets & accessoires Bracelets Accessoires Bagagerie La maison LIP Contact fr en it Points de vente Téléphone Accueil Votre navigateur ne supporte pas les vidéos HTML5. LIP DESSINE LE TEMPS Découvrir nos collections Collections LIP Mouvement exclusif Mouvement LIP R26 Découvrir calibre lip r26 Type 14 Pour réveiller l'envie des grands voyageurs de lire l'heure à la façon des pilotes, LIP mouvement de Manufacture lance la Type 14, un garde-temps au dessin de boîtier inspiré d'une montre embarquée dans les cockpits des avions de chasse français des années 1940. Découvrir Découvrir la collection Mouvement LIP R26 Découvrir calibre lip r26 nautic 666 Les passionnés de sports nautiques apprécieront le caractère intemporel de la ligne Nautic 666 dont les spécificités techniques comme la robustesse répondront à toutes leurs exigences. Découvrir Découvrir la collection Mouvement LIP R26 Découvrir LIP Manufa\n\nContactez-nous fr en it clear Téléphone La Maison LIP clear Montres Hommes Sélection Nouveautés Editions spéciales Montres quartz Montres automatiques Montres chronographes Montres de plongée Collections Churchill Himalaya Général de Gaulle Nautic Ski Nautic 3 Rallye Mach 2000 Big TV Mythic Courage Minilip Voir toutes les montres hommes Collection Churchill Découvrir Montres Hommes Voir tout Collections Collections Churchill Himalaya Général de Gaulle Nautic Ski Nautic 3 Rallye Mach 2000 Big T",
+   "cree_le": "2026-11-15T21:40+01:00",
+   "statut": "planifié",
+   "objet": "LIP : la saga de la marque de Besançon en carrousel ?",
+   "corps": "Bonjour,\n\nDe la création du mouvement R26 à Besançon jusqu'aux modèles mythiques comme la Churchill, le Général de Gaulle ou la Type 14 conçue pour l'aviation, la Maison LIP a marqué l'histoire horlogère française.\n\nNous aimerions raconter cette saga industrielle et patrimoniale à travers un carrousel dédié. L'objectif : faire redécouvrir l'héritage de vos garde-temps iconiques à une audience jeune et passionnée d'histoire.\n\nLe Média Français, c'est 210 000 abonnés sur Instagram et 24 millions de vues par mois, avec un public principalement masculin âgé de 18 à 34 ans.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-16T11:56+01:00",
+   "repondre_a": "contact@lip.fr",
+   "jeton": "a38255438c7d"
+  },
+  {
+   "id": "2026-11-16-4-897",
+   "organisation": "Coutellerie de Tièr (Thiers-Issard)",
+   "type": "coutellerie, horlogerie ou montres françaises",
+   "site": "https://www.thiers-issard.fr",
+   "idee": "Un focus sur l'art traditionnel du rasoir coupe-choux et la transmission des métiers de la forge en France.",
+   "famille": "industrie",
+   "email": "contact@thiers-issard.fr",
+   "contexte_adresse": "t les matériaux phares ? On: --> mars, 14, 2024 Couteau de poche : quelles sont les dernières tendances ? On: --> févr., 19, 2024 Actualités Retrouvez toutes nos publications sur facebook Informations Informations   Thiers Issard SNETI SAS ZI De Felet BP 2 63306 Thiers Cedex France 04 73 80 41 41 contact@thiers-issard.fr Horaires d'ouverture LUNDI 08h00-12h / 13h30-17h00 MARDI 08h00-12h / 13h30-",
+   "contexte": "Thiers Issard - Couteaux Sabatier **** - Coutellerie pour professionnels - Rasoirs coupe-choux Appelez-nous : 04 73 80 41 41 Facebook YouTube  Savoir-faire Nos ateliers Les couteaux Les rasoirs Nos revendeurs  Rechercher Langue : --> Français  Français --> Français English --> English Français English Mon compte Blog SAV   Savoir-faire Nos ateliers Les couteaux Les rasoirs Nos revendeurs  Rechercher Langue : --> Français  Français --> Français English --> English Français English Mon compte Blog SAV  Rechercher  Boutique Nouveautés     SABATIER **** ELEPHANT Idéal forgée traditionnelle Façon idéal Idéal forgée Acier 4116 mitre carrée Boucher et saigner Boucher surmoulé jaune Massif et nogent Gadgets culinaires Blocs et coffrets Coupe cuir Machette Aluminium Marin Couteaux Chien ® Ostreo™ Scalpels     Couteaux fermants Le Thiers® Couteaux Régionaux Couteaux de grands pères Sauzedde-Roddier Prestige Sauzedde-Roddier Résine inclusions     Laguioles 1 pièce 2 pièces 3 pièces     Rasoirs Evidés Évidés Le Grelot™ Evidés sonnants 1196™ Série 889 Série 188 Forgés Damas Historiques décorés en forge Série Spéciale Semainiers     Accessoires de rasoirs Savon à barbe Blaireaux Cuirs à rasoirs Pâtes d'affûtage Etuis et trousses Boites rasoirs Kits complets de rasage Bols pour rasage     Taillanderie Pigeat Bouchers professionnels Pelles à hors d'oeuvres Crochetterie Articles de réparations     Outils à main SAUZEDDE RODDIER Série bois teinté Série Bois ABS Ciseaux Thermogomme Inox     COLLECTION VINTAGE Rasoirs Couteaux  Savoir-faire Nos ateliers Les couteaux Les rasoirs Nos revendeurs  Accueil Rasoirs professionnels Découvrez notre gamme Couteaux fermants Voir nos produits Couteaux Chien® Notre création Gamme Ostreo™ Des produits spécial Huitres Gamme Sauzedde Roddier Des produits Métier - Loisirs - Bricolage - Jardinage Thiers Issard - Couteaux Sabatier **** - Coutellerie pour professionnels - Rasoirs coupe-choux Découvrez l'excellence artisanale de Thiers-Issard, le fournisseur de référence en coutellerie et rasoirs pour les professionnels les plus exigeants depuis plus d'un siècle. Notre site offre un accès privilégié à une gamme complète de couteaux et de rasoirs d'exception, forgés avec une précision artisanale inégalée. Plongez dans l'héritage de la coutellerie de Thiers et découvrez des partenariats d'excellence pour votre entreprise. Plongez dans l'univers des couteaux Sabatier **** de Thiers-Issard, une collection re\n\nMentions légales Appelez-nous : 04 73 80 41 41 Facebook YouTube  Savoir-faire Nos ateliers Les couteaux Les rasoirs Nos revendeurs  Rechercher Langue : --> Français  Français --> Français English --> English Français English Mon compte Blog SAV   Savoir-faire Nos ateliers Les couteaux Les rasoirs Nos revendeurs  Rechercher Langue : --> Français  Français --> Français English --> English Français English Mon compte Blog SAV  Rechercher  Boutique Nouveautés     SABATIER **** ELEPHAN",
+   "cree_le": "2026-11-15T21:40+01:00",
+   "statut": "planifié",
+   "objet": "Thiers-Issard : l'art du coupe-choux en carrousel ?",
+   "corps": "Bonjour Monsieur Reynewaeter,\n\nVotre travail d'orfèvre sur la forge des rasoirs coupe-choux évidés et la transmission du savoir-faire coutelier à Thiers depuis plus d'un siècle méritent d'être mis en lumière.\n\nNous aimerions consacrer un carrousel sponsorisé à l'histoire du rasoir traditionnel français et aux secrets de fabrication de vos ateliers. L'objectif : faire redécouvrir cet artisanat d'exception et la précision du geste à une nouvelle génération d'amateurs d'objets patrimoniaux.\n\nLe Média Français, c'est une communauté de 210 000 abonnés sur Instagram, composée à 75 % d'hommes qui passionnent pour le patrimoine et l'histoire des savoir-faire.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": "Monsieur Reynewaeter",
+   "prevu_le": "2026-11-16T13:54+01:00",
+   "repondre_a": "contact@thiers-issard.fr",
+   "jeton": "e15445572004"
+  },
+  {
+   "id": "2026-11-16-5-649",
+   "organisation": "Paraboot",
+   "type": "habillement, chaussures ou maroquinerie masculine made in France",
+   "site": "https://www.paraboot.com",
+   "idee": "L'histoire de la chaussure cousu cousu Norvégien qui a équipé les travailleurs puis l'élite masculine française.",
+   "famille": "industrie",
+   "email": "contact@paraboot.com",
+   "contexte_adresse": "iété ETABLISSEMENTS RICHARD PONTVERT ET COMPAGNIE, SA au capital social de 823 834 €, dont le siège social est 65 rue des Tuiliers 38430 Saint Jean de Moirans, immatriculée sous le numéro 349 869 594﻿, et dont le représentant légal est Éric Forestier. L’éditeur du site internet peut être contacté : contact@paraboot.com Téléphone : +33 4 76 93 88 00 L’éditeur du site est assujetti à la TVA. Son num",
+   "contexte": "Chausseur français depuis 1908 | Paraboot Homme Femme Accessoires La marque Nos boutiques Dernières chances Nos styles Bateaux Bottines Derbies Mocassins Richelieus Sandales Sneakers Tout voir Nos collections Smart casual Sportswear Outdoor COLLAB BARBOUR Grandes pointures Nouveautés Nos styles Bateaux Bottines Derbies Mocassins Sandales Sneakers Tout voir Nos collections COLLAB CAMILLE FOURNET Sportswear Grandes pointures Nouveautés Nos accessoires Entretien Lacets Ceintures Chaussettes Maroquinerie Tout voir La chaussure Les matières premières La création de nos chaussures Les cousus main Nos conseils d’entretien Le lexique Actualités Journal Lookbook À propos Notre histoire Nos ateliers Artisanat d’exception Dernières chances Homme Femme Tout voir Homme Femme Nos styles Bateaux Bottines Derbies Mocassins Richelieus Sandales Sneakers Tout voir Nos collections Smart casual Sportswear Outdoor COLLAB BARBOUR Grandes pointures Tout voir Nos accessoires Entretien Lacets Ceintures Chaussettes Maroquinerie Accessoires Tout voir Nouveautés Dernières chances La marque Les matières premières La création de nos chaussures Les cousus main Nos conseils d’entretien Le lexique Notre histoire Nos ateliers Artisanat d’exception Journal Lookbook Nos styles Bateaux Bottines Derbies Mocassins Sneakers Tout voir Nos collections COLLAB CAMILLE FOURNET Sportswear Grandes pointures Tout voir Nos accessoires Entretien Lacets Ceintures Chaussettes Accessoires Tout voir Nouveautés Dernières chances La marque Les matières premières La création de nos chaussures Les cousus main Nos conseils d’entretien Le lexique Notre histoire Nos ateliers Artisanat d’exception Journal Lookbook Chausseur français depuis 1908 Homme Femme Nos styles Homme Femme Bateaux Bottines Derbies Mocassins Richelieus Sandales Sneakers Bateaux Bottines Derbies Mocassins Richelieus Sandales Sneakers Avignon Lisse gold – Semelle gomme Découvrir Michael Poils vache – Semelle gomme Découvrir Clusaz Lisse écorce – Semelle gomme Découvrir Nouveautés Homme Femme Nouveauté Brb Chambord Nubuck Gringo/Toile Wax Olive – Semelle Gomme 760,00 $ Découvrir Nouveauté Avignon Marron – Semelle Gomme 650,00 $ Découvrir Nouveauté Thiers Foulonne Fauve – Semelle Gomme 460,00 $ Découvrir Nouveauté Montana 1 Autre coloris Poils Vache – Semelle Gomme 460,00 $ Découvrir Nouveauté Michael Foul Fauve – Semelle Gomme 650,00 $ Découvrir Nouveauté Michael Brillant/Taurrillon Noir 650,00 $ Découvrir Nouveauté Chambord Mat/Taurillon Noir 650,0\n\nJust a moment...\n\nMentions légales I Paraboot Homme Femme Accessoires La marque Nos boutiques Dernières chances Nos styles Bateaux Bottines Derbies Mocassins Richelieus Sandales Sneakers Tout voir Nos collections Smart casual Sportswear Outdoor COLLAB BARBOUR Grandes pointures Nouveautés Nos styles Bateaux Bottines Derbies Mocassins Sandales Sneakers Tout voir Nos collections COLLAB CAMILLE FOURNET Sportswear Grandes pointures Nouveautés Nos accessoires Entretien Lacets Ceintures Chaussettes M",
+   "cree_le": "2026-11-15T21:40+01:00",
+   "statut": "planifié",
+   "objet": "Paraboot : le cousu norvégien au Média Français ?",
+   "corps": "Bonjour,\n\nDepuis 1908, vos ateliers perpétuent l'artisanat d'exception du cousu norvégien, une technique qui a équipé les travailleurs avant de séduire l'élégance masculine.\n\nNous aimerions raconter cette histoire unique à travers un carrousel sponsorisé dédié, afin de valoriser votre savoir-faire et faire découvrir vos modèles emblématiques à une audience ciblée de passionnés d'histoire et de patrimoine français.\n\nLe Média Français, c'est une communauté de 210 000 abonnés sur Instagram composée à 75 % d'hommes en France, générant 24 millions de vues par mois.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-16T14:55+01:00",
+   "repondre_a": "contact@paraboot.com",
+   "jeton": "19d212bb52fe"
   }
  ],
  "mails_traites": [
