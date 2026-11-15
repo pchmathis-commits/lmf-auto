@@ -915,7 +915,7 @@ def envoyer_apercu(e, c):
     quand = ("demain " if prevu.date() > maintenant().date() else "") + prevu.strftime("%H:%M")
     dire(e, f"📤 {quand} → {c['organisation']} ({c['email']})\nObjet : {c['objet']}\n\n{c['corps']}",
          (c["id"], "apercu"),
-         boutons=[("✅ Valider", f"pv:{c['id']}"), ("✏️ Modifier", f"pm:{c['id']}"), ("🗑 Supprimer", f"ps:{c['id']}")])
+         boutons=[("✏️ Modifier", f"pm:{c['id']}"), ("🗑 Supprimer", f"ps:{c['id']}")])
 
 
 def generer_du_jour(e, jour=None, apercus=True):
