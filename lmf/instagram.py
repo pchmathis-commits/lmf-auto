@@ -31,6 +31,24 @@ def _verifier(r):
     return data
 
 
+TRANSITOIRE = ("timeout", "timed out", "temporar", "transient", "please retry", "try again", "unexpected error",
+               "réponse illisible (5")
+
+
+def _creer(donnees, essais=4):
+    """Crée un conteneur Instagram. Si Instagram met trop de temps à récupérer l'image (« Timeout ») ou a un
+    souci passager, on réessaie (jusqu'à 4 fois, 30 s, 60 s, 90 s d'écart) au lieu d'échouer tout de suite."""
+    for essai in range(essais):
+        try:
+            r = requests.post(f"{BASE}/{C.IG_USER_ID}/media", data=donnees, timeout=120)
+            return _verifier(r)["id"]
+        except (ErreurInstagram, requests.RequestException) as ex:
+            if essai + 1 >= essais or not any(m in str(ex).lower() for m in TRANSITOIRE):
+                raise
+            print(f"Instagram : souci passager ({ex}), nouvel essai dans {30 * (essai + 1)} s…")
+            time.sleep(30 * (essai + 1))
+
+
 def _attendre(conteneur, jeton, maximum=60):
     for _ in range(maximum):
         r = requests.get(f"{BASE}/{conteneur}", params={"fields": "status_code", "access_token": jeton}, timeout=60)
@@ -58,22 +76,18 @@ def publier_carrousel(urls, legende):
     jeton = _jeton()
     enfants = []
     for url in urls:
-        r = requests.post(f"{BASE}/{C.IG_USER_ID}/media",
-                          data={"image_url": url, "is_carousel_item": "true", "access_token": jeton}, timeout=120)
-        enfants.append(_verifier(r)["id"])
+        enfants.append(_creer({"image_url": url, "is_carousel_item": "true", "access_token": jeton}))
     for e in enfants:
         _attendre(e, jeton)
-    r = requests.post(f"{BASE}/{C.IG_USER_ID}/media",
-                      data={"media_type": "CAROUSEL", "children": ",".join(enfants),
-                            "caption": legende, "access_token": jeton}, timeout=120)
-    return _publier_conteneur(_verifier(r)["id"], jeton)
+    conteneur = _creer({"media_type": "CAROUSEL", "children": ",".join(enfants), "caption": legende,
+                        "access_token": jeton})
+    return _publier_conteneur(conteneur, jeton)
 
 
 def publier_image(url, legende):
     jeton = _jeton()
-    r = requests.post(f"{BASE}/{C.IG_USER_ID}/media",
-                      data={"image_url": url, "caption": legende, "access_token": jeton}, timeout=120)
-    return _publier_conteneur(_verifier(r)["id"], jeton)
+    conteneur = _creer({"image_url": url, "caption": legende, "access_token": jeton})
+    return _publier_conteneur(conteneur, jeton)
 
 
 def tester():
