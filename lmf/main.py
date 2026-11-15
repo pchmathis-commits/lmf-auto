@@ -16,6 +16,7 @@ import datetime as dt
 import json
 import os
 import random
+import re
 import sys
 import traceback
 import zoneinfo
@@ -28,8 +29,12 @@ RACINE = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(RACINE, "out", "post.json")
 
 
+class SansImage(Exception):
+    """Pas de vraie photo de fond : on préfère ne pas publier."""
+
+
 # Quand on prépare les posts la veille : date « simulée » de création, heure de publication, pas de mail.
-CONTEXTE = {"quand": None, "prevu": None, "silencieux": False}
+CONTEXTE = {"quand": None, "prevu": None, "silencieux": False, "image_libre": False}
 
 
 def _maintenant():
@@ -120,13 +125,19 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
         credits.append(candidat["credit"])
         return im
 
+    manquantes = []
     for i, ch in enumerate(choix):
         img = _essayer(ch)
         for autre in (cands[i] if not img else []):
             img = img or _essayer(autre)
         for autre in (reserve if not img else []):
             img = img or _essayer(autre)
+        if not img:
+            manquantes.append(i)
         photos.append(img or images.fond_uni())
+    if not sans_reseau and (0 in manquantes or len(manquantes) > 1):
+        raise SansImage(f"{len(manquantes)} slide(s) sans photo, dont la couverture" if 0 in manquantes
+                        else f"{len(manquantes)} slides sans photo")
 
     dossier = _dossier(post_id)
     fichiers = []
@@ -268,18 +279,27 @@ def commande_actu():
     if not articles:
         print("Aucune actualité trouvée.")
         return
-    a = contenu.rediger_actu(articles)
-    idx = a.get("index", -1)
-    if not isinstance(idx, int) or not 0 <= idx < len(articles):
-        print("Aucune actualité adaptée aujourd'hui (garde-fou).")
-        return
-    art = articles[idx]
-    sheet.ajouter_post(creer_actu(a, art))
+    for essai in range(3):
+        a = contenu.rediger_actu(articles)
+        idx = a.get("index", -1)
+        if not isinstance(idx, int) or not 0 <= idx < len(articles):
+            print("Aucune actualité adaptée aujourd'hui (garde-fou).")
+            return
+        art = articles[idx]
+        try:
+            sheet.ajouter_post(creer_actu(a, art))
+            return
+        except SansImage:
+            print(f"Pas de photo pour « {a['titre']} » : actu suivante.")
+            articles = articles[:idx] + articles[idx + 1:]
+    raise SansImage("aucune des actus du jour n'a de vraie photo")
 
 
 def creer_actu(a, art):
     ok, rapport = contenu.verifier([a["titre"]], f"Actualité : {art['titre']} ({art['source']})")
     photo, credits = _image_actu(a)
+    if not credits:
+        raise SansImage("pas de photo exacte pour cette actu")
     post_id = _id("actu")
     img = render.slide_actu(photo, a["titre"], a.get("rouges"), credit=credits[0] if credits else None)
     render.enregistrer(img, os.path.join(_dossier(post_id), "01.jpg"))
@@ -308,7 +328,8 @@ def _image_actu(a):
             continue
         if not cands:
             continue
-        ch = contenu.choisir_images([q], [cands], f"{a['titre']} (lieu : {a.get('lieu_exact', '')})", strict=True)[0]
+        ch = contenu.choisir_images([q], [cands], f"{a['titre']} (lieu : {a.get('lieu_exact', '')})",
+                                    strict=not CONTEXTE.get("image_libre"))[0]
         if ch:
             try:
                 return images.telecharger(ch["url"]), [ch["credit"]]
@@ -353,11 +374,12 @@ def apercu_telegram(e, post):
     elif imgs:
         P.tg("sendPhoto", chat_id=e["telegram_chat"], photo=imgs[0])
     heure = dt.datetime.fromisoformat(post["publication_prevue"]).astimezone(PARIS).strftime("%H:%M")
-    doute = "" if post.get("verification_ok", True) else "\n⚠️ La relecture a un doute : il ne partira qu'avec « Valider »."
+    ok = post.get("verification_ok", True)
+    doute = "" if ok else "\n⚠️ La relecture a un doute : il ne partira qu'avec « Valider »."
     texte = f"🕘 {heure} · {post['type']}\n{post['titre']}{doute}\n\n{post.get('legende', '')[:900]}"
     P.tg("sendMessage", chat_id=e["telegram_chat"], text=texte[:4000], disable_web_page_preview=True,
          reply_markup={"inline_keyboard": [[
-             {"text": "✅ Valider", "callback_data": f"v:{post['id']}"},
+             *([] if ok else [{"text": "✅ Valider", "callback_data": f"v:{post['id']}"}]),
              {"text": "✏️ Modifier", "callback_data": f"m:{post['id']}"},
              {"text": "🗑 Supprimer", "callback_data": f"s:{post['id']}"}]]})
 
@@ -432,11 +454,30 @@ def commande_modifier():
         P.dire(e, f"Ce post est déjà « {row['statut']} », je ne le modifie pas.")
         return
     prevu = dt.datetime.fromisoformat(str(row["prevue"]).replace("Z", "+00:00")).astimezone(PARIS)
-    CONTEXTE.update(quand=prevu - dt.timedelta(minutes=C.DELAI_AVANT_PUBLICATION_MIN), prevu=prevu, silencieux=True)
+    CONTEXTE.update(quand=prevu - dt.timedelta(minutes=C.DELAI_AVANT_PUBLICATION_MIN), prevu=prevu, silencieux=True,
+                    image_libre=bool(re.search(r"photo|image|visuel|illustration", consigne, re.I)))
     try:
         d = json.loads(row.get("donnees") or "{}")
     except ValueError:
         d = {}
+    post = None
+    try:
+        post = _refaire(d, row, consigne, prevu)
+    except SansImage as ex:
+        P.dire(e, f"🖼 Aucune photo trouvée pour cette version ({ex}). L'ancien post reste prévu : "
+                  "supprime-le avec 🗑 si tu n'en veux pas, ou redemande avec une autre photo.")
+        return
+    if not post:
+        P.dire(e, "Je n'ai pas réussi à refaire ce post. L'ancien reste prévu : supprime-le si tu n'en veux pas.")
+        return
+    sheet.maj_post(pid, statut="Remplacé")
+    P.dire(e, "✏️ Voici la nouvelle version (l'ancienne est annulée) :")
+    apercu_telegram(e, post)
+    P.sauver(e)
+
+
+def _refaire(d, row, consigne, prevu):
+    from . import sheet
     post = None
     if d:
         r = contenu.modifier_contenu(d, consigne)
@@ -454,13 +495,7 @@ def commande_modifier():
         type_ = "actu" if row.get("type") == "Actu" else (
             "actu_carrousel" if d.get("fiche", {}).get("famille") == "Actu carrousel" else "carrousel")
         post = _creer(type_, prevu)
-    if not post:
-        P.dire(e, "Je n'ai pas réussi à refaire ce post. L'ancien reste prévu : supprime-le si tu n'en veux pas.")
-        return
-    sheet.maj_post(pid, statut="Remplacé")
-    P.dire(e, "✏️ Voici la nouvelle version (l'ancienne est annulée) :")
-    apercu_telegram(e, post)
-    P.sauver(e)
+    return post
 
 
 def commande_notifier():
