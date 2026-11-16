@@ -114,6 +114,26 @@
   "394": {
    "contact": "2026-11-16-3-622",
    "type": "apercu"
+  },
+  "477": {
+   "contact": "2026-11-17-1-590",
+   "type": "apercu"
+  },
+  "478": {
+   "contact": "2026-11-17-2-648",
+   "type": "apercu"
+  },
+  "479": {
+   "contact": "2026-11-17-3-553",
+   "type": "apercu"
+  },
+  "480": {
+   "contact": "2026-11-17-4-340",
+   "type": "apercu"
+  },
+  "481": {
+   "contact": "2026-11-17-5-270",
+   "type": "apercu"
   }
  },
  "jours_generes": [
@@ -122,7 +142,8 @@
   "2026-11-11",
   "2026-11-12",
   "2026-11-13",
-  "2026-11-16"
+  "2026-11-16",
+  "2026-11-17"
  ],
  "contacts": [
   {
@@ -480,6 +501,101 @@
    "jeton": "19d212bb52fe",
    "message_id": "<179483771811.2448.8520304141007119949@lemediafrancais.fr>",
    "envoye_le": "2026-11-16T15:02+01:00"
+  },
+  {
+   "id": "2026-11-17-1-590",
+   "organisation": "Château de Mercuès",
+   "type": "hôtel de caractère / château-hôtel",
+   "site": "https://www.chateaudemercues.com",
+   "idee": "Découvrir l'histoire des évêques de Cahors en séjournant dans ce château-hôtel du XIIIe siècle perché au-dessus du Lot.",
+   "famille": "tourisme",
+   "email": "reception@chateaudemercues.com",
+   "contexte_adresse": " refined ambiance, let yourself be seduced by the elegance of a timeless stay. Explore our gift sets Alcohol abuse is dangerous for your health. To consume with moderation. Follow us on Instagram @chateaudemercues @toquesandtruffes Route du Château, 46090 Mercuès - France | Tel: +33 5 65 20 00 01 | reception@chateaudemercues.com Château de Mercuès | Terms of Service | Privacy Policy en English Fra",
+   "contexte": "Château de Mercuès**** | OFFICIAL SITE | Best rate guarantee if you book directly on our website! gift BOOK YOUR STAY BACK TO OVERVIEW Stay Book your stay Overview Classic Room Superior Room Deluxe Room Prestige Room Signature Suite Wine Shop Wines Wine Tourism Our wines Vineyard Dine Book a table Overview La Table de Mercuès La Table du Chef Le Festin du Chateau The Chef Toques & Truffles Art de Vivre Gift Box The Experience Les Nocturnes du Château Wellness Seminars Weddings Gallery Things to do Map Access Contact Book your stay Overview Classic Room Deluxe Room Prestige Room Signature Suite Shop Wines Wine Tourism Our wines Vineyard Book a table Overview La Table de Mercuès La Table du Chef Le Festin du Chateau Le Goûter des Gourmets The Chef Toques & Truffles Gift Box The Experience Les Nocturnes du Château Wellness Seminars Weddings Gallery Things to do Map Access Contact Malbec Destination book your stay A place of hospitality, A sacred destination book your stay A place to dream and celebrate the senses book a table - le duéze The Temple of French Malbecs buy our wines Visits and tastings Art de vivre Malbec book your stay A journey in the heart of nature Book your stay A new season at the Chateau! Stay connected with the latest news and special offers! Thank you ! You have been added to our newsletter. Sign up The perfect place for Gastronomy & Wine Lovers La Table de Mercuès Book your room Unwind & Escape to the French Countryside Dive into the Lot Valley in an exceptional site Discover our semi-Olympic swimming pool for guaranteed refreshment! Latest News Weekends are best enjoyed at the Château de Mercuès Every Saturday and Sunday at noon, take some time for a gourmet escape at the Château de Mercuès. A three-course menu priced at 80 € invites you to discover gourmet cuisine inspired by the season, in the Château’s unique setting. Book a table Toques et Truffes Festival The must-attend event, Toques & Truffes, is back for another edition... An annual festival dedicated to the “diamond of Quercy”: the black truffle. An epicurean and gastronomic event not to be missed, running from Friday, January 15, through Sunday, February 28. Stay informed about the festival Gift Sets Treat your loved ones by giving them a gift set or gift certificate of your choice for the holiday season! Explore our gift sets VIEW ALL NEWS Wines of Château de Mercuès The Vigouroux family jewel since 1983, Château de Mercuès reveals the excellence of its terroir, celebrating \n\nChâteau de Mercuès**** | Four Star Hotel in Lot Valley | Press gift BOOK YOUR STAY BACK TO OVERVIEW Stay Book your stay Overview Classic Room Superior Room Deluxe Room Prestige Room Signature Suite Wine Shop Wines Wine Tourism Our wines Vineyard Dine Book a table Overview La Table de Mercuès La Table du Chef Le Festin du Chateau The Chef Toques & Truffles Art de Vivre Gift Box The Experience Les Nocturnes du Château Wellness Seminars Weddings Gallery Things to do Map Access Contact Book your s",
+   "cree_le": "2026-11-16T21:50+01:00",
+   "statut": "planifié",
+   "objet": "Le Château de Mercuès et les évêques de Cahors",
+   "corps": "Bonjour,\n\nVotre établissement du XIIIe siècle, ancien palais des évêques de Cahors perché au-dessus du Lot, offre un ancrage historique et oenologique unique avec le vignoble de Malbec.\n\nNous aimerions raconter cette histoire fascinante à travers un carrousel dédié : la transformation de cette demeure seigneuriale en haut lieu de la gastronomie et du vin. Cela permettrait de faire découvrir votre domaine à un public passionné de patrimoine et de susciter de nouvelles réservations pour votre séjour ou votre table.\n\nLe Média Français, c'est 210 000 abonnés sur Instagram et 2,4 millions de vues par mois. Nous avons par exemple touché 65 000 personnes lors d'une campagne d'attractivité pour la Région Normandie.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-17T09:46+01:00",
+   "repondre_a": "reception@chateaudemercues.com",
+   "jeton": "beb26e1c1d4e"
+  },
+  {
+   "id": "2026-11-17-2-648",
+   "organisation": "Les Collectionneurs (Maison des Têtes)",
+   "type": "hôtel de caractère / groupe hôtelier",
+   "site": "https://www.maisondestetes.com",
+   "idee": "Explorer l'architecture Renaissance alsacienne et l'art de vivre français au cœur de Colmar.",
+   "famille": "tourisme",
+   "email": "contact@maisondestetes.com",
+   "contexte_adresse": "de luxe 5 étoiles Alsace menu fermer Accueil Notre Maison Chambres Restaurants Restaurant Girardin Brasserie Historique Winstub Bartholdi Pâtisserie Séminaires et Événements Cartes et menus Photos Accès Colmar FAQ CGV Actualités Presse Recrutement Offres spéciales Contact Fr De En +33 3 89 24 43 43 contact@maisondestetes.com resa réserver & offrir fermer Réserver votre séjour Réserver votre séjour",
+   "contexte": "→ La Maison des Têtes Colmar | Hôtel de luxe 5 étoiles Alsace menu fermer Accueil Notre Maison Chambres Restaurants Restaurant Girardin Brasserie Historique Winstub Bartholdi Pâtisserie Séminaires et Événements Cartes et menus Photos Accès Colmar FAQ CGV Actualités Presse Recrutement Offres spéciales Contact Fr De En +33 3 89 24 43 43 contact@maisondestetes.com resa réserver & offrir fermer Réserver votre séjour Réserver votre séjour Date d'arrivée Date de départ Nuit(s) Adulte(s) Code promotionnel Options Voir les disponibilités Réserver votre table au restaurant Girardin gastronomique Réserver votre table à la Brasserie Historique Réserver votre table à la Winstub Bartholdi Coffrets cadeaux Offres spéciales Contactez-nous La boutique de notre Pâtisserie Nos Formules à Emporter découvrir Un hôtel 5 étoiles, un restaurant gastronomique et une brasserie à Colmar Au coeur de l'Alsace La Maison des Têtes incarne l’élégance simple des belles maisons qui conjuguent au fil des siècles l’art de recevoir. Elle fait vivre un patrimoine historique et culturel à travers un hôtel 5 étoiles, la Brasserie Historique et un restaurant gastronomique étoilé Michelin . Eric Girardin , le maître de maison, s’inspire du passé tout en étant résolument ancré dans le présent et fait vivre cet héritage au XXIe siècle. La Maison des Têtes est aujourd’hui l’alchimie réussie entre la force de la tradition alsacienne et la modernité. M & T comme modernité et tradition. Séjour cocooning en Alsace L’ Hôtel 5 étoiles La Maison des Têtes dispose de 21 chambres parfaitement équipées .. Chaleur et confort pour des séjours très cocooning . Le temps d’un week-end ou d’un séjour plus long, en couple ou en famille, toute l’équipe prend soin de vous. Découvrir les Chambres Réserver un séjour Confort Charme Caractère Duplex familial Notre restaurant gastronomique Le Restaurant Girardin se dévoile dans un écrin au blanc immaculé. Pureté et élégance suprêmes pour vivre un vrai moment de gastronomie, grâce au même Chef Eric Girardin . Découvrez une cuisine d’artisan artiste. Le Restaurant Girardin arbore une étoile Michelin . Découvrir le Restaurant Girardin Menus du Restaurant Girardin Réserver votre table Brasserie Historique Retrouvez-vous dans l’ atmosphère unique de la Brasserie Historique . Un subtil mélange de terroir alsacien et de modernité pour savourer une cuisine bistronomique . A vous de choisir entre les grands classiques, choucroute en tête, et les inspirations du Chef Eric Girardin. \n\nContact | La Maison des Têtes Colmar, Alsace menu fermer Accueil Notre Maison Chambres Restaurants Restaurant Girardin Brasserie Historique Winstub Bartholdi Pâtisserie Séminaires et Événements Cartes et menus Photos Accès Colmar FAQ CGV Actualités Presse Recrutement Offres spéciales Contact Fr De En +33 3 89 24 43 43 contact@maisondestetes.com resa réserver & offrir fermer Réserver votre séjour Réserver votre séjour Date d'arrivée Date de départ Nuit(s) Adulte(s) Code promotionnel Options Voi",
+   "cree_le": "2026-11-16T21:50+01:00",
+   "statut": "planifié",
+   "objet": "La Maison des Têtes et la tradition alsacienne sur Le Média Français ?",
+   "corps": "Bonjour,\n\nVotre établissement fait vivre un patrimoine d'exception au cœur de Colmar, à la croisée de la tradition alsacienne et de la haute gastronomie incarnée par le Chef Eric Girardin.\n\nNous aimerions valoriser l'architecture Renaissance de la Maison des Têtes et cet art de vivre français à travers un carrousel sponsorisé dédié, afin d'attirer une clientèle curieuse d'histoire et d'expériences d'exception.\n\nLe Média Français, c'est une communauté de 210 000 abonnés sur Instagram et 2,4 millions de vues par mois autour du patrimoine et des savoir-faire nationaux.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-17T10:50+01:00",
+   "repondre_a": "contact@maisondestetes.com",
+   "jeton": "70860f271053"
+  },
+  {
+   "id": "2026-11-17-3-553",
+   "organisation": "Aura Aero",
+   "type": "aéronautique / spatial",
+   "site": "https://aura-aero.com",
+   "idee": "Mettre en avant l'innovation aéronautique française à Toulouse dans la lignée des pionniers de l'Aéropostale.",
+   "famille": "industrie",
+   "email": "contact@aura-aero.com",
+   "contexte_adresse": "uvrez toutes les actualités Soutenus par Innovation funds Membres de Certifications Restons branchés Ne manquez rien de nos actualités ! Abonnez-vous à notre newsletter ! En vous abonnant, vous acceptez de recevoir nos prochaines actualités et vous acceptez notre politique de protection des données contact@aura-aero.com Politique de confidentialité Votre avion et vous Réservez votre essai INTEGRAL",
+   "contexte": "--> AURA AERO | Constructeur Aéronautique top of page Accueil Groupe Produits Civil INTEGRAL S INTEGRAL R INTEGRAL E ERA X-VOLT Distribution Contactez équipe commerciale Défense M BY AURA AERO INTEGRAL M ENBATA INTRUDER Contactez notre équipe Civil INTEGRAL S INTEGRAL R INTEGRAL E ERA X-VOLT Distribution Contactez équipe commerciale Défense M BY AURA AERO INTEGRAL M ENBATA INTRUDER Contactez notre équipe Citadel Talos Espace client Menu Fermer Accueil Groupe Produits Civil INTEGRAL S INTEGRAL R INTEGRAL E ERA X-VOLT Distribution Contactez équipe commerciale Défense M BY AURA AERO INTEGRAL M ENBATA INTRUDER Contactez notre équipe Civil INTEGRAL S INTEGRAL R INTEGRAL E ERA X-VOLT Distribution Contactez équipe commerciale Défense M BY AURA AERO INTEGRAL M ENBATA INTRUDER Contactez notre équipe Citadel Talos Espace client Menu Fermer Groupe Produits Citadel Talos Espace client Groupe Produits Citadel Talos Espace client GAMME CIVILE Découvrir INTEGRAL R Découvrir INTEGRAL S Découvrir INTEGRAL E Découvrir ERA GAMME DÉFENSE Découvrir INTEGRAL M Découvrir ENBATA Découvrir INTRUDER AURA AERO change de dimension ! Une nouvelle levée de fonds de 50 M€, des soutiens publics en France et en Europe, et l’accompagnement de l’État de Floride accélèrent encore notre ambition industrielle et internationale. En savoir plus > < Restons branchés Ne manquez rien de nos actualités ! Abonnez-vous à notre newsletter ! 10 novembre 2026 🤝 Bienvenue à bord Astral Aviation Sales ! INTEGRAL R • INTEGRAL S • INTEGRAL E • 2026 • Thermique / Thermal • Electrique / Electric • Produit / Product Lire l'article ​ 9 novembre 2026 Première participation au salon EURONAVAL ⚓️ 2026 • Entreprise / Corporate Lire l'article ​ 4 novembre 2026 Ouverture de nouveaux bureaux au cœur de la capitale pour AURA AERO 🇫🇷 2026 • Infrastructures / Facilities • Entreprise / Corporate Lire l'article ​ Journal de bord Découvrez toutes les actualités Soutenus par Innovation funds Membres de Certifications Restons branchés Ne manquez rien de nos actualités ! Abonnez-vous à notre newsletter ! En vous abonnant, vous acceptez de recevoir nos prochaines actualités et vous acceptez notre politique de protection des données contact@aura-aero.com Politique de confidentialité Votre avion et vous Réservez votre essai INTEGRAL R Contactez notre équipe commerciale Trouvez un distributeur Espace Client AURA AERO et vous Carrière Médias Contact Soutenu par Innovation fund Membre de Certifications bottom of page\n\nhttps://www.aura-aero.com/communiques-de-presse/aura-m-pr%C3%A9sente-enbata-%C3%A0-euronaval-ciblant-les-op%C3%A9rations-maritimes 2026-10-20 https://www.aura-aero.com/communiques-de-presse/x-volt-reprend-son-envol-%C3%A0-rochefort 2026-10-23 https://www.aura-aero.com/communiques-de-presse/%E2%80%9Cmode-avion%E2%80%9D-aura-aero-donne-la-parole-%C3%A0-celles-et-ceux-qui-font-l%E2%80%99aviation 2026-09-08 https://www.aura-aero.com/communiques-de-presse/safran-et-aura-aero-renforcent-leur-partenariat-strat%C3%A9g",
+   "cree_le": "2026-11-16T21:51+01:00",
+   "statut": "planifié",
+   "objet": "AURA AERO : de l'Aéropostale à l'avion électrique ?",
+   "corps": "Bonjour,\n\nDe Guillaumet et Saint-Exupéry à Toulouse jusqu'à vos modèles hybrides et électriques comme ERA ou INTEGRAL, l'innovation aéronautique française continue de s'écrire dans la ville rose. Nous aimerions retracer cette lignée dans un carrousel sponsorisé pour faire découvrir vos innovations à une audience passionnée d'histoire et de savoir-faire.\n\nLe Média Français, c'est un média indépendant suivi par 210 000 abonnés sur Instagram, touchant principalement un public jeune et actif (80 % de 18-34 ans).\n\nJe vous joins notre media kit pour vous présenter notre ligne éditoriale.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-17T11:55+01:00",
+   "repondre_a": "contact@aura-aero.com",
+   "jeton": "b6eb39bb1ff7"
+  },
+  {
+   "id": "2026-11-17-4-340",
+   "organisation": "Hemeria",
+   "type": "aéronautique / spatial",
+   "site": "https://www.hemeria-group.com",
+   "idee": "Présenter le savoir-faire spatial français à travers la conception de nanosatellites au service de la souveraineté nationale.",
+   "famille": "industrie",
+   "email": "communication@hemeria-group.com",
+   "contexte_adresse": ". La créativité, l’innovation et l’engagement sociétal sont les valeurs qu’HEMERIA partage avec les start-ups BLUE WATERINTELLIGENCE (BWI) , KINEIS et PROMETHEE que nous avons soutenu dans leur levée de fonds. Vous êtes porteur d’un projet innovant ? Vous cherchez un investisseur ? Contactez-nous : communication@hemeria-group.com Ils croient en nous nos partenaires Nicolas Multan Président Aymeric",
+   "contexte": "Accueil - Hemeria Spatial Nano et micro satellites SPECTRA-L40 SPRINT-L60 SPARTA-G70 Ballons stratosphériques Ballons stratosphériques ouverts Ballons stratosphériques pressurisés BalMan, ballon stratosphérique manœuvrant Équipements satellites Harnais Structures MLI Ballons zéro gravité Générateurs solaires Assemblage, Intégration et Tests (AIT) Structures équipées Conception de Systèmes Spatiaux Surveillance de l’Espace Données et services SSA LEO via technologies radars Veille lancements spatiaux et manœuvres en orbite Défense Systèmes de trajectographie Ecartomètre vidéo multi-cibles HYPERIA VT Tourelles multi-senseurs HYPERION Systèmes de surveillance par ballons captifs Jackdaw Eagle Owl Condor Drones dirigeables MCO de systèmes électroniques Solutions de conversion et de stockage d’énergie Convertisseurs d’énergie Variateurs de vitesse Sources d’énergie de secours Bancs de surveillance et de maintenance de systèmes batteries Systèmes sécuritaires Installation et maintenance de systèmes d’aide à la navigation Références Références « Spatial » Références « Défense » Compétences Expertises systèmes Technologies Aérostats Industrialisation d’équipements Simulation des modèles physiques, asservissements, automatique, fusion de données Simulation 3D Traitement vidéo Développement d’outillages et de bancs Développement de logiciels ergonomiques, de logiciels embarqués temps réel et de logiciels sécuritaires Développement d’équipements électroniques Carrières Médias À propos Contact fr fr en Spatial Acteur majeur et reconnu de l’industrie spatiale depuis plus de 50 ans, partenaire de longue date du CNES et des grands donneurs d’ordre, HEMERIA conçoit, produit et fournit des systèmes et véhicules spatiaux de pointe, pour des clients commerciaux, institutionnels et scientifiques, à l’échelle nationale, européenne et internationale. Accès à la rubrique Spatial Défense Partenaire de la DGA depuis de nombreuses années, HEMERIA est un acteur fiable et agile pour la modernisation de vos systèmes de Défense. Depuis plus de 20 ans, HEMERIA conçoit, fabrique et soutient des équipements opérationnels innovants pour les forces aériennes, terrestres, navales, interarmées, les forces de sécurité intérieure et les acteurs de la sécurité privée. Accès à la rubrique Défense Faire défiler pour en voir plus Nos dernières news Astroscale France et HEMERIA unissent leurs forces pour développer une capacité souveraine en orbite géostationnaire destinée aux marchés mondiaux. Un p\n\nBallons stratosphériques pressurisés - Hemeria Spatial Nano et micro satellites SPECTRA-L40 SPRINT-L60 SPARTA-G70 Ballons stratosphériques Ballons stratosphériques ouverts Ballons stratosphériques pressurisés BalMan, ballon stratosphérique manœuvrant Équipements satellites Harnais Structures MLI Ballons zéro gravité Générateurs solaires Assemblage, Intégration et Tests (AIT) Structures équipées Conception de Systèmes Spatiaux Surveillance de l’Espace Données et services SSA LEO via technologie",
+   "cree_le": "2026-11-16T21:52+01:00",
+   "statut": "planifié",
+   "objet": "HEMERIA et la souveraineté spatiale française",
+   "corps": "Bonjour,\n\nPartenaire du CNES depuis plus de 50 ans, HEMERIA conçoit aujourd'hui les nanosatellites et équipements qui garantissent la souveraineté spatiale française. \n\nL'idée serait de consacrer un carrousel sponsorisé à la conception de vos satellites pour mettre en lumière ce savoir-faire technologique critique auprès d'un public jeune et engagé.\n\nLe Média Français est un média indépendant dédié au patrimoine et à l'excellence industrielle française, suivi par 210 000 abonnés sur Instagram dont 80 % ont entre 18 et 34 ans.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-17T13:46+01:00",
+   "repondre_a": "communication@hemeria-group.com",
+   "jeton": "99c5af688ecf"
+  },
+  {
+   "id": "2026-11-17-5-270",
+   "organisation": "Moustache Bikes",
+   "type": "constructeur vélo",
+   "site": "https://moustachebikes.com",
+   "idee": "Raconter la renaissance de l'industrie du cycle dans les Vosges et le lien historique de la France avec la petite reine.",
+   "famille": "industrie",
+   "email": "contact@moustachebikes.com",
+   "contexte_adresse": "line. Moustache is a global company selling bikes in over 25 countries worldwide. Do you have an inquiry about distribution? Do you want to become a Moustache Bikes dealer? We would love to hear about it! See below who is your main contact. If your country is NOT listed, please reach out via email: contact@moustachebikes.com ;-{D Australia Distributor: Charge About AU Contact: Rebecca BUTLER sales",
+   "contexte": "Vélos électriques (VAE et VTTAE) pour tous les usages Moustache Bikes : Vivez l’expérience du vélo électrique NEWS Cap sur la Catalogne : l'aventure en gravel électrique Vélos URBAIN CARGO POLYVALENT SUV VTT GRAVEL ROUTE TANDEM ENFANTS Tous les vélos Fins de série URBAIN Voir tous les vélos Lundi 27 Mardi 27 Dimanche 28 Urban Lundi 27 Découvrir la gamme Design iconique et plaisir au quotidien : avec Lundi 27, la ville se vit autrement ! Confortable, pratique et facile à prendre en main, il transforme vos trajets domicile-travail, vos courses et vos rendez-vous en véritables moments de plaisir. Sa nouvelle motorisation Bosch Hub Line, invisible dans la roue arrière, offre une assistance immédiate et silencieuse. Simple à prendre en main, même pour une première expérience électrique, il libère des contraintes de la ville au quotidien. Lundi 27 Courroie Lundi 27 Chaîne Lundi 27 Edition Limitée Fermer le menu Mardi 27 Découvrir la gamme Avec Mardi 27, la ville se vit tout en confort ! Sa position de conduite naturelle et agréable, associée à sa fourche suspendue, vous accompagne tout en douceur dans vos déplacements. Trajets quotidiens, rendez-vous ou balades improvisées : pédalez sereinement et profitez de la ville. Mardi 27 ES Mardi 27.2 Mardi 27.4 Mardi 27.5 Mardi 27.2 FS Mardi 27.4 FS Mardi 27.5 FS Fermer le menu Dimanche 28 Urban Découvrir la gamme Pour celles et ceux qui aiment la ville avec un peu plus de dynamisme, Dimanche 28 Urban est le compagnon idéal. À l'aise dans les déplacements quotidiens comme lors des escapades plus longues, il associe plaisir de conduite, efficacité et polyvalence. Un vélo électrique qui invite à prolonger les trajets, à prendre de nouveaux chemins et à profiter de chaque occasion de rouler. Dimanche 28 Urban Fermer le menu CARGO Voir tous les vélos Lundi 20 Cargo Lundi 20 Cargo Découvrir la gamme Lundi 20 Cargo a été imaginé pour laisser définitivement la voiture au garage, même avec deux enfants, des courses à faire, des rendez-vous, des expos ou des apéros à enchaîner ;-{D. Il a été conçu pour simplifier vos déplacements et vous simplifier la vie. Compact et maniable grâce à ses petites roues de 20\", il est également aussi stable que généreux au niveau de sa capacité de chargement. Avec son porte-bagages rallongé et ses nombreux accessoires, il peut embarquer en toute sécurité enfants, courses ou matériel. Lundi 20 Cargo 3 Lundi 20 Cargo 5 Fermer le menu POLYVALENT Voir tous les vélos Xroad Samedi 28 Xroad Découvrir la g\n\nNous contacter - Moustache Bikes NEWS Cap sur la Catalogne : l'aventure en gravel électrique Vélos URBAIN CARGO POLYVALENT SUV VTT GRAVEL ROUTE TANDEM ENFANTS Tous les vélos Fins de série URBAIN Voir tous les vélos Lundi 27 Mardi 27 Dimanche 28 Urban Lundi 27 Découvrir la gamme Design iconique et plaisir au quotidien : avec Lundi 27, la ville se vit autrement ! Confortable, pratique et facile à prendre en main, il transforme vos trajets domicile-travail, vos courses et vos rendez-vous en vérit",
+   "cree_le": "2026-11-16T21:52+01:00",
+   "statut": "planifié",
+   "objet": "Moustache Bikes : la renaissance du cycle dans les Vosges ?",
+   "corps": "Bonjour,\n\nInstaller la fabrication de vélos électriques au cœur des Vosges est un pari qui résonne directement avec l'histoire industrielle et le patrimoine vélocipédique français. \n\nNous aimerions consacrer un carrousel à la renaissance de l'industrie du cycle en France, en mettant en avant Moustache Bikes comme symbole de ce renouveau. Cela permettrait de faire découvrir vos modèles, comme le Lundi 27 ou le Lundi 20 Cargo, à une audience urbaine et active.\n\nLe Média Français, c'est un média indépendant sur l'histoire et les savoir-faire qui rassemble 210 000 abonnés sur Instagram avec 2,4 millions de vues mensuelles.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter quelques minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-17T14:51+01:00",
+   "repondre_a": "contact@moustachebikes.com",
+   "jeton": "ea97540bbf8d"
   }
  ],
  "mails_traites": [
