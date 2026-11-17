@@ -19,6 +19,7 @@ import random
 import re
 import sys
 import traceback
+import uuid
 import zoneinfo
 
 from . import config as C
@@ -51,7 +52,9 @@ def _prevu():
 
 def _id(type_):
     base = (CONTEXTE["prevu"] or _maintenant()).strftime("%Y%m%d-%H%M")
-    return f"{base}-{'c' if type_ == 'carrousel' else 'a'}{random.randint(10, 99)}"
+    # Identifiant unique : jamais deux lignes avec le même id dans le Sheet (sinon un post modifié
+    # pouvait être republié en boucle, car le Sheet marquait « Publié » l'ancienne ligne au lieu de la nouvelle).
+    return f"{base}-{'c' if type_ == 'carrousel' else 'a'}{uuid.uuid4().hex[:8]}"
 
 
 def _dossier(post_id):
@@ -80,7 +83,7 @@ def _legende(base, hashtags, credits):
 
 
 # ---------------------------------------------------------------------------
-def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_ligne=False, c=None):
+def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_ligne=False, c=None, photos_avant=None):
     post_id = _id("carrousel")
     c = c or contenu.rediger_carrousel(fiche)
     c = contenu.controler_carrousel(c)
@@ -105,12 +108,30 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     ok, rapport = contenu.verifier(textes, contexte)
 
     requetes = [c["couverture"].get("image", fiche["sujet"])] + [s.get("image", fiche["sujet"]) for s in c["slides"]]
-    cands = [[] for _ in requetes] if sans_reseau else [images.candidats(q) for q in requetes]
-    choix = contenu.choisir_images(requetes, cands, fiche["sujet"]) if not sans_reseau else [None] * len(requetes)
+    # Modification : on garde la même photo pour chaque slide dont la requête d'image n'a pas changé
+    # (avant, toutes les photos étaient recherchées à nouveau et pouvaient changer, ex. un chien en slide 2).
+    gardees = [None] * len(requetes)
+    for i, av in enumerate(photos_avant or []):
+        if i < len(requetes) and av and av.get("requete") == requetes[i]:
+            gardees[i] = av
+    a_chercher = [i for i in range(len(requetes)) if not gardees[i]]
+    cands = [[] for _ in requetes]
+    choix = [None] * len(requetes)
+    if not sans_reseau and a_chercher:
+        for i in a_chercher:
+            cands[i] = images.candidats(requetes[i])
+        sous = contenu.choisir_images([requetes[i] for i in a_chercher], [cands[i] for i in a_chercher], fiche["sujet"])
+        for i, ch in zip(a_chercher, sous):
+            choix[i] = ch
+    for i, av in enumerate(gardees):
+        if av:
+            choix[i] = {"url": av["url"], "credit": av.get("credit", "")}
 
     # Une image différente et nette par slide : jamais deux fois la même photo dans un carrousel.
     deja, photos, credits = set(), [], []
     reserve = [x for liste in cands for x in liste]  # toutes les images trouvées, en secours
+
+    utilisees = []
 
     def _essayer(candidat):
         if not candidat or candidat["url"] in deja:
@@ -123,11 +144,15 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
         if min(im.size) < 700:  # trop petite : elle serait floue en 1080 × 1350
             return None
         credits.append(candidat["credit"])
+        utilisees[-1] = candidat
         return im
 
     manquantes = []
     for i, ch in enumerate(choix):
+        utilisees.append(None)
         img = _essayer(ch)
+        if not img and gardees[i] and not sans_reseau:  # l'ancienne photo n'est plus dispo : on en cherche une
+            cands[i] = images.candidats(requetes[i])
         for autre in (cands[i] if not img else []):
             img = img or _essayer(autre)
         for autre in (reserve if not img else []):
@@ -135,6 +160,8 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
         if not img:
             manquantes.append(i)
         photos.append(img or images.fond_uni())
+    donnees["photos"] = [{"requete": requetes[i], "url": u["url"], "credit": u.get("credit", "")} if u else None
+                         for i, u in enumerate(utilisees)]
     if not sans_reseau and (0 in manquantes or len(manquantes) > 1):
         raise SansImage(f"{len(manquantes)} slide(s) sans photo, dont la couverture" if 0 in manquantes
                         else f"{len(manquantes)} slides sans photo")
@@ -144,9 +171,9 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     if c["couverture"].get("portrait") and choix and choix[0]:
         photos[0] = photos[0].convert("L").convert("RGB")  # portrait d'archive en noir et blanc
     slides = [render.slide_couverture(photos[0], c["couverture"]["texte"], c["couverture"].get("rouges"),
-                                      etiquette=fiche.get("etiquette"))]
+                                      etiquette=fiche.get("etiquette"), echelle=c["couverture"].get("taille", 1))]
     for photo, s in zip(photos[1:], c["slides"]):
-        slides.append(render.slide_texte(photo, s["texte"], s.get("rouges")))
+        slides.append(render.slide_texte(photo, s["texte"], s.get("rouges"), echelle=s.get("taille", 1)))
     q = c.get("question_finale") or {"texte": "Et toi, tu le savais ?", "rouges": ["savais"]}
     slides.append(render.slide_finale(q["texte"], q.get("rouges")))
     for i, img in enumerate(slides, 1):
@@ -484,7 +511,7 @@ def _refaire(d, row, consigne, prevu):
         if not r.get("nouveau_sujet") and r.get("contenu"):
             if d["genre"] == "carrousel":
                 fiche = d.get("fiche", {})
-                post = creer_carrousel(fiche, c=r["contenu"])
+                post = creer_carrousel(fiche, c=r["contenu"], photos_avant=d.get("photos"))
                 if str(fiche.get("etiquette", "")).startswith("LES FRANÇAIS CACHÉS #"):
                     n = int(fiche["etiquette"].split("#")[-1])
                     post["legende"] = post["legende"].replace("👉 Abonne-toi", f"👉 Épisode {n + 1} demain soir. Abonne-toi", 1)
@@ -512,7 +539,17 @@ def commande_notifier():
 
 def commande_publier():
     from . import instagram, sheet
+    faits = set()
     for p in sheet.posts_a_publier():
+        # Garde-fou anti-doublon : si cette légende est déjà en ligne sur Instagram (ou vient d'être publiée
+        # dans ce passage), on ne republie JAMAIS, on marque juste la ligne « Publié ».
+        cle = instagram.cle_legende(p["legende"])
+        deja = "déjà publié dans ce passage" if cle in faits else instagram.deja_publie(p["legende"])
+        if deja:
+            sheet.maj_post(p["id"], statut="Publié", lien_instagram=deja if deja.startswith("http") else "", erreur="")
+            print(f"Déjà sur Instagram, pas de republication : {p['id']}")
+            continue
+        faits.add(cle)
         sheet.maj_post(p["id"], statut="Publication en cours")
         try:
             if p["type"] == "Carrousel":
