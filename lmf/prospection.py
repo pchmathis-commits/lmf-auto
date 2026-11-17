@@ -47,6 +47,11 @@ MOYENNES = ["contact", "info", "infos", "bonjour", "hello", "accueil", "informat
 INTERDITES = ["rgpd", "dpo", "privacy", "donnees", "cnil", "recrut", "job", "emploi", "candidat", "rh", "sav",
               "noreply", "no-reply", "nepasrepondre", "webmaster", "factur", "compta", "commande", "support",
               "abuse", "postmaster", "billing", "invoice", "service-client", "serviceclient", "reservation"]
+# Boîtes lues par un accueil ou un service sans lien avec la com : en tout dernier recours seulement.
+FAIBLES = ["reception", "accueil", "boutique", "shop", "store", "booking", "resa", "sejour", "sejours", "groupe",
+           "billetterie", "ticket", "visite", "visites", "hotel", "restaurant", "vente", "ventes", "sales", "order"]
+# Jamais : boîtes techniques (ex. bug@visit.alsace, qui a reçu un de nos mails).
+TECHNIQUES = ["bug", "dev", "tech", "it", "informatique", "helpdesk", "hotline", "admin", "web", "site", "test"]
 MOTS_PAGES = ["contact", "presse", "press", "media", "partenari", "partner", "mentions", "legal",
               "qui-sommes", "about", "a-propos", "apropos", "equipe", "communication"]
 CHEMINS = ["contact", "nous-contacter", "contactez-nous", "contact-us", "presse", "espace-presse", "press",
@@ -348,8 +353,10 @@ def envoyer_reponse(c, corps):
     objet = c.get("objet_reponse") or c["objet"]
     if not objet.lower().startswith("re"):
         objet = "Re: " + objet
-    mid = envoyer(c["repondre_a"], objet, corps, en_reponse_a=c.get("reponse_id"),
+    kit = not c.get("kit_envoye")
+    mid = envoyer(c["repondre_a"], objet, corps, piece_jointe=kit, en_reponse_a=c.get("reponse_id"),
                   references=c.get("message_id"))
+    c["kit_envoye"] = True
     c.setdefault("echanges", []).append({"le": iso(maintenant()), "sens": "envoyé", "id": mid})
 
 
@@ -706,16 +713,28 @@ def _texte_page(html_brut):
     return re.sub(r"\s+", " ", html.unescape(t)).strip()
 
 
+def _nominative(adresse):
+    """prenom.nom@, p.nom@, prenom-nom@ : une vraie personne."""
+    brut = adresse.split("@")[0].lower()
+    return bool(re.fullmatch(r"[a-zà-ÿ]{1,20}[._-][a-zà-ÿ]{2,25}", brut)) and not any(
+        x in brut.replace(".", "").replace("-", "").replace("_", "") for x in BONNES + MOYENNES + FAIBLES)
+
+
 def _note(adresse):
-    local = adresse.split("@")[0].replace(".", "").replace("-", "").replace("_", "")
-    if any(x in local for x in INTERDITES):
+    """5 = personne de la com (voir trouver_adresse), 4 = personne nommée, 3 = com/presse/marketing,
+    2 = contact@/info@, 1 = autre, 0 = accueil/boutique/réservation, -1 = jamais."""
+    brut = adresse.split("@")[0].lower()
+    local = brut.replace(".", "").replace("-", "").replace("_", "")
+    if any(x in local for x in INTERDITES) or any(re.match(rf"{x}(\b|[._-]|\d|$)", brut) for x in TECHNIQUES):
         return -1
     if any(local.startswith(x) or x in local for x in BONNES if len(x) > 3) or local in ("rp", "com"):
         return 3
+    if _nominative(adresse):
+        return 4
+    if any(local.startswith(x) for x in FAIBLES):
+        return 0
     if any(x in local for x in MOYENNES):
         return 2
-    if re.fullmatch(r"[a-z]+[a-z]+", local) and "." in adresse.split("@")[0]:
-        return 1  # prenom.nom@ publié sur le site
     return 1
 
 
@@ -784,32 +803,43 @@ def trouver_adresse(cible):
         ctx = (adresses.get(a) or "").lower()
         local = a.split("@")[0]
         # une personne nommée, responsable com / marketing / presse / partenariats : c'est elle qu'on veut joindre
-        if n >= 0 and "." in local and re.search(r"communication|marketing|presse|press|partenariat|relations|"
-                                                  r"influence|brand|digital|réseaux sociaux|social media", ctx):
+        if n >= 0 and _nominative(a) and re.search(r"communication|marketing|presse|press|partenariat|relations|"
+                                                   r"influence|brand|digital|réseaux sociaux|social media", ctx):
             return 5
+        if n == 4 and re.search(r"comptab|factur|recrut|ressources humaines|\brh\b|juridique|achat|logistique|sav", ctx):
+            return 1  # une personne, mais pas du bon service
         return n
     notees = sorted(((note(a), a) for a in adresses), reverse=True)
     notees = [(n, a) for n, a in notees if n >= 0 and _mx_ok(domaine_mail(a))]
-    if notees:
+    # Bonne adresse sur le site (une personne, ou com/presse/marketing) : on la prend.
+    if notees and notees[0][0] >= 3:
         a = notees[0][1]
         return a, adresses[a], texte
+    # Sinon (seulement contact@, accueil@…), on cherche d'abord la personne de la com ; contact@ reste en secours.
+    secours = (notees[0][1], adresses[notees[0][1]], texte) if notees else None
     # Dernier essai : recherche Google via Gemini, acceptée seulement si l'adresse est sur le domaine officiel
     if RECHERCHE["hs"]:
-        return None, "", texte
+        return secours if secours and notees[0][0] >= 2 else (None, "", texte)
     try:
         base = domaine_base(urlparse(cible["site"]).netloc)
-        r = gemini.json_(f"""Trouve l'adresse e-mail publique du service presse, communication, marketing ou
-partenariats de « {cible['organisation']} » (site officiel : {cible['site']}).
-Uniquement une adresse publiée par l'organisation elle-même. Si tu n'es pas certain, mets null.
+        r = gemini.json_(f"""Trouve l'adresse e-mail publique de la personne ou du service chargé de la communication,
+du marketing, de la presse ou des partenariats de « {cible['organisation']} » (site officiel : {cible['site']}).
+Idéalement une adresse nominative (prenom.nom@) d'un ou une responsable communication / marketing, publiée par
+l'organisation (site, communiqué de presse, espace presse). Pas de contact@ ni info@. Si tu n'es pas certain, mets null.
 Réponds en JSON : {{"email": "... ou null", "nom": "nom de la personne si l'adresse est nominative, sinon null"}}""",
                          temperature=0.1, recherche=True, rapide=True)
         a = (r.get("email") or "").lower().strip()
-        if a and domaine_base(domaine_mail(a)) == base and _note(a) >= 0 and _mx_ok(domaine_mail(a)):
+        meilleure = notees[0][0] if notees else -1
+        if (a and domaine_base(domaine_mail(a)) == base and _note(a) > max(meilleure, 0)
+                and _mx_ok(domaine_mail(a))):
             return a, f"Contact : {r.get('nom') or ''} {a}", texte
     except Exception as ex:
         print(f"Recherche d'adresse ratée pour {cible['organisation']} : {ex}")
         if isinstance(ex, gemini.ErreurGemini):
             RECHERCHE["hs"] = True
+    # contact@ / info@ acceptés en secours ; accueil@, boutique@, réservation@ : on passe à une autre cible
+    if secours and notees[0][0] >= 2:
+        return secours
     return None, "", texte
 
 
@@ -823,42 +853,44 @@ très connus et certains."""
 
 
 def rediger(c, contexte, consigne=""):
-    prompt = f"""Écris un premier mail de prospection de la part de Mathis Pouchol, fondateur du « Média Français »
-(@lemediafrancais), média Instagram sur l'histoire, le patrimoine et les savoir-faire français.
+    prompt = f"""Écris un premier mail de prospection de Mathis Pouchol pour « Le Média Français » (@lemediafrancais),
+média Instagram sur l'histoire, le patrimoine et les savoir-faire français. Il doit ressembler à un mail qu'un
+humain tape en 3 minutes, pas à un texte d'IA ni à un mail marketing.
 
 Destinataire : {c['organisation']} ({c['type']}), adresse {c['email']}.
 Contexte autour de l'adresse sur leur site : {c.get('contexte_adresse', '')[:400]}
 Idée de départ : {c.get('idee', '')}
-{"Point de contact : nous avons repéré leur marque parmi les exposants du MIF Expo 2026 (le salon du Made in France, Porte de Versailles, 12-15 novembre). Mentionne-le simplement en ouverture, sans dire qu'on les a rencontrés sur place. Proposition adaptée : un carrousel sponsorisé qui raconte leur fabrication en France et l'histoire de leur savoir-faire." if c.get("famille") == "mif" else ""}
-Texte de leur site (pour personnaliser) :
+{"Ils exposaient au MIF Expo 2026 (salon du Made in France, Porte de Versailles, 12-15 novembre) : tu peux dire qu'on a vu leur marque dans la liste des exposants, sans prétendre les avoir rencontrés." if c.get("famille") == "mif" else ""}
+Texte de leur site :
 \"\"\"{contexte[:5000]}\"\"\"
 
-Nos chiffres (n'utilise que ceux-là, 2 ou 3 maximum, les plus parlants pour eux) :
+Nos chiffres (n'utilise QUE ceux-là, 1 ou 2 au total) :
 {C.CHIFFRES}
 
-Contenu du mail (le mail parle d'EUX et de ce qu'ils y gagnent, pas de Mathis) :
-1. Salutation : « Bonjour Madame Nom, » ou « Bonjour Monsieur Nom, » UNIQUEMENT si le contexte nomme clairement
-   la personne derrière cette adresse ; sinon « Bonjour, ».
-2. Une phrase d'accroche sur EUX, factuelle et précise (un lieu, un produit, un pan de leur histoire tiré de leur site),
-   sans compliment appuyé.
-3. L'idée concrète tout de suite : l'histoire précise qu'on raconterait sur eux dans un carrousel, et ce que ça leur
-   apporte (faire découvrir X à un public jeune, attirer des visiteurs, etc.).
-   Marque ou entreprise : carrousel sponsorisé. Tourisme, site, territoire : collaboration, tournage sur place ou
-   campagne d'attractivité (référence possible : la campagne faite avec la Région Normandie).
-4. Le média en UNE phrase, présenté comme un média et non comme une personne : « Le Média Français, c'est … » avec
-   2 chiffres maximum choisis pour eux. INTERDIT : « Je suis Mathis », « je m'appelle », « fondateur de ».
-5. « Je vous joins notre media kit. » Aucun prix.
-6. Une question de fin simple et légère (« Est-ce que ça vous parlerait d'en discuter 10 minutes ? »).
-7. Termine par « Bien cordialement, » (la signature est ajoutée ensuite, ne l'écris pas).
-Ton : sobre, direct, d'égal à égal, comme un mail qu'un humain écrit en 5 minutes. Pas de « captivant »,
-« passionnant », « à merveille », « exceptionnel », « incarne ». Utilise « nous » pour le média, « je » au plus une fois.
-Longueur : 80 à 130 mots. Objet : moins de 60 caractères, concret, qui donne envie d'ouvrir, avec leur nom ou le sujet
-(ex. « Arcachon, la Ville d'Hiver de Napoléon III en carrousel ? »).
+Structure, 50 à 90 mots en tout :
+1. « Bonjour Madame Nom, » / « Bonjour Monsieur Nom, » UNIQUEMENT si le contexte nomme la personne derrière cette
+   adresse, sinon « Bonjour, ».
+2. Tout de suite l'idée, en une ou deux phrases : le sujet PRÉCIS du carrousel qu'on ferait sur eux (un fait, un
+   produit, une date, un lieu tiré de leur site), et ce que ça leur apporte. Marque : carrousel sponsorisé.
+   Tourisme ou territoire : collaboration ou campagne d'attractivité (comme celle faite pour la Région Normandie).
+   PAS de phrase de compliment ou de description d'eux avant l'idée.
+3. Une seule phrase sur le média, avec 1 ou 2 chiffres (la campagne Normandie est la meilleure preuve).
+4. Proposer d'envoyer le media kit s'ils sont intéressés (il n'est PAS joint), puis une question courte et
+   naturelle, formulée à ta façon (pas toujours la même).
+5. « Bien cordialement, » (pas de signature, elle est ajoutée ensuite).
+
+Interdits (ça sent l'IA) : « unique », « fascinant(e) », « exceptionnel », « d'exception », « ancrage »,
+« mettre en lumière », « mettre en valeur », « valoriser », « à travers », « au cœur de », « haut lieu »,
+« riche histoire », « savoir-faire unique », « incarne », « passionnés », « communauté engagée », « Je suis Mathis »,
+« fondateur », les tirets cadratins, les deux-points en milieu de phrase, les énumérations de trois adjectifs.
+Écris simplement, au présent, avec « je » ou « nous » comme le ferait un humain.
+Objet : moins de 50 caractères, simple, comme un humain l'écrirait, sans « x Le Média Français » ni point
+d'interrogation systématique (ex. « Le cousu norvégien de Paraboot », « Un carrousel sur la Ville d'Hiver »).
 {REGLES_STYLE}
 {('Consigne de Mathis pour cette version : ' + consigne) if consigne else ''}
 
 Réponds en JSON : {{"objet": "...", "corps": "...", "nom_contact": "Madame/Monsieur Nom ou null"}}"""
-    m = gemini.json_(prompt, temperature=0.7)
+    m = gemini.json_(prompt, temperature=0.8)
     m["corps"] = _avec_signature(m["corps"])
     return m
 
@@ -890,6 +922,7 @@ Ils viennent de répondre :
 
 Informations utiles (media kit) :
 {C.CHIFFRES}
+Le media kit (PDF) sera joint automatiquement à cette réponse{" (déjà envoyé avant : ne le mentionne pas)" if c.get("kit_envoye") else " : écris simplement « Je vous joins notre media kit. » si c'est utile"}.
 Process : brief → proposition de sujet et des textes, validés avant publication → publication avec story et
 diffusion TikTok → bilan complet (vues, comptes touchés, engagement). Réponse sous 24 h.
 
@@ -1012,7 +1045,9 @@ def envoyer_les_mails_dus(e):
     for c in e["contacts"]:
         if c["statut"] == "planifié" and lire_date(c["prevu_le"]) <= maintenant():
             try:
-                c["message_id"] = envoyer(c["email"], c["objet"], c["corps"], piece_jointe=True)
+                # pas de PDF au premier mail (une pièce jointe d'un inconnu fait monter le score de spam) :
+                # le media kit part avec notre première réponse quand ils répondent
+                c["message_id"] = envoyer(c["email"], c["objet"], c["corps"], piece_jointe=False)
                 c["statut"] = "envoyé"
                 c["envoye_le"] = iso(maintenant())
                 c.pop("contexte", None)
