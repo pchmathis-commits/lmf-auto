@@ -1,4 +1,6 @@
 """Publication Instagram via l'API officielle (connexion « Instagram Login »)."""
+import datetime as dt
+import re
 import time
 
 import requests
@@ -88,6 +90,29 @@ def publier_image(url, legende):
     jeton = _jeton()
     conteneur = _creer({"image_url": url, "caption": legende, "access_token": jeton})
     return _publier_conteneur(conteneur, jeton)
+
+
+def cle_legende(legende):
+    return re.sub(r"\W+", " ", (legende or "").lower()).strip()[:160]
+
+
+def deja_publie(legende, heures=48):
+    """Renvoie le lien du post si une légende identique est déjà en ligne depuis moins de 48 h, sinon None."""
+    cle = cle_legende(legende)
+    if not cle:
+        return None
+    try:
+        jeton = _jeton()
+        r = requests.get(f"{BASE}/{C.IG_USER_ID}/media", timeout=60, params={
+            "fields": "caption,timestamp,permalink", "limit": 25, "access_token": jeton})
+        limite = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=heures)
+        for m in _verifier(r).get("data", []):
+            quand = dt.datetime.strptime(m["timestamp"], "%Y-%m-%dT%H:%M:%S%z")
+            if quand >= limite and cle_legende(m.get("caption")) == cle:
+                return m.get("permalink") or "déjà publié"
+    except Exception as ex:
+        print(f"Vérification anti-doublon impossible ({ex}) : on continue.")
+    return None
 
 
 def tester():
