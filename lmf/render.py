@@ -159,20 +159,28 @@ def _etiquette(img, texte):
     d.text((C.MARGE_GAUCHE + 18, 79), texte, font=f, fill=C.BLANC)
 
 
-def slide_couverture(photo, texte, mots_rouges, etiquette=None):
+def _taille(base, echelle):
+    try:
+        e = float(echelle or 1)
+    except (TypeError, ValueError):
+        e = 1
+    return int(base * min(1.5, max(0.7, e)))  # « plus gros » / « plus petit » demandé en modification
+
+
+def slide_couverture(photo, texte, mots_rouges, etiquette=None, echelle=1):
     img = _assombrir_bas(recadrer(photo))
     if etiquette:
         _etiquette(img, etiquette)
     dessiner_bandeaux(img, texte, mots_rouges, C.BLANC, C.BLEU_MARINE,
-                      C.TAILLE_TEXTE_COUVERTURE, C.MARGE_GAUCHE, C.HAUTEUR - 190, C.LARGEUR_TEXTE_MAX)
+                      _taille(C.TAILLE_TEXTE_COUVERTURE, echelle), C.MARGE_GAUCHE, C.HAUTEUR - 190, C.LARGEUR_TEXTE_MAX)
     _decor(img)
     return img
 
 
-def slide_texte(photo, texte, mots_rouges):
+def slide_texte(photo, texte, mots_rouges, echelle=1):
     img = _assombrir_bas(recadrer(photo))
     dessiner_bandeaux(img, texte, mots_rouges, C.BLEU_MARINE, C.BLANC,
-                      C.TAILLE_TEXTE_SLIDE, C.MARGE_GAUCHE, C.HAUTEUR - 190, C.LARGEUR_TEXTE_MAX)
+                      _taille(C.TAILLE_TEXTE_SLIDE, echelle), C.MARGE_GAUCHE, C.HAUTEUR - 190, C.LARGEUR_TEXTE_MAX)
     _decor(img)
     return img
 
