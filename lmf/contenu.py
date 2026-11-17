@@ -561,6 +561,13 @@ Mathis n'est pas satisfait. Sa consigne : « {consigne} »
   tout ce que la consigne ne concerne pas. Mêmes règles : couverture de 6 à 12 mots, {C.MOTS_MAX_PAR_SLIDE} mots
   maximum par slide, mots en rouge copiés exactement du texte, requêtes d'image Wikimedia concrètes et différentes
   (si la consigne parle d'une image, change la requête d'image concernée). N'invente aucun fait.
+- NUMÉROTATION DES SLIDES (très important) : « slide 1 » = la COUVERTURE (champ "couverture"),
+  « slide 2 » = slides[0], « slide 3 » = slides[1], etc. La « première slide » = la couverture.
+- Ne change JAMAIS la requête d'image ("image") d'une slide si la consigne ne parle pas de SA photo :
+  recopie-la à l'identique, caractère pour caractère (sinon la photo change alors que Mathis ne l'a pas demandé).
+- Taille du texte : si la consigne demande un texte plus gros ou plus petit, ajoute ou ajuste le champ "taille"
+  sur l'élément concerné uniquement (1.25 = plus gros, 1.4 = beaucoup plus gros, 0.85 = plus petit ; entre 0.7
+  et 1.5), sans toucher à son texte ni à son image.
 
 Réponds uniquement en JSON : {{"nouveau_sujet": false, "contenu": {{...}}}}"""
     r = gemini.json_(prompt, temperature=0.5)
