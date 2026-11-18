@@ -134,6 +134,14 @@
   "481": {
    "contact": "2026-11-17-5-270",
    "type": "apercu"
+  },
+  "531": {
+   "contact": "m66842",
+   "type": "mail"
+  },
+  "532": {
+   "contact": "m68423",
+   "type": "mail"
   }
  },
  "jours_generes": [
@@ -622,13 +630,17 @@
   "<800293499.43757.1794470695601@mib-daemon-engine-large-6868f88bbb-8hfqn>",
   "<CAL1RtXmoOfqTp57dkCJNpSKByeSZLZkSSjrBf-b6MkMKAYp2Wg@mail.gmail.com>",
   "<E5F7EEBA-7A7F-4574-BE51-525B76071B6E@gmail.com>",
-  "<5f609339f7274edd8aed3de236f5794f@PR1P264MB2047.FRAP264.PROD.OUTLOOK.COM>"
+  "<5f609339f7274edd8aed3de236f5794f@PR1P264MB2047.FRAP264.PROD.OUTLOOK.COM>",
+  "<CAFYZk5=-1Tqvb+EV8s6sAO2MAwaM9vCKjz-=Vj=mv34OHj=0KQ@mail.gmail.com>",
+  "<MRYP264MB6367BE692BEE2D35FF119C44EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>"
  ],
  "mails_divers": {
   "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
   "m90052": "<800293499.43757.1794470695601@mib-daemon-engine-large-6868f88bbb-8hfqn>",
   "m89205": "<CAL1RtXmoOfqTp57dkCJNpSKByeSZLZkSSjrBf-b6MkMKAYp2Wg@mail.gmail.com>",
-  "m84184": "<E5F7EEBA-7A7F-4574-BE51-525B76071B6E@gmail.com>"
+  "m84184": "<E5F7EEBA-7A7F-4574-BE51-525B76071B6E@gmail.com>",
+  "m66842": "<CAFYZk5=-1Tqvb+EV8s6sAO2MAwaM9vCKjz-=Vj=mv34OHj=0KQ@mail.gmail.com>",
+  "m68423": "<MRYP264MB6367BE692BEE2D35FF119C44EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>"
  },
  "brouillons": {},
  "mails_depuis": "2026-11-09T14:01+01:00"
