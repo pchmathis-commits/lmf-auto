@@ -853,44 +853,54 @@ très connus et certains."""
 
 
 def rediger(c, contexte, consigne=""):
-    prompt = f"""Écris un premier mail de prospection de Mathis Pouchol pour « Le Média Français » (@lemediafrancais),
-média Instagram sur l'histoire, le patrimoine et les savoir-faire français. Il doit ressembler à un mail qu'un
-humain tape en 3 minutes, pas à un texte d'IA ni à un mail marketing.
+    """Mail de collaboration « à l'ancienne » : Mathis se présente, le média, l'audience, la proposition, un appel."""
+    t = (c.get("type", "") + " " + c.get("famille", "")).lower()
+    if any(x in t for x in ("mairie", "ville", "région", "region", "département", "departement", "ministère",
+                            "ministere", "institution", "musée", "musee", "élysée", "elysee")):
+        offre = ("une collaboration éditoriale : interview filmée d'un ou une responsable, reportage sur place ou "
+                 "présence à l'un de leurs événements, avec publications et stories sur nos trois réseaux")
+    elif any(x in t for x in ("tourisme", "office", "hôtel", "hotel", "château", "chateau", "site", "parc",
+                              "destination", "station", "festival", "événement", "evenement")):
+        offre = ("un partenariat : venir sur place (séjour, visite ou événement) et réaliser des publications et des "
+                 "stories dédiées, relayées sur nos trois réseaux, pour faire découvrir la destination à notre public")
+    else:
+        offre = ("un partenariat de marque : des publications et des stories dédiées, relayées sur nos trois réseaux, "
+                 "avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble")
+    prompt = f"""Écris un premier mail de demande de collaboration, à l'ancienne, clair et poli, de la part de
+Mathis Pouchol, fondateur du « Le Média Français » (@lemediafrancais), média sur la France, son histoire et son
+actualité. Le destinataire ne connaît pas le média : on se présente, on dit qui nous suit, on propose une
+collaboration classique et on demande un appel. Aucune idée de carrousel, aucune anecdote historique.
 
-Destinataire : {c['organisation']} ({c['type']}), adresse {c['email']}.
+Destinataire : {c['organisation']} ({c.get('type', '')}), adresse {c['email']}.
 Contexte autour de l'adresse sur leur site : {c.get('contexte_adresse', '')[:400]}
-Idée de départ : {c.get('idee', '')}
-{"Ils exposaient au MIF Expo 2026 (salon du Made in France, Porte de Versailles, 12-15 novembre) : tu peux dire qu'on a vu leur marque dans la liste des exposants, sans prétendre les avoir rencontrés." if c.get("famille") == "mif" else ""}
-Texte de leur site :
-\"\"\"{contexte[:5000]}\"\"\"
+Texte de leur site (uniquement pour comprendre qui ils sont et qui est leur clientèle) :
+\"\"\"{contexte[:3000]}\"\"\"
+{"Ils exposaient au MIF Expo 2026 (salon du Made in France) : tu peux dire en une demi-phrase qu'on a vu leur marque dans la liste des exposants, sans prétendre les avoir rencontrés." if c.get("famille") == "mif" else ""}
 
-Nos chiffres (n'utilise QUE ceux-là, 1 ou 2 au total) :
-{C.CHIFFRES}
-
-Structure, 50 à 90 mots en tout :
+Structure (90 à 140 mots en tout) :
 1. « Bonjour Madame Nom, » / « Bonjour Monsieur Nom, » UNIQUEMENT si le contexte nomme la personne derrière cette
    adresse, sinon « Bonjour, ».
-2. Tout de suite l'idée, en une ou deux phrases : le sujet PRÉCIS du carrousel qu'on ferait sur eux (un fait, un
-   produit, une date, un lieu tiré de leur site), et ce que ça leur apporte. Marque : carrousel sponsorisé.
-   Tourisme ou territoire : collaboration ou campagne d'attractivité (comme celle faite pour la Région Normandie).
-   PAS de phrase de compliment ou de description d'eux avant l'idée.
-3. Une seule phrase sur le média, avec 1 ou 2 chiffres (la campagne Normandie est la meilleure preuve).
-4. Proposer d'envoyer le media kit s'ils sont intéressés (il n'est PAS joint), puis une question courte et
-   naturelle, formulée à ta façon (pas toujours la même).
-5. « Bien cordialement, » (pas de signature, elle est ajoutée ensuite).
+2. « Je m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. »
+3. L'audience, une ou deux phrases, avec SEULEMENT ces chiffres :
+   « 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads », « 80 % de notre audience a entre 18 et
+   34 ans », « 75 % d'hommes » (si utile). Puis une courte phrase sur pourquoi ce public les intéresse (leur clientèle,
+   d'après leur site), sans flatterie.
+4. La proposition : {offre}. Adapte en une phrase à ce qu'ils font, sans inventer de détail.
+5. La preuve, une phrase : « Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,5 %
+   d'engagement. » (AUCUN chiffre de vues.)
+6. Facultatif, une phrase au plus : « En parallèle, nous pourrions aussi … » (un contenu sur leur histoire ou leur
+   savoir-faire), présenté comme un à-côté.
+7. « Seriez-vous disponible pour un appel la semaine prochaine ? » (ou une variante très proche).
+8. « Bien cordialement, » (pas de signature, elle est ajoutée ensuite).
 
-Interdits (ça sent l'IA) : « unique », « fascinant(e) », « exceptionnel », « d'exception », « ancrage »,
-« mettre en lumière », « mettre en valeur », « valoriser », « à travers », « au cœur de », « haut lieu »,
-« riche histoire », « savoir-faire unique », « incarne », « passionnés », « communauté engagée », « Je suis Mathis »,
-« fondateur », les tirets cadratins, les deux-points en milieu de phrase, les énumérations de trois adjectifs.
-Écris simplement, au présent, avec « je » ou « nous » comme le ferait un humain.
-Objet : moins de 50 caractères, simple, comme un humain l'écrirait, sans « x Le Média Français » ni point
-d'interrogation systématique (ex. « Le cousu norvégien de Paraboot », « Un carrousel sur la Ville d'Hiver »).
+Aucun media kit, aucun prix, aucun autre chiffre que ceux ci-dessus. Pas de « unique », « fascinant », « mettre en
+lumière », « valoriser », « au cœur de », « à travers », ni de tirets cadratins. Phrases simples, ton professionnel.
 {REGLES_STYLE}
 {('Consigne de Mathis pour cette version : ' + consigne) if consigne else ''}
 
-Réponds en JSON : {{"objet": "...", "corps": "...", "nom_contact": "Madame/Monsieur Nom ou null"}}"""
-    m = gemini.json_(prompt, temperature=0.8)
+Réponds en JSON : {{"corps": "...", "nom_contact": "Madame/Monsieur Nom ou null"}}"""
+    m = gemini.json_(prompt, temperature=0.5)
+    m["objet"] = "Proposition de collaboration – Le Média Français"
     m["corps"] = _avec_signature(m["corps"])
     return m
 
@@ -1069,9 +1079,10 @@ def relancer(e):
         if m - lire_date(c["envoye_le"]) < dt.timedelta(days=C.RELANCE_APRES_JOURS):
             continue
         salut = f"Bonjour {c['nom_contact']}," if c.get("nom_contact") else "Bonjour,"
-        corps = (f"{salut}\n\nJe reviens vers vous au sujet de mon message de la semaine dernière. "
-                 f"J'aurais vraiment aimé raconter une histoire liée à {c['organisation']} à notre communauté.\n\n"
-                 "Auriez-vous quinze minutes pour en parler, ou pouvez-vous m'indiquer la bonne personne ?\n\n"
+        corps = (f"{salut}\n\nJe reviens vers vous au sujet de ma proposition de collaboration avec "
+                 "Le Média Français, envoyée la semaine dernière.\n\n"
+                 "Seriez-vous disponible pour un court appel, ou pourriez-vous me mettre en relation avec la "
+                 "personne en charge des partenariats ?\n\n"
                  f"Bien cordialement,\n\n{C.SIGNATURE}")
         try:
             c["relance_id"] = envoyer(c["email"], "Re: " + c["objet"], corps,
