@@ -255,7 +255,7 @@
    "email": "juliette.poisson@ariane.group",
    "contexte_adresse": "ave offices in Washington D.C., Tokyo and Singapore to work closely with our customers in support of their projects. Arianespace is a wholly owned subsidiary of ArianeGroup. Contact us Julie Lenoir Chief Brand & Communications Officer j.lenoir@arianespace.com Juliette Poisson Media Relations Leader juliette.poisson@ariane.group Launch Services Any mission to any orbit Launch services experts Groun",
    "cree_le": "2026-11-10T12:12+01:00",
-   "statut": "répondu",
+   "statut": "en discussion",
    "objet": "Arianespace x Le Média Français : l'épopée spatiale depuis Kourou",
    "corps": "Bonjour Madame Poisson,\n\nMon précédent message est parti incomplet, toutes mes excuses. Le voici en entier :\n\nDepuis la base de Kourou, Arianespace s'impose comme le pilier de l'aventure spatiale européenne. Nous aimerions raconter à notre audience comment la France a su devenir ce pionnier du spatial, à travers un carrousel dédié à votre histoire et vos lanceurs Ariane.\n\nLe Média Français, c'est le média de référence sur l'histoire et le savoir-faire national, avec 210 000 abonnés sur Instagram et 24 millions de vues par mois, majoritairement auprès des 18-34 ans. Ce format permettrait de faire découvrir votre héritage et vos enjeux actuels à un public jeune et engagé.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
    "nom_contact": "Madame Poisson",
@@ -269,15 +269,20 @@
    "relance_le": "2026-11-19T09:01+01:00",
    "reponse_id": "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>",
    "objet_reponse": "RE: Arianespace x Le Média Français : l'épopée spatiale depuis Kourou",
-   "derniere_reponse": "AG-TLP:AMBER\n\nBonjour Monsieur Pouchol  \nMerci pour votre message. Navrée pour ma réponse tardive, \nJe serais ravie de pouvoir échanger. Votre demande est-elle urgente? \nJe suis en effet mobilisée pour le prochain vol d'Ariane 6 à Kourou  et ne pourrai me rendre disponible que vendredi prochain. \nMerci,\nBien cordialement, \n\nJuliette Poisson\nMedia Relations Leader\n\n51/61 route de Verneuil\n78131 Les Mureaux Cedex \nFrance",
    "echanges": [
     {
      "le": "2026-11-20T15:02+01:00",
      "sens": "reçu",
      "id": "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>"
+    },
+    {
+     "le": "2026-11-20T16:16+01:00",
+     "sens": "envoyé",
+     "id": "<179518781503.2439.11017474800806288960@lemediafrancais.fr>"
     }
    ],
-   "brouillon": "Bonjour Madame Poisson,\n\nMerci pour votre retour. Ce n'est pas urgent : nous pouvons tout à fait échanger vendredi prochain ou la semaine suivante selon vos disponibilités.\n\nNotre objectif est de réaliser un carrousel dédié à l'histoire d'Arianespace et à son rôle majeur dans l'aventure spatiale européenne, afin de faire découvrir cet héritage à notre audience.\n\nQuelles seraient vos disponibilités vendredi pour un rapide échange téléphonique ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais"
+   "brouillon": null,
+   "kit_envoye": true
   },
   {
    "id": "2026-11-11-1-227",
