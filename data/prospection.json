@@ -210,6 +210,10 @@
   "652": {
    "contact": "m37446",
    "type": "mail"
+  },
+  "653": {
+   "contact": "2026-11-10-1-674",
+   "type": "reponse"
   }
  },
  "jours_generes": [
@@ -302,7 +306,7 @@
      "id": "<92f5f9fa4fab47ddabd4bedb33d8f15a@ariane.group>"
     }
    ],
-   "brouillon": "Bonjour Madame Poisson,\n\nC'est parfait pour moi, je vous confirme notre rendez-vous ce vendredi à 11h.\n\nPourriez-vous me transmettre le lien de visioconférence ou le numéro à contacter pour notre échange ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "brouillon": "Bonjour Madame Poisson,\n\nC'est parfait pour moi. Je vous envoie immédiatement un lien de visioconférence pour vendredi à 11 h.\n\nJe me réjouis d'échanger avec vous.\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "kit_envoye": true,
    "derniere_reponse": "AG-TLP:AMBER\n\nBien noté, merci pour votre intérêt pour Arianespace - vendredi à 11h vous irait?"
   },
