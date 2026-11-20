@@ -194,6 +194,10 @@
   "641": {
    "contact": "2026-11-10-1-674",
    "type": "reponse"
+  },
+  "646": {
+   "contact": "2026-11-10-1-674",
+   "type": "reponse"
   }
  },
  "jours_generes": [
@@ -267,7 +271,7 @@
    "repare": true,
    "relance_id": "<179507531219.2209.9491683900262858310@lemediafrancais.fr>",
    "relance_le": "2026-11-19T09:01+01:00",
-   "reponse_id": "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>",
+   "reponse_id": "<92f5f9fa4fab47ddabd4bedb33d8f15a@ariane.group>",
    "objet_reponse": "RE: Arianespace x Le Média Français : l'épopée spatiale depuis Kourou",
    "echanges": [
     {
@@ -279,10 +283,16 @@
      "le": "2026-11-20T16:16+01:00",
      "sens": "envoyé",
      "id": "<179518781503.2439.11017474800806288960@lemediafrancais.fr>"
+    },
+    {
+     "le": "2026-11-20T17:01+01:00",
+     "sens": "reçu",
+     "id": "<92f5f9fa4fab47ddabd4bedb33d8f15a@ariane.group>"
     }
    ],
-   "brouillon": null,
-   "kit_envoye": true
+   "brouillon": "Bonjour Madame Poisson,\n\nUn grand merci pour votre retour. Le créneau de vendredi à 11h ne sera malheureusement pas possible de mon côté. Auriez-vous des disponibilités en début de semaine prochaine, après 18 h ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "kit_envoye": true,
+   "derniere_reponse": "AG-TLP:AMBER\n\nBien noté, merci pour votre intérêt pour Arianespace - vendredi à 11h vous irait?"
   },
   {
    "id": "2026-11-11-1-227",
@@ -834,7 +844,8 @@
   "<CAFYZk5=-1Tqvb+EV8s6sAO2MAwaM9vCKjz-=Vj=mv34OHj=0KQ@mail.gmail.com>",
   "<MRYP264MB6367BE692BEE2D35FF119C44EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
   "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
-  "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>"
+  "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>",
+  "<92f5f9fa4fab47ddabd4bedb33d8f15a@ariane.group>"
  ],
  "mails_divers": {
   "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
