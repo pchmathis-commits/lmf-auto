@@ -170,6 +170,10 @@
   "626": {
    "contact": "2026-11-20-5-884",
    "type": "apercu"
+  },
+  "628": {
+   "contact": "2026-11-10-1-674",
+   "type": "reponse"
   }
  },
  "jours_generes": [
@@ -231,7 +235,7 @@
    "email": "juliette.poisson@ariane.group",
    "contexte_adresse": "ave offices in Washington D.C., Tokyo and Singapore to work closely with our customers in support of their projects. Arianespace is a wholly owned subsidiary of ArianeGroup. Contact us Julie Lenoir Chief Brand & Communications Officer j.lenoir@arianespace.com Juliette Poisson Media Relations Leader juliette.poisson@ariane.group Launch Services Any mission to any orbit Launch services experts Groun",
    "cree_le": "2026-11-10T12:12+01:00",
-   "statut": "relancé",
+   "statut": "répondu",
    "objet": "Arianespace x Le Média Français : l'épopée spatiale depuis Kourou",
    "corps": "Bonjour Madame Poisson,\n\nMon précédent message est parti incomplet, toutes mes excuses. Le voici en entier :\n\nDepuis la base de Kourou, Arianespace s'impose comme le pilier de l'aventure spatiale européenne. Nous aimerions raconter à notre audience comment la France a su devenir ce pionnier du spatial, à travers un carrousel dédié à votre histoire et vos lanceurs Ariane.\n\nLe Média Français, c'est le média de référence sur l'histoire et le savoir-faire national, avec 210 000 abonnés sur Instagram et 24 millions de vues par mois, majoritairement auprès des 18-34 ans. Ce format permettrait de faire découvrir votre héritage et vos enjeux actuels à un public jeune et engagé.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais\n\nSi vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.",
    "nom_contact": "Madame Poisson",
@@ -242,7 +246,18 @@
    "envoye_le": "2026-11-12T09:01+01:00",
    "repare": true,
    "relance_id": "<179507531219.2209.9491683900262858310@lemediafrancais.fr>",
-   "relance_le": "2026-11-19T09:01+01:00"
+   "relance_le": "2026-11-19T09:01+01:00",
+   "reponse_id": "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>",
+   "objet_reponse": "RE: Arianespace x Le Média Français : l'épopée spatiale depuis Kourou",
+   "derniere_reponse": "AG-TLP:AMBER\n\nBonjour Monsieur Pouchol  \nMerci pour votre message. Navrée pour ma réponse tardive, \nJe serais ravie de pouvoir échanger. Votre demande est-elle urgente? \nJe suis en effet mobilisée pour le prochain vol d'Ariane 6 à Kourou  et ne pourrai me rendre disponible que vendredi prochain. \nMerci,\nBien cordialement, \n\nJuliette Poisson\nMedia Relations Leader\n\n51/61 route de Verneuil\n78131 Les Mureaux Cedex \nFrance",
+   "echanges": [
+    {
+     "le": "2026-11-20T15:02+01:00",
+     "sens": "reçu",
+     "id": "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>"
+    }
+   ],
+   "brouillon": "Bonjour Madame Poisson,\n\nMerci pour votre retour. Ce n'est pas urgent : nous pouvons tout à fait attendre votre retour de Kourou.\n\nJe vous propose que l'on se téléphone vendredi prochain ou en début de semaine suivante, après 18 h. Quel créneau vous conviendrait le mieux ?\n\nBons préparatifs pour le lancement d'Ariane 6.\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais"
   },
   {
    "id": "2026-11-11-1-227",
@@ -762,15 +777,16 @@
    "famille": "industrie",
    "email": "matej.ungr@jmbaircraft.com",
    "contexte_adresse": "ogcomposites.com.au / Concessionarie Sudafrica Nome: Warren Massey +27 823 216 717 warren@vl3aviation.co.za www.vl3aviation.co.za / Concessionarie Spagna, Portogallo e Italia Nome: Olivier Ronveaux +32 475 410 334 olivier@jmbaircraft.com / Concessionarie Regno Unito Nome: Matej Ungr +44 7938 462832 matej.ungr@jmbaircraft.com / Concessionarie India Nome: Vimal Priya +919 643 797 435 priya@airfleetm",
-   "contexte": "JMB Aircraft | Constructeur d'avions de sport légers à hautes performances Aéronefs VL3 EVO PHOENIX NG SV4-RS JMB d'occasion™ À propos Articles Formation et sécurité Contacter Demandez un vol de démo Se connecter Configurateur Notre passion fait la différence 800 unités produites Découvrez le VL3, le Phoenix, le SV4 et l'Evo Faites défiler la page vers le bas pour en savoir plus Demandez un vol de démo VL3 Découvrez la vraie vitesse EVO L'ultime QUATRE PLACES PHOENIX NG Une nouvelle vision du motoplaneur SV4-RS La liberté a un prix JMB Preowned™ Avions d'occasion à vendre L'art de construire votre avion sur mesure Chez JMB Aircraft, vous concevez l'avion jusque dans les moindres détails. Qu'il s'agisse de l'avionique qui guide votre vol, de l'intérieur qui vous entoure en termes de confort et de style, ou du design extérieur qui fait tourner les têtes au sol, vous bénéficiez d'une liberté totale. ‍ Nos extérieurs sont peints à la main, chaque courbe et chaque contour étant conçus par des artisans qualifiés. Aucune couleur n'est trop audacieuse, aucune finition n'est trop complexe. ‍ À l'intérieur, vous sentirez la différence d'un véritable savoir-faire. Chaque siège, chaque panneau et chaque détail sont cousus à la main ou ajustés sur mesure à partir d'alcantara luxueux, de cuir haut de gamme ou d'une combinaison de matériaux. Il n'y a aucune limite : votre avion devient le reflet de votre vision, de votre personnalité et de votre style. ‍ C'est bien plus que de la personnalisation, c'est un voyage de l'imagination à la réalité, où vos rêves prennent réellement vie. EN SAVOIR PLUS Atelier de production moderne & Guest Lounge. Nos installations couvrent plus de 8 000 m² répartis sur cinq sites de production combinés à travers l'Europe. Depuis ces installations, quatre nouveaux avions décollent chaque mois. Chaque espace est conçu non seulement pour soutenir la production, mais également pour accueillir nos clients. Notre atelier vous incite à créer un look unique pour votre avion, notre salon client vous détend pendant votre visite et notre salle de briefing vous prépare pour le vol à venir. Ce n'est qu'une petite partie de l'expérience complète de JMB Aircraft. Nous volons partout ! Des États-Unis à l'Amérique du Sud, en passant par l'Europe et jusqu'en Afrique du Sud, en Australie et en Nouvelle-Zélande, JMB Aircraft est visible dans le monde entier. ‍ Nous faisons découvrir nos avions aux clients lors de journées de démonstration , où les pilotes potenti\n\nJMB Aircraft | Contatti Aerei VL3 EVO PHOENIX NG SV4-RS JMB usato™ Su di noi Articoli Formazione e sicurezza Contatto Richiedi un volo demo Accedi Configuratore Contatto Richiedi un volo demo Contattaci Assistenza e assistenza post-vendita EN aftersales@jmbaircraft.com Vendite Matěj Ungr EN, CZ, RU +420 773 715 472 sales@jmbaircraft.com Marketing e pubbliche relazioni Klara Marie Lohniska EN, CZ +420 774 043 799 klara@jmbaircraft.com Concessionarie e centri assistenza JMB in tutto il mondo Tro",
    "cree_le": "2026-11-19T21:55+01:00",
-   "statut": "planifié",
+   "statut": "envoyé",
    "objet": "Proposition de collaboration – Le Média Français",
    "corps": "Bonjour Monsieur Ungr,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. Notre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads, composée à 80 % de personnes entre 18 et 34 ans et à 75 % d'hommes. Ce public passionné par le savoir-faire et l'excellence saura apprécier la haute performance de vos aéronefs sur mesure.\n\nNous proposons un partenariat de marque comprenant des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien pour mesurer les résultats. Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,5 % d'engagement. En parallèle, nous pourrions aussi aborder la conception artisanale de vos avions.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": "Monsieur Ungr",
    "prevu_le": "2026-11-20T14:48+01:00",
    "repondre_a": "matej.ungr@jmbaircraft.com",
-   "jeton": "e696406fc7ee"
+   "jeton": "e696406fc7ee",
+   "message_id": "<179518331238.2212.11570769429771681472@lemediafrancais.fr>",
+   "envoye_le": "2026-11-20T15:01+01:00"
   }
  ],
  "mails_traites": [
@@ -792,7 +808,8 @@
   "<5f609339f7274edd8aed3de236f5794f@PR1P264MB2047.FRAP264.PROD.OUTLOOK.COM>",
   "<CAFYZk5=-1Tqvb+EV8s6sAO2MAwaM9vCKjz-=Vj=mv34OHj=0KQ@mail.gmail.com>",
   "<MRYP264MB6367BE692BEE2D35FF119C44EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
-  "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>"
+  "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
+  "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>"
  ],
  "mails_divers": {
   "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
