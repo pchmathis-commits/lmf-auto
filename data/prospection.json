@@ -198,6 +198,14 @@
   "646": {
    "contact": "2026-11-10-1-674",
    "type": "reponse"
+  },
+  "648": {
+   "contact": "2026-11-10-1-674",
+   "type": "reponse"
+  },
+  "649": {
+   "contact": "m37446",
+   "type": "mail"
   }
  },
  "jours_generes": [
@@ -290,7 +298,7 @@
      "id": "<92f5f9fa4fab47ddabd4bedb33d8f15a@ariane.group>"
     }
    ],
-   "brouillon": "Bonjour Madame Poisson,\n\nUn grand merci pour votre retour. Le créneau de vendredi à 11h ne sera malheureusement pas possible de mon côté. Auriez-vous des disponibilités en début de semaine prochaine, après 18 h ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "brouillon": "Bonjour Madame Poisson,\n\nC'est parfait pour moi, je vous confirme notre rendez-vous ce vendredi à 11h.\n\nPourriez-vous me transmettre le lien de visioconférence ou le numéro à contacter pour notre échange ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "kit_envoye": true,
    "derniere_reponse": "AG-TLP:AMBER\n\nBien noté, merci pour votre intérêt pour Arianespace - vendredi à 11h vous irait?"
   },
@@ -845,7 +853,8 @@
   "<MRYP264MB6367BE692BEE2D35FF119C44EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
   "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
   "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>",
-  "<92f5f9fa4fab47ddabd4bedb33d8f15a@ariane.group>"
+  "<92f5f9fa4fab47ddabd4bedb33d8f15a@ariane.group>",
+  "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>"
  ],
  "mails_divers": {
   "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
@@ -854,7 +863,8 @@
   "m84184": "<E5F7EEBA-7A7F-4574-BE51-525B76071B6E@gmail.com>",
   "m66842": "<CAFYZk5=-1Tqvb+EV8s6sAO2MAwaM9vCKjz-=Vj=mv34OHj=0KQ@mail.gmail.com>",
   "m68423": "<MRYP264MB6367BE692BEE2D35FF119C44EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
-  "m18896": "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>"
+  "m18896": "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
+  "m37446": "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>"
  },
  "brouillons": {},
  "mails_depuis": "2026-11-09T14:01+01:00"
