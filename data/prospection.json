@@ -206,6 +206,10 @@
   "649": {
    "contact": "m37446",
    "type": "mail"
+  },
+  "652": {
+   "contact": "m37446",
+   "type": "mail"
   }
  },
  "jours_generes": [
@@ -866,6 +870,8 @@
   "m18896": "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
   "m37446": "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>"
  },
- "brouillons": {},
+ "brouillons": {
+  "m37446": "Bonjour Margaret,\n\nMerci pour votre proposition. Mon média compte 210 000 abonnés sur Instagram et 82 000 sur TikTok, avec 2,4 millions de vues mensuelles auprès d'une audience jeune et passionnée d'histoire et de patrimoine.\n\nVotre offre implique la création de nouveaux comptes dédiés. Proposez-vous également des partenariats sponsorisés directement sur nos réseaux existants ? Si vous souhaitez bénéficier de notre audience établie, nos tarifs débutent à 800 € pour une story et 2 000 € pour un carrousel sponsorisé.\n\nQuel est le montant du budget alloué pour une diffusion en direct sur nos médias ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais"
+ },
  "mails_depuis": "2026-11-09T14:01+01:00"
 }
