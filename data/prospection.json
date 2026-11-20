@@ -304,11 +304,15 @@
      "le": "2026-11-20T17:01+01:00",
      "sens": "reçu",
      "id": "<92f5f9fa4fab47ddabd4bedb33d8f15a@ariane.group>"
+    },
+    {
+     "le": "2026-11-20T17:47+01:00",
+     "sens": "envoyé",
+     "id": "<179519322169.2511.4589481937159664804@lemediafrancais.fr>"
     }
    ],
-   "brouillon": "Bonjour Madame Poisson,\n\nC'est parfait pour moi. Je vous envoie immédiatement un lien de visioconférence pour vendredi à 11 h.\n\nJe me réjouis d'échanger avec vous.\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
-   "kit_envoye": true,
-   "derniere_reponse": "AG-TLP:AMBER\n\nBien noté, merci pour votre intérêt pour Arianespace - vendredi à 11h vous irait?"
+   "brouillon": null,
+   "kit_envoye": true
   },
   {
    "id": "2026-11-11-1-227",
@@ -874,8 +878,6 @@
   "m18896": "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
   "m37446": "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>"
  },
- "brouillons": {
-  "m37446": "Bonjour Margaret,\n\nMerci pour votre proposition. Mon média compte 210 000 abonnés sur Instagram et 82 000 sur TikTok, avec 2,4 millions de vues mensuelles auprès d'une audience jeune et passionnée d'histoire et de patrimoine.\n\nVotre offre implique la création de nouveaux comptes dédiés. Proposez-vous également des partenariats sponsorisés directement sur nos réseaux existants ? Si vous souhaitez bénéficier de notre audience établie, nos tarifs débutent à 800 € pour une story et 2 000 € pour un carrousel sponsorisé.\n\nQuel est le montant du budget alloué pour une diffusion en direct sur nos médias ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais"
- },
+ "brouillons": {},
  "mails_depuis": "2026-11-09T14:01+01:00"
 }
