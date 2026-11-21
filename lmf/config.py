@@ -21,6 +21,7 @@ PLANNING = [
     ("11:30", "actu"),
     # ("15:00", "actu_carrousel"),  # en pause 2 semaines (test 4 posts/jour, depuis le 21/11) : les actus
     #                                  régionales en carrousel faisaient 7 à 23K vues
+    ("13:00", "reel"),        # Reel automatique (anecdote / ville / Français oublié), depuis le 22/11
     ("18:30", "carrousel"),   # carrousel classique (tendance / armée-souveraineté), plus la série
     ("20:30", "actu"),
 ]

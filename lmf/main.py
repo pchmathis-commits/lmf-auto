@@ -387,13 +387,47 @@ def commande_actu_carrousel():
 # ---------------------------------------------------------------------------
 # Préparation la veille + aperçus Telegram
 # ---------------------------------------------------------------------------
-TYPES = {"carrousel": "commande_carrousel", "actu": "commande_actu", "actu_carrousel": "commande_actu_carrousel"}
+def commande_reel():
+    """Reel automatique (format du jour : anecdote, ville ou Français oublié), avec aperçu Telegram."""
+    from . import reels, sheet
+    prevu = _prevu()
+    post = reels.creer(_id("reel").replace("-a", "-r", 1), prevu, format_=os.environ.get("REEL_FORMAT") or None)
+    post["silencieux"] = CONTEXTE["silencieux"]
+    sheet.ajouter_post({k: v for k, v in post.items() if k != "fichier_local"})
+    _sauver(post)
+
+
+def commande_reel_test():
+    """Fabrique un Reel et l'envoie sur Telegram SANS l'ajouter au planning (jamais publié)."""
+    from . import prospection as P, reels
+    e = P.charger()
+    prevu = _maintenant() + dt.timedelta(days=1)
+    post = reels.creer(_id("reel").replace("-a", "-r", 1), prevu, format_=os.environ.get("REEL_FORMAT") or None)
+    reels.envoyer_video(e.get("telegram_chat"), post["fichier_local"],
+                        f"🧪 Reel TEST (pas programmé, rien ne sera publié)\n{post['titre']}\n"
+                        f"Relecture : {'OK' if post['verification_ok'] else 'doute — ' + post['verification'][:300]}\n\n"
+                        f"{post['legende']}", [])
+
+
+TYPES = {"carrousel": "commande_carrousel", "actu": "commande_actu", "actu_carrousel": "commande_actu_carrousel",
+         "reel": "commande_reel"}
 
 
 def apercu_telegram(e, post):
     """Envoie les slides puis un message avec les boutons Valider / Modifier / Supprimer."""
     from . import prospection as P
     if not e.get("telegram_chat"):
+        return
+    if post.get("type") == "Reel":
+        from . import reels
+        heure = dt.datetime.fromisoformat(post["publication_prevue"]).astimezone(PARIS).strftime("%H:%M")
+        ok = post.get("verification_ok", True)
+        doute = "" if ok else "\n⚠️ La relecture a un doute : il ne partira qu'avec « Valider »."
+        reels.envoyer_video(e["telegram_chat"], post.get("fichier_local") or post["images"][0],
+                            f"🕘 {heure} · Reel\n{post['titre']}{doute}\n\n{post.get('legende', '')}",
+                            [*([] if ok else [{"text": "✅ Valider", "callback_data": f"v:{post['id']}"}]),
+                             {"text": "✏️ Modifier", "callback_data": f"m:{post['id']}"},
+                             {"text": "🗑 Supprimer", "callback_data": f"s:{post['id']}"}])
         return
     imgs = [u for u in post.get("images", []) if str(u).startswith("http")]
     if len(imgs) >= 2:
@@ -433,7 +467,7 @@ def commande_preparer():
         prevu = dt.datetime.combine(demain, dt.time(hh, mm), PARIS)
         try:
             post = None
-            for essai in ([type_, type_] if type_ == "carrousel" else [type_, "actu"]):  # un 2e essai en secours
+            for essai in ([type_, type_] if type_ in ("carrousel", "reel") else [type_, "actu"]):  # un 2e essai en secours
                 try:
                     post = _creer(essai, prevu)
                 except Exception as ex:
@@ -449,6 +483,11 @@ def commande_preparer():
             rates += 1
             bilan.append(f"❌ {heure} · {type_} : {str(ex)[:150]}")
     CONTEXTE.update(quand=None, prevu=None, silencieux=False)
+    try:
+        from . import reels
+        reels.nettoyer()
+    except Exception:
+        pass
     nb_prospects = 0
     if demain.weekday() < 5 and C.PROSPECTION_ACTIVE and e["active"] and demain.isoformat() not in e["jours_generes"]:
         try:
@@ -506,6 +545,11 @@ def commande_modifier():
 def _refaire(d, row, consigne, prevu):
     from . import sheet
     post = None
+    if d.get("genre") == "reel":
+        from . import reels
+        post = reels.creer(_id("reel").replace("-a", "-r", 1), prevu, consigne=consigne, donnees_avant=d)
+        sheet.ajouter_post({k: v for k, v in post.items() if k != "fichier_local"})
+        return post
     if d:
         r = contenu.modifier_contenu(d, consigne)
         if not r.get("nouveau_sujet") and r.get("contenu"):
@@ -554,6 +598,9 @@ def commande_publier():
         try:
             if p["type"] == "Carrousel":
                 lien = instagram.publier_carrousel(p["images"], p["legende"])
+            elif p["type"] == "Reel":
+                _short_youtube(p)   # YouTube d'abord : indépendant d'Instagram (garde-fou anti-doublon intégré)
+                lien = instagram.publier_reel(p["images"][0], p["legende"])
             else:
                 lien = instagram.publier_image(p["images"][0], p["legende"])
             sheet.maj_post(p["id"], statut="Publié", lien_instagram=lien, erreur="")
@@ -561,6 +608,32 @@ def commande_publier():
         except Exception as e:
             sheet.maj_post(p["id"], statut="Erreur", erreur=str(e)[:400])
             print(f"Erreur sur {p['id']} : {e}")
+
+
+def _short_youtube(p):
+    """Publie le Reel en YouTube Short (si les secrets YouTube sont en place) et prévient sur Telegram."""
+    from . import youtube
+    if not youtube.actif():
+        return
+    from . import prospection as P
+    e = P.charger()
+    try:
+        desc = p["legende"].replace(f"Abonne-toi à {C.COMPTE}", "Abonne-toi à la chaîne") + \
+            f"\n\nInstagram : instagram.com/{C.COMPTE.lstrip('@')}"
+        lien = youtube.publier_short(p["images"][0], youtube.titre_short(p.get("titre", ""), p["legende"]), desc,
+                                     youtube.tags_depuis(p["legende"]))
+        P.dire(e, f"▶️ Short YouTube en ligne : {lien}")
+    except Exception as ex:
+        print(f"YouTube : {ex}")
+        P.dire(e, f"⚠️ Short YouTube raté : {str(ex)[:300]}")
+
+
+def commande_youtube_test():
+    from . import youtube
+    if not youtube.actif():
+        print("Secrets YouTube absents (YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN).")
+        sys.exit(1)
+    print(f"✅ Connecté à la chaîne YouTube : « {youtube.chaine()['nom']} »")
 
 
 def commande_tester():
@@ -590,6 +663,7 @@ COMMANDES = {
     "carrousel": commande_carrousel, "actu": commande_actu, "notifier": commande_notifier,
     "actu_carrousel": commande_actu_carrousel, "preparer": commande_preparer, "modifier": commande_modifier,
     "publier": commande_publier, "tester": commande_tester, "demo": commande_demo,
+    "reel": commande_reel, "reel-test": commande_reel_test, "youtube-test": commande_youtube_test,
     "prolonger-jeton": lambda: __import__("lmf.instagram", fromlist=["x"]).prolonger_jeton(),
 }
 

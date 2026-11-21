@@ -112,6 +112,18 @@ def json_(prompt, temperature=0.7, recherche=False, modele=None, rapide=False):
     return extraire_json(brut)
 
 
+def image_json(octets, prompt, mime="image/jpeg", temperature=0.1):
+    """Gemini regarde une image et répond en JSON (contrôle des photos avant publication)."""
+    import base64
+    corps = {
+        "contents": [{"role": "user", "parts": [
+            {"inline_data": {"mime_type": mime, "data": base64.b64encode(octets).decode()}},
+            {"text": prompt}]}],
+        "generationConfig": {"temperature": temperature, "responseMimeType": "application/json"},
+    }
+    return extraire_json(_appel(corps, rapide=True))
+
+
 def extraire_json(brut):
     brut = brut.strip()
     brut = re.sub(r"^```(?:json)?|```$", "", brut, flags=re.M).strip()

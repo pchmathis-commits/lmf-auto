@@ -92,6 +92,27 @@ def publier_image(url, legende):
     return _publier_conteneur(conteneur, jeton)
 
 
+def publier_reel(url_video, legende):
+    """Publie un Reel. La vidéo est envoyée directement à Instagram (envoi « resumable »), sans dépendre d'un
+    hébergeur ; si cet envoi échoue, Instagram va la chercher lui-même à son adresse publique."""
+    jeton = _jeton()
+    video = requests.get(url_video, timeout=300).content
+    base = {"media_type": "REELS", "caption": legende, "share_to_feed": "true", "thumb_offset": "800",
+            "access_token": jeton}
+    try:
+        conteneur = _creer({**base, "upload_type": "resumable"})
+        r = requests.post(f"https://rupload.facebook.com/ig-api-upload/{C.GRAPH_VERSION}/{conteneur}", data=video,
+                          headers={"Authorization": f"OAuth {jeton}", "offset": "0", "file_size": str(len(video))},
+                          timeout=600)
+        if r.status_code != 200 or not r.json().get("success", True):
+            raise ErreurInstagram(f"envoi de la vidéo refusé : {r.text[:200]}")
+    except Exception as ex:
+        print(f"Envoi direct impossible ({ex}) : Instagram va chercher la vidéo à son adresse.")
+        conteneur = _creer({**base, "video_url": url_video})
+    _attendre(conteneur, jeton, maximum=120)   # le traitement d'une vidéo prend 1 à 5 minutes
+    return _publier_conteneur(conteneur, jeton)
+
+
 def cle_legende(legende):
     return re.sub(r"\W+", " ", (legende or "").lower()).strip()[:160]
 

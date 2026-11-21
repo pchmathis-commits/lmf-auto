@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Titre'; src: url('fonts/Montserrat.ttf'), local('Montserrat ExtraBold'), local('Poppins Bold'), local('Poppins-Bold'); font-weight: 100 900; }
+  :root { --navy: #061E61; --red: #FC0700; --cream: #efe6d2; --paper: #f8f3e7; --ink: #14110e; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--cream); }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  #paper, .grain { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  .grain { mix-blend-mode: overlay; pointer-events: none; }
+  .scene { position: absolute; inset: 0; display: none; transform-origin: 540px 900px; }
+  .print { position: absolute; background: var(--paper); padding: 20px 20px 20px; box-shadow: 0 18px 26px rgba(40,26,10,.30), 0 2px 3px rgba(40,26,10,.25); transform-origin: 50% 50%; }
+  .print .win { overflow: hidden; } .print canvas, .print img { display: block; width: 100%; transform-origin: 50% 50%; }
+  .tag { position: absolute; background: var(--navy); color: #fff; font: 800 46px 'Titre', sans-serif; letter-spacing: .04em; padding: 18px 40px 16px;
+    clip-path: polygon(0 10%, 7% 0, 15% 7%, 26% 1%, 38% 8%, 50% 0, 62% 7%, 74% 1%, 86% 8%, 100% 2%, 98% 50%, 100% 95%, 88% 100%, 76% 93%, 63% 100%, 50% 94%, 37% 100%, 24% 93%, 12% 100%, 0 94%, 2% 50%);
+    transform-origin: 0 50%; white-space: nowrap; }
+  .tag.red { background: var(--red); }
+  .tag.grand { font-size: 64px; padding: 24px 48px 22px; }
+  .caps { position: absolute; left: 70px; right: 70px; }
+  .line { display: table; margin: 0 0 8px; background: #fff; color: var(--navy); font: 800 72px/1.08 'Titre', sans-serif; text-transform: uppercase;
+    white-space: nowrap; padding: 6px 18px 4px; box-shadow: 0 8px 14px rgba(40,26,10,.18); transform-origin: 0 50%; }
+  .line b { color: var(--red); font-weight: 800; }
+  .caps.center .line { margin-left: auto; margin-right: auto; }
+  .caps.hook .line { font-size: 84px; }
+  .big { position: absolute; left: 0; right: 0; text-align: center; font: 800 330px/1 'Titre', sans-serif; color: var(--red); letter-spacing: -.02em;
+    mix-blend-mode: multiply; transform-origin: 50% 50%; }
+  .stampline { position: absolute; left: 140px; right: 140px; height: 10px; background: var(--red); mix-blend-mode: multiply; transform-origin: 0 50%; }
+  svg.map { position: absolute; overflow: visible; filter: drop-shadow(0 16px 20px rgba(40,26,10,.30)); }
+  .pin { position: absolute; width: 120px; transform-origin: 50% 100%; filter: drop-shadow(0 10px 8px rgba(40,26,10,.35)); }
+  .brand { position: absolute; left: 70px; top: 120px; display: flex; align-items: center; gap: 16px; font: 800 30px 'Titre', sans-serif; color: var(--navy); letter-spacing: .08em; }
+  .brand img { width: 40px; }
+  .flag { position: absolute; left: 70px; top: 176px; width: 150px; height: 8px; background: linear-gradient(90deg, var(--navy) 0 33.3%, #fff 33.3% 66.6%, var(--red) 66.6%); box-shadow: 0 2px 4px rgba(0,0,0,.15); }
+  #wipe { position: absolute; left: -40px; width: 1160px; height: 2100px; top: 0; background: var(--navy);
+    clip-path: polygon(0 0, 100% 0, 100% 96%, 92% 99%, 83% 96%, 74% 100%, 64% 96%, 55% 99%, 45% 95%, 36% 99%, 26% 96%, 17% 100%, 8% 96%, 0 99%); }
+  #vignette { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 62% at 50% 45%, transparent 55%, rgba(6,20,60,.22) 100%); pointer-events: none; }
+  .endlogo { position: absolute; left: 50%; top: 520px; width: 260px; margin-left: -130px; transform-origin: 50% 100%; }
+  .endname { position: absolute; left: 0; right: 0; top: 860px; text-align: center; font: 800 92px/1 'Titre', sans-serif; color: var(--navy); }
+  .endname b { color: var(--red); }
+  .cta { position: absolute; left: 50%; top: 1330px; transform-origin: 50% 50%; background: var(--red); color: #fff; font: 800 58px 'Titre', sans-serif; padding: 26px 60px; margin-left: -250px; width: 380px; text-align: center; box-shadow: 0 14px 22px rgba(120,0,0,.25); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="paper" width="1080" height="1920"></canvas>
+  <div id="scenes"></div>
+  <div class="brand" id="brand"><img src="img/logo_pin.png"><span>LE MÉDIA FRANÇAIS</span></div>
+  <div class="flag" id="flag"></div>
+  <div id="wipe"></div>
+  <canvas class="grain" id="grainA" width="540" height="960"></canvas>
+  <canvas class="grain" id="grainB" width="540" height="960"></canvas>
+  <div id="vignette"></div>
+</div>
+<script>
+const SPEC = window.SPEC || JSON.parse(decodeURIComponent((location.hash || '#%7B%7D').slice(1)));
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const q12 = t => (SPEC.saccade ? Math.floor(t * 12 + 1e-6) / 12 : t);   // smooth by default, stop-motion if SPEC.saccade
+const S = (x, w = 14) => x <= 0 ? 0 : 1 - (1 + w * x) * Math.exp(-w * x);
+function rng(seed) { return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const rich = s => esc(s).replace(/\*([^*]+)\*/g, '<b>$1</b>');
+
+// ---- paper: cream base, fibres, soft stains (procedural, seeded) ----
+(function paper() {
+  // background: SPEC.fond = { base, grille: 'carre' | 'points', pas, encre, alpha, taches }
+  const F = Object.assign({ base: '#efe6d2', grille: null, pas: 54, encre: '6,30,97', alpha: .10, taches: true }, SPEC.fond || {});
+  const c = $('paper').getContext('2d'), r = rng(7);
+  c.fillStyle = F.base; c.fillRect(0, 0, 1080, 1920);
+  if (F.taches) for (let i = 0; i < 10; i++) { const cx = r() * 1080, cy = r() * 1920, g = c.createRadialGradient(cx, cy, 0, cx, cy, 300 + r() * 500);
+    g.addColorStop(0, `rgba(${F.encre},.05)`); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, 1080, 1920); }
+  if (F.grille === 'carre') { c.strokeStyle = `rgba(${F.encre},${F.alpha})`; c.lineWidth = 1.5;
+    for (let x = (1080 % F.pas) / 2; x <= 1080; x += F.pas) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, 1920); c.stroke(); }
+    for (let y = 0; y <= 1920; y += F.pas) { c.beginPath(); c.moveTo(0, y); c.lineTo(1080, y); c.stroke(); }
+    c.strokeStyle = `rgba(${F.encre},${F.alpha * 1.8})`; c.lineWidth = 2;   // every 4th line a bit stronger, like graph paper
+    for (let x = (1080 % F.pas) / 2; x <= 1080; x += F.pas * 4) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, 1920); c.stroke(); }
+    for (let y = 0; y <= 1920; y += F.pas * 4) { c.beginPath(); c.moveTo(0, y); c.lineTo(1080, y); c.stroke(); } }
+  if (F.grille === 'points') { c.fillStyle = `rgba(${F.encre},${F.alpha * 2.2})`;
+    for (let y = F.pas / 2; y < 1920; y += F.pas) for (let x = (1080 % F.pas) / 2; x <= 1080; x += F.pas) { c.beginPath(); c.arc(x, y, 3.2, 0, 7); c.fill(); } }
+  c.lineCap = 'round';   // paper fibres, very light
+  for (let i = 0; i < 600; i++) { const x = r() * 1080, y = r() * 1920, a = r() * Math.PI * 2, l = 6 + r() * 22;
+    c.strokeStyle = `rgba(${F.encre},${.02 + r() * .04})`; c.lineWidth = .6 + r();
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x + Math.cos(a) * l, y + Math.sin(a) * l); c.stroke(); }
+})();
+for (const [id, seed] of [['grainA', 11], ['grainB', 97]]) {
+  const c = $(id).getContext('2d'), d = c.createImageData(540, 960), r = rng(seed);
+  for (let i = 0; i < d.data.length; i += 4) { const g = 128 + (r() - 0.5) * 120; d.data[i] = d.data[i + 1] = d.data[i + 2] = g; d.data[i + 3] = 255; }
+  c.putImageData(d, 0, 0);
+}
+
+// ---- halftone in navy ink on paper (archives, portraits): the real image, printed as dots ----
+function halftone(src, canvas, W, cell = 7, ink = '#061E61') {
+  const k = W / src.naturalWidth, H = Math.round(src.naturalHeight * k);
+  const off = new OffscreenCanvas(W, H), o = off.getContext('2d'); o.drawImage(src, 0, 0, W, H);
+  const px = o.getImageData(0, 0, W, H).data;
+  canvas.width = W; canvas.height = H; const c = canvas.getContext('2d');
+  c.fillStyle = '#f4ecda'; c.fillRect(0, 0, W, H); c.fillStyle = ink;
+  const a = Math.PI / 4, ca = Math.cos(a), sa = Math.sin(a), R = Math.hypot(W, H);
+  for (let v = -R; v < R; v += cell) for (let u = -R; u < R; u += cell) {
+    const x = u * ca - v * sa + W / 2, y = u * sa + v * ca + H / 2;
+    if (x < 0 || y < 0 || x >= W || y >= H) continue;
+    const i = ((y | 0) * W + (x | 0)) * 4, lum = (0.299 * px[i] + 0.587 * px[i + 1] + 0.114 * px[i + 2]) / 255;
+    const d = Math.pow(1 - lum, 0.8) * 1.15; if (d < 0.05) continue;
+    c.beginPath(); c.arc(x, y, Math.min(cell * 0.66, cell * 0.5 * Math.sqrt(d) * 1.3), 0, 7); c.fill();
+  }
+}
+// colour print: the real photo, slightly warmed, with paper texture on top
+function colorprint(src, canvas, W) {
+  const k = W / src.naturalWidth, H = Math.round(src.naturalHeight * k);
+  canvas.width = W; canvas.height = H; const c = canvas.getContext('2d');
+  c.filter = 'saturate(1.05) contrast(1.04) sepia(.12)'; c.drawImage(src, 0, 0, W, H); c.filter = 'none';
+  const r = rng(5); c.globalAlpha = .06;
+  for (let i = 0; i < 2500; i++) { c.fillStyle = r() > .5 ? '#fff' : '#3a2a10'; c.fillRect(r() * W, r() * H, 1.5, 1.5); }
+  c.globalAlpha = 1;
+}
+
+// ---- France, as a torn piece of navy paper (lon, lat) ----
+const FRANCE = [[2.55,51.08],[3.1,50.78],[4.15,50.3],[4.85,50.15],[5.8,49.55],[6.4,49.45],[7.6,49.05],[8.2,48.97],[7.6,47.6],[6.9,47.4],[6.0,46.5],[6.1,46.15],[6.8,46.0],[7.0,45.3],[6.6,45.0],[7.0,44.2],[7.5,43.78],[7.0,43.55],[6.2,43.1],[5.0,43.35],[4.1,43.5],[3.2,43.1],[3.05,42.45],[1.7,42.5],[0.7,42.8],[-0.3,42.85],[-1.8,43.35],[-1.45,43.6],[-1.25,44.6],[-1.1,45.6],[-1.2,46.2],[-2.1,46.8],[-2.5,47.3],[-3.2,47.6],[-4.4,47.8],[-4.75,48.35],[-4.5,48.65],[-3.6,48.75],[-2.9,48.55],[-2.0,48.65],[-1.55,48.65],[-1.6,49.2],[-1.95,49.7],[-1.25,49.7],[-1.1,49.4],[0.1,49.45],[0.2,49.7],[1.4,50.05],[1.6,50.85]];
+const CORSE = [[8.6,41.9],[8.8,42.6],[9.35,43.0],[9.55,42.3],[9.3,41.4],[8.9,41.6]];
+const MAP = { x: 90, y: 300, w: 900 };
+function proj([lon, lat]) { const k = MAP.w / (14.9 * Math.cos(46.5 * Math.PI / 180)); return [MAP.x + (lon + 5.2) * Math.cos(46.5 * Math.PI / 180) * k, MAP.y + (51.3 - lat) * k]; }
+function torn(pts, seed) { const r = rng(seed), out = []; for (let i = 0; i < pts.length; i++) { const a = proj(pts[i]), b = proj(pts[(i + 1) % pts.length]);
+  for (let s = 0; s < 4; s++) { const f = s / 4; out.push([a[0] + (b[0] - a[0]) * f + (r() - .5) * 7, a[1] + (b[1] - a[1]) * f + (r() - .5) * 7]); } }
+  return 'M' + out.map(p => p.map(v => v.toFixed(1)).join(',')).join('L') + 'Z'; }
+
+// ---- build scenes ----
+let T = 0; const scenes = [];
+for (const [i, sc] of SPEC.scenes.entries()) {
+  const el = document.createElement('div'); el.className = 'scene'; el.id = 's' + i; $('scenes').appendChild(el);
+  sc.start = T; T += sc.dur; sc.el = el; scenes.push(sc);
+  let html = '';
+  if (sc.type === 'photo') {
+    html += `<div class="print" id="p${i}" style="left:${sc.x ?? 50}px;top:${sc.y ?? 290}px;width:${sc.w ?? 980}px"><div class="win"><canvas id="c${i}"></canvas></div></div>`;
+    if (sc.tag) html += `<div class="tag${sc.tagRed ? ' red' : ''}" id="t${i}" style="left:${(sc.x ?? 50) + 10}px;top:${(sc.y ?? 290) - 44}px">${esc(sc.tag)}</div>`;
+  } else if (sc.type === 'carte') {
+    const [px, py] = proj(sc.lieu);
+    html += `<svg class="map" id="m${i}" width="1080" height="1920" viewBox="0 0 1080 1920" style="left:0;top:0"><path d="${torn(FRANCE, 3)}" fill="#061E61"/><path d="${torn(CORSE, 9)}" fill="#061E61"/></svg>`;
+    html += `<img class="pin" id="pin${i}" src="img/logo_pin.png" style="left:${px - 60}px;top:${py - 138}px">`;
+    if (sc.tag) html += `<div class="tag red" id="t${i}" style="left:${Math.min(px + 40, 600)}px;top:${py - 150}px">${esc(sc.tag)}</div>`;
+  } else if (sc.type === 'chiffre') {
+    const fs = Math.min(330, Math.round(1450 / Math.max(3, [...sc.chiffre].length)));
+    html += `<div class="big" id="b${i}" style="top:${(sc.y ?? 520) + (330 - fs) / 2}px;font-size:${fs}px">${esc(sc.chiffre)}</div><div class="stampline" id="u${i}" style="top:${(sc.y ?? 520) + 350}px"></div>`;
+    if (sc.tag) html += `<div class="tag" id="t${i}" style="left:70px;top:${(sc.y ?? 520) - 120}px">${esc(sc.tag)}</div>`;
+  } else if (sc.type === 'texte') {
+    if (sc.tag) html += `<div class="tag grand${sc.tagRed ? ' red' : ''}" id="t${i}" style="left:70px;top:${(sc.capY ?? 900) - 170}px">${esc(sc.tag)}</div>`;
+  } else if (sc.type === 'fin') {
+    html += `<img class="endlogo" id="e${i}" src="img/logo_pin.png"><div class="endname" id="n${i}">LE MÉDIA<br><b>FRANÇAIS</b></div>`;
+    html += `<div class="cta" id="k${i}">${esc(sc.cta || "S'ABONNER")}</div>`;
+  }
+  if (sc.texte) html += `<div class="caps${sc.center ? ' center' : ''}${i === 0 ? ' hook' : ''}" id="cap${i}" style="top:${sc.capY ?? 1180}px">${sc.texte.map((l, j) => `<div class="line" id="l${i}_${j}">${rich(l)}</div>`).join('')}</div>`;
+  el.innerHTML = html;
+}
+const DUR = T;
+// a caption line never wraps: it shrinks to fit the safe width
+function fit() { scenes.forEach(sc => sc.el.style.display = 'block'); for (const e of document.querySelectorAll('.line')) { let fs = parseFloat(getComputedStyle(e).fontSize);
+  while (e.offsetWidth > 900 && fs > 40) { fs -= 2; e.style.fontSize = fs + 'px'; } } scenes.forEach(sc => sc.el.style.display = 'none'); }
+
+window.setT = function (t) {
+  const tq = q12(t);
+  const g = Math.floor(t * 12) % 2; $('grainA').style.opacity = .15 * g; $('grainB').style.opacity = .15 * (1 - g);
+  // the navy torn-paper wipe at each change of scene
+  let wy = -2200;
+  for (const sc of scenes.slice(1)) { const b = sc.start;
+    if (tq >= b - .34 && tq < b) wy = -2200 + 2200 * S((tq - (b - .34)) / .34, 5) * 1.0;
+    if (tq >= b && tq < b + .34) wy = 2100 * S((tq - b) / .34, 5); }
+  $('wipe').style.transform = `translateY(${wy}px)`;
+  const last = scenes[scenes.length - 1];
+  $('brand').style.opacity = $('flag').style.opacity = (last.type === 'fin' && tq >= last.start) ? 0 : 1;
+  for (const [i, sc] of scenes.entries()) {
+    const u = tq - sc.start, on = u >= -0.001 && u < sc.dur;
+    sc.el.style.display = on ? 'block' : 'none'; if (!on) continue;
+    const p = u / sc.dur; sc.el.style.transform = `scale(${1 + .045 * p}) translateY(${-14 * p}px)`;   // slow push-in
+    const first = i === 0;
+    if (sc.type === 'photo') {
+      const s = first ? 1 : S(u - .05, 9), rot = sc.rot ?? -2.5;
+      $('p' + i).style.transform = `translateY(${1100 * (1 - s)}px) rotate(${rot + 4 * (1 - s)}deg)`;
+      $('c' + i).style.transform = `scale(${1.02 + .09 * p}) translateX(${(sc.pan ?? -1) * 18 * p}px)`;   // slow zoom inside the print
+      if (sc.tag) { const k = S(u - .45, 12); $('t' + i).style.transform = `scaleX(${k}) rotate(-3deg)`; }
+    } else if (sc.type === 'carte') {
+      const s = S(u - .05, 9); $('m' + i).style.transform = `translateY(${700 * (1 - s)}px) rotate(${3 * (1 - s)}deg)`; $('m' + i).style.opacity = clamp(u * 6);
+      const d = S(u - .55, 11); $('pin' + i).style.transform = `translateY(${-500 * (1 - d)}px) scaleY(${.9 + .1 * d})`; $('pin' + i).style.opacity = clamp((u - .5) * 8);
+      if (sc.tag) { const k = S(u - .9, 12); $('t' + i).style.transform = `scaleX(${k}) rotate(-3deg)`; }
+    } else if (sc.type === 'chiffre') {
+      const s = S(u - .15, 16); $('b' + i).style.transform = `scale(${1 + .7 * (1 - s)}) rotate(${-5 + 3 * (1 - s)}deg)`; $('b' + i).style.opacity = clamp((u - .15) * 10);
+      $('u' + i).style.transform = `scaleX(${S(u - .45, 12)}) rotate(-5deg)`;
+      if (sc.tag) { const k = S(u - .05, 12); $('t' + i).style.transform = `scaleX(${k}) rotate(-3deg)`; }
+    } else if (sc.type === 'texte') {
+      if (sc.tag) { const k = S(u - .05, 12); $('t' + i).style.transform = `scaleX(${k}) rotate(-3deg)`; }
+    } else if (sc.type === 'fin') {
+      const d = S(u - .1, 10); $('e' + i).style.transform = `translateY(${-700 * (1 - d)}px)`;
+      const n = S(u - .5, 10); $('n' + i).style.transform = `translateY(${60 * (1 - n)}px)`; $('n' + i).style.opacity = clamp((u - .5) * 6);
+      const k = S(u - 1.0, 12); $('k' + i).style.transform = `scale(${k}) rotate(-2deg)`;
+    }
+    if (sc.texte) sc.texte.forEach((_, j) => { const at = (sc.capAt ?? (sc.type === 'photo' ? .55 : .35)) + j * (sc.capStep ?? .28);
+      const k = first ? 1 : S(u - at, 13); const e = $(`l${i}_${j}`);   // the hook is fully readable on frame 0
+      e.style.transform = `scaleX(${k}) rotate(${j % 2 ? .6 : -.8}deg)`; e.style.opacity = first ? 1 : clamp((u - at) * 12); });
+  }
+};
+
+const loads = [...document.images].map(i => i.decode().catch(() => {}));
+const pics = scenes.filter(s => s.type === 'photo').map(sc => new Promise(ok => { const im = new Image(); im.onload = () => {
+  const i = scenes.indexOf(sc), W = (sc.w ?? 980) - 40;
+  (sc.trame ? halftone : colorprint)(im, $('c' + i), W); ok(); }; im.onerror = ok; im.src = sc.image; }));
+window.DUR = DUR;
+window.ready = Promise.all([...loads, ...pics, document.fonts.ready]).then(() => { fit(); window.setT(0); });
+window.ready.then(() => { if (!location.search.includes('capture')) { const t0 = performance.now();
+  (function play() { window.setT(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(play); })(); } });
+</script>
+</body>
+</html>
