@@ -602,6 +602,14 @@ def cibles_mif(e):
     La liste est téléchargée une fois puis gardée dans le suivi (data/prospection.json)."""
     if e.get("cibles_mif"):
         return e["cibles_mif"]
+    # Liste figée (relevée le 21/11 : depuis la fin du salon, le site du MIF n'affiche plus les sites web des
+    # exposants, et il bloque souvent les serveurs de GitHub) : 260 exposants, du plus pertinent au moins pertinent.
+    fige = os.path.join(os.path.dirname(FICHIER_ETAT), "mif_exposants.json")
+    if os.path.exists(fige):
+        with open(fige, encoding="utf-8") as f:
+            liste = json.load(f)
+        print(f"Liste MIF Expo (figée) : {len(liste)} exposants")
+        return liste
     page = requests.get(MIF_URL, headers=NAVIGATEUR, timeout=60).text
     liste = []
     for bloc in re.split(r'(?=<div data-exposantid=)', page)[1:]:
