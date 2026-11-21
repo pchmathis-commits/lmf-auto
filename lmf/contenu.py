@@ -10,7 +10,7 @@ import requests
 from . import config as C
 from . import gemini
 
-STYLE = """Tu écris pour Le Média Français, un compte Instagram de 210 000 abonnés (80 % de 18-34 ans)
+STYLE = """Tu écris pour Le Média Français, un compte Instagram de 210 000 abonnés (plus de 70 % de 18-34 ans)
 qui raconte l'histoire et le patrimoine de la France en carrousels.
 
 LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
@@ -34,7 +34,7 @@ LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
   et un héros français méconnu montré en portrait, avec une couverture du type
   « Grâce à lui, … », « L'homme dont le nom est devenu… », « Ce Français a inventé… ». Quand le sujet est une personne,
   la couverture parle de lui sans le nommer et son image est son portrait.
-- PUBLIC : 80 % d'hommes de 18 à 34 ans. Ce qui les accroche : marques et objets célèbres, automobile, sport,
+- PUBLIC : surtout des hommes (75 %), plus de 70 % de 18 à 34 ans. Ce qui les accroche : marques et objets célèbres, automobile, sport,
   géopolitique, armée, records, rivalité France / grandes puissances.
 - LE NOM DU SUJET EST OBLIGATOIRE DANS LE POST : seule la couverture garde le mystère. La personne, le lieu ou l'objet
   est nommé clairement dès la slide 2 ou 3 (en rouge). Quand le sujet est une femme, elle est nommée et mise en avant
