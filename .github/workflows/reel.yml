@@ -1,0 +1,49 @@
+name: Reel (test)
+
+on:
+  workflow_dispatch:
+    inputs:
+      format:
+        description: "Format du Reel"
+        type: choice
+        options: [anecdote, ville, francais]
+        default: anecdote
+
+jobs:
+  reel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+      SHEET_URL: ${{ secrets.SHEET_URL }}
+      SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+      REEL_FORMAT: ${{ inputs.format }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: assets/Montserrat.ttf
+          key: montserrat-v1
+      - run: pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-v1
+      - name: Installer le moteur vidéo (Chromium)
+        run: python -m playwright install --with-deps chromium
+      - name: Fabriquer un Reel test (envoyé sur Telegram, jamais publié)
+        run: python -m lmf.main reel-test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reel-test
+          path: out/reels/*/*.mp4
+          if-no-files-found: ignore
