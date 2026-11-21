@@ -462,12 +462,14 @@ def commande_preparer():
     demain = (_maintenant() + dt.timedelta(days=1)).date()
     e = P.charger()
     bilan, rates = [], 0
-    for heure, type_ in C.PLANNING:
+    # Le Reel est préparé EN DERNIER : il consomme beaucoup de quota Gemini ; s'il en manque, seul lui saute.
+    for heure, type_ in sorted(C.PLANNING, key=lambda x: x[1] == "reel"):
         hh, mm = map(int, heure.split(":"))
         prevu = dt.datetime.combine(demain, dt.time(hh, mm), PARIS)
         try:
             post = None
-            for essai in ([type_, type_] if type_ in ("carrousel", "reel") else [type_, "actu"]):  # un 2e essai en secours
+            # un 2e essai en secours (pas pour le Reel : il essaie déjà jusqu'à 3 sujets lui-même)
+            for essai in ([type_] if type_ == "reel" else [type_, type_] if type_ == "carrousel" else [type_, "actu"]):
                 try:
                     post = _creer(essai, prevu)
                 except Exception as ex:
