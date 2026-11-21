@@ -16,13 +16,18 @@ qui raconte l'histoire et le patrimoine de la France en carrousels.
 LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
 - Partir de quelque chose que le lecteur connaît ou utilise : un objet, un geste, un mot, une habitude,
   une chose célèbre dans le monde. Lui révéler l'origine française cachée ou l'histoire derrière.
-- Couverture : ne JAMAIS nommer le sujet. Utiliser « ce Français », « cet homme », « ce geste », « cet objet »,
-  « un truc que tu utilises encore »… La réponse arrive dans les slides, jamais sur la couverture.
-- Parler au lecteur (« tu », « vous ») et créer un léger choc : « c'est une loi », « interdit en France »,
-  « il n'a jamais été aboli », « tu l'utilises tous les jours ».
+- Couverture : ne JAMAIS nommer le sujet (« ce Français », « cet homme », « cet objet »…). La réponse arrive dans
+  les slides, jamais sur la couverture.
+- LA COUVERTURE DOIT CONTENIR UN LIEN INATTENDU OU UN CHOC : une GUERRE, une ARMÉE, NAPOLÉON ou un grand personnage,
+  un MONTANT ou un CHIFFRE précis, un SECRET, un RECORD, un INTERDIT, un CONFLIT. Ce sont nos meilleurs posts :
+  « Cet objet dans ta cuisine existe grâce aux armées de Napoléon » (68K vues), « Le crayon de ton enfance a été
+  inventé à cause d'une guerre » (42K). Le « tu » seul ne suffit pas : c'est le lien inattendu qui fait cliquer.
+- FORMULES USÉES, INTERDITES (elles font des flops, 5 000 à 15 000 vues) : « … que le monde entier utilise »,
+  « … que tu utilises tous les jours », « … que tu utilises encore », « tu l'utilises sans le savoir »,
+  « ce mot / ce symbole / cette unité que… », « Ce Français a inventé le … le plus populaire ».
 - Exemples de couvertures qui ont cartonné (pour le TON uniquement, ne reprends jamais ces sujets) :
   « Ce Français a inventé l'objet le plus vendu de l'histoire » ; « Pourquoi dit-on que le roi d'Espagne est français ? » ;
-  « Le pire embouteillage en France a créé un truc que tu utilises encore » ; « Ce geste que les serveurs font sans vous
+  « Le pire embouteillage de France a donné naissance à une invention militaire » ; « Ce geste que les serveurs font sans vous
   le dire… c'est une loi » ; « Le président est co-prince d'Andorre ».
 - CE QUI FAIT LE PLUS S'ABONNER (abonnés gagnés par post) : la langue française (« Ces mots français qui n'existent
   dans aucune autre langue », « Quand un avion est en détresse, le pilote crie… en français », « Pourquoi dit-on allô ? »)
@@ -38,7 +43,7 @@ LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
   marque célèbre et reconnaissable, la couverture montre autre chose (le Français méconnu, un tableau d'époque, un détail).
 - À ÉVITER (ça a fait des flops) : les sujets lointains et explicatifs (« comment X est devenu… », « pourquoi la France
   envoie des fusées… »), les couvertures qui donnent déjà la réponse, le ton scolaire.
-- ACCROCHES QUI MARCHENT (nos 3 meilleurs posts) : un SECRET (« le fonds secret de l'État… »), un MONTANT ou un
+- ACCROCHES QUI MARCHENT (nos meilleurs posts) : un SECRET (« le fonds secret de l'État… »), un MONTANT ou un
   CHIFFRE CHOC dès les premiers mots (« 6 millions d'euros pour… », « 15 654 milliards… »), un PROJET GÉANT ou MILITAIRE.
   Toujours vrai et vérifiable : le chiffre ou le secret est expliqué dans le post.
 - RÈGLE D'OR : LE POST DONNE TOUJOURS LA RÉPONSE. Le lecteur doit repartir en sachant exactement QUOI, QUI, OÙ :
@@ -48,6 +53,8 @@ LA FORMULE QUI MARCHE (tirée des posts du compte à 500 000 vues et plus) :
 Style : phrases courtes, percutantes, faciles à lire sur téléphone, en français impeccable.
 Jamais de vulgarité, jamais de parti pris politique, jamais d'emoji dans les slides."""
 
+USEE = re.compile(r"(monde entier utilise|tu utilises|que tu (utilises|envoies|portes|manges|bois|dis)|"
+                  r"utilises? (tous les jours|encore|sans le savoir)|quotidiennement|le plus populaire au monde)", re.I)
 VAGUE = re.compile(r"\b(une|un|cette|ce|certaines?|certains) (commune|village|ville|r[ée]gion|langue|conditions?|"
                    r"personne|homme|femme|entreprise|lieu|d[ée]partement|mot|objet)\b(?! (de|du|d'|des|nomm|appel))", re.I)
 
@@ -207,13 +214,17 @@ def controler_carrousel(c):
     mots_nom = [m for m in re.findall(r"[\wÀ-ÿ'-]{4,}", nom)]
     revele = bool(re.search(r"c['’]est (la france|lui|elle|la|le|l['’])", couv, re.I)) or any(
         _normal(m) in _normal(couv) for m in mots_nom if m[:1].isupper())
-    if revele:
+    usee = bool(USEE.search(couv))
+    if revele or usee:
         try:
             nouveau = gemini.texte(
                 "Réécris cette accroche de couverture Instagram en 12 mots maximum pour qu'elle garde le MYSTÈRE : "
                 f"ne cite pas « {nom} », ne donne pas la réponse, finis par un suspense (« … »). "
+                "Elle doit contenir un lien inattendu tiré du sujet (une guerre, une armée, Napoléon ou un grand "
+                "personnage, un montant, un secret, un record), et JAMAIS « que le monde entier utilise », "
+                "« que tu utilises », « tous les jours », « quotidiennement ». "
                 "Réponds uniquement avec la phrase.\nAccroche : " + couv, temperature=0.5).strip().strip('"«» ')
-            if 3 <= len(nouveau.split()) <= 14 and not any(_normal(m) in _normal(nouveau) for m in mots_nom if m[:1].isupper()):
+            if 3 <= len(nouveau.split()) <= 14 and not USEE.search(nouveau) and not any(_normal(m) in _normal(nouveau) for m in mots_nom if m[:1].isupper()):
                 c["couverture"]["texte"] = nouveau
                 c["couverture"]["rouges"] = [w for w in c["couverture"].get("rouges", []) if _normal(w) in _normal(nouveau)]
         except Exception:
@@ -440,6 +451,11 @@ Voici des actualités françaises récentes. Classe les 3 MEILLEURES pour notre 
 meilleure à la moins bonne. PRIORITÉ (ce qui fait nos meilleurs chiffres) : armée, défense, souveraineté, secrets
 d'État, sommes d'argent folles, records, rivalité France / monde, découverte spectaculaire, histoire insolite avec
 un vrai enjeu, sujet dont tout le monde parle aujourd'hui.
+TEST OBLIGATOIRE pour chaque actu : « Un Français qui n'habite PAS cette région s'en soucie-t-il ? » Oui seulement
+s'il y a un MONTANT d'argent marquant, un INSOLITE fort, un RECORD, l'ARMÉE / la défense, un CONFLIT ou une
+célébrité (ex. une église vendue 107 500 € sur Leboncoin : 60K vues ; DJ Snake à Chambord : 35K). Sinon, écarte-la,
+même si elle est jolie (une fête de village, Jeanne d'Arc dans un village, un chantier : moins de 10K vues).
+Écarte aussi l'argent sans enjeu concret (épargne retraite, contrôle fiscal générique : 8 à 11K vues).
 À ÉVITER (flops) : petit fait local sans enjeu, fossiles et fouilles archéologiques ordinaires (sauf découverte
 vraiment spectaculaire, comme un temple romain entier), règlements, travaux, restaurations, anniversaires
 d'institutions, sujets administratifs ou morbides. Interdit : {", ".join(C.SUJETS_INTERDITS)}.
