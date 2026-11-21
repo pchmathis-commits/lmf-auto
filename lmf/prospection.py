@@ -648,7 +648,7 @@ def proposer_cibles(e, nb=20):
     nb_t = round(nb * 0.6)
     noms, _ = deja_vus(e)
     prompt = f"""Tu aides le média Instagram « Le Média Français » (histoire, patrimoine, savoir-faire et marques
-françaises ; 210 000 abonnés, 80 % de 18-34 ans, 75 % d'hommes) à trouver des partenaires qui paient
+françaises ; 210 000 abonnés, plus de 70 % de 18-34 ans, 75 % d'hommes) à trouver des partenaires qui paient
 des posts sponsorisés ou des campagnes.
 
 Propose {nb} organisations françaises différentes :
@@ -882,11 +882,11 @@ Structure (90 à 140 mots en tout) :
    adresse, sinon « Bonjour, ».
 2. « Je m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. »
 3. L'audience, une ou deux phrases, avec SEULEMENT ces chiffres :
-   « 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads », « 80 % de notre audience a entre 18 et
+   « 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads », « plus de 70 % de notre audience a entre 18 et
    34 ans », « 75 % d'hommes » (si utile). Puis une courte phrase sur pourquoi ce public les intéresse (leur clientèle,
    d'après leur site), sans flatterie.
 4. La proposition : {offre}. Adapte en une phrase à ce qu'ils font, sans inventer de détail.
-5. La preuve, une phrase : « Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,5 %
+5. La preuve, une phrase : « Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 %
    d'engagement. » (AUCUN chiffre de vues.)
 6. Facultatif, une phrase au plus : « En parallèle, nous pourrions aussi … » (un contenu sur leur histoire ou leur
    savoir-faire), présenté comme un à-côté.
