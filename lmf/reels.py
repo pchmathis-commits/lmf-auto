@@ -175,7 +175,7 @@ def preparer_scenes(script, dossier, cache=None):
         typ = sc.get("type")
         if typ == "photo":
             cle = f"{sc.get('entite')}|{sc.get('nature', 'lieu')}"
-            img = cache.get(cle) if cle in cache else wiki.image_exacte(sc.get("entite", ""), sc.get("nature", "lieu"))
+            img = cache.get(cle) if cle in cache else wiki.image_exacte(sc.get("entite", ""), sc.get("nature", "lieu"), verifier=False)
             cache[cle] = img
             if img:
                 nom = f"img/s{i}.jpg"
