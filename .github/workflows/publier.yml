@@ -10,11 +10,15 @@ concurrency:
 jobs:
   publier:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       SHEET_URL: ${{ secrets.SHEET_URL }}
       SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
