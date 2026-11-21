@@ -19,7 +19,8 @@ SERIE_ACTIVE = False   # « Les Français cachés » : arrêtée le 13/11 (épis
 PLANNING = [
     ("09:00", "carrousel"),
     ("11:30", "actu"),
-    ("15:00", "actu_carrousel"),
+    # ("15:00", "actu_carrousel"),  # en pause 2 semaines (test 4 posts/jour, depuis le 21/11) : les actus
+    #                                  régionales en carrousel faisaient 7 à 23K vues
     ("18:30", "carrousel"),   # carrousel classique (tendance / armée-souveraineté), plus la série
     ("20:30", "actu"),
 ]
