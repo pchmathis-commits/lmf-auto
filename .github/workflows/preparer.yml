@@ -22,6 +22,7 @@ jobs:
       SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
       IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
       TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,6 +33,12 @@ jobs:
           path: assets/Montserrat.ttf
           key: montserrat-v1
       - run: pip install -r requirements.txt dnspython
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-v1
+      - name: Installer le moteur vidéo (Chromium)
+        run: python -m playwright install --with-deps chromium
       - name: Préparer les posts et les prospects de demain
         run: python -m lmf.main preparer
       - name: Sauvegarder le suivi de la prospection
@@ -39,7 +46,7 @@ jobs:
         run: |
           git config user.name "lmf-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/prospection.json 2>/dev/null || exit 0
+          git add data/prospection.json data/reels.json 2>/dev/null || git add data/prospection.json 2>/dev/null || exit 0
           git diff --cached --quiet && exit 0
           git commit -q -m "Préparation de demain"
           for i in 1 2 3; do git pull --rebase -q && git push -q && exit 0; sleep 5; done
