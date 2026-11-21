@@ -111,9 +111,9 @@ MEDIA_KIT = os.path.join(os.path.dirname(__file__), "..", "assets", "media_kit.p
 # Chiffres du media kit (octobre 2026) utilisés dans les mails
 CHIFFRES = """- 210 000 abonnés Instagram, 82 000 sur TikTok et Threads
 - 2.4 millions de vues par mois, record : 800 000 vues sur un seul carrousel
-- Audience : 80 % ont entre 18 et 34 ans, 75 % d'hommes, 83 % en France
+- Audience : plus de 70 % ont entre 18 et 34 ans, 75 % d'hommes, 83 % en France
 - Exemples de posts : origine française de Cadillac (plus de 90 000 vues), OTAN (plus de 95 000 vues)
-- Étude de cas : Région Normandie, Millenium 2027 (1000 ans de Guillaume le Conquérant) : 65 000 vues, 3,5 % d'engagement, 25 000 vues de la story avec lien
+- Étude de cas : Région Normandie, Millenium 2027 (1000 ans de Guillaume le Conquérant) : plus de 62 000 vues cumulées, 3,2 % d'engagement, environ 25 000 vues de la story avec lien
 - Offres : carrousel sponsorisé 2 000 €, story dédiée 800 €, lien exclusif un mois 2 200 € ; diffusion TikTok et Threads offerte"""
 # Types de cibles, en rotation pour varier
 PRIORITE_MIF = True   # exposants du MIF Expo 2026 d'abord (5 par jour), jusqu'à la fin de la liste
