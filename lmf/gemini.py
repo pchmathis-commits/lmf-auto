@@ -34,6 +34,21 @@ def _appel(corps, modele=None, rapide=False):
         raise ErreurGemini("GEMINI_API_KEY manquant dans les secrets GitHub")
     derniere = None
     principal = modele or C.GEMINI_MODELE
+    for tour in range(1 if rapide else 2):
+        if tour:   # tout était saturé : la limite par minute se libère, un dernier tour après 60 s
+            print("Tout est saturé, nouvel essai dans 60 s…")
+            time.sleep(60)
+        try:
+            return _un_tour(corps, cles, principal, rapide)
+        except ErreurGemini as e:
+            derniere = e
+            if "indisponible" not in str(e) and "429" not in str(e):
+                raise   # vraie erreur (pas un quota) : inutile d'attendre
+    raise derniere
+
+
+def _un_tour(corps, cles, principal, rapide):
+    derniere = None
     for i, cle in enumerate(cles):
         for m in [principal] + [x for x in SECOURS if x != principal]:
             try:
@@ -66,10 +81,9 @@ def _appel_modele(corps, modele=None, cle=None, essais=3):
         if r.status_code == 400 and "thinking" in r.text.lower() and "thinkingConfig" in corps["generationConfig"]:
             corps["generationConfig"].pop("thinkingConfig")  # modèle qui ne connaît pas ce réglage
             continue
-        if r.status_code == 429:
+        if r.status_code == 429:   # quota : inutile d'insister sur ce modèle, on passe au suivant tout de suite
             _noter(modele, "quota dépassé (429)")
-            time.sleep(0 if essais == 1 else 15 * (essai + 1))
-            continue
+            break
         if r.status_code in (500, 503):
             time.sleep(0 if essais == 1 else 15 * (essai + 1))
             continue
