@@ -144,7 +144,7 @@ def audit_auto(rapport_md, jour):
         from . import gemini
         C.CLE_2_EN_PREMIER = True
         return gemini.texte(f"""Tu es le conseiller stratégique du compte Instagram « Le Média Français » (histoire, patrimoine,
-marques et actus insolites françaises ; 80 % d'hommes 18-34 ans). Objectif : arrêter la perte d'abonnés et atteindre
+marques et actus insolites françaises ; 75 % d'hommes, plus de 70 % de 18-34 ans). Objectif : arrêter la perte d'abonnés et atteindre
 250 000 abonnés, avec un système 100 % automatique (2 carrousels + 3 actus par jour, prospection de partenaires).
 
 Rapport de cette semaine :
