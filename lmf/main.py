@@ -118,6 +118,13 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     cands = [[] for _ in requetes]
     choix = [None] * len(requetes)
     if not sans_reseau and a_chercher:
+        from . import wiki
+        for i in list(a_chercher):   # 1) l'image officielle de l'article Wikipédia exact (sûre, et sans appel Gemini)
+            img = wiki.image_exacte(requetes[i], "autre", verifier=False)
+            if img:
+                choix[i] = {"url": img["url"], "credit": img["credit"]}
+                a_chercher.remove(i)
+    if not sans_reseau and a_chercher:   # 2) sinon la recherche habituelle
         for i in a_chercher:
             cands[i] = images.candidats(requetes[i])
         sous = contenu.choisir_images([requetes[i] for i in a_chercher], [cands[i] for i in a_chercher], fiche["sujet"])
