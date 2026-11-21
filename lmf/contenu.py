@@ -174,8 +174,10 @@ Règles :
 - Puis exactement {n} slides de texte : une idée par slide, {C.MOTS_MAX_PAR_SLIDE} mots maximum, qui se suivent comme une histoire.
 - La dernière slide de texte conclut avec une chute marquante.
 - Pour chaque slide, 1 ou 2 mots importants à mettre en rouge (copiés exactement depuis le texte).
-- Pour chaque slide, une requête d'image pour Wikimedia Commons : concrète (nom d'un personnage, d'un lieu, d'un tableau,
-  d'une carte), en anglais si c'est plus courant, sans mots abstraits. Chaque slide a une requête DIFFÉRENTE
+- Pour chaque slide, une requête d'image : si la slide montre une personne, un lieu, un monument, un objet ou une
+  œuvre PRÉCIS, mets EXACTEMENT le titre de son article Wikipédia en français (ex. « Pierre Charles L'Enfant »,
+  « Pont du Gard », « Château de Chambord », « Mobylette ») : le robot prendra son image officielle. Sinon, une
+  requête Wikimedia Commons concrète (en anglais si c'est plus courant), sans mots abstraits. Chaque slide a une requête DIFFÉRENTE
   (jamais deux fois la même), pour que chaque slide ait sa propre photo.
 - Images : jamais d'animal, d'objet générique ou de photo d'illustration « stock ». Toujours le vrai lieu, la vraie
   personne, le vrai objet ou un document d'époque.
@@ -541,8 +543,8 @@ Règles :
   (contexte → l'élément surprenant → le détail fou → le rebondissement → la chute). Le lieu exact est cité dès la slide 1,
   et la chute DONNE la réponse précise (le nom, la condition, le chiffre) : jamais de mystère non résolu.
 - 1 ou 2 mots en rouge par slide (copiés exactement du texte).
-- Une requête d'image Wikimedia Commons DIFFÉRENTE par slide : le lieu exact, la commune, un monument ou paysage du
-  département (jamais une photo de presse, jamais d'animal ni d'image générique).
+- Une requête d'image DIFFÉRENTE par slide : de préférence le titre EXACT de l'article Wikipédia français du lieu, de la
+  commune ou du monument (le robot prendra son image officielle), sinon un monument ou paysage du département (jamais une photo de presse, jamais d'animal ni d'image générique).
 - Slide finale : un appel à s'abonner court et donnant-donnant, ex. « Abonne-toi : chaque jour, une pépite de France ».
 - Région ou ville pour l'étiquette (ex. « Bretagne »).
 - Légende : 2 à 3 phrases, puis « Source : {art['source']} ».
