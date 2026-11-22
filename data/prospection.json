@@ -214,6 +214,26 @@
   "653": {
    "contact": "2026-11-10-1-674",
    "type": "reponse"
+  },
+  "793": {
+   "contact": "2026-11-23-1-872",
+   "type": "apercu"
+  },
+  "794": {
+   "contact": "2026-11-23-2-729",
+   "type": "apercu"
+  },
+  "795": {
+   "contact": "2026-11-23-3-908",
+   "type": "apercu"
+  },
+  "796": {
+   "contact": "2026-11-23-4-370",
+   "type": "apercu"
+  },
+  "797": {
+   "contact": "2026-11-23-5-603",
+   "type": "apercu"
   }
  },
  "jours_generes": [
@@ -226,7 +246,8 @@
   "2026-11-17",
   "2026-11-18",
   "2026-11-19",
-  "2026-11-20"
+  "2026-11-20",
+  "2026-11-23"
  ],
  "contacts": [
   {
@@ -842,6 +863,101 @@
    "jeton": "e696406fc7ee",
    "message_id": "<179518331238.2212.11570769429771681472@lemediafrancais.fr>",
    "envoye_le": "2026-11-20T15:01+01:00"
+  },
+  {
+   "id": "2026-11-23-1-872",
+   "organisation": "Atelier De La Baleine À Bosse",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "https://atelier-baleine.com/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : atelier d'artisan d'art innovant spécialisé en sellerie sur-mesure et sacoches de vélo.",
+   "famille": "mif",
+   "email": "contact@atelier-baleine.com",
+   "contexte_adresse": "leine, j’adore vous rencontrer. Retrouvez-moi sur différents évènements tout au long de l’année. Consultez l'agenda La Gazette du cétacé Découvrez mes nouveautés, mon métier et... promis, c'est 5 newsletters par an, pas plus 😉 S'inscrire à la newsletter Maître Artisane d'art Alexia Vermot-Desroches contact@atelier-baleine.com 06 75 51 38 80 Contacter l'atelier La Gazette du Cétacé Suivez les avent",
+   "contexte": "Atelier de La Baleine à Bosse : sellerie & sacoche de vélo Skip to content Menu Fermer Mes produits Sacoches de vélo Bagagerie Mobilier & Agencement Nautique & co Tout voir Le sur mesure Mon savoir-faire La Baleine et moi Designer textile L’atelier de la sellière Me rencontrer Marchés & salons Mes points de vente Dans la presse Suivre la Gazette Me contacter FAQ 0 0 Mes produits Sacoches de vélo Bagagerie Mobilier & Agencement Nautique & co Tout voir Le sur mesure Mon savoir-faire La Baleine et moi Designer textile L’atelier de la sellière Me rencontrer Marchés & salons Mes points de vente Dans la presse Suivre la Gazette Me contacter FAQ Atelier de Sellerie garnissage basé en pays de Dinan Sacoches de vélo artisanales L’atelier de la baleine Ma boutique Textile tout terrain Sellerie sur mesure Sur mesure La Baleine à Bretelles Sacoche vélo / Sac à dos Acheter en ligne Marchés & événements L'agenda de la Baleine Prochains RDV Newsletter poétique & pétillante La gazette du cétacé Inscrivez-vous Suivez la Baleine Insta Fb. In. Newsletter Du 2 roues à la voile, un savoir-faire tout terrain De l’accessoire au mobilier, la Baleine se met aux services de vos projets. Sacoches à vélo Sobres et colorées, ces sacoches sont idéales pour le quotidien à vélo ! Les sacoches Bagagerie Une gamme bagagerie : housse d’ordi, sac à dos et autres besaces sur mesure. La bagagerie Mobilier & agencement Réfection ou création sur mesure de mobilier & agencement. L'agencement Nautique & co Création, rénovation et réparation de votre sellerie de bateau. Le nautisme La Baleine esT Sellière Garnisseuse La baleine est artisane des matériaux souples , elle travaille le cuir , les tissus et les expansés, la bâche, la mousse… Elle a un atelier d’ artisanat d’art , né de savoir-faire et de poésie. La Baleine est curieuse, elle continue d’apprendre avec des projets de bagagerie et de tapisserie. Maitre Artisan d'art 11 ans de métier ont façonné mon savoir faire. Je suis aujourd’hui Maitre Artisane D'art. Une distinction synonyme d'engagement et d'excellence. Le sur mesure Fabrication éthique française Tous les projets sont fabriqués à l’atelier avec des matériaux techniques résistants. L’atelier développe l’économie circulaire dans ses projets. Mon atelier Designer textile Rêvant de poésie, la Baleine fait de son savoir-faire un espace innovant et crée une première ligne de sacoche de vélo. Elle dessine chaque modèle entre ligne contemporaine et praticité. À propos de moi Artisane Sellière\n\nContacter un sellier à St Malo Skip to content Menu Fermer Mes produits Sacoches de vélo Bagagerie Mobilier & Agencement Nautique & co Tout voir Le sur mesure Mon savoir-faire La Baleine et moi Designer textile L’atelier de la sellière Me rencontrer Marchés & salons Mes points de vente Dans la presse Suivre la Gazette Me contacter FAQ 0 0 Mes produits Sacoches de vélo Bagagerie Mobilier & Agencement Nautique & co Tout voir Le sur mesure Mon savoir-faire La Baleine et moi Designer textile L’ate",
+   "cree_le": "2026-11-22T21:17+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour Madame Vermot-Desroches,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai découvert votre travail en consultant la liste des exposants du MIF Expo 2026.\n\nNotre communauté réunit 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune et urbain correspond parfaitement aux utilisateurs de vos sacoches de vélo et de votre bagagerie artisanale.\n\nNous proposons un partenariat de marque : des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi réaliser un contenu centré sur votre savoir-faire de maître artisane.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": "Madame Vermot-Desroches",
+   "prevu_le": "2026-11-23T09:52+01:00",
+   "repondre_a": "contact@atelier-baleine.com",
+   "jeton": "d508d6e6e6aa"
+  },
+  {
+   "id": "2026-11-23-2-729",
+   "organisation": "Lago",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "https://lagolight.com/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : conçoit et fabrique en région auvergne-rhône-alpes les lampes frontales lago, pour les pra",
+   "famille": "mif",
+   "email": "info@lagolight.com",
+   "contexte_adresse": "",
+   "contexte": "Lagolight | Lampes frontales et torches – Mieux qu'une lampe, c'est un outil Lagolight Lagolight --> Accueil Entreprise Concepteur fabricant d’éclairage portatif Sélection et commercialisation La parole de l’expert Les technologies d’éclairage Les mesures d’éclairage Les normes Les conseils d’utilisation Lampes pour les pro Baladeuses Lampes frontales Lampes pectorales Torches Lampes rechargeables Lampes ATEX Lampes de signalisation / secours Accessoires Outdoor Camping – Bivouac – Vanlife – Bricolage Randonnées – Trekking – Marche nordique Trail – Running – Course d’orientation Vélo – VTT – Gravel – Bikepacking Pêche – Chasse – Astronomie – Plaisance / Nautisme Ski nordique et fond – Ski de randonnée – Raquette Astronomie Spéléologie E-Shop Actualités Contactez-nous Lampes professionnelles Lampes outdoor 17/11/2026 SaintéLyon et le Salon du Trail Running La mythique course nocturne de la SaintéLyon se déroulera le 28 novembre 2026 et nous sommes ravis d’être présent à la remise des dossards à l’occasion du Salon du... Lire la suite 19/10/2026 Lagolight au salon du Made in France 2026 : rendez-vous à Paris Du 12 au 15 novembre 2026, LAGOLIGHT prend la direction de Paris pour participer au Salon du Made in France, à Paris Expo Porte de Versailles ! Retrouvez-nous au... Lire la suite 15/09/2026 Préventica Lyon, du 6 au 8 octobre 2026 Direction Lyon pour LAGOLIGHT avec le salon Préventica du 6 au 8 octobre 2026. L’évènement professionnel de référence en matière de santé, sécurité et qualité de vie au travail,... Lire la suite 14/09/2026 Lagolight présent à l’Ultra Trail des Montagnes du Jura 2026 Du 1er au 4 octobre 2026, Lagolight prend la direction du massif jurassien à l’occasion de l’Ultra Trail des Montagnes du Jura (UTMJ). Pour sa 7ᵉ édition, l’UTMJ réunira... Lire la suite 02/09/2026 Nouvel évènement : l’Infernal Trail des Vosges 2026 Pour la première fois, Lagolight était présent à l’Infernal Trail des Vosges, dont la 18ᵉ édition s’est déroulée du 10 au 13 septembre 2026 à Saint-Nabord. Événement incontournable du... Lire la suite 28/08/2026 Sport Achat Été les 7 et 8 septembre 2026 Les 7 et 8 septembre prochains, Lagolight a donné rendez-vous aux professionnels de l’outdoor à Grenoble à l’occasion du salon Sport Achat Été 2026. Rendez-vous immanquable des professionnels de... Lire la suite 08/07/2026 Partenaire de l’Ultra Trail des 2 Roches Lagolight est heureux d’annoncer son partenariat avec l’Ultra Trail des 2 Roches qui a eu lieu les 4 et 5 juill\n\nContact - Lagolight Contact - Lagolight --> Accueil Entreprise Concepteur fabricant d’éclairage portatif Sélection et commercialisation La parole de l’expert Les technologies d’éclairage Les mesures d’éclairage Les normes Les conseils d’utilisation Lampes pour les pro Baladeuses Lampes frontales Lampes pectorales Torches Lampes rechargeables Lampes ATEX Lampes de signalisation / secours Accessoires Outdoor Camping – Bivouac – Vanlife – Bricolage Randonnées – Trekking – Marche nordique Trail – ",
+   "cree_le": "2026-11-22T21:17+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai remarqué votre marque parmi les exposants du salon MIF Expo 2026.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes, un profil particulièrement adapté à vos gammes d'éclairage portatif et outdoor.\n\nJe vous propose un partenariat de marque comprenant des publications et des stories dédiées sur nos trois réseaux, avec un code promo pour mesurer les résultats. Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-23T10:48+01:00",
+   "repondre_a": "info@lagolight.com",
+   "jeton": "86befe1b7466"
+  },
+  {
+   "id": "2026-11-23-3-908",
+   "organisation": "Famaco",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "http://www.famaco-paris.fr",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : fabricant de produits d'entretien pour le cuir et d'accessoires pour chaussures depuis 193",
+   "famille": "mif",
+   "email": "contact@famaco-paris.fr",
+   "contexte_adresse": "nale. Actualités La gamme Éco de Famaco se refait une beauté Lire la suite Famaco élargit son expertise avec une nouvelle gamme dédiée à la maroquinerie Lire la suite Contact FAMACO Société des Ets F. Pfirter 83, avenue de la République 92320 - Châtillon T +33 (0)1 42 53 06 43 F+33 (0)1 42 53 07 79 contact@famaco-paris.fr La maison Famaco Tutoriels La maison Nos conseils Actualités Informations No",
+   "contexte": "Accueil | Famaco Paris Famaco Paris Entretien du cuir Entretien du cuir Produits universels Nettoyer Entretenir Protéger Sublimer Cuirs lisses Entretenir Entretenir rapidement Restaurer Daim & Nubuck Nettoyer Restaurer Cuirs spéciaux Nettoyer Entretenir Gamme Eco Nettoyer Entretenir Protéger Gamme Sneakers Nettoyer Restaurer Protéger Sublimer Collection 1931 Nettoyer Entretenir Protéger Maroquinerie Nettoyer Entretenir Protéger Nos Semelles Nos Semelles Universelles Cuir Universelles Textile Hiver Ortho Confort Sneakers Nos accessoires Nos accessoires Brosses Polir Nettoyer Appliquer Luxe Chausse-Pieds Metal Plastique Bois Tendeurs et Embauchoirs Bois Autres Matériaux Lacets Lacets plats Lacets sport Lacets rond Lacets coton Lacets cordelet rond Lacets cuirs Autres Accessoires Nos coffrets et trousses Nos coffrets et trousses Coffrets Carton Coffrets Bois Trousses cuir Trousses textile Gamme professionnelle Gamme professionnelle Nettoyer Entretenir Restaurer Sublimer Protéger FR FR EN NL Découvrez la collection 1931 Découvrir Trouvez votre écrin Découvrir Précèdent Suivant L'expertise du soin depuis 1931 Depuis 1931, Famaco développe une expertise dédiée à l'entretien et à la protection des chaussures et de la maroquinerie. À travers nos gammes de produits et nos solutions sur mesure pour les marques et distributeurs, nous mettons notre savoir-faire au service de la qualité et de la beauté des matières. Des solutions pour chaque matière Cuir lisse Nettoyer, nourrir, protéger et faire briller le cuir. Daim et nubuck Des produits adaptés à l'entretien des matières veloutées. Sneakers Des solutions pour nettoyer et entretenir les sneakers au quotidien. Maroquinerie Des soins conçus pour l'entretien des sacs et accessoires en cuir. Éco Une gamme autour d'une approche plus responsable de l'entretien. Cuirs spéciaux Des solutions adaptées aux cuirs nécessitant un entretien spécifique. Des solutions sur mesure Famaco accompagne les marques, distributeurs et enseignes dans le développement de leurs propres produits d'entretien. De la définition du besoin au choix des formules et des conditionnements, nous étudions chaque projet pour proposer des solutions adaptées à votre positionnement et à vos contraintes. Notre expertise nous permet de vous accompagner dans la création de produits personnalisés, de leur conception à leur présentation finale. Actualités La gamme Éco de Famaco se refait une beauté Lire la suite Famaco élargit son expertise avec une nouvelle gamme\n\nNous contacter - Famaco Paris Famaco Paris Entretien du cuir Entretien du cuir Produits universels Nettoyer Entretenir Protéger Sublimer Cuirs lisses Entretenir Entretenir rapidement Restaurer Daim & Nubuck Nettoyer Restaurer Cuirs spéciaux Nettoyer Entretenir Gamme Eco Nettoyer Entretenir Protéger Gamme Sneakers Nettoyer Restaurer Protéger Sublimer Collection 1931 Nettoyer Entretenir Protéger Maroquinerie Nettoyer Entretenir Protéger Nos Semelles Nos Semelles Universelles Cuir Universelles Te",
+   "cree_le": "2026-11-22T21:18+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai découvert votre marque dans la liste des exposants du MIF Expo. Notre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, dont 75 % d'hommes, un public jeune et actif susceptible de s'intéresser à l'entretien de leurs chaussures et accessoires en cuir.\n\nJe vous propose un partenariat de marque comprenant des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement.\n\nEn parallèle, nous pourrions aussi réaliser un contenu sur l'histoire et le savoir-faire de votre maison.\n\nSeriez-vous disponible pour un court appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-23T11:53+01:00",
+   "repondre_a": "contact@famaco-paris.fr",
+   "jeton": "99a95daae4cf"
+  },
+  {
+   "id": "2026-11-23-4-370",
+   "organisation": "Garcin Confection",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "https://www.garcinconfection.com/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : culottes et maillots de bain menstruels, sous-vêtements, t-shirt et jeans. ",
+   "famille": "mif",
+   "email": "contact@garcinconfection.com",
+   "contexte_adresse": "ités envisagées par modèle Votre projet : type de pièces, matières, calendrier (obligatoire) Envoyer ma demande Envoi du formulaire Vos informations servent uniquement à répondre à votre demande. Voir nos mentions légales . L’atelier 12 rue Lapeyrère 75018 Paris Ouvrir dans Google Maps Nous joindre contact@garcinconfection.com 01 84 16 62 64 Visites de l’atelier sur rendez-vous uniquement. Atelier",
+   "contexte": "Garcin Confection – Atelier de confection textile à Paris Aller au contenu Savoir-faire L’atelier Contact Atelier de confection, Paris 18e Vos collections, fabriquées à Paris. Garcin Confection fabrique les collections des marques dans son atelier du 18e arrondissement. Lingerie, maillots de bain, sous-vêtements, sweats, jeans et robes, pour l’homme comme pour la femme, du patron à la pièce finie. Présenter votre projet Voir ce que nous fabriquons Tout en interne Patronage, coupe, montage et finitions dans un seul atelier. Du prototype à la série Une pièce test d’abord, puis la production à votre rythme. Paris 18e Venez suivre votre production, sur rendez-vous. Ce que nous fabriquons De la lingerie au jean, des pièces du quotidien montées avec le même soin des finitions. Lingerie et protections lavables Culottes, shorties, tailles hautes et protections menstruelles lavables, avec pose de membrane technique. Maillots de bain Maillots une pièce, hauts et bas de maillot, en version classique ou menstruelle avec membrane absorbante. Sous-vêtements Homme et Femme Boxers, caleçons, slips et culottes en mailles fines, pensés pour la tenue et les lavages répétés. T-shirts et débardeurs T-shirts manches courtes et longues et débardeurs, pour l’homme comme pour la femme. Sweats et gilets Sweats, sweats à capuche et gilets, en molleton ou en maille. Jeans, pantalons, jupes et robes Jeans, pantalons, jupes et robes, en denim, en toile ou en tissu fluide. Avec qui nous travaillons Vous lancez votre marque Nous partons de votre dessin ou d’une pièce de référence. Nous réalisons le patron et le prototype, puis une première série pour tester votre collection. Vous produisez déjà Vous voulez relocaliser votre production ou fiabiliser vos réassorts. Nous reprenons vos patrons et produisons par séries régulières. Du patron à la livraison Étape 01 Patronage Votre dessin ou votre pièce de référence devient un patron, gradué dans toutes vos tailles. Étape 02 Prototype Nous montons un prototype et l’ajustons avec vous jusqu’à validation. Étape 03 Coupe et montage La série est coupée et assemblée ici, sur nos machines industrielles. Étape 04 Finitions et contrôle Chaque pièce est finie et vérifiée avant de vous être livrée. Elles fabriquent chez nous BROKN La Culotte Parisienne Plim Underwear Un projet de collection ? Venez voir l’atelier. Que vous lanciez votre marque ou que vous relocalisiez votre production, nous vous recevons au 12 rue Lapeyrère, Paris 18e, sur rendez-vous. P\n\nContact – Garcin Confection Aller au contenu Savoir-faire L’atelier Contact Parlons de votre projet. Décrivez-nous votre produit, vos quantités et votre calendrier. Nous revenons vers vous pour organiser un rendez-vous à l’atelier. Demande de devis ← Retour Merci, votre demande est bien envoyée. Nous revenons vers vous rapidement pour en parler. Nom et prénom (obligatoire) Marque ou société (obligatoire) Email (obligatoire) Téléphone Produits concernés Lingerie et protections lavables Maillots",
+   "cree_le": "2026-11-22T21:18+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai repéré Garcin Confection dans la liste des exposants du MIF Expo 2026.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans. Ce public jeune et urbain correspond parfaitement aux personnes qui cherchent des vêtements fabriqués à Paris.\n\nJe vous propose un partenariat de marque : des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble autour de vos collections.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi présenter votre savoir-faire de confection parisienne.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-23T13:57+01:00",
+   "repondre_a": "contact@garcinconfection.com",
+   "jeton": "088aaccbd4de"
+  },
+  {
+   "id": "2026-11-23-5-603",
+   "organisation": "Mmll",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "http://mmll.fr/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : maroquinerie, petite maroquinerie, tongs et sandales en cuir.",
+   "famille": "mif",
+   "email": "contact@mmll.fr",
+   "contexte_adresse": "us Conditions d'utilisation Mentions légales MMLL MMLL la marque L'Atelier MMLL Il était une fois sitemap Mon compte Mes commandes Mes avoirs Mes adresses Mes informations personnelles Informations sur votre boutique MMLL ®, 43 rue Montaigne 13012 Marseille Appelez-nous au : 06 13 45 43 51 E-mail : contact@mmll.fr",
+   "contexte": "MMLL - Fabricant de Tong et de Sandale Artisanale en Cuir - MMLL ® Tong Cuir Connexion Contactez-nous Appelez-nous au : 06 13 45 43 51 Rechercher Panier 0 Produit Produits (vide) Aucun produit À définir Livraison 0 € Total Commander Produit ajouté au panier avec succès Quantité Total Il y a 0 produits dans votre panier. Il y a 1 produit dans votre panier. Total produits Frais de port À définir Total Continuer mes achats Commander Menu Sac Cuir Sac Ancre Cuir Sac Filet Cuir Tong Cuir Femme Sandale Cuir Femme Tong Cuir Homme Sandale Cuir Homme COLLECTIONS Tong Cuir CHOUCHOU Tong Cuir La Lou Tong Cuir La Noa Tong Sandale Cuir ORIGINE Tong Cuir La Valérie Tong Cuir La Camille Sandale Cuir L'Axelle Tong Sandale Cuir LUI OU ELLE Tong Cuir La Charlie Tong Cuir La Calie Sandale Cuir L'Alex Tong Sandale Cuir NUE Tong Cuir La Billie Sandale Cuir La Gabie Tong Sandale Cuir AILÉE Tong Cuir L'Arielle Sandale Cuir La Gaëlle Tong Cuir EXTRA Tong Cuir La Céleste Tong Sandale Cuir CAPSULE Tong Sandale Cuir La 17 Tong Cuir L'Ange Bleu Sandale Cuir SPARTIATE Populaire Nouveautés 89 Tong Cuir Orange La Lou La Tong Cuir Orange pour femme La Lou de la Collection CHOUCHOU par MMLL® est fabriquée artisanalement dans notre atelier en France. Elle est personnalisable! Faites vos choix dans nos options et créez la vôtre parmi des milliers de combinaisons. Envie d'être guidé? EN SAVOIR PLUS. Pied Fin ou Pied Large? Montage sur mesure OFFERT! Besoin d'une autre... 89 € Ajouter au panier Détails 5 1 MMLL ® Tong Cuir , 5 / 5 --> 89 Tong Cuir Marron La Lou La Tong Cuir Marron pour femme La Lou de la Collection CHOUCHOU par MMLL® est fabriquée artisanalement dans notre atelier en France. Elle est personnalisable! Faites vos choix dans nos options et créez la vôtre parmi des milliers de combinaisons. Envie d'être guidé? EN SAVOIR PLUS. Pied Fin ou Pied Large? Montage sur mesure OFFERT! Besoin d'une autre... 89 € Ajouter au panier Détails 5 1 MMLL ® Tong Cuir , 5 / 5 --> 89 Tong Cuir Chocolat La Lou La Tong Cuir Chocolat pour femme La Lou de la Collection CHOUCHOU par MMLL® est fabriquée artisanalement dans notre atelier en France. Elle est personnalisable! Faites vos choix dans nos options et créez la vôtre parmi des milliers de combinaisons. Envie d'être guidé? EN SAVOIR PLUS. Pied Fin ou Pied Large? Montage sur mesure OFFERT! Besoin d'une autre... 89 € Ajouter au panier Détails 5 1 MMLL ® Tong Cuir , 5 / 5 --> 89 Tong Cuir Noir La Lou La Tong Cuir Noir pour femme La Lou de la Collection \n\nContactez-nous - MMLL ® Tong Cuir Connexion Contactez-nous Appelez-nous au : 06 13 45 43 51 Rechercher Panier 0 Produit Produits (vide) Aucun produit À définir Livraison 0 € Total Commander Produit ajouté au panier avec succès Quantité Total Il y a 0 produits dans votre panier. Il y a 1 produit dans votre panier. Total produits Frais de port À définir Total Continuer mes achats Commander Menu Sac Cuir Sac Ancre Cuir Sac Filet Cuir Tong Cuir Femme Sandale Cuir Femme Tong Cuir Homme Sandale Cuir",
+   "cree_le": "2026-11-22T21:18+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français (@lemediafrancais), un média sur la France, son histoire et son actualité. J'ai remarqué votre marque dans la liste des exposants du salon MIF Expo 2026.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune et attaché aux produits conçus sur notre territoire correspond tout à fait aux acheteurs de vos tongs et sandales en cuir artisanales.\n\nJe vous propose un partenariat de marque : des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble. Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi réaliser un contenu axé sur votre savoir-faire de fabricant.\n\nSeriez-vous disponible pour un court appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-23T14:47+01:00",
+   "repondre_a": "contact@mmll.fr",
+   "jeton": "05daf005ccc4"
   }
  ],
  "mails_traites": [
@@ -879,5 +995,22 @@
   "m37446": "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>"
  },
  "brouillons": {},
- "mails_depuis": "2026-11-09T14:01+01:00"
+ "mails_depuis": "2026-11-09T14:01+01:00",
+ "mif_essayes": [
+  "ateliervelocidade.com",
+  "atelier-baleine.com",
+  "lagolight.com",
+  "famaco-paris.fr",
+  "garcinconfection.com",
+  "labouclee.com",
+  "lamikula.com",
+  "lesacduberger.com",
+  "meduse.com",
+  "mmll.fr",
+  "rondini.fr",
+  "atelier-dune.com",
+  "madame-royale-maroquinerie.fr",
+  "pavenrod.fr",
+  "recyclball.fr"
+ ]
 }
