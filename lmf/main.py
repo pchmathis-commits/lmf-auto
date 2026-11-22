@@ -119,9 +119,14 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     choix = [None] * len(requetes)
     if not sans_reseau and a_chercher:
         from . import wiki
+        titres_vus = set()
         for i in list(a_chercher):   # 1) l'image officielle de l'article Wikipédia exact (sûre, et sans appel Gemini)
+            cle = requetes[i].strip().lower()
+            if cle in titres_vus:    # même sujet sur deux slides : la 2e passe par la recherche (photo différente)
+                continue
+            titres_vus.add(cle)
             img = wiki.image_exacte(requetes[i], "autre", verifier=False)
-            if img:
+            if img and img["url"] not in {c["url"] for c in choix if c}:
                 choix[i] = {"url": img["url"], "credit": img["credit"]}
                 a_chercher.remove(i)
     if not sans_reseau and a_chercher:   # 2) sinon la recherche habituelle
@@ -140,6 +145,14 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
 
     utilisees = []
 
+    empreintes = []
+
+    def _empreinte(im):   # « hash visuel » 16×16 : reconnaît la même photo même sous une autre adresse ou taille
+        g = im.convert("L").resize((16, 16))
+        px = list(g.getdata())
+        m = sum(px) / len(px)
+        return [p > m for p in px]
+
     def _essayer(candidat):
         if not candidat or candidat["url"] in deja:
             return None
@@ -150,6 +163,10 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
             return None
         if min(im.size) < 700:  # trop petite : elle serait floue en 1080 × 1350
             return None
+        h = _empreinte(im)
+        if any(sum(a != b for a, b in zip(h, x)) <= 25 for x in empreintes):   # quasi identique à une photo déjà prise
+            return None
+        empreintes.append(h)
         credits.append(candidat["credit"])
         utilisees[-1] = candidat
         return im
@@ -158,8 +175,11 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     for i, ch in enumerate(choix):
         utilisees.append(None)
         img = _essayer(ch)
-        if not img and gardees[i] and not sans_reseau:  # l'ancienne photo n'est plus dispo : on en cherche une
-            cands[i] = images.candidats(requetes[i])
+        if not img and not cands[i] and not sans_reseau:  # photo déjà prise ou indisponible : on en cherche une autre
+            try:
+                cands[i] = images.candidats(requetes[i])
+            except Exception:
+                cands[i] = []
         for autre in (cands[i] if not img else []):
             img = img or _essayer(autre)
         for autre in (reserve if not img else []):
@@ -474,17 +494,19 @@ def commande_preparer():
         hh, mm = map(int, heure.split(":"))
         prevu = dt.datetime.combine(demain, dt.time(hh, mm), PARIS)
         try:
-            post = None
+            post, derniere = None, None
             # un 2e essai en secours (pas pour le Reel : il essaie déjà jusqu'à 3 sujets lui-même)
             for essai in ([type_] if type_ == "reel" else [type_, type_] if type_ == "carrousel" else [type_, "actu"]):
                 try:
                     post = _creer(essai, prevu)
                 except Exception as ex:
+                    derniere = ex
+                    traceback.print_exc()
                     print(f"{essai} raté ({ex}), nouvel essai…")
                 if post:
                     break
             if not post:
-                raise RuntimeError("aucun sujet adapté trouvé")
+                raise RuntimeError(str(derniere) if derniere else "aucun sujet adapté trouvé")
             apercu_telegram(e, post)
             bilan.append(f"✅ {heure} · {post['type']}")
         except Exception as ex:
