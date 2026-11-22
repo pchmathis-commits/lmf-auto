@@ -348,6 +348,7 @@ def creer(post_id, prevu, format_=None, consigne="", donnees_avant=None):
     os.makedirs(dossier, exist_ok=True)
     cache = (donnees_avant or {}).get("cache", {})
     script, scenes, credits = None, [], []
+    essais = []
     for essai in range(3):
         if donnees_avant and essai == 0:
             script = modifier_script(donnees_avant["script"], consigne) if consigne else donnees_avant["script"]
@@ -358,9 +359,10 @@ def creer(post_id, prevu, format_=None, consigne="", donnees_avant=None):
         if nb_photos >= 2 and len(scenes) >= 5:
             break
         print(f"Reel « {script.get('sujet')} » : seulement {nb_photos} image(s) sûre(s), autre sujet…")
+        essais.append(f"{script.get('sujet')} ({nb_photos} image)")
         donnees_avant = None
     else:
-        raise RuntimeError("pas assez d'images sûres pour faire un beau Reel")
+        raise RuntimeError("pas assez d'images sûres : " + " ; ".join(essais))
     scenes.append({"type": "fin", "dur": 2.8, "capY": 1100, "center": True, "texte": FIN[format_], "cta": "ABONNE-TOI"})
     musique = choisir_musique(etat)
     spec = {"fond": FOND, "scenes": scenes}
