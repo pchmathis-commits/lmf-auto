@@ -25,8 +25,31 @@ def _get(url, **params):
     return r.json()
 
 
+def _mots(t):
+    import unicodedata
+    t = unicodedata.normalize("NFD", t.lower())
+    t = "".join(c for c in t if unicodedata.category(c) != "Mn")
+    return {m for m in re.findall(r"[a-z0-9]+", t) if len(m) > 1 and m not in ("de", "du", "la", "le", "les", "des", "et")}
+
+
 def entite(titre):
-    """Article Wikipédia FR exact → {titre, description, qid} (None si absent ou page d'homonymie)."""
+    """Article Wikipédia FR exact → {titre, description, qid} (None si absent ou page d'homonymie).
+    Si le titre exact n'existe pas, on prend le 1er résultat de la recherche Wikipédia, mais SEULEMENT si tous les
+    mots demandés sont dans son titre (« Pierre L'Enfant » → « Pierre Charles L'Enfant » ; « Dupont » ≠ « Pont du Gard »)."""
+    r = _entite_exacte(titre)
+    if r or not titre.strip():
+        return r
+    try:
+        d = _get(WP, action="query", list="search", srsearch=titre, srlimit=1)
+        hits = d.get("query", {}).get("search", [])
+        if hits and _mots(titre) and _mots(titre) <= _mots(hits[0]["title"]):
+            return _entite_exacte(hits[0]["title"])
+    except Exception:
+        pass
+    return None
+
+
+def _entite_exacte(titre):
     d = _get(WP, action="query", titles=titre, redirects=1, prop="pageprops|description", ppprop="wikibase_item|disambiguation")
     for p in d.get("query", {}).get("pages", {}).values():
         if "missing" in p or "disambiguation" in p.get("pageprops", {}):
