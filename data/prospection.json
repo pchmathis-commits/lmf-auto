@@ -242,6 +242,10 @@
   "800": {
    "contact": "m46359",
    "type": "mail"
+  },
+  "802": {
+   "contact": "m46359",
+   "type": "mail"
   }
  },
  "jours_generes": [
@@ -1031,7 +1035,9 @@
   "m37446": "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>",
   "m46359": "<CAAA1Z10XF7s=0c=wJ04--FbU_QgpxLooZA7ezPsUmzRxtROXeg@mail.gmail.com>"
  },
- "brouillons": {},
+ "brouillons": {
+  "m46359": "Bonjour Maggie,\n\nJe vous remercie pour ces précisions.\n\nNotre activité repose sur l'animation de nos communautés existantes, notamment nos 210 000 abonnés sur Instagram. La création de comptes dédiés ne correspond donc pas à notre modèle d'intervention.\n\nSi vous faites évoluer votre programme vers des partenariats sponsorisés directs sur des médias établis, nous serons ravis d'en discuter.\n\nJe vous souhaite une excellente continuation.\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais"
+ },
  "mails_depuis": "2026-11-09T14:01+01:00",
  "mif_essayes": [
   "ateliervelocidade.com",
