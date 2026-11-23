@@ -234,6 +234,10 @@
   "797": {
    "contact": "2026-11-23-5-603",
    "type": "apercu"
+  },
+  "799": {
+   "contact": "2026-11-23-1-872",
+   "type": "reponse"
   }
  },
  "jours_generes": [
@@ -598,7 +602,7 @@
    "email": "contact@lip.fr",
    "contexte_adresse": "l Conditions générales de vente Mentions légales Mentions légales ÉDITEUR DU SITE INTERNET Le présent Site Internet est exploité par : S.M.B. Horlogerie SAS Siège Social : ZAE du Pré Brenot, 12 Chemin de Maurapans, 25870 Châtillon-le-Duc Téléphone : 03 81 48 48 00 Adresse de courrier électronique : contact@lip.fr Société par actions simplifiée au capital social de € 1.500.000 Immatriculée au Regis",
    "cree_le": "2026-11-15T21:40+01:00",
-   "statut": "envoyé",
+   "statut": "relancé",
    "objet": "LIP : l'histoire de la maison de Besançon en carrousel ?",
    "corps": "Bonjour,\n\nDe la Type 14 inspirée des cockpits des années 1940 aux modèles emblématiques comme la Général de Gaulle ou la Churchill, LIP possède l'un des patrimoines horlogers les plus marquants de France.\n\nNous aimerions retracer la saga de votre maison de Besançon à travers un carrousel dédié, pour faire redécouvrir cet héritage industriel à une audience jeune et engagée.\n\nLe Média Français, c'est 210 000 abonnés sur Instagram avec une audience composée à 80 % de 18-34 ans et 83 % située en France.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": null,
@@ -606,7 +610,9 @@
    "repondre_a": "contact@lip.fr",
    "jeton": "a38255438c7d",
    "message_id": "<179482691626.2415.18175247911138210106@lemediafrancais.fr>",
-   "envoye_le": "2026-11-16T12:02+01:00"
+   "envoye_le": "2026-11-16T12:02+01:00",
+   "relance_id": "<179543173427.2392.13831519947645331622@lemediafrancais.fr>",
+   "relance_le": "2026-11-23T12:02+01:00"
   },
   {
    "id": "2026-11-16-4-897",
@@ -878,7 +884,7 @@
    "email": "contact@atelier-baleine.com",
    "contexte_adresse": "leine, j’adore vous rencontrer. Retrouvez-moi sur différents évènements tout au long de l’année. Consultez l'agenda La Gazette du cétacé Découvrez mes nouveautés, mon métier et... promis, c'est 5 newsletters par an, pas plus 😉 S'inscrire à la newsletter Maître Artisane d'art Alexia Vermot-Desroches contact@atelier-baleine.com 06 75 51 38 80 Contacter l'atelier La Gazette du Cétacé Suivez les avent",
    "cree_le": "2026-11-22T21:17+01:00",
-   "statut": "envoyé",
+   "statut": "répondu",
    "objet": "Proposition de collaboration – Le Média Français",
    "corps": "Bonjour Madame Vermot-Desroches,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai découvert votre travail en consultant la liste des exposants du MIF Expo 2026.\n\nNotre communauté réunit 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune et urbain correspond parfaitement aux utilisateurs de vos sacoches de vélo et de votre bagagerie artisanale.\n\nNous proposons un partenariat de marque : des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi réaliser un contenu centré sur votre savoir-faire de maître artisane.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": "Madame Vermot-Desroches",
@@ -886,7 +892,18 @@
    "repondre_a": "contact@atelier-baleine.com",
    "jeton": "d508d6e6e6aa",
    "message_id": "<179542451576.2424.14856843384794280805@lemediafrancais.fr>",
-   "envoye_le": "2026-11-23T10:01+01:00"
+   "envoye_le": "2026-11-23T10:01+01:00",
+   "reponse_id": "<41cbe14fab1cad833ab83818080142a0@atelier-baleine.com>",
+   "objet_reponse": "Re: Proposition de collaboration – Le Média Français",
+   "derniere_reponse": "bonjour, je ne vois aucune publicaiton del a sorte sur votre compte \ninstagram\n\nVotre profil me semble peut correspondre.\n\nBien cordialement,\n\n---\n  [1]",
+   "echanges": [
+    {
+     "le": "2026-11-23T12:02+01:00",
+     "sens": "reçu",
+     "id": "<41cbe14fab1cad833ab83818080142a0@atelier-baleine.com>"
+    }
+   ],
+   "brouillon": "Bonjour Madame Vermot-Desroches,\n\nJe vous remercie pour votre retour.\n\nNos partenariats prennent la forme de contenus culturels et historiques intégrés à notre ligne éditoriale, comme notre récente campagne pour la Région Normandie (62 000 vues cumulées). Nous ne publions pas de visuels publicitaires classiques, ce qui préserve l'engagement élevé de notre communauté (75 % d'hommes, 18-34 ans), très sensible au savoir-faire et à l'artisanat français.\n\nJe vous joins notre media kit pour vous présenter nos formats et nos résultats.\n\nSeriez-vous ouverte à un bref échange téléphonique en début de semaine prochaine, après 18 h, pour en discuter ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais"
   },
   {
    "id": "2026-11-23-2-729",
@@ -917,15 +934,16 @@
    "famille": "mif",
    "email": "contact@famaco-paris.fr",
    "contexte_adresse": "nale. Actualités La gamme Éco de Famaco se refait une beauté Lire la suite Famaco élargit son expertise avec une nouvelle gamme dédiée à la maroquinerie Lire la suite Contact FAMACO Société des Ets F. Pfirter 83, avenue de la République 92320 - Châtillon T +33 (0)1 42 53 06 43 F+33 (0)1 42 53 07 79 contact@famaco-paris.fr La maison Famaco Tutoriels La maison Nos conseils Actualités Informations No",
-   "contexte": "Accueil | Famaco Paris Famaco Paris Entretien du cuir Entretien du cuir Produits universels Nettoyer Entretenir Protéger Sublimer Cuirs lisses Entretenir Entretenir rapidement Restaurer Daim & Nubuck Nettoyer Restaurer Cuirs spéciaux Nettoyer Entretenir Gamme Eco Nettoyer Entretenir Protéger Gamme Sneakers Nettoyer Restaurer Protéger Sublimer Collection 1931 Nettoyer Entretenir Protéger Maroquinerie Nettoyer Entretenir Protéger Nos Semelles Nos Semelles Universelles Cuir Universelles Textile Hiver Ortho Confort Sneakers Nos accessoires Nos accessoires Brosses Polir Nettoyer Appliquer Luxe Chausse-Pieds Metal Plastique Bois Tendeurs et Embauchoirs Bois Autres Matériaux Lacets Lacets plats Lacets sport Lacets rond Lacets coton Lacets cordelet rond Lacets cuirs Autres Accessoires Nos coffrets et trousses Nos coffrets et trousses Coffrets Carton Coffrets Bois Trousses cuir Trousses textile Gamme professionnelle Gamme professionnelle Nettoyer Entretenir Restaurer Sublimer Protéger FR FR EN NL Découvrez la collection 1931 Découvrir Trouvez votre écrin Découvrir Précèdent Suivant L'expertise du soin depuis 1931 Depuis 1931, Famaco développe une expertise dédiée à l'entretien et à la protection des chaussures et de la maroquinerie. À travers nos gammes de produits et nos solutions sur mesure pour les marques et distributeurs, nous mettons notre savoir-faire au service de la qualité et de la beauté des matières. Des solutions pour chaque matière Cuir lisse Nettoyer, nourrir, protéger et faire briller le cuir. Daim et nubuck Des produits adaptés à l'entretien des matières veloutées. Sneakers Des solutions pour nettoyer et entretenir les sneakers au quotidien. Maroquinerie Des soins conçus pour l'entretien des sacs et accessoires en cuir. Éco Une gamme autour d'une approche plus responsable de l'entretien. Cuirs spéciaux Des solutions adaptées aux cuirs nécessitant un entretien spécifique. Des solutions sur mesure Famaco accompagne les marques, distributeurs et enseignes dans le développement de leurs propres produits d'entretien. De la définition du besoin au choix des formules et des conditionnements, nous étudions chaque projet pour proposer des solutions adaptées à votre positionnement et à vos contraintes. Notre expertise nous permet de vous accompagner dans la création de produits personnalisés, de leur conception à leur présentation finale. Actualités La gamme Éco de Famaco se refait une beauté Lire la suite Famaco élargit son expertise avec une nouvelle gamme\n\nNous contacter - Famaco Paris Famaco Paris Entretien du cuir Entretien du cuir Produits universels Nettoyer Entretenir Protéger Sublimer Cuirs lisses Entretenir Entretenir rapidement Restaurer Daim & Nubuck Nettoyer Restaurer Cuirs spéciaux Nettoyer Entretenir Gamme Eco Nettoyer Entretenir Protéger Gamme Sneakers Nettoyer Restaurer Protéger Sublimer Collection 1931 Nettoyer Entretenir Protéger Maroquinerie Nettoyer Entretenir Protéger Nos Semelles Nos Semelles Universelles Cuir Universelles Te",
    "cree_le": "2026-11-22T21:18+01:00",
-   "statut": "planifié",
+   "statut": "envoyé",
    "objet": "Proposition de collaboration – Le Média Français",
    "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai découvert votre marque dans la liste des exposants du MIF Expo. Notre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, dont 75 % d'hommes, un public jeune et actif susceptible de s'intéresser à l'entretien de leurs chaussures et accessoires en cuir.\n\nJe vous propose un partenariat de marque comprenant des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement.\n\nEn parallèle, nous pourrions aussi réaliser un contenu sur l'histoire et le savoir-faire de votre maison.\n\nSeriez-vous disponible pour un court appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": null,
    "prevu_le": "2026-11-23T11:53+01:00",
    "repondre_a": "contact@famaco-paris.fr",
-   "jeton": "99a95daae4cf"
+   "jeton": "99a95daae4cf",
+   "message_id": "<179543172526.2392.7135448923591563537@lemediafrancais.fr>",
+   "envoye_le": "2026-11-23T12:02+01:00"
   },
   {
    "id": "2026-11-23-4-370",
@@ -988,7 +1006,8 @@
   "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
   "<6bcea4f091354f2eb9e1301afa3f5d86@ariane.group>",
   "<92f5f9fa4fab47ddabd4bedb33d8f15a@ariane.group>",
-  "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>"
+  "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>",
+  "<41cbe14fab1cad833ab83818080142a0@atelier-baleine.com>"
  ],
  "mails_divers": {
   "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
