@@ -340,9 +340,28 @@ def envoyer_video(chat, chemin_ou_url, legende, boutons):
 # ---------------------------------------------------------------------------
 # 5. Tout en un
 # ---------------------------------------------------------------------------
+SEMAINE = os.path.join(RACINE, "data", "reels_semaine.json")
+
+
+def script_planifie(jour):
+    """Le Reel écrit à l'avance pour ce jour (fichier data/reels_semaine.json, préparé chaque samedi), ou None."""
+    try:
+        with open(SEMAINE, encoding="utf-8") as f:
+            for r in json.load(f):
+                if r.get("date") == jour.isoformat():
+                    return r
+    except (OSError, ValueError) as ex:
+        print(f"Pas de fichier de Reels de la semaine utilisable ({ex})")
+    return None
+
+
 def creer(post_id, prevu, format_=None, consigne="", donnees_avant=None):
-    """Crée le Reel complet. Renvoie le dict « post » (même forme que les carrousels)."""
+    """Crée le Reel complet. Renvoie le dict « post » (même forme que les carrousels).
+    Si un Reel est écrit à l'avance pour ce jour, on le monte tel quel : AUCUN appel à Gemini."""
     etat = charger()
+    planifie = None if donnees_avant else script_planifie(prevu.date())
+    if planifie:
+        format_ = planifie.get("format") or format_
     format_ = format_ or (donnees_avant or {}).get("format") or format_du_jour(prevu)
     dossier = os.path.join(RACINE, "out", "reels", post_id)
     os.makedirs(dossier, exist_ok=True)
@@ -350,7 +369,12 @@ def creer(post_id, prevu, format_=None, consigne="", donnees_avant=None):
     script, scenes, credits = None, [], []
     essais = []
     for essai in range(3):
-        if donnees_avant and essai == 0:
+        if planifie and essai == 0:
+            script = planifie
+        elif planifie:
+            raise RuntimeError(f"Reel écrit à l'avance « {planifie.get('sujet')} » : seulement {nb_photos} image(s) "
+                               "trouvée(s) sur Wikipédia, vérifie les titres des images dans reels_semaine.json")
+        elif donnees_avant and essai == 0:
             script = modifier_script(donnees_avant["script"], consigne) if consigne else donnees_avant["script"]
         else:
             script = ecrire(format_, etat, consigne)
@@ -364,12 +388,17 @@ def creer(post_id, prevu, format_=None, consigne="", donnees_avant=None):
     else:
         raise RuntimeError("pas assez d'images sûres : " + " ; ".join(essais))
     scenes.append({"type": "fin", "dur": 2.8, "capY": 1100, "center": True, "texte": FIN[format_], "cta": "ABONNE-TOI"})
-    musique = choisir_musique(etat)
+    musique = (planifie or {}).get("musique") or choisir_musique(etat)
+    if musique and not os.path.exists(os.path.join(MUSIQUES, f"{musique}.mp3")):
+        musique = choisir_musique(etat)
     spec = {"fond": FOND, "scenes": scenes}
     sortie = os.path.join(dossier, f"{post_id}.mp4")
     duree = rendre(spec, dossier, sortie, musique)
     textes = [" ".join(s.get("texte", [])).replace("*", "") for s in scenes if s["type"] != "fin"]
-    ok, rapport = contenu.verifier(textes + [script.get("legende", "")], f"Reel « {script.get('sujet')} »")
+    if planifie:
+        ok, rapport = True, "Écrit et vérifié à l'avance (fichier des Reels de la semaine)."
+    else:
+        ok, rapport = contenu.verifier(textes + [script.get("legende", "")], f"Reel « {script.get('sujet')} »")
     legende = script.get("legende", "").strip()
     credits = sorted({c for c in credits if c})
     txt = (legende + "\n\n👉 Abonne-toi à " + C.COMPTE + " : chaque jour, une histoire de France que tu ne connais pas."
