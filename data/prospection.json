@@ -282,6 +282,10 @@
   "884": {
    "contact": "m48012",
    "type": "mail"
+  },
+  "886": {
+   "contact": "2026-11-17-2-648",
+   "type": "reponse"
   }
  },
  "jours_generes": [
@@ -735,7 +739,7 @@
    "email": "contact@maisondestetes.com",
    "contexte_adresse": "de luxe 5 étoiles Alsace menu fermer Accueil Notre Maison Chambres Restaurants Restaurant Girardin Brasserie Historique Winstub Bartholdi Pâtisserie Séminaires et Événements Cartes et menus Photos Accès Colmar FAQ CGV Actualités Presse Recrutement Offres spéciales Contact Fr De En +33 3 89 24 43 43 contact@maisondestetes.com resa réserver & offrir fermer Réserver votre séjour Réserver votre séjour",
    "cree_le": "2026-11-16T21:50+01:00",
-   "statut": "relancé",
+   "statut": "répondu",
    "objet": "La Maison des Têtes et la tradition alsacienne sur Le Média Français ?",
    "corps": "Bonjour,\n\nVotre établissement fait vivre un patrimoine d'exception au cœur de Colmar, à la croisée de la tradition alsacienne et de la haute gastronomie incarnée par le Chef Eric Girardin.\n\nNous aimerions valoriser l'architecture Renaissance de la Maison des Têtes et cet art de vivre français à travers un carrousel sponsorisé dédié, afin d'attirer une clientèle curieuse d'histoire et d'expériences d'exception.\n\nLe Média Français, c'est une communauté de 210 000 abonnés sur Instagram et 2,4 millions de vues par mois autour du patrimoine et des savoir-faire nationaux.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": null,
@@ -745,7 +749,18 @@
    "message_id": "<179490971793.2397.1596551274400898598@lemediafrancais.fr>",
    "envoye_le": "2026-11-17T11:02+01:00",
    "relance_id": "<179551452739.2460.4373414145401033355@lemediafrancais.fr>",
-   "relance_le": "2026-11-24T11:02+01:00"
+   "relance_le": "2026-11-24T11:02+01:00",
+   "reponse_id": "<CAEJ4SeX268kKwGEVRWPoMxCf4FWR0p-mVrKWTC6RC8XfwKHYRg@mail.gmail.com>",
+   "objet_reponse": "Re: La Maison des Têtes et la tradition alsacienne sur Le Média Français ?",
+   "derniere_reponse": "Bonjour,\n\nNous vous remercions pour votre prise de contact ainsi que pour l'intérêt\nporté à la Maison des Têtes.\n\nNous ne souhaitons toutefois pas donner suite à ce type de proposition, les\npublications sponsorisées et collaborations payantes ne faisant pas partie\nde notre stratégie de communication.\n\nNous vous remercions néanmoins d'avoir pensé à notre établissement et vous\nsouhaitons une belle continuation.\n\nBien cordialement,\n*Laura DA SILVA VIDAL* - Chargée de communication\n\n[image: site web]\n<https://www.maisondestetes.com/fr/>\n\n<https://www.maisondestetes.com/fr/>\n\n<https://www.maisondestetes.com/fr/>\n\n<https://www.maisondestetes.com/fr/>\n\n<https://www.maisondestetes.com/fr/>\n\n<https://www.maisondestetes.com/fr/>\n\n[image: z] <https://www.maisondestetes.com/fr/>\n\nLe mar. 24 nov. 2026 à 11:02, Mathis Pouchol – Le Média Français <\nmathis@lemediafrancais.fr> a écrit :\n\n-- \n\nCe message est exclusivement destiné à la \npersonne titulaire de l'adresse électronique à laquelle il a été envoyé. Il \ncontient des informations de nature confidentielle et couvertes par le \nsecret professionnel. Si vous n'en êtes pas le destinataire, vous êtes \navisé que toute divulgation, copie ou distribution de cette communication, \nou des éléments qu'elle contient, est strictement interdite. Si vous \nrecevez ce message par erreur, veuillez nous le faire savoir par courrier \nélectronique tournant, puis le détruire\n---\n\nThe informations contained \nin this e-mail is legally privileged and confidential information intended \nonly for the use of the individual or entity named above. If you are not \nthe intended recipient, you are hereby notified that you should not further \ndisseminate, distributeor copy this message. In addition, if you have \nreceived this message in error, please notify us immediately by collect \ntelephone call and return the original message to us at the adress below by \ne-mail.\n\nRespect de l'environnement : n'imprimez ce message que si vous \nen avez réellement besoin.",
+   "echanges": [
+    {
+     "le": "2026-11-24T12:02+01:00",
+     "sens": "reçu",
+     "id": "<CAEJ4SeX268kKwGEVRWPoMxCf4FWR0p-mVrKWTC6RC8XfwKHYRg@mail.gmail.com>"
+    }
+   ],
+   "brouillon": "Bonjour Laura,\n\nJe vous remercie pour votre retour et pour avoir pris le temps d'étudier notre proposition.\n\nJe comprends tout à fait votre position concernant les collaborations payantes. Si votre stratégie de communication venait à évoluer à l'avenir, ce sera un plaisir d'échanger à nouveau avec vous.\n\nJe vous souhaite également une excellente continuation.\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais"
   },
   {
    "id": "2026-11-17-3-553",
@@ -757,7 +772,7 @@
    "email": "contact@aura-aero.com",
    "contexte_adresse": "uvrez toutes les actualités Soutenus par Innovation funds Membres de Certifications Restons branchés Ne manquez rien de nos actualités ! Abonnez-vous à notre newsletter ! En vous abonnant, vous acceptez de recevoir nos prochaines actualités et vous acceptez notre politique de protection des données contact@aura-aero.com Politique de confidentialité Votre avion et vous Réservez votre essai INTEGRAL",
    "cree_le": "2026-11-16T21:51+01:00",
-   "statut": "envoyé",
+   "statut": "relancé",
    "objet": "AURA AERO : de l'Aéropostale à l'avion électrique ?",
    "corps": "Bonjour,\n\nDe Guillaumet et Saint-Exupéry à Toulouse jusqu'à vos modèles hybrides et électriques comme ERA ou INTEGRAL, l'innovation aéronautique française continue de s'écrire dans la ville rose. Nous aimerions retracer cette lignée dans un carrousel sponsorisé pour faire découvrir vos innovations à une audience passionnée d'histoire et de savoir-faire.\n\nLe Média Français, c'est un média indépendant suivi par 210 000 abonnés sur Instagram, touchant principalement un public jeune et actif (80 % de 18-34 ans).\n\nJe vous joins notre media kit pour vous présenter notre ligne éditoriale.\n\nEst-ce que cela vous parlerait d'en discuter 10 minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": null,
@@ -765,7 +780,9 @@
    "repondre_a": "contact@aura-aero.com",
    "jeton": "b6eb39bb1ff7",
    "message_id": "<179491331355.2211.15443969774408310829@lemediafrancais.fr>",
-   "envoye_le": "2026-11-17T12:01+01:00"
+   "envoye_le": "2026-11-17T12:01+01:00",
+   "relance_id": "<179551812483.2716.15285532793810023265@lemediafrancais.fr>",
+   "relance_le": "2026-11-24T12:02+01:00"
   },
   {
    "id": "2026-11-17-4-340",
@@ -1087,15 +1104,16 @@
    "famille": "mif",
    "email": "gaetan.billant@missegle.com",
    "contexte_adresse": "ra Communautaire : FR50 401 814 785 DPO : Gaëtan Billant 2. HÉBERGEMENT Le site internet www.missegle.com est hébergé par: LWS 10 Rue de Penthièvre 75008 PARIS Site web : https://www.lws.fr/ L'éditeur du site est : MISSEGLE 33 chemin de montplaisir 81100 BURLATS Webmaster : Gaëtan Billant, e-mail : gaetan.billant@missegle.com 2. LOI INFORMATIQUE ET LIBERTÉ Conformément à l'article 34 de la loi inf",
-   "contexte": "Missegle - Fabricant français de chaussettes, pulls et accessoires La nouvelle collection Noël 2026 est en ligne ! Profitez d'une sélection de produits remisés jusqu'à -40%. L'Atelier des fibres naturelles L'Atelier Missegle Notre histoire Nos savoir-faire Nos engagements Nos labels Notre programme de Réparation Notre programme de Recyclage Notre boutique d'Atelier Visiter l'Atelier Missegle Les fibres naturelles Le Mohair Le Mérinos Le duvet de Yack Le duvet de chameau Le coton biologique Le Fil d'écosse biologique Les autres fibres végétales les bobines Nos fibres recyclées Les presque parfaits Seconde vie Les presque parfaits les cartes cadeaux × Nous sommes joignables de 8h30 à 18h30 N'hésitez pas à nous appeler 05 63 51 09 86 Plus que 79,00 € d'achats pour la livraison offerte Votre panier est vide Plus que 79,00 € pour bénéficier de la livraison offerte fr uk Chaussettes Collection Noël Chaussettes chaudes Chaussettes laine Chaussettes ultra solides Chaussettes sans élastique Chaussettes hautes Chaussettes sans couture Chaussettes cachemire Chaussettes fil d'écosse bio Chaussettes en coton Socquettes Coffrets chaussettes Carte cadeau Missegle Chaussettes Missegle De la laine mohair, du mérinos, du duvet de yack, du fil d'écosse et du coton bio... Nos plus belles matières et tout notre savoir-faire au service de vos pieds. Femme Collection Noël Chaussettes femme Chaussettes chaudes pour femme Chaussettes laine Chaussettes ultra solides Chaussettes sans élastique Chaussettes hautes pour femme Chaussettes sans couture pour femme Chaussettes cachemire Chaussettes fil d’écosse Chaussettes coton femme Socquettes Coffrets chaussettes Tout voir Vêtements Pull en laine Pull mohair pour femme Gilet en laine pour femme T-shirt en laine Jupes, robes et pantalons Pull en lin Pull en coton T-shirt en lin et en coton Gilet en coton Collants et leggings Tout voir Accessoires pour femme Echarpe en laine Gants et mitaines Bonnet laine pour femme Echarpe en lin Guetres laine Ceintures Tout voir Vêtements de nuit Charentaises pour femme Les Bobines de Missegle Les Coffrets Carte cadeau Missegle Femmes De la chaleur naturelle et de la douceur : découvrez nos fibres préférées. Lin, Coton bio, Mohair, Soie, Mérinos, Yack... Notre passion est votre confort. Homme Collection Noël Chaussettes homme Chaussettes chaudes Chaussettes laine Chaussettes ultra solides Chaussettes sans élastique Chaussettes hautes pour homme Chaussettes sans couture pour homme Chaussettes cachemire C\n\nContact - Missègle La nouvelle collection Noël 2026 est en ligne ! Profitez d'une sélection de produits remisés jusqu'à -40%. L'Atelier des fibres naturelles L'Atelier Missegle Notre histoire Nos savoir-faire Nos engagements Nos labels Notre programme de Réparation Notre programme de Recyclage Notre boutique d'Atelier Visiter l'Atelier Missegle Les fibres naturelles Le Mohair Le Mérinos Le duvet de Yack Le duvet de chameau Le coton biologique Le Fil d'écosse biologique Les autres fibres végéta",
    "cree_le": "2026-11-23T21:32+01:00",
-   "statut": "planifié",
+   "statut": "envoyé",
    "objet": "Proposition de collaboration – Le Média Français",
    "corps": "Bonjour Monsieur Billant,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. En consultant la liste des exposants du salon Made in France, j'ai découvert votre marque.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune et engagé recherche des vêtements et accessoires durables de qualité.\n\nJe vous propose un partenariat de marque : des publications et des stories dédiées à vos créations en fibres naturelles, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi aborder l'histoire de votre atelier et vos savoir-faire.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": "Monsieur Billant",
    "prevu_le": "2026-11-24T11:52+01:00",
    "repondre_a": "gaetan.billant@missegle.com",
-   "jeton": "58c894d967ae"
+   "jeton": "58c894d967ae",
+   "message_id": "<179551811590.2716.1688275155111949187@lemediafrancais.fr>",
+   "envoye_le": "2026-11-24T12:01+01:00"
   },
   {
    "id": "2026-11-24-4-109",
@@ -1161,7 +1179,8 @@
   "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>",
   "<41cbe14fab1cad833ab83818080142a0@atelier-baleine.com>",
   "<CAAA1Z10XF7s=0c=wJ04--FbU_QgpxLooZA7ezPsUmzRxtROXeg@mail.gmail.com>",
-  "<CAHOED5zcu=rf8t0pMO0v6vYH1k7nvrZnKPG0KaNMbk0Ww7+65w@mail.gmail.com>"
+  "<CAHOED5zcu=rf8t0pMO0v6vYH1k7nvrZnKPG0KaNMbk0Ww7+65w@mail.gmail.com>",
+  "<CAEJ4SeX268kKwGEVRWPoMxCf4FWR0p-mVrKWTC6RC8XfwKHYRg@mail.gmail.com>"
  ],
  "mails_divers": {
   "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
