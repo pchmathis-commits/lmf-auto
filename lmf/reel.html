@@ -130,8 +130,8 @@ for (const [i, sc] of SPEC.scenes.entries()) {
   sc.start = T; T += sc.dur; sc.el = el; scenes.push(sc);
   let html = '';
   if (sc.type === 'photo') {
-    html += `<div class="print" id="p${i}" style="left:${sc.x ?? 50}px;top:${sc.y ?? 290}px;width:${sc.w ?? 980}px"><div class="win"><canvas id="c${i}"></canvas></div></div>`;
-    if (sc.tag) html += `<div class="tag${sc.tagRed ? ' red' : ''}" id="t${i}" style="left:${(sc.x ?? 50) + 10}px;top:${(sc.y ?? 290) - 44}px">${esc(sc.tag)}</div>`;
+    html += `<div class="print" id="p${i}" style="left:${sc.x ?? 80}px;top:${sc.y ?? 290}px;width:${sc.w ?? 920}px"><div class="win"><canvas id="c${i}"></canvas></div></div>`;
+    if (sc.tag) html += `<div class="tag${sc.tagRed ? ' red' : ''}" id="t${i}" style="left:${(sc.x ?? 80) + 10}px;top:${(sc.y ?? 290) - 44}px">${esc(sc.tag)}</div>`;
   } else if (sc.type === 'carte') {
     const [px, py] = proj(sc.lieu);
     html += `<svg class="map" id="m${i}" width="1080" height="1920" viewBox="0 0 1080 1920" style="left:0;top:0"><path d="${torn(FRANCE, 3)}" fill="#061E61"/><path d="${torn(CORSE, 9)}" fill="#061E61"/></svg>`;
@@ -199,7 +199,7 @@ window.setT = function (t) {
 
 const loads = [...document.images].map(i => i.decode().catch(() => {}));
 const pics = scenes.filter(s => s.type === 'photo').map(sc => new Promise(ok => { const im = new Image(); im.onload = () => {
-  const i = scenes.indexOf(sc), W = (sc.w ?? 980) - 40;
+  const i = scenes.indexOf(sc), W = Math.round(((sc.w ?? 920) - 40) * 1.6);   // dessinée 1,6× plus grande : reste nette pendant le zoom
   (sc.trame ? halftone : colorprint)(im, $('c' + i), W); ok(); }; im.onerror = ok; im.src = sc.image; }));
 window.DUR = DUR;
 window.ready = Promise.all([...loads, ...pics, document.fonts.ready]).then(() => { fit(); window.setT(0); });
