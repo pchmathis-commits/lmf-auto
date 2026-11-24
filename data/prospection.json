@@ -286,6 +286,10 @@
   "886": {
    "contact": "2026-11-17-2-648",
    "type": "reponse"
+  },
+  "890": {
+   "contact": "2026-11-24-3-668",
+   "type": "reponse"
   }
  },
  "jours_generes": [
@@ -821,7 +825,7 @@
    "email": "contact@moustachebikes.com",
    "contexte_adresse": "line. Moustache is a global company selling bikes in over 25 countries worldwide. Do you have an inquiry about distribution? Do you want to become a Moustache Bikes dealer? We would love to hear about it! See below who is your main contact. If your country is NOT listed, please reach out via email: contact@moustachebikes.com ;-{D Australia Distributor: Charge About AU Contact: Rebecca BUTLER sales",
    "cree_le": "2026-11-16T21:52+01:00",
-   "statut": "envoyé",
+   "statut": "relancé",
    "objet": "Moustache Bikes : la renaissance du cycle dans les Vosges ?",
    "corps": "Bonjour,\n\nInstaller la fabrication de vélos électriques au cœur des Vosges est un pari qui résonne directement avec l'histoire industrielle et le patrimoine vélocipédique français. \n\nNous aimerions consacrer un carrousel à la renaissance de l'industrie du cycle en France, en mettant en avant Moustache Bikes comme symbole de ce renouveau. Cela permettrait de faire découvrir vos modèles, comme le Lundi 27 ou le Lundi 20 Cargo, à une audience urbaine et active.\n\nLe Média Français, c'est un média indépendant sur l'histoire et les savoir-faire qui rassemble 210 000 abonnés sur Instagram avec 2,4 millions de vues mensuelles.\n\nJe vous joins notre media kit.\n\nEst-ce que cela vous parlerait d'en discuter quelques minutes ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": null,
@@ -829,7 +833,9 @@
    "repondre_a": "contact@moustachebikes.com",
    "jeton": "ea97540bbf8d",
    "message_id": "<179492412801.2413.5795358066353377219@lemediafrancais.fr>",
-   "envoye_le": "2026-11-17T15:02+01:00"
+   "envoye_le": "2026-11-17T15:02+01:00",
+   "relance_id": "<179552892568.2415.10098678386943121836@lemediafrancais.fr>",
+   "relance_le": "2026-11-24T15:02+01:00"
   },
   {
    "id": "2026-11-19-1-597",
@@ -1112,7 +1118,7 @@
    "email": "gaetan.billant@missegle.com",
    "contexte_adresse": "ra Communautaire : FR50 401 814 785 DPO : Gaëtan Billant 2. HÉBERGEMENT Le site internet www.missegle.com est hébergé par: LWS 10 Rue de Penthièvre 75008 PARIS Site web : https://www.lws.fr/ L'éditeur du site est : MISSEGLE 33 chemin de montplaisir 81100 BURLATS Webmaster : Gaëtan Billant, e-mail : gaetan.billant@missegle.com 2. LOI INFORMATIQUE ET LIBERTÉ Conformément à l'article 34 de la loi inf",
    "cree_le": "2026-11-23T21:32+01:00",
-   "statut": "envoyé",
+   "statut": "répondu",
    "objet": "Proposition de collaboration – Le Média Français",
    "corps": "Bonjour Monsieur Billant,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. En consultant la liste des exposants du salon Made in France, j'ai découvert votre marque.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune et engagé recherche des vêtements et accessoires durables de qualité.\n\nJe vous propose un partenariat de marque : des publications et des stories dédiées à vos créations en fibres naturelles, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi aborder l'histoire de votre atelier et vos savoir-faire.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": "Monsieur Billant",
@@ -1120,7 +1126,18 @@
    "repondre_a": "gaetan.billant@missegle.com",
    "jeton": "58c894d967ae",
    "message_id": "<179551811590.2716.1688275155111949187@lemediafrancais.fr>",
-   "envoye_le": "2026-11-24T12:01+01:00"
+   "envoye_le": "2026-11-24T12:01+01:00",
+   "reponse_id": "<12fa01dd7c15$23aa8c80$6affa580$@missegle.com>",
+   "objet_reponse": "RE: Proposition de collaboration – Le Média Français",
+   "derniere_reponse": "Bonjour, \nMerci de votre message mais je ne suis pas intéressé\nCordialement, \n\nGaëtan Billant \n05 63 51 09 86 -  www.missegle.com\n\n-----Message d'origine-----",
+   "echanges": [
+    {
+     "le": "2026-11-24T15:02+01:00",
+     "sens": "reçu",
+     "id": "<12fa01dd7c15$23aa8c80$6affa580$@missegle.com>"
+    }
+   ],
+   "brouillon": "Bonjour Monsieur Billant,\n\nJe vous remercie d'avoir pris le temps de me répondre.\n\nJe comprends tout à fait votre position. Si vos priorités viennent à évoluer à l'avenir, ce sera un plaisir d'échanger avec vous autour du savoir-faire de votre atelier.\n\nJe vous souhaite une excellente continuation.\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais"
   },
   {
    "id": "2026-11-24-4-109",
@@ -1151,15 +1168,16 @@
    "famille": "mif",
    "email": "contact@chicetsingulier.com",
    "contexte_adresse": "à la ceinture 35,00 € TTC Ajouter au panier Aperçu rapide Collection Nomade – Porte-cartes en cuir camel – Port à la ceinture 35,00 € TTC Ajouter au panier Aperçu rapide View more new products Boutique par marque Contacts Chapelle International 10/12 allée Lydia Becker 75018 PARIS FRANCE 0140380908 contact@chicetsingulier.com L'Atelier/Boutique est ouvert de 10h à 19h du Lundi au Samedi Lauréat du",
-   "contexte": "Maroquinerie artisanale Paris : Accessoires en cuir Nous vous accueillons à l'Atelier-boutique du Lundi au Samedi de 10h à 19h. - Ignorer Menu LA BOUTIQUE/LES PRODUITS LES CATEGORIES DE PRODUITS LES CEINTURES CEINTURES FEMMES CEINTURES MULTICOLORES CEINTURES UNICOLORES CEINTURES HOMMES CEINTURES UNICOLORES CEINTURES MULTICOLORES CEINTURES BOUCLE CUIR Ceintures boucle cuir- Largeur 25mm Ceinture boucle cuir – Largeur 32mm VOTRE CEINTURE SUR MESURE ATELIER/BOUTIQUE A PROPOS NOS EVENEMENTS DEMANDEZ VOS INVITATIONS POUR LES SALONS ! LA BOUTIQUE/LES PRODUITS VOTRE CEINTURE SUR MESURE NOS EVENEMENTS DEMANDEZ VOS INVITATIONS POUR LES SALONS ! 0,00 € 0 article Recherche pour : Recherche Accueil CHIC & SINGULIER Maroquinerie artisanale Paris Ceintures pour femmes et hommes CEINTURES ET ACCESSOIRES EN CUIR, FABRIQUES A PARIS Sacs, Cabas, Pochettes, Etuis, Petite maroquinerie… Pour femmes et hommes Lauréat du Label Fabriqué à Paris Urbains, colorés et singuliers Atelier/Fabrication Dans notre atelier parisien, chaque pièce est fabriquée à la main. Atelier reconnu – Métiers d’art Créations imaginées et fabriquées à Paris, en petites séries et pièces uniques. L’AUTHENTICITE D’UN STYLE UNIQUE ! Elles et Ils en parlent : Les collections : Ceintures femmes et hommes : La pièce signature, fabriquée à Paris. Les Ceintures femme cuir patchwork Découvrir Les Ceintures femme cuir unicolore Découvrir Les Ceintures femme cuir sans métal Découvrir Les Ceintures homme cuir unicolore Découvir Les Ceintures patchwork homme Découvrir Les Ceintures sans métal pour homme Découvrir Petite maroquinerie : L’essentiel du quotidien en cuir et en couleurs Le Compact – Portefeuille – L’essentiel, sans compromis. Découvrir Le Nomade – Porte-cartes – Peut se porter à la ceinture Découvrir Le Complice — porte-cartes à patte pression Découvrir Le Duo – Porte cartes double Découvrir Accessoires nomades : A porter à la ceinture ou bien à glisser dans le sac. Les Pochettes ceinture Nomades (ou à glisser dans le sac) Découvrir Les Pochettes ceintures Nomades (ou à glisser dans le sac) Découvrir Les Pochettes banane Nomade (ou à glisser dans le sac) Découvrir Les sacs, les cabas… : Des formats pensés pour le quotidien urbain (ci-dessous, quelques exemples de nos collections…) Sac patchwork cuir kaki Chic & Singulier Découvrir Sac cabas Honoré cognac Chic & Singulier Découvrir Sac en cuir noir clouté à Paris Chic & Singulier Découvrir Les écrins en cuir – Etui à lunettes – Etui téléphone Les étuis à lu\n\nMENTIONS LEGALES - CHIC & SINGULIER MAROQUINERIE - PARIS Nous vous accueillons à l'Atelier-boutique du Lundi au Samedi de 10h à 19h. - Ignorer Menu LA BOUTIQUE/LES PRODUITS LES CATEGORIES DE PRODUITS LES CEINTURES CEINTURES FEMMES CEINTURES MULTICOLORES CEINTURES UNICOLORES CEINTURES HOMMES CEINTURES UNICOLORES CEINTURES MULTICOLORES CEINTURES BOUCLE CUIR Ceintures boucle cuir- Largeur 25mm Ceinture boucle cuir – Largeur 32mm VOTRE CEINTURE SUR MESURE ATELIER/BOUTIQUE A PROPOS NOS EVENEMENTS D",
    "cree_le": "2026-11-23T21:34+01:00",
-   "statut": "planifié",
+   "statut": "envoyé",
    "objet": "Proposition de collaboration – Le Média Français",
    "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai découvert votre marque dans la liste des exposants du MIF Expo 2026.\n\nNotre communauté réunit 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune et urbain correspond directement aux acheteurs de votre maroquinerie artisanale.\n\nJe vous propose un partenariat de marque : des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble. Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi présenter l'histoire de votre atelier parisien.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
    "nom_contact": null,
    "prevu_le": "2026-11-24T14:54+01:00",
    "repondre_a": "contact@chicetsingulier.com",
-   "jeton": "a1cb2c9ca32b"
+   "jeton": "a1cb2c9ca32b",
+   "message_id": "<179552891819.2415.13995933195136416218@lemediafrancais.fr>",
+   "envoye_le": "2026-11-24T15:02+01:00"
   }
  ],
  "mails_traites": [
@@ -1188,7 +1206,8 @@
   "<41cbe14fab1cad833ab83818080142a0@atelier-baleine.com>",
   "<CAAA1Z10XF7s=0c=wJ04--FbU_QgpxLooZA7ezPsUmzRxtROXeg@mail.gmail.com>",
   "<CAHOED5zcu=rf8t0pMO0v6vYH1k7nvrZnKPG0KaNMbk0Ww7+65w@mail.gmail.com>",
-  "<CAEJ4SeX268kKwGEVRWPoMxCf4FWR0p-mVrKWTC6RC8XfwKHYRg@mail.gmail.com>"
+  "<CAEJ4SeX268kKwGEVRWPoMxCf4FWR0p-mVrKWTC6RC8XfwKHYRg@mail.gmail.com>",
+  "<12fa01dd7c15$23aa8c80$6affa580$@missegle.com>"
  ],
  "mails_divers": {
   "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
