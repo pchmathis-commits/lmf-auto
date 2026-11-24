@@ -290,6 +290,26 @@
   "890": {
    "contact": "2026-11-24-3-668",
    "type": "reponse"
+  },
+  "918": {
+   "contact": "2026-11-25-1-493",
+   "type": "apercu"
+  },
+  "919": {
+   "contact": "2026-11-25-2-835",
+   "type": "apercu"
+  },
+  "920": {
+   "contact": "2026-11-25-3-316",
+   "type": "apercu"
+  },
+  "921": {
+   "contact": "2026-11-25-4-204",
+   "type": "apercu"
+  },
+  "922": {
+   "contact": "2026-11-25-5-106",
+   "type": "apercu"
   }
  },
  "jours_generes": [
@@ -304,7 +324,8 @@
   "2026-11-19",
   "2026-11-20",
   "2026-11-23",
-  "2026-11-24"
+  "2026-11-24",
+  "2026-11-25"
  ],
  "contacts": [
   {
@@ -1178,6 +1199,101 @@
    "jeton": "a1cb2c9ca32b",
    "message_id": "<179552891819.2415.13995933195136416218@lemediafrancais.fr>",
    "envoye_le": "2026-11-24T15:02+01:00"
+  },
+  {
+   "id": "2026-11-25-1-493",
+   "organisation": "Maroquinerie Hexagone",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "https://hexagone-cuir.com/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : ceintures et sacs à main en cuir fabriqués au cœur des remparts d'aigues-mortes. ",
+   "famille": "mif",
+   "email": "contact@hexagone-cuir.com",
+   "contexte_adresse": " réception. Votre e-mail S'abonner Livraison Rapide Vous recevrez votre colis sous 5 à 7 jours. Service client Une expérience client inégalée. 📞 Contactez-nous : 04 66 53 76 26 Paiement 100% sécurisé Technologie SSL qui garantit un transfert sécurisé de vos données. Contact Envoyez-nous un e-mail à contact@hexagone-cuir.com . Aller au slide 1 Aller au slide 2 Aller au slide 3 Aller au slide 4 à pr",
+   "contexte": "HEXAGONE CUIR | Boutique de Maroquinerie Artisanale Française Passer au contenu Livraison offerte dès 100€ d'achat sur toute la France 🎁 Navigation Hexagone Cuir Newsletter 0 Femme Collection sacs Tous nos sacs Sacs à Main Sacs à Dos Bananes Ceintures Petite-Maroquinerie Homme Sacoches Ceintures Petite-Maroquinerie Ceintures Accessoires Tous nos acessoires Accroche-sac Anses Attache-câbles Boucles Bracelets Déco Entretien du cuir Mètre rubans Carte-cadeau Qui sommes-nous ? Femme Collection sacs Tous nos sacs Sacs à Main Sacs à Dos Bananes Ceintures Petite-Maroquinerie Homme Sacoches Ceintures Petite-Maroquinerie Ceintures Accessoires Tous nos acessoires Accroche-sac Anses Attache-câbles Boucles Bracelets Déco Entretien du cuir Mètre rubans Carte-cadeau Qui sommes-nous ? Compte Voir tous les résultats Inscrivez-vous et recevez nos promotions, nouveaux produits et soldes directement dans votre boîte de réception. Votre e-mail S'abonner Cookie policy I agree to the processing of my data in accordance with the conditions set out in the policy of Privacy. Accepter Refuser Panier Votre panier est vide Explorer nos produits Ajouter une note Enregistrer L'Excellence du savoir faire Français Maroquinerie d'exception Aller au slide 1 Aller au slide 2 Bienvenue chez Hexagone Chez Hexagone, nous croyons que le cuir est plus qu'un simple matériau. C'est une expérience, un art, et surtout, une représentation du style et du luxe à la française. Découvrez notre gamme de produits en cuir fabriqués à la main, alliant la qualité, le confort et le style. Note 4.3/5 sur Google > Voir les avis Des Clients Satisfaits Rejoignez l'excellence du cuir Satisfaction garantie Votre satisfaction est notre priorité absolue Livraison rapide Offerte à partir de 100€ d'achat Aller au slide 1 Aller au slide 2 Aller au slide 3 Aller au slide 4 Femme Homme Ceintures Produits coup de coeur ♥️ Sac banane cuir femme | BANANE MEDIUM Prix de vente €55,00 9 couleurs disponibles Sac à main femme cuir bicolore | POLLY Prix de vente €129,00 8 couleurs disponibles Sac à main cuir vachette femme | ANDGIE Prix de vente €59,00 10 couleurs disponibles Sac à main cuir femme bandoulière | VENDÔME Prix de vente €119,00 7 couleurs disponibles Sac bandoulière cuir | COPINE Prix de vente €79,00 13 couleurs disponibles Sac cuir femme | Sellerie Prix de vente €499,00 2 couleurs disponibles Sac bandoulière | Besace Grainée Prix de vente €69,00 11 couleurs disponibles Sac à main | SMALL SAD ASTUCIEUX Prix de vente €7\n\nQui sommes-nous ? Passer au contenu Livraison offerte dès 100€ d'achat sur toute la France 🎁 Navigation Hexagone Cuir Newsletter 0 Femme Collection sacs Tous nos sacs Sacs à Main Sacs à Dos Bananes Ceintures Petite-Maroquinerie Homme Sacoches Ceintures Petite-Maroquinerie Ceintures Accessoires Tous nos acessoires Accroche-sac Anses Attache-câbles Boucles Bracelets Déco Entretien du cuir Mètre rubans Carte-cadeau Qui sommes-nous ? Femme Collection sacs Tous nos sacs Sacs à Main Sacs à Dos Banan",
+   "cree_le": "2026-11-24T21:32+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai remarqué votre marque dans la liste des exposants du MIF Expo 2026.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans. Ce public réactif correspond à votre clientèle à la recherche d'articles de maroquinerie artisanale.\n\nJe vous propose un partenariat de marque comprenant des publications et des stories dédiées sur nos trois réseaux, avec un code promo pour mesurer les résultats. Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi présenter votre savoir-faire artisanal.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-25T09:50+01:00",
+   "repondre_a": "contact@hexagone-cuir.com",
+   "jeton": "f4d64b558799"
+  },
+  {
+   "id": "2026-11-25-2-835",
+   "organisation": "Tenthorey",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "http://www.tenthorey.com",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : tisseur spécialisé dans les matières naturelles depuis 1906.",
+   "famille": "mif",
+   "email": "contact@tenthorey.com",
+   "contexte_adresse": "itoyen fr en Contact Tenthorey SA Toute l’équipe de Tenthorey se tient à votre écoute et se fera un plaisir de vous répondre, alors n’hésitez pas à nous contacter pour toutes vos questions ( sur nos produits, nos process de fabrication, visites d’usines…), ou vos doutes ! Tél : +33 (0)3 29 64 32 00 contact@tenthorey.com Zone Industrielle La Plaine 88510 Eloyes, France Δ Tenthorey Actualités Marque",
+   "contexte": "TENTHOREY SAS : Produits textiles depuis 1906 - Fabrication française --> --> --> --> Tenthorey Produits textiles depuis 1906 Historique Savoir-faire Démarche Marques Contact Sac Citoyen fr en Historique Savoir-faire Démarche Marques Contact Sac Citoyen fr en Historique Tradition & innovation depuis 1906 Découvrir Savoir-faire & Produits Tenthorey, spécialiste du textile Découvrir Démarche Qualité et Environnement Découvrir Contact Tenthorey SA Découvrir Marques Sac citoyen, les citoyennes, Textiles des lignes Découvrir Tenthorey Actualités Marques Démarche Savoir-faire Historique Contact Zone Industrielle La Plaine 88510 Eloyes, France Tél : +33 (0)3 29 64 32 00 Social Copyright © TENTHOREY 2017 Mentions légales Site réalisé par\n\nContacer Tenthorey - Tenthorey --> --> --> --> Historique Savoir-faire Démarche Marques Contact Sac Citoyen fr en Historique Savoir-faire Démarche Marques Contact Sac Citoyen fr en Contact Tenthorey SA Toute l’équipe de Tenthorey se tient à votre écoute et se fera un plaisir de vous répondre, alors n’hésitez pas à nous contacter pour toutes vos questions ( sur nos produits, nos process de fabrication, visites d’usines…), ou vos doutes ! Tél : +33 (0)3 29 64 32 00 contact@tenthorey.com Zone Industrielle La Plaine 88510 Eloyes, France Δ Tenthorey Actualités Marques Démarche Savoir-faire Historique Contact Zone Industrielle La Plaine 88510 Eloyes, France Tél : +33 (0)3 29 64 32 00 Social Copyright © TENTHOREY 2017 Mentions légales Site réalisé par\n\nMentions Légales - Tenthorey --> --> --> --> Historique Savoir-faire Démarche Marques Contact Sac Citoyen fr en Historique Savoir-faire Démarche Marques Contact Sac Citoyen fr en Mentions Légales 1 – Editeur et propriétaire du site Dénomination : Tenthorey SA Siège social :ZI de la Plaine 88510 – Eloyes France Tel : +33 (0)3 29 64 32 00 Contact email : contact@tenthorey.com 2 – Directeur de publication Tenthorey SA ZI de la Plaine 88510 – Eloyes France Tel : +33 (0)3 29 64 32 00 Contact email : contact@tenthorey.com 4 – Hébergeur du site internet 1&1 Internet SARL au capital social de 100 000€, immatriculée au RCS de Sarreguemires sous le n° B 431 303 775 dont le siège est situé au : 7, place de la Gare BP 70109 57201 Sarreguemines Cedex 5 – Signalez tous contenus inappropriés ou illégaux Tenthorey SA ZI de la Plaine 88510 – Eloyes France Tel : +33 (0)3 29 64 32 00 Contact email : contact@tenthorey.com 6 – Politique de protection des données personnelles 6.1 – Cookies d’audience Notre site n’utilise aucun cookie d’audience. 6.2 – Autres cookies Nous n’utilisons des cookies optionnels que si nous avons obtenu votre consentement préalable (art. 6.1.a du Règlement Général sur la Protection des Données). Lors de votre première visite sur notre Site Internet, une bannière apparaîtra, vous demandant de nous donner votre consentement au dépôt de cookies facultatifs. Si vous nous donnez votre consentement, nous déposerons un cookie sur votre ordinateur et la bannière n’apparaîtra plus à",
+   "cree_le": "2026-11-24T21:33+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai remarqué votre marque dans la liste des exposants du salon MIF Expo 2026.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans. Ce public jeune et actif s'intéresse de près aux produits textiles durables et de fabrication française comme les vôtres.\n\nNous proposons un partenariat de marque comprenant des publications et des stories dédiées sur nos trois réseaux, avec un lien ou un code promo, selon un format défini ensemble.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement.\n\nEn parallèle, nous pourrions aussi aborder l'histoire de votre entreprise et votre savoir-faire textile.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-25T10:49+01:00",
+   "repondre_a": "contact@tenthorey.com",
+   "jeton": "b28d1db6fb2c"
+  },
+  {
+   "id": "2026-11-25-3-316",
+   "organisation": "Vent De Voyage",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "https://ventdevoyage.com/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : sacs, bagages et accessoires de décoration en voile recyclée.",
+   "famille": "mif",
+   "email": "info@ventdevoyage.com",
+   "contexte_adresse": "ce dans l’économie numérique, les responsables du présent site internet www.ventdevoyage.com sont : Editeur du Site : Vent de Voyage Numéro de SIRET : 43246777700012 Responsable editorial : Pierre Rousseaux 12, rue Broussais 35400 Saint-Malo Téléphone : 02 99 20 17 91 - Fax : 02 99 20 17 91 Email : info@ventdevoyage.com Site Web : www.ventdevoyage.com Hébergement : Hébergeur : OVH OVH SAS : 2 rue ",
+   "contexte": "Vent de Voyage - Sacs, bagages, accessoires, déco en voile recyclée - Concept store de la mer Livraison offerte à partir de 50 euros d'achat, en Mondial Relay France métropolitaine Créez votre sac Transformez vos voiles Le sur-mesure À votre image Collection Hôtels Rideaux Une mode durable Notre savoir-faire Nos matières Notre histoire Nos partenaires Presse ACTUALITÉS FAQ NOS BOUTIQUES Nos détaillants NOTRE ATELIER Contactez nous search clear  S'identifier Chariot (0)  Français English GB LES SACS EN VOILE SACS À MAIN & CABAS SACS BANANE CABAS DE COURSES SACS DE PLAGE & VOYAGE SACS À DOS CADDIES DE COURSES ACCESSOIRES EN VOILE MAISON BOLS BRETONS LES COLLECTIONS PERSONNALISATION NOS ENGAGEMENTS NOUS TROUVER VISITER NOTRE ATELIER CONTACTEZ-NOUS search clear  S'identifier Chariot (0)  Français English GB search clear  S'identifier Chariot (0)  Français English GB LES SACS EN VOILE SACS À MAIN & CABAS SACS BANANE CABAS DE COURSES SACS DE PLAGE & VOYAGE SACS À DOS CADDIES DE COURSES ACCESSOIRES EN VOILE MAISON BOLS BRETONS LES COLLECTIONS PERSONNALISATION NOS ENGAGEMENTS NOUS TROUVER VISITER NOTRE ATELIER CONTACTEZ-NOUS   Sacs en voile   Sacs à main et Cabas Sacs à main Sacs à bandoulière Sacs Banane Cabas de courses Sacoches et housses PC   Sacs de plage et sacs de Voyage Sacs de plage Sacs de sport Sacs week-end et sacs de voyage Porte-costumes Sacs à dos Caddies de courses   Accessoires   Accessoires en voile Pochettes Trousses de toilette Étuis à lunettes Porte-clés Porte-monnaie   Maison   Fauteuils Transats Poufs Tabourets Fauteuils réalisateur   Luminaires Abat-jour   Rangements Paniers de rangement Corbeilles à linge Corbeilles à pain Sets de table   Décoration Cadres et miroirs Horloges à marées Baromètres Coussins Bols Bretons Cartes cadeaux Collections Personnalisation Nos engagements Nous trouver Accueil Recevoir la newsletter Sacs et bagages en voile de bateau recyclée - Fabriqués en france Sacs à main et cabas en voile recyclée Sacs de plage en voile recyclée Bagages en voile recyclée Accessoires en voile recyclée Maison Décoration Bols bretons Chariot de courses Le chariot de courses Aperçu rapide Caddie de courses Voile Marlyplast Noir n°76 385,00 € Ajouter au panier Aperçu rapide Chariot de courses Bleu Marine n°35 Sangle rouge 385,00 € Ajouter au panier Aperçu rapide Caddie de courses Noir n°85 Sangle orange 385,00 € Ajouter au panier Aperçu rapide Caddie de courses Bleu Marine n° personnalisé sangle orange + attach\n\nVent de Voyage dans la presse et la télévision Livraison offerte à partir de 50 euros d'achat, en Mondial Relay France métropolitaine Créez votre sac Transformez vos voiles Le sur-mesure À votre image Collection Hôtels Rideaux Une mode durable Notre savoir-faire Nos matières Notre histoire Nos partenaires Presse ACTUALITÉS FAQ NOS BOUTIQUES Nos détaillants NOTRE ATELIER Contactez nous search clear  S'identifier Chariot (0)  Français English GB LES SACS EN VOILE SACS À MAIN & CABAS SACS BANAN",
+   "cree_le": "2026-11-24T21:33+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour Monsieur Rousseaux,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. En consultant la liste des exposants du MIF Expo, nous avons découvert votre marque.\n\nNotre audience réunit 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de nos lecteurs ont entre 18 et 34 ans, et 75 % sont des hommes. Ce public jeune recherche des produits français durables et de qualité, comme vos sacs et accessoires en voile recyclée.\n\nNous vous proposons une collaboration classique : des publications et des stories dédiées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les retombées, sur un format défini ensemble. En parallèle, nous pourrions aussi présenter votre savoir-faire artisanal.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": "Monsieur Rousseaux",
+   "prevu_le": "2026-11-25T11:54+01:00",
+   "repondre_a": "info@ventdevoyage.com",
+   "jeton": "cec6478ffaa6"
+  },
+  {
+   "id": "2026-11-25-4-204",
+   "organisation": "Cézembre",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "https://cezembre-store.fr/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : bonnets colorés, fabriqués avec passion à saint-malo.",
+   "famille": "mif",
+   "email": "contact@cezembre-store.fr",
+   "contexte_adresse": "aux coloris en avant-première Les éditions limitées avant tout le monde Les coulisses de notre usine à Saint-Malo E-mail Je m'inscris Désinscription en un clic à tout moment. LIVRAISON OFFERTE À PARTIR DE 75€ D'ACHAT EXPÉDITION SOUS 1 À 3 JOURS OUVRÉS PAIEMENT SÉCURISÉ CONTACTEZ-NOUS 02 99 81 89 61 contact@cezembre-store.fr Collections Collections OFFRES COLLECTIONS FEMME HOMME ACCESSOIRES LA MARQ",
+   "contexte": "Pulls & bonnets made in France à Saint-Malo | Cézembre Passer au contenu Color Friday Livraison offerte dès 75€ Livraison offerte dès 40€ pendant le Color Friday Boîte cadeau offerte dès 50€ d'achat Tricoté en France dans notre usine à Saint-Malo Fermer le menu Bonnets Par matière Mérinos & cachemire Cachemire Alpaga Mérinos Laine Par couleur Rouge Rose Jaune & orange Vert Bleu Marine Écru & beige Gris & noir Pulls Pour qui Pulls femme Pulls homme Tous les pulls & cardigans Par matière Alpaga Mérinos & cachemire Laine Coton Mohair Accessoires Par pièce Écharpes & foulards Gants & mitaines Chaussettes Bandanas Cagoule Idées cadeaux Moins de 50 € De 50 à 100 € Plus de 100 € La marque Notre histoire L'usine à Saint-Malo Nos revendeurs Cézembre × Caroll Le blog Contact Se connecter Instagram Facebook LinkedIn Panier Fermer le panier C'est pour offrir ? Ajoutez notre boîte cadeau, elle arrive avec votre commande. Petite Bonnet, chaussettes ou écharpe + $4 Grande Pull, cardigan ou plusieurs pièces + $6 Complète ta commande Sous-total $0.00 Les codes promo, les frais d'envoi et les taxes seront ajoutés à la caisse. Procéder au paiement Votre panier est vide. Bonnets Par matière Mérinos & cachemire Cachemire Alpaga Mérinos Laine Par couleur Rouge Rose Jaune & orange Vert Bleu Marine Écru & beige Gris & noir Près de 70 coloris Le Grand-Bé, notre best-seller Pulls Pour qui Pulls femme Pulls homme Tous les pulls & cardigans Par matière Alpaga Mérinos & cachemire Laine Coton Mohair Pour elle Pour lui Accessoires Par pièce Écharpes & foulards Gants & mitaines Chaussettes Bandanas Cagoule Chaussettes Sacha Écharpes Idées cadeaux Moins de 50 € De 50 à 100 € Plus de 100 € La marque Notre histoire L'usine à Saint-Malo Nos revendeurs Cézembre × Caroll Le blog Contact Devise USD Afghanistan (EUR €) Afrique du Sud (EUR €) Albanie (ALL L) Algérie (DZD د.ج) Allemagne (EUR €) Andorre (EUR €) Angola (EUR €) Anguilla (XCD $) Antigua-et-Barbuda (XCD $) Arabie saoudite (SAR ر.س) Argentine (EUR €) Arménie (EUR €) Aruba (AWG ƒ) Australie (AUD $) Autriche (EUR €) Azerbaïdjan (EUR €) Bahamas (BSD $) Bahreïn (EUR €) Bangladesh (EUR €) Barbade (BBD $) Belgique (EUR €) Belize (EUR €) Bénin (EUR €) Bermudes (USD $) Bhoutan (EUR €) Biélorussie (EUR €) Bolivie (BOB Bs.) Bosnie-Herzégovine (BAM КМ) Botswana (EUR €) Brésil (EUR €) Brunei (BND $) Bulgarie (EUR €) Burkina Faso (EUR €) Burundi (BIF Fr) Cambodge (EUR €) Cameroun (XAF CFA) Canada (CAD $) Cap-Vert (CVE $) Chili (EUR €) Chine (EUR €) \n\nService Client Cézembre Contact et Informations pratiques Passer au contenu Color Friday Livraison offerte dès 75€ Livraison offerte dès 40€ pendant le Color Friday Boîte cadeau offerte dès 50€ d'achat Tricoté en France dans notre usine à Saint-Malo Fermer le menu Bonnets Par matière Mérinos & cachemire Cachemire Alpaga Mérinos Laine Par couleur Rouge Rose Jaune & orange Vert Bleu Marine Écru & beige Gris & noir Pulls Pour qui Pulls femme Pulls homme Tous les pulls & cardigans Par matière Alpa",
+   "cree_le": "2026-11-24T21:33+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. Nous avons remarqué votre marque dans la liste des exposants du MIF Expo 2026.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune correspond directement à la cible de vos vêtements et accessoires tricotés en France.\n\nNous proposons un partenariat de marque comprenant des publications et des stories dédiées sur nos trois réseaux, associées à un code promo pour mesurer les résultats. Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement.\n\nEn parallèle, nous pourrions aussi aborder l'histoire de votre marque et votre savoir-faire à Saint-Malo.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-25T13:48+01:00",
+   "repondre_a": "contact@cezembre-store.fr",
+   "jeton": "64561ae8b112"
+  },
+  {
+   "id": "2026-11-25-5-106",
+   "organisation": "Gignoux",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "https://pierregignoux.fr/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : chaussures de ski de randonnée haut de gammes en carbone. ",
+   "famille": "mif",
+   "email": "contact@pierregignoux.fr",
+   "contexte_adresse": "s Guêtres Haut Accessoires Crampons Casques Batons Couteaux Peaux Tout voir Service Formulaire réparation Tuto FAQ Centre test Guide des tailles Gignoux Nos Athlètes L'entreprise Nous rejoindre L'équipe Contactez nous Besoin d'information sur un produit E-mail et téléphone Pour tout renseignement : contact@pierregignoux.fr Tel : +33 (0) 4 76 51 39 50 (Choix 1) Besoin de renseignement sur les pièce",
+   "contexte": "Gignoux Carbon Ski Boots | Lighter Higher Further   Shop Chaussures Race Pro Black Mountain Black Snowboard Skate Pro Fixations U77 Race U77 Stopper Speed Touring R 150 Touring Skis Set-Up complet Set Up Race Set Up Light Touring Set Up Touring Set Up Skis Fixations Chaussures Pièces détachées Textiles Accessoires Crampons Bâtons Couteaux Casques Service Service SAV – Réparation Tutoriels Contact centre test Guide taille Gignoux Les athlètes L’entreprise Français English ( Anglais ) Shop Service Gignoux   EN Chaussures Race Pro Black Mountain Black Snowboard Skate Pro Fixations Race Speed Touring Touring Voir tout Ski Race Speed Touring Touring Promotion Set Up complet Pack Race Pack speed touring Pack touring Pack personnalisé Pièces détachées Chaussons Appliques Accastillage Voir tout Vêtements Guêtres Haut Accessoires Crampons Casques Batons Couteaux Peaux Tout voir Service Formulaire réparation Tuto FAQ Centre test Guide des tailles Gignoux Nos Athlètes L'entreprise Nous rejoindre L'équipe Voir Chaussures Fixations Skis Accessoires COMPOSEZ VOTRE PACK Profitez d'une remise exclusive adaptée à votre pack sur mesure en sélectionnant vos produits essentiels : skis, chaussures, bâtons, crampons, peaux et casques. Par ici Rencontrez-nous Découvrez nos lieux de rencontre et d'échanges, les magasins spécialisés qui seront à même de vous conseiller, ou directement à l'atelier. Cliquez Ici L'entreprise Découvrez en plus sur l'histoire de Gignoux, son équipe. Cliquez Ici Service Tous nos produits sont conçus pour durer, en cas de besoin vous pouvez nous contacter pour vous aider à les entretenir. Demander une réparation Voir les pièces détachées Gignoux Pionnier dans le développement de chaussures carbones pour le ski de randonnée et le ski de fond. Gignoux est la référence en terme de matériel sportif. Rejoignez nous Suivre Suivre Suivre Nos chaussures Race Pro Black Mountain Black Snowboard Skate Pro A Propos Contact FAQ CGV Politique de confidentialité Service Centre test Formulaire de retour Enregistrer son produit Tuto Guide de taille chaussures Français English ( Anglais )\n\nContact | Gignoux Carbon Ski Boots   Shop Chaussures Race Pro Black Mountain Black Snowboard Skate Pro Fixations U77 Race U77 Stopper Speed Touring R 150 Touring Skis Set-Up complet Set Up Race Set Up Light Touring Set Up Touring Set Up Skis Fixations Chaussures Pièces détachées Textiles Accessoires Crampons Bâtons Couteaux Casques Service Service SAV – Réparation Tutoriels Contact centre test Guide taille Gignoux Les athlètes L’entreprise Français English ( Anglais ) Shop Service Gignoux   EN Chaussures Race Pro Black Mountain Black Snowboard Skate Pro Fixations Race Speed Touring Touring Voir tout Ski Race Speed Touring Touring Promotion Set Up complet Pack Race Pack speed touring Pack touring Pack personnalisé Pièces détachées Chaussons Appliques Accastillage Voir tout Vêtements Guêtres Haut Accessoires Crampons Casques Batons Couteaux Peaux Tout voir Service Formul",
+   "cree_le": "2026-11-24T21:34+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. Nous réunissons 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes, un public jeune et passionné de montagne qui correspond à vos clients.\n\nAyant remarqué votre marque parmi les exposants du MIF Expo 2026, je vous propose un partenariat : des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble. Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi réaliser un contenu sur votre savoir-faire dans le matériel sportif en carbone.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-25T14:50+01:00",
+   "repondre_a": "contact@pierregignoux.fr",
+   "jeton": "7c70edf63053"
   }
  ],
  "mails_traites": [
@@ -1256,6 +1372,21 @@
   "diezz-sport.com",
   "direct-tannerie.fr",
   "atelier-equintense.fr",
-  "jess-jeans.fr"
+  "jess-jeans.fr",
+  "hexagone-cuir.com",
+  "neo-backpacks.fr",
+  "nkiup.fr",
+  "tenthorey.com",
+  "atelier-uniqua.fr",
+  "ventdevoyage.com",
+  "cezembre-store.fr",
+  "pentedouce.fr",
+  "destination-cognac.com",
+  "pierregignoux.fr",
+  "abpconcept.paris",
+  "lapiece-paris.fr",
+  "lepetitdormeur.fr",
+  "maisoncristino.com",
+  "aquilonandco.com"
  ]
 }
