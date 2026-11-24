@@ -74,8 +74,9 @@ def format_du_jour(jour):
 REGLES = """RÈGLES DU REEL (vidéo verticale de 25 à 32 secondes, SANS voix : uniquement du texte à l'écran et de la musique)
 - 6 ou 7 scènes. Chaque scène = 2 à 4 lignes de texte COURTES (26 caractères maximum par ligne, espaces compris).
   Entoure 1 ou 2 mots importants par scène d'astérisques pour les mettre en rouge : « a été une *république* ».
-- Scène 1 = l'ACCROCHE : elle doit donner envie de rester (un secret, un chiffre fou, une guerre, un « personne ne
-  sait que… »), sans donner la réponse. Pas de formule usée (« que tu utilises tous les jours », « que le monde
+- Scène 1 = l'ACCROCHE : elle NOMME TOUJOURS le sujet (la ville, la personne, l'objet, l'événement), dans le texte
+  ET dans le "tag", et donne envie de rester (un secret, un chiffre fou, une guerre). Jamais « cette ville », « cet
+  homme » sans dire lequel. Pas de formule usée (« que tu utilises tous les jours », « que le monde
   entier utilise »).
 - La dernière scène donne la révélation ou le fait le plus fort. Le post donne TOUJOURS la réponse précise (nom,
   lieu, date, chiffre), jamais « une ville », « un homme » sans dire lequel.
@@ -265,11 +266,12 @@ def rendre(spec, dossier, sortie, musique=None):
         pg.evaluate("window.ready")
         duree = pg.evaluate("window.DUR")
         proc = subprocess.Popen([ff, "-v", "error", "-y", "-f", "image2pipe", "-framerate", "30", "-i", "-",
-                                 "-c:v", "libx264", "-crf", "21", "-preset", "medium", "-pix_fmt", "yuv420p", muette],
+                                 "-c:v", "libx264", "-crf", "17", "-preset", "slow", "-profile:v", "high",
+                                 "-maxrate", "10M", "-bufsize", "20M", "-pix_fmt", "yuv420p", muette],
                                 stdin=subprocess.PIPE)
         for i in range(round(duree * 30)):
             pg.evaluate(f"window.setT({i / 30})")
-            proc.stdin.write(pg.screenshot(type="jpeg", quality=90))
+            proc.stdin.write(pg.screenshot(type="png"))   # sans perte : textes nets
         proc.stdin.close()
         proc.wait()
         b.close()
