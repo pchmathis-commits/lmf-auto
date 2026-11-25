@@ -1,0 +1,14 @@
+{
+  "maj": "2026-11-25",
+  "pourquoi": "Grille historique (top : co-prince d'Andorre 423K, 4e langue 376K, métiers des présidents 253K, youtubeurs 237K, lois absurdes 219K, Hunger Games 215K, loi de 1905 203K) + semaine du 14 au 20/11 (top : héritage Gironde 77K, boîte de conserve 68K, patrimoine des ménages 64K ; en bas : actus locales et accroches « Chaque jour tu utilises… »). Tourisme/paysages et « Ton mois / Ton département » retirés.",
+  "familles": [
+    {"famille": "L'État français comme tu ne le connais pas : un pouvoir, un titre, une loi, un territoire ou une règle de la République que presque personne ne connaît (ex. de niveau : le président est co-prince d'Andorre, la loi de 1905 ne s'applique pas partout, les premiers métiers des présidents). Jamais de prise de position politique.", "poids": 6},
+    {"famille": "La France dans la culture pop : un film, un anime, un jeu vidéo, une série, un artiste ou un créateur mondialement connu et son lien caché avec la France (tournage, inspiration, studio, personnage)", "poids": 5},
+    {"famille": "La France face au monde : un classement, un record, une rivalité ou une décision où la France pèse (langue, puissance, influence), avec le chiffre exact", "poids": 4},
+    {"famille": "Argent, héritages et fortunes : une affaire d'argent française étonnante (héritage, trésor, fortune, faillite, impôt historique) racontée comme une histoire, chiffres exacts", "poids": 4},
+    {"famille": "Armée, défense et souveraineté : porte-avions, Rafale, nucléaire, spatial, secrets et fonds d'État, projets géants français", "poids": 4},
+    {"famille": "Héroïsme et exploits français : un acte de bravoure, un soldat, un pilote, un explorateur ou un ingénieur français et ce qu'il a accompli de fou (jamais d'événement tragique récent ni de sujet politique)", "poids": 2},
+    {"famille": "Le héros français méconnu derrière un objet célèbre : une personne précise grâce à qui un objet existe (accroche SANS « chaque jour tu utilises », formule usée)", "poids": 2},
+    {"famille": "La langue française : un mot ou une expression que tout le monde connaît et son origine surprenante", "poids": 1}
+  ]
+}
