@@ -59,19 +59,30 @@ VAGUE = re.compile(r"\b(une|un|cette|ce|certaines?|certains) (commune|village|vi
                    r"personne|homme|femme|entreprise|lieu|d[ée]partement|mot|objet)\b(?! (de|du|d'|des|nomm|appel))", re.I)
 
 # Familles en rotation (poids = fréquence relative quand le programme choisit lui-même un sujet).
-# Classées d'après les abonnés gagnés par post sur 180 jours (Poubelle 6 100, Bic 3 700, eau du robinet 1 900…).
-FAMILLES = [
-    ("Armée, défense et souveraineté : porte-avions, Rafale, nucléaire, spatial, secrets et fonds d'État, projets géants "
-     "français — ce sont les posts qui font le plus de vues et d'abonnés en ce moment", 6),
-    ("Héroïsme et exploits français : un acte de bravoure, un soldat, un pilote, un explorateur ou un ingénieur français "
-     "et ce qu'il a accompli de fou (jamais d'événement tragique récent ni de sujet politique)", 3),
-    ("Les Français cachés : un Français méconnu derrière une chose célèbre dans le monde entier (une marque, une ville, "
-     "une compétition sportive, une institution, une invention)", 2),
-    ("La France face aux grandes puissances : une décision, une rivalité ou un record où la France tient tête au monde", 3),
-    ("Le héros français méconnu derrière ton quotidien : une personne précise grâce à qui un objet ou un geste existe", 3),
-    ("La langue française : un mot ou une expression que tout le monde connaît et son origine surprenante", 2),
-    ("Une règle ou une loi française étonnante, toujours en vigueur", 1),
+# Les poids vivent dans data/poids_familles.json : Claude les ajuste chaque samedi d'après les stats de la
+# semaine (vues + abonnés gagnés). Ce qui marche monte, ce qui marche peu descend ou disparaît (poids 0).
+# Liste de secours si le fichier est absent ou illisible :
+_FAMILLES_SECOURS = [
+    ("L'État français comme tu ne le connais pas : président, institutions, lois, territoires", 5),
+    ("La France dans la culture pop : films, anime, jeux vidéo, séries", 4),
+    ("Armée, défense et souveraineté", 4),
+    ("La France face au monde", 3),
 ]
+
+
+def _charger_familles():
+    try:
+        with open(os.path.join(os.path.dirname(__file__), "..", "data", "poids_familles.json"), encoding="utf-8") as f:
+            lignes = json.load(f)["familles"]
+        familles = [(l["famille"], int(l["poids"])) for l in lignes if int(l.get("poids", 0)) > 0]
+        if familles:
+            return familles
+    except Exception as e:
+        print(f"poids_familles.json illisible ({e}) : liste de secours.")
+    return _FAMILLES_SECOURS
+
+
+FAMILLES = _charger_familles()
 
 THEMES_TON_MOIS = ["personnage historique français", "château français", "ville française", "plat régional français",
                    "roi ou reine de France", "invention française", "monument français", "région française",
