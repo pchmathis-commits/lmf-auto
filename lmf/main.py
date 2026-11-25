@@ -240,25 +240,7 @@ def _serie_ce_soir():
 
 def commande_carrousel():
     from . import sheet
-    if _departement_aujourdhui():
-        titres = sheet.titres_sujets()
-        episode = sum(1 for t in titres if str(t).startswith("Ton département"))
-        c = contenu.rediger_departement(episode)
-        fiche = {"statut": "Utilisé", "famille": "Ton département", "sujet": c["sujet"],
-                 "couverture": c["couverture"]["texte"], "faits": "", "sources": ""}
-        fiche["row"] = sheet.ajouter_sujet(fiche)
-        post = creer_carrousel(fiche, fiche["row"], c=c)
-        sheet.ajouter_post(post)
-        return
-    if _ton_mois_aujourdhui():
-        titres = sheet.titres_sujets()
-        c = contenu.rediger_ton_mois(titres)
-        fiche = {"statut": "Utilisé", "famille": "Ton mois", "sujet": f"Ton mois = {c.get('theme', '')}",
-                 "couverture": c["couverture"]["texte"], "faits": "", "sources": ""}
-        fiche["row"] = sheet.ajouter_sujet(fiche)
-        post = creer_carrousel(fiche, fiche["row"], c=c)
-        sheet.ajouter_post(post)
-        return
+    # « Ton département » et « Ton mois » retirés le 25/11 (illisibles, scores en chute : 277K → 32K).
     if _serie_ce_soir():
         try:
             return _episode_serie(sheet)
@@ -302,22 +284,32 @@ def _episode_serie(sheet):
 
 
 def _carrousel_banque(sheet):
-    # D'abord un sujet dans l'air du temps (tendances Google + ce qui marche chez les concurrents)
-    try:
-        sujet = contenu.proposer_sujet_tendance(sheet.titres_sujets())
-        if sujet and sujet.get("sujet") and sujet.get("faits"):
-            sujet["statut"] = "Utilisé"
-            sujet["row"] = sheet.ajouter_sujet(sujet)
-            sheet.ajouter_post(creer_carrousel(sujet, sujet["row"]))
-            return
-    except Exception as e:
-        print(f"Sujet tendance impossible ({e}) : banque de sujets.")
+    """Choix du sujet : 1 carrousel sur 3 surfe sur les tendances ; les 2 autres suivent les familles
+    pondérées de data/poids_familles.json (ajustées chaque samedi d'après les stats). La banque du
+    Sheet ne sert plus qu'en secours."""
+    titres = sheet.titres_sujets()
+    sujet = None
+    if len(titres) % 3 == 0:
+        try:
+            sujet = contenu.proposer_sujet_tendance(titres)
+        except Exception as e:
+            print(f"Sujet tendance impossible ({e}).")
+    for essai in range(2 if not (sujet and sujet.get("faits")) else 0):
+        try:
+            sujet = contenu.proposer_sujet(titres)
+            if sujet.get("sujet") and sujet.get("faits"):
+                break
+        except Exception as e:
+            print(f"Sujet de famille impossible (essai {essai + 1}) : {e}")
+            sujet = None
+    if sujet and sujet.get("sujet") and sujet.get("faits"):
+        sujet["statut"] = "Utilisé"
+        sujet["row"] = sheet.ajouter_sujet(sujet)
+        sheet.ajouter_post(creer_carrousel(sujet, sujet["row"]))
+        return
     sujet = sheet.prendre_sujet()
     if not sujet:
-        print("Banque de sujets vide : proposition automatique d'un sujet.")
-        sujet = contenu.proposer_sujet(sheet.titres_sujets())
-        sujet["statut"] = "Auto"
-        sujet["row"] = sheet.ajouter_sujet(sujet)
+        raise RuntimeError("aucun sujet trouvé (familles, tendances et banque vides)")
     try:
         post = creer_carrousel(sujet, sujet.get("row"))
         sheet.ajouter_post(post)
