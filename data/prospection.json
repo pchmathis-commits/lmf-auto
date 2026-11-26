@@ -330,6 +330,10 @@
   "955": {
    "contact": "2026-11-26-5-502",
    "type": "apercu"
+  },
+  "958": {
+   "contact": "m43175",
+   "type": "mail"
   }
  },
  "jours_generes": [
@@ -1452,7 +1456,8 @@
   "<CAHOED5zcu=rf8t0pMO0v6vYH1k7nvrZnKPG0KaNMbk0Ww7+65w@mail.gmail.com>",
   "<CAEJ4SeX268kKwGEVRWPoMxCf4FWR0p-mVrKWTC6RC8XfwKHYRg@mail.gmail.com>",
   "<12fa01dd7c15$23aa8c80$6affa580$@missegle.com>",
-  "<4jZDFj3zYkz46RY@mo539.mail-out.ovh.net>"
+  "<4jZDFj3zYkz46RY@mo539.mail-out.ovh.net>",
+  "<MRYP264MB6367AFF438EF8A8F4674C732EA422@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>"
  ],
  "mails_divers": {
   "m15706": "<1594682239.39019.1794394932484@mib-daemon-engine-large-6868f88bbb-8hfqn>",
@@ -1464,7 +1469,8 @@
   "m18896": "<MRYP264MB63675D535D440073F44C1861EA7A2@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>",
   "m37446": "<CAAA1Z10X3Y=xBdFadbezymFkCrtsL2Zz7-+LRcG08=ZbkxUtpQ@mail.gmail.com>",
   "m46359": "<CAAA1Z10XF7s=0c=wJ04--FbU_QgpxLooZA7ezPsUmzRxtROXeg@mail.gmail.com>",
-  "m48012": "<CAHOED5zcu=rf8t0pMO0v6vYH1k7nvrZnKPG0KaNMbk0Ww7+65w@mail.gmail.com>"
+  "m48012": "<CAHOED5zcu=rf8t0pMO0v6vYH1k7nvrZnKPG0KaNMbk0Ww7+65w@mail.gmail.com>",
+  "m43175": "<MRYP264MB6367AFF438EF8A8F4674C732EA422@MRYP264MB6367.FRAP264.PROD.OUTLOOK.COM>"
  },
  "brouillons": {
   "m46359": "Bonjour Maggie,\n\nJe vous remercie pour ces précisions.\n\nNotre activité repose sur l'animation de nos communautés existantes, notamment nos 210 000 abonnés sur Instagram. La création de comptes dédiés ne correspond donc pas à notre modèle d'intervention.\n\nSi vous faites évoluer votre programme vers des partenariats sponsorisés directs sur des médias établis, nous serons ravis d'en discuter.\n\nJe vous souhaite une excellente continuation.\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
