@@ -334,6 +334,26 @@
   "958": {
    "contact": "m43175",
    "type": "mail"
+  },
+  "978": {
+   "contact": "2026-11-27-1-647",
+   "type": "apercu"
+  },
+  "979": {
+   "contact": "2026-11-27-2-604",
+   "type": "apercu"
+  },
+  "980": {
+   "contact": "2026-11-27-3-287",
+   "type": "apercu"
+  },
+  "981": {
+   "contact": "2026-11-27-4-899",
+   "type": "apercu"
+  },
+  "982": {
+   "contact": "2026-11-27-5-260",
+   "type": "apercu"
   }
  },
  "jours_generes": [
@@ -350,7 +370,8 @@
   "2026-11-23",
   "2026-11-24",
   "2026-11-25",
-  "2026-11-26"
+  "2026-11-26",
+  "2026-11-27"
  ],
  "contacts": [
   {
@@ -1426,6 +1447,101 @@
    "jeton": "4d27e3ce49be",
    "message_id": "<179570171793.2429.1732428826946022884@lemediafrancais.fr>",
    "envoye_le": "2026-11-26T15:02+01:00"
+  },
+  {
+   "id": "2026-11-27-1-647",
+   "organisation": "Couleur Tong",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "http://www.couleurtong.fr",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : tongs en cuir et tongs personnalisables par tous types de marquages et/ou coloris spéciaux",
+   "famille": "mif",
+   "email": "contact@couleurtong.fr",
+   "contexte_adresse": "nalisé ou de sous-traitance. Accueil / Contact Ecrivez-nous Entreprise Particulier J’accepte les Politiques de confidentialité * Champs obligatoires Nos coordonnées Adresse : 1A, rue des Foulons 38470 VINAY-France Téléphone : Atelier - Boutique d'usine : 04 76 64 71 20 Eric : 07 86 29 56 06 Email : contact@couleurtong.fr Le magasin Si vous passez par Vinay (38470), où se trouve notre atelier et le",
+   "contexte": "Tongs et Sandales Artisanales - Couleur Tong Jusqu’au 6 décembre, COULEUR TONG participe aux JOURS TRICOLORES – Profitez-en ! Tongs Tongs Tongs Cuir Tongs Liège Tongs Grandes Tailles (48 à 51) Personnalisation / Kits Voir toute la collection Nouveauté ! Tong Cuir Tannage Végétal CINTO Ultra Léger Tong Liège PLUME Safran LE CHIC À LA FRANÇAISE Sandales Chaussons Chaussons Cuir Laine Voir toute la collection Nouveauté ! Chaussons Laine sans semelle COCON Rouge Best-seller Chaussons Laine Artisanale CHAM Gris ÉLÉGANCE ET CONFORT MADE IN FRANCE Accessoires Accessoires Sacs en cuir Sacs en laine Voir toute la collection Sac Cuir TENERE Sable Sac Laine Artisanale LANA Blanc ELÉGANCE ET SIMPLICITÉ MADE IN FRANCE Personnalisation Personnalisation Personnalisation à l’unité KIT « Fais-ta-Tong » Offre pro Tongs Personnalisées Kit 'Fais-ta-Tong' La Marque La Marque Notre Histoire Blog Presse Portfolio 0 Chaussons Découvrir Tongs Découvrir Sandales Découvrir Sandales, Tongs et Chaussons faits main au pied des Alpes. Portés partout avec confort et style. Fabriqués à la main au pied du Vercors Matériaux nobles Origine France et Europe Garantie Garantie réparation pendant 2 ans Nos produits à la une Laine Chaussons Laine Artisanale CHAM Blanc Mixte 59 € (8) Cuir Chaussons Cuir ARLY Vert Mixte 59 € (5) Laine Chaussons Laine AVORIAZ Rouge Mixte 44 € Laine Chaussons Laine NEVACHE Brun Mixte 44 € (3) Laine Nouveauté ! Chaussons Laine sans semelle COCON Rouge Mixte 35 € Liège Ultra Léger Tong Liège PLUME Safran Mixte 37 € (6) Envie d'originalité ? Je personnalise ma tong Toutes nos tongs Couleur Tong, une qualité Made in France Couleur Tong : le savoir-faire français au service de votre confort Certifiés Origine France Garantie , nos sandales, tongs et chaussons sont fabriqués au pied du Vercors dans le bassin historique de la chaussure de luxe, près de Romans-sur-Isère. Nous privilégions les fournisseurs français et sélectionnons des matières haut de gamme issues d’un sourcing responsable en Europe. Cuir d’Italie, semelles d’Espagne… et tout le reste est conçu en France. Toutes les étapes de fabrication sont désormais totalement intégrées, garantissant un contrôle absolu de la qualité et un savoir-faire préservé. Chaque paire incarne notre engagement pour une production locale, durable et exigeante , reflet d’un artisanat français d’excellence. Voir nos sandales Une production respectueuse et engagée Chez Couleur Tong, nous croyons qu’un produit bien conçu doit allier qualit\n\nPresse - Couleur Tong Jusqu’au 6 décembre, COULEUR TONG participe aux JOURS TRICOLORES – Profitez-en ! Tongs Tongs Tongs Cuir Tongs Liège Tongs Grandes Tailles (48 à 51) Personnalisation / Kits Voir toute la collection Nouveauté ! Tong Cuir Tannage Végétal CINTO Ultra Léger Tong Liège PLUME Safran LE CHIC À LA FRANÇAISE Sandales Chaussons Chaussons Cuir Laine Voir toute la collection Nouveauté ! Chaussons Laine sans semelle COCON Rouge Best-seller Chaussons Laine Artisanale CHAM Gris ÉLÉGANCE ",
+   "cree_le": "2026-11-27T08:02+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai découvert votre marque dans la liste des exposants du MIF Expo.\n\nNotre communauté réunit 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune recherche des produits durables et de fabrication française, tout comme vos créations artisanales.\n\nJe vous propose un partenariat de marque comprenant des publications et des stories dédiées sur nos trois réseaux, avec un lien ou un code promo, selon un format défini ensemble. Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi présenter votre savoir-faire artisanal.\n\nSeriez-vous disponible pour un court appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-27T09:52+01:00",
+   "repondre_a": "contact@couleurtong.fr",
+   "jeton": "469a36989947"
+  },
+  {
+   "id": "2026-11-27-2-604",
+   "organisation": "Courtois Paris",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "https://courtoisparis.fr/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : fabricant de chapeaux sous toutes ses formes. ",
+   "famille": "mif",
+   "email": "contact@courtoisparis.fr",
+   "contexte_adresse": "r (ci-après « l’éditeur ») : SAS Chapeaux et Gants SAS, au capital de €10000, dont le siège social est situé 8 rue de babylone, 75007 Paris représentée par Marguerite Courtois, en sa qualité de Président, immatriculée au RCS de Paris, n° SIREN 800936510, n° de téléphone : 0983519222, adresse mail : contact@courtoisparis.fr 1.3 Conception et réalisation : Conçu par Marguerite Courtois 1.4 Hébergeur",
+   "contexte": "Courtois Paris, le maître chapelier et ses boutiques Passer au contenu Livraison offerte en France à partir de 150 € Menu Chapeaux Femme Homme Chapkas & Toques Collection croisière Cérémonie & mariage Bibis Pailles et Panama Accessoires Remise en forme Carte cadeau Casquettes & bonnets Casquettes hiver Bonnets Bérets Casquettes baseball Casquettes de marin Bobs Casquettes été Gants Gants hiver femme Gants hiver homme Gants conduite femme Gants conduite homme La Maison Savoir-faire chapelier Savoir-faire gantier Sur-mesure Chapeau sur-mesure Fabrication pour les marques Remise en forme Journal Journal du chapelier Articles de presse Les actus de la maison Les Boutiques Langue Français Français English Recherche 0 Panier Fermer Chapeaux Femme Homme Chapkas & Toques Collection croisière Cérémonie & mariage Bibis Pailles et Panama Accessoires Remise en forme Carte cadeau Casquettes & bonnets Casquettes hiver Bonnets Bérets Casquettes baseball Casquettes de marin Bobs Casquettes été Gants Gants hiver femme Gants hiver homme Gants conduite femme Gants conduite homme La Maison Savoir-faire chapelier Savoir-faire gantier Sur-mesure Chapeau sur-mesure Fabrication pour les marques Remise en forme Les Boutiques Journal Journal du chapelier Articles de presse Les actus de la maison Compte Langue Français Français English HIVER 2026 LE FEUTRE HIVER 2026 MONTRÉAL HIVER 2026 LES GANTS Nos collections d'hiver Tous Chapeaux en feutre pour femme à Paris Voir Chapeaux en feutre pour homme à Paris Voir Casquettes bérets HIVER homme et femme à Paris Voir Gants Voir Chapkas et Toques homme et femme à Paris Voir Bérets Voir BEST SELLER LE MONTRÉAL Courtois Paris • Chapeaux Montréal - Chapeau feutre de laine chiné 198€ Taille 54 55 56 57 58 59 60 61 62 Couleur Marron Gris Kaki 54 / Marron 54 / Gris 54 / Kaki 55 / Marron 55 / Gris 55 / Kaki 56 / Marron 56 / Gris 56 / Kaki 57 / Marron 57 / Gris 57 / Kaki 58 / Marron 58 / Gris 58 / Kaki 59 / Marron 59 / Gris 59 / Kaki 60 / Marron 60 / Gris 60 / Kaki 61 / Marron 61 / Gris 61 / Kaki 62 / Marron 62 / Gris 62 / Kaki − + Ajouter au panier - est en rupture de stock et sera expédié dès qu'il sera disponible Afficher plus Afficher plus LA COLLECTION CHAPEAUX DE CÉRÉMONIE LES CHAPEAUX SUR-MESURE Tous E-Carte Cadeau Courtois Paris À partir de 50€ Kelly - calot feutre 420€ Charlotte - Chapeau de Cérémonie 580€ Sophie 640€ Carlotta 640€ Caroline - Chapeau de cérémonie sisal 680€ Épuisé Épuisé Épuisé Épuisé Épuisé Épuisé Épuisé Épuisé Épuisé Épu\n\nIls parlent de nous – Courtois Paris Passer au contenu Livraison offerte en France à partir de 150 € Menu Chapeaux Femme Homme Chapkas & Toques Collection croisière Cérémonie & mariage Bibis Pailles et Panama Accessoires Remise en forme Carte cadeau Casquettes & bonnets Casquettes hiver Bonnets Bérets Casquettes baseball Casquettes de marin Bobs Casquettes été Gants Gants hiver femme Gants hiver homme Gants conduite femme Gants conduite homme La Maison Savoir-faire chapelier Savoir-faire ganti",
+   "cree_le": "2026-11-27T08:02+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour Madame Courtois,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai remarqué votre marque dans la liste des exposants du salon Made in France Expo.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune recherche des pièces durables et s'intéresse directement à vos créations d'artisanat.\n\nNous proposons un partenariat via des publications et des stories dédiées sur nos trois réseaux, associées à un code promo pour mesurer les résultats. En parallèle, nous pourrions concevoir un contenu axé sur votre savoir-faire de chapelier et gantier.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": "Madame Courtois",
+   "prevu_le": "2026-11-27T10:47+01:00",
+   "repondre_a": "contact@courtoisparis.fr",
+   "jeton": "b535a2496177"
+  },
+  {
+   "id": "2026-11-27-3-287",
+   "organisation": "Erel",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "https://www.erel-france.fr/",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : erel,1947, chaussures d'intérieur en cuir montées en cousu américain.",
+   "famille": "mif",
+   "email": "contact@erel-france.fr",
+   "contexte_adresse": "-après « l’Editeur »), Société par Actions Simplifiée au capital de 40 000 €, immatriculée au RCS de Limoges sous le numéro 929 288 033 000 20 dont le siège social est au 7 rue Philippe Lebon - 87280 Limoges - France Code APE : 1520Z N° TVA : FR 12929 288 033 Téléphone : +33 (0)5 55 37 36 64 Mail : contact@erel-france.fr Conformément aux dispositions des articles 6-III et 19 de la loi pour la Conf",
+   "contexte": "Erel fabricant de Chaussons en cuir Français Se rendre au contenu 0 0 La Manufacture Boutique en ligne Produits homme Produits femme Le savoir-faire Guide des pointures Suivez-nous Cliquez ici pour configurer vos réseaux sociaux Français English (UK) Français Deutsch (CH) Deutsch 日本語 Español Contactez-nous 0 0 La Manufacture Boutique en ligne Produits homme Produits femme Le savoir-faire Guide des pointures Suivez-nous Cliquez ici pour configurer vos réseaux sociaux Français English (UK) Français Deutsch (CH) Deutsch 日本語 Español Contactez-nous Sélection du moment Mettez de la couleur dans votre quotidien Découvrez notre collection Votre snippet dynamique sera affiché ici... Ce message est affiché parce que vous n'avez pas défini le filtre et le modèle à utiliser. Précédent Suivant Maison EREL Page d'accueil Qui sommes nous ? Mentions légales Données personnelles Bon retour à télécharger Inscription Newsletter Merci pour votre inscription ! S'inscrire Votre adresse mail sera uniquement utilisée afin de recevoir des informations du site erel-france.fr . Vous pourrez à tout moment vous désinscrire. Contactez-nous Suivez-nous Copyright © ErelK manufacture de souliers d'intérieur English (UK) | Français | Deutsch (CH) | Deutsch | 日本語 | Español Généré par - Le #1 Open Source eCommerce\n\nContactez Erel Se rendre au contenu 0 0 La Manufacture Boutique en ligne Produits homme Produits femme Le savoir-faire Guide des pointures Suivez-nous Cliquez ici pour configurer vos réseaux sociaux Français English (UK) Français Deutsch (CH) Deutsch 日本語 Español Contactez-nous 0 0 La Manufacture Boutique en ligne Produits homme Produits femme Le savoir-faire Guide des pointures Suivez-nous Cliquez ici pour configurer vos réseaux sociaux Français English (UK) Français Deutsch (CH) Deutsch 日本語 Español Contactez-nous Contactez-nous Nous vous invitons à consulter : Le guide des pointures ​​​​ Le Savoir-faire Vous y trouverez la réponse aux questions les plus fréquentes concernant les tailles, la fabrication ou le montage en cousu américain. Un accompagnement personnalisé Si votre question nécessite un échange particulier, vous pouvez nous écrire via le formulaire ci-dessous. Chaque demande est traitée avec attention par l'équipe de la manufacture. Formulaire de contact Vous souhaitez une information ? Vous êtes au bon endroit ! Votre nom * Numéro de téléphone * Votre e-mail * Votre société * Sujet * Votre question * Envoyer ​​​​ Merci de votre message ! Notre équipe vous renverra un message dès que possible. En attendant, nous vous invitons à visiter notre site web . ErelK Manufacture de souliers d'intérieur 7 rue Philippe Lebon - 87280 Limoges - France Maison EREL Page d'accueil Qui sommes nous ? Mentions légales Données personnelles Bon retour à télécharger Inscription Newsletter Merci pour votre inscription ! S'inscrire Votre adresse mail sera uniquement utilisée afin de recevoir des informations du site erel-france.fr . Vous pourrez à tout moment vous désinscrire. Contac",
+   "cree_le": "2026-11-27T08:02+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. Nous avons repéré votre marque dans la liste des exposants du salon MIF Expo 2026.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public jeune recherche des produits durables et s'intéresse directement aux souliers d'intérieur que vous fabriquez.\n\nJe vous propose un partenariat de marque comprenant des publications et des stories dédiées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble. Lors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement.\n\nEn parallèle, nous pourrions aussi aborder votre savoir-faire artisanal.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-27T11:55+01:00",
+   "repondre_a": "contact@erel-france.fr",
+   "jeton": "4c3ba367657d"
+  },
+  {
+   "id": "2026-11-27-4-899",
+   "organisation": "Fléchet",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "http://www.flechet.eu",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : fabricant de chapeaux depuis 1859 à loudun.\n",
+   "famille": "mif",
+   "email": "jm.beyssac@mbyflechet.fr",
+   "contexte_adresse": "",
+   "contexte": "Fléchet - Since 1859 Valider Cookies En cliquant sur valider, vous acceptez l’utilisation de vos données personnelles telle que précisée dans les Mentions légales × Titre Recevoir la newsletter Abonnez-vous à notre newsletter Veuillez laisser ce champ vide Madame Monsieur Prénom * Nom * Société Téléphone * Adresse e-mail * Vous êtes * Vous êtes * Un particulier Un professionnel Nom de la boutique Adresse de la boutique Nous vous remercions pour votre inscription à la newsletter! Si vous souhaitez arrêter votre abonnement, contactez notre service client. Close Save changes Mentions L’univers Les collections L’histoire de Fléchet Notre savoir-faire Services Catalogue Automne-Hiver 2026/27 Trouver une boutique Les guides pratiques Nous contacter Accès revendeurs Fr En Fr En Accès Revendeurs Nous contacter Visualisez le catalogue Automne/Hiver 2026-27 Les boutiques 2026/27 Notre Collection Automne-Hiver 2026/27 Notre Collection Automne-Hiver 1 - 4 Les Collections Automne - Hiver Printemps - Été Chapeaux parfaits depuis 1859 Nos Coups de Coeur Confection made in France Notre savoir-faire Notre Histoire Gabriel Fléchet démarre la fabrication de chapeaux en France en 1859 En savoir plus 2026/27 Notre Collection Automne-Hiver Les Collections Automne - Hiver Printemps - Été Chapeaux parfaits depuis 1859 Nos Coups de Coeur Confection made in France Notre savoir-faire Notre Histoire Gabriel Fléchet démarre la fabrication de chapeaux en France en 1859 En savoir plus Plus d'inspiration Visitez Instagram@flechet Instagram … Instagram … Instagram … Suivez la Newsletter Adresse e-mail S'inscrire Lire les mentions légales Plus d'inspiration Visitez Instagram@flechet Instagram … Instagram … Suivez la Newsletter Adresse e-mail S'inscrire Lire les mentions légales Fr En Collections Histoire Savoir-faire Boutiques Guides Contact Restez connecté Copyright©2019 Fléchet Mentions légales Cookies Copyright©2019 Fléchet Mentions légales Cookies\n\nhttps://www.flechet.eu/contact/contact-us/ 2025-02-17T10:55:46+00:00 https://www.flechet.eu/contact/contact/ 2025-02-17T10:56:14+00:00\n\nFléchet - Since 1859 Valider Cookies En cliquant sur valider, vous acceptez l’utilisation de vos données personnelles telle que précisée dans les Mentions légales Mentions L’univers Les collections L’histoire de Fléchet Notre savoir-faire Services Catalogue Automne-Hiver 2026/27 Trouver une boutique Les guides pratiques Nous contacter Accès revendeurs Fr En Fr En Accès Revendeurs Nous contacter Visualisez le catalogue Automne/Hiver 2026-27 Les boutiques Politique de cookies QU’EST-CE QU’UN COOKIE ? QUELS COOKIES UTILISONS-NOUS ? Bloquer les cookies QU’EST-CE QU’UN « COOKIE » ? Un « cookie » est un fichier de taille limitée, généralement constitué de lettres et de chiffres, que le navigateur stocke localement sur votre disque dur. QUELS COOKIES UTILISONS-NOUS ? Nous utilisons les différents types de cookies détaillés ci-dessous. Les cookies nécessaires au fonctionnement de notre site : Ce sont des c",
+   "cree_le": "2026-11-27T08:02+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour Monsieur Beyssac,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. J'ai remarqué votre marque dans la liste des exposants du salon MIF Expo 2026.\n\nNotre média réunit 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public correspond à des clients potentiels pour vos collections de chapeaux.\n\nNous proposons de réaliser un partenariat de marque comprenant des publications et des stories dédiées sur nos trois réseaux, associées à un lien ou un code promo, sur un format défini ensemble.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement.\n\nEn parallèle, nous pourrions aussi présenter votre savoir-faire artisanal existant depuis 1859.\n\nSeriez-vous disponible pour un court appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": "Monsieur Beyssac",
+   "prevu_le": "2026-11-27T13:49+01:00",
+   "repondre_a": "jm.beyssac@mbyflechet.fr",
+   "jeton": "2464ec930208"
+  },
+  {
+   "id": "2026-11-27-5-260",
+   "organisation": "Kiplay Vintage",
+   "type": "marque exposante au MIF Expo 2026",
+   "site": "http://www.kiplayvintage.com",
+   "idee": "Marque exposante au MIF Expo 2026 (salon du Made in France, Paris). Produits : entreprise familiale et centenaire spécialisée dans le vêtement de travail , et ayant lanc",
+   "famille": "mif",
+   "email": "communication@kiplay.com",
+   "contexte_adresse": "onfiance dans l’économie numérique, il est précisé aux utilisateurs du site https://kiplayvintage.com/ l’identité des différents intervenants dans le cadre de sa réalisation et de son suivi : Propriétaire : Kiplay – Le Bourg, 61800 Saint-Pierre-d’Entremont Responsable publication : Kiplay Vintage – communication@kiplay.com Hébergeur : Gandi.net Conception – Réalisation – Design : Wesign – contact@",
+   "contexte": "Accueil - Kiplay Vintage 1 0 0 Notifications Découvrez notre nouveau lookbook dès maintenant ! LOOKBOOK Découvrez notre Lookbook pour la saison. Lookbook Wishlist Que recherchez-vous ? Search Femme Jeans Blousons Chemises Combinaisons Gilets Pantalons Salopettes Vestes Pulls T-shirts Voir tous les produits Carte cadeau Homme Jeans Chino Blousons Chemises Combinaisons T-shirt Gilets Pantalons Salopettes Vestes Pulls Boxer Voir tous les produits Carte cadeau Accessoires Masques Casquettes Nœud papillon Ceinture Sacs Carte cadeau Collaborations Kiplay x Saint James Kiplay x Parapluie de Cherbourg Kiplay x Bohin Kiplay x Filt Voir tous les produits Carte cadeau Seconde vie \"> Seconde vie Visite d'entreprise \"> Visite d'entreprise Histoire Notre histoire Notre univers Lookbook Nos points de vente Contact Notre héritage Autrefois, nos grands-pères portaient fièrement leurs vestes de travail robustes et résistantes à toute épreuve. Kiplay Vintage, c’est le souhait d’adapter les vêtements de travail produits dans nos usines depuis 1921 en vêtements de tous les jours. Issus des patronages Kiplay de l’époque, certaines pièces ont été ravaudées à la main comme dans l’ancien temps. Adresse Le Bourg, 61800 Saint-Pierre-d’Entremont 02 33 98 42 42 Le shop Kiplay Vintage, des vêtements conçus et fabriqués en France pour un savoir-faire alliant créativité , éthique et qualité . Découvrir le shop Manufacture française depuis 1921 C’est dans la bourgade de Saint-Pierre d’Entremont en Normandie que commence notre histoire. Marcel jeune fils de fabricant de galoche rencontre Emilie, fille de marchand de tissu et confectionneur de vêtement. C’est le début d’une grande histoire d’amour. Le 29 octobre 1921 , le couple se marie et Kiplay vient de naitre. Quatre génération plus tard, l’arrière petit fils de Marcel Clément Pradal, relance l’atelier et la fabrication dans le village d’origine et façonne la ligne Made In France inspirée des vêtements d’antan… Découvrir l'histoire Kiplay Vintage 100 ans de savoir-faire français Produit emblématique Veste moleskine \"Gaspard\" Découvrir ce produit COLLECTIONS L’amour des vêtements d’archives joint à la vision du styliste designer Christian Légier donne aujourd’hui naissance à une collection de prêt-à-porter remis au goût du jour. Grâce au savoir-faire des salariés de l’atelier de Saint-Pierre d’Entremont en Normandie nous vous présentons des collections qualitatives tant par l’exécution que par le choix des tissus. Femme Homme Jeans Acces\n\nContact - Kiplay Vintage 1 0 0 Notifications Découvrez notre nouveau lookbook dès maintenant ! LOOKBOOK Découvrez notre Lookbook pour la saison. Lookbook Wishlist Que recherchez-vous ? Search Femme Jeans Blousons Chemises Combinaisons Gilets Pantalons Salopettes Vestes Pulls T-shirts Voir tous les produits Carte cadeau Homme Jeans Chino Blousons Chemises Combinaisons T-shirt Gilets Pantalons Salopettes Vestes Pulls Boxer Voir tous les produits Carte cadeau Accessoires Masques Casquettes Nœud p",
+   "cree_le": "2026-11-27T08:03+01:00",
+   "statut": "planifié",
+   "objet": "Proposition de collaboration – Le Média Français",
+   "corps": "Bonjour,\n\nJe m'appelle Mathis Pouchol et j'ai fondé Le Média Français, un média sur la France, son histoire et son actualité. Nous avons repéré Kiplay Vintage dans la liste des exposants du MIF Expo.\n\nNotre communauté rassemble 210 000 abonnés sur Instagram, 54 000 sur TikTok et 38 000 sur Threads. Plus de 70 % de notre audience a entre 18 et 34 ans, avec 75 % d'hommes. Ce public correspond à vos acheteurs de vêtements masculins et de pièces de travail inspirées d'archives.\n\nNous proposons un partenariat de marque : des publications et des stories dédiées, relayées sur nos trois réseaux, avec un lien ou un code promo pour mesurer les résultats, sur un format défini ensemble.\n\nLors de notre dernière campagne, avec la Région Normandie, nous avons atteint 3,2 % d'engagement. En parallèle, nous pourrions aussi aborder votre fabrication française et votre histoire depuis 1921.\n\nSeriez-vous disponible pour un court appel la semaine prochaine ?\n\nBien cordialement,\n\nMathis Pouchol\nFondateur – Le Média Français\nlemediafrancais.fr · instagram.com/lemediafrancais",
+   "nom_contact": null,
+   "prevu_le": "2026-11-27T14:56+01:00",
+   "repondre_a": "communication@kiplay.com",
+   "jeton": "c2be5a138b46"
   }
  ],
  "mails_traites": [
@@ -1537,6 +1653,21 @@
   "pipechacom.com",
   "atelier-madeinromans.fr",
   "chronofixewatches.com",
-  "cleon.com"
+  "cleon.com",
+  "couleurtong.fr",
+  "courtoisparis.fr",
+  "chapeaux-crambes.fr",
+  "declermont.fr",
+  "erel-france.fr",
+  "flechet.eu",
+  "kiplayvintage.com",
+  "koojji.com",
+  "eventail-ysabel.com",
+  "latelier-insolite.fr",
+  "lavieestbelt.fr",
+  "leslainesduforez.com",
+  "leberetfrancais.com",
+  "legauloisjeans.com",
+  "lesoulor1925.com"
  ]
 }
