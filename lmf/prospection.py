@@ -605,10 +605,15 @@ def cibles_mif(e):
     # Liste figée (relevée le 21/11 : depuis la fin du salon, le site du MIF n'affiche plus les sites web des
     # exposants, et il bloque souvent les serveurs de GitHub) : 260 exposants, du plus pertinent au moins pertinent.
     fige = os.path.join(os.path.dirname(FICHIER_ETAT), "mif_exposants.json")
+    heritage = os.path.join(os.path.dirname(FICHIER_ETAT), "marques_heritage.json")
     if os.path.exists(fige):
         with open(fige, encoding="utf-8") as f:
             liste = json.load(f)
-        print(f"Liste MIF Expo (figée) : {len(liste)} exposants")
+        # Marques patrimoine / outdoor / horlogerie (audit du 28/11) : contactées en premier
+        if os.path.exists(heritage):
+            with open(heritage, encoding="utf-8") as f:
+                liste = json.load(f) + liste
+        print(f"Liste MIF Expo + marques patrimoine (figée) : {len(liste)} cibles")
         return liste
     page = requests.get(MIF_URL, headers=NAVIGATEUR, timeout=60).text
     liste = []
@@ -1002,7 +1007,7 @@ def generer_du_jour(e, jour=None, apercus=True):
                 continue
             domaines.add(d)
             a_explorer.append(cible)
-            if cible.get("famille") == "mif":
+            if cible.get("famille") in ("mif", "heritage"):
                 e.setdefault("mif_essayes", []).append(d)
         from concurrent.futures import ThreadPoolExecutor
         with ThreadPoolExecutor(max_workers=6) as pool:
@@ -1011,7 +1016,7 @@ def generer_du_jour(e, jour=None, apercus=True):
             if len(retenus) >= C.MAILS_PAR_JOUR or time.time() - debut > 15 * 60:
                 break
             fam = cible.get("famille", "tourisme")
-            if fam != "mif" and sum(1 for x in retenus if x.get("famille") == fam) >= quotas.get(fam, 0):
+            if fam not in ("mif", "heritage") and sum(1 for x in retenus if x.get("famille") == fam) >= quotas.get(fam, 0):
                 continue  # quota du jour atteint pour cette famille (60 % tourisme, 40 % industrie)
             print(f"→ {cible['organisation']} ({cible['site']}) : {adresse or 'pas d adresse'}")
             if not adresse:
