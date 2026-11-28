@@ -3,7 +3,7 @@
  "episodes": [
   {
    "id": "andorre",
-   "titre": "Pourquoi le président français est prince d'Andorre ?",
+   "titre": "Pourquoi Macron est prince d'Andorre ?",
    "musique": "epique",
    "statut": "a_ecrire",
    "miniatures": [
@@ -390,7 +390,33 @@
       }
      ]
     }
-   ]
+   ],
+   "miniature": {
+    "fond": {
+     "wiki": "Andorre-la-Vieille",
+     "nature": "lieu",
+     "commons": "Andorra la Vella panorama"
+    },
+    "sujet": {
+     "wiki": "Emmanuel Macron",
+     "nature": "personne",
+     "commons": "Emmanuel Macron portrait"
+    },
+    "objet": {
+     "wiki": "Drapeau de l'Andorre",
+     "nature": "objet",
+     "commons": "Flag of Andorra",
+     "detourer": false
+    },
+    "couronne": true,
+    "textes": [
+     "PRINCE D'ANDORRE ?",
+     "SON AUTRE PAYS",
+     "PRINCES DEPUIS"
+    ],
+    "mot_fort": "PRINCE",
+    "grand": "1278"
+   }
   },
   {
    "id": "internet",
@@ -743,7 +769,32 @@
       }
      ]
     }
-   ]
+   ],
+   "miniature": {
+    "fond": {
+     "wiki": "Tour Eiffel",
+     "nature": "lieu",
+     "commons": "Eiffel Tower night"
+    },
+    "sujet": {
+     "wiki": "Louis Pouzin",
+     "nature": "personne",
+     "commons": "Louis Pouzin"
+    },
+    "objet": {
+     "wiki": "Minitel",
+     "nature": "objet",
+     "commons": "Minitel 1 terminal"
+    },
+    "couronne": false,
+    "textes": [
+     "INTERNET ÉTAIT FRANÇAIS",
+     "IL A INVENTÉ ÇA",
+     "ABANDONNÉ EN"
+    ],
+    "mot_fort": "FRANÇAIS",
+    "grand": "1978"
+   }
   },
   {
    "id": "wallis",
