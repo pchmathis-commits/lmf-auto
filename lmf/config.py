@@ -97,6 +97,9 @@ PIXABAY_API_KEY = os.environ.get("PIXABAY_API_KEY", "")
 SHEET_URL = os.environ.get("SHEET_URL", "")        # URL de l'application Web Apps Script
 SHEET_SECRET = os.environ.get("SHEET_SECRET", "")  # mot de passe partagé avec Apps Script
 IG_USER_ID = os.environ.get("IG_USER_ID", "")
+TRIAL_REELS = True                 # Reels publiés en « essai » (non-abonnés d'abord), diffusion auto s'ils marchent
+CTA_SLIDE_2 = "ABONNE-TOI : L'HISTOIRE CHAQUE JOUR"   # rappel d'abonnement sur la slide 2 ; "" pour l'enlever
+PARIS_COMPTE = "@lemediaparis"     # pseudo affiché sur la slide de fin du Média Paris (à corriger si différent)
 
 # --- Prospection (mails de partenariat) -----------------------------------
 PROSPECTION_ACTIVE = True
