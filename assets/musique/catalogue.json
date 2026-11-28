@@ -1,0 +1,682 @@
+{
+ "pistes": [
+  {
+   "fichier": "bibliotheque/signal-to-noise-scott-buckley",
+   "titre": "Signal to Noise - Scott Buckley",
+   "ambiances": [
+    "mystere",
+    "enquete",
+    "thriller"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "'Signal to Noise' by Scott Buckley - released under CC-BY 4.0. www.scottbuckley.com.au",
+   "debut": 241,
+   "volume": 0.7,
+   "tempo": 66,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/the-age-of-wood-savfk",
+   "titre": "The Age Of Wood - Savfk",
+   "ambiances": [
+    "emotion",
+    "nostalgie",
+    "epique"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "The Age Of Wood by Savfk | https://www.youtube.com/savfkmusic",
+   "debut": 103,
+   "volume": 1.51,
+   "tempo": 86,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-01-dreamy-stupor",
+   "titre": "StreamBeats by Harris Heller - Groovy - 01 Dreamy Stupor",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 77,
+   "volume": 1.14,
+   "tempo": 99,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-02-retrofuturism-ride",
+   "titre": "StreamBeats by Harris Heller - Groovy - 02 Retrofuturism Ride",
+   "ambiances": [
+    "annees-80",
+    "actu"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 58,
+   "volume": 0.84,
+   "tempo": 95,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-03-sunset-boulevard",
+   "titre": "StreamBeats by Harris Heller - Groovy - 03 Sunset Boulevard",
+   "ambiances": [
+    "annees-80",
+    "actu"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 74,
+   "volume": 1.16,
+   "tempo": 89,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-04-cybernetic-ride",
+   "titre": "StreamBeats by Harris Heller - Groovy - 04 Cybernetic Ride",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 55,
+   "volume": 1.01,
+   "tempo": 86,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-05-arcade-adventures",
+   "titre": "StreamBeats by Harris Heller - Groovy - 05 Arcade Adventures",
+   "ambiances": [
+    "annees-80-fort"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 45,
+   "volume": 1.2,
+   "tempo": 172,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-06-vaporwave-visions",
+   "titre": "StreamBeats by Harris Heller - Groovy - 06 Vaporwave Visions",
+   "ambiances": [
+    "annees-80-fort"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 50,
+   "volume": 0.92,
+   "tempo": 172,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-07-better-best",
+   "titre": "StreamBeats by Harris Heller - Groovy - 07 Better Best",
+   "ambiances": [
+    "annees-80",
+    "leger"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 30,
+   "volume": 0.9,
+   "tempo": 89,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-08-synth-serenity",
+   "titre": "StreamBeats by Harris Heller - Groovy - 08 Synth Serenity",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 19,
+   "volume": 1.01,
+   "tempo": 95,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-09-laser-love",
+   "titre": "StreamBeats by Harris Heller - Groovy - 09 Laser Love",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 47,
+   "volume": 0.97,
+   "tempo": 161,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-10-outrunning-the-past",
+   "titre": "StreamBeats by Harris Heller - Groovy - 10 Outrunning the Past",
+   "ambiances": [
+    "annees-80",
+    "leger"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 35,
+   "volume": 1.2,
+   "tempo": 83,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-11-chromatic-cruise",
+   "titre": "StreamBeats by Harris Heller - Groovy - 11 Chromatic Cruise",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 74,
+   "volume": 1.08,
+   "tempo": 89,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-12-back-to-the-flash",
+   "titre": "StreamBeats by Harris Heller - Groovy - 12 Back to the Flash",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 53,
+   "volume": 0.97,
+   "tempo": 86,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-13-dystopian-fantasies",
+   "titre": "StreamBeats by Harris Heller - Groovy - 13 Dystopian Fantasies",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 32,
+   "volume": 1.06,
+   "tempo": 60,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-14-pixelated-passion",
+   "titre": "StreamBeats by Harris Heller - Groovy - 14 Pixelated Passion",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 43,
+   "volume": 1.11,
+   "tempo": 64,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-15-no-more",
+   "titre": "StreamBeats by Harris Heller - Groovy - 15 No More",
+   "ambiances": [
+    "annees-80-fort"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 60,
+   "volume": 1.0,
+   "tempo": 99,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-16-silicon-views",
+   "titre": "StreamBeats by Harris Heller - Groovy - 16 Silicon Views",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 60,
+   "volume": 1.1,
+   "tempo": 99,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-17-runaway-s-refuge",
+   "titre": "StreamBeats by Harris Heller - Groovy - 17 Runaway's Refuge",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 48,
+   "volume": 1.04,
+   "tempo": 89,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-18-glowing-gridlines",
+   "titre": "StreamBeats by Harris Heller - Groovy - 18 Glowing Gridlines",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 49,
+   "volume": 1.05,
+   "tempo": 73,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-19-eden-s-leaves",
+   "titre": "StreamBeats by Harris Heller - Groovy - 19 Eden's Leaves",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 65,
+   "volume": 1.16,
+   "tempo": 80,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-20-vhs-vibes",
+   "titre": "StreamBeats by Harris Heller - Groovy - 20 VHS Vibes",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 49,
+   "volume": 1.06,
+   "tempo": 73,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-21-mirage-memories",
+   "titre": "StreamBeats by Harris Heller - Groovy - 21 Mirage Memories",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 37,
+   "volume": 1.15,
+   "tempo": 60,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-22-resonating-with-you",
+   "titre": "StreamBeats by Harris Heller - Groovy - 22 Resonating with You",
+   "ambiances": [
+    "annees-80",
+    "leger"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 56,
+   "volume": 0.9,
+   "tempo": 112,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-23-skyline-hope",
+   "titre": "StreamBeats by Harris Heller - Groovy - 23 Skyline Hope",
+   "ambiances": [
+    "annees-80",
+    "actu"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 68,
+   "volume": 0.9,
+   "tempo": 99,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-24-cassette-culture",
+   "titre": "StreamBeats by Harris Heller - Groovy - 24 Cassette Culture",
+   "ambiances": [
+    "annees-80",
+    "leger"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 24,
+   "volume": 0.92,
+   "tempo": 99,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-25-drifting-off",
+   "titre": "StreamBeats by Harris Heller - Groovy - 25 Drifting Off",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 52,
+   "volume": 0.97,
+   "tempo": 99,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-26-line-high",
+   "titre": "StreamBeats by Harris Heller - Groovy - 26 Line High",
+   "ambiances": [
+    "annees-80",
+    "leger"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 35,
+   "volume": 0.91,
+   "tempo": 103,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-27-jay-walking",
+   "titre": "StreamBeats by Harris Heller - Groovy - 27 Jay Walking",
+   "ambiances": [
+    "annees-80",
+    "leger"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 62,
+   "volume": 1.02,
+   "tempo": 67,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-28-blurred-goggles",
+   "titre": "StreamBeats by Harris Heller - Groovy - 28 Blurred Goggles",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 61,
+   "volume": 0.92,
+   "tempo": 112,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-29-chasing-again",
+   "titre": "StreamBeats by Harris Heller - Groovy - 29 Chasing Again",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 56,
+   "volume": 0.83,
+   "tempo": 103,
+   "mode": "mineur"
+  },
+  {
+   "fichier": "bibliotheque/streambeats-30-luminous-lanes",
+   "titre": "StreamBeats by Harris Heller - Groovy - 30 Luminous Lanes",
+   "ambiances": [
+    "annees-80"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "Music by StreamBeats (Harris Heller)",
+   "debut": 60,
+   "volume": 1.12,
+   "tempo": 103,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "archives",
+   "titre": "archives",
+   "ambiances": [
+    "mystere",
+    "epique"
+   ],
+   "comptes": [
+    "lmf"
+   ],
+   "credit": "",
+   "debut": 81,
+   "volume": 1.6,
+   "genere": true
+  },
+  {
+   "fichier": "academia",
+   "titre": "academia",
+   "ambiances": [
+    "emotion",
+    "mystere"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 74,
+   "volume": 1.6,
+   "genere": true
+  },
+  {
+   "fichier": "explication",
+   "titre": "explication",
+   "ambiances": [
+    "leger",
+    "actu"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 57,
+   "volume": 1.6,
+   "genere": true
+  },
+  {
+   "fichier": "enquete",
+   "titre": "enquete",
+   "ambiances": [
+    "mystere",
+    "enquete"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 10,
+   "volume": 1.6,
+   "genere": true
+  },
+  {
+   "fichier": "thriller",
+   "titre": "thriller",
+   "ambiances": [
+    "mystere",
+    "thriller"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 10,
+   "volume": 1.6,
+   "genere": true
+  },
+  {
+   "fichier": "filature",
+   "titre": "filature",
+   "ambiances": [
+    "mystere",
+    "filature"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 10,
+   "volume": 1.6,
+   "genere": true
+  },
+  {
+   "fichier": "nuit-blanche",
+   "titre": "nuit-blanche",
+   "ambiances": [
+    "mystere",
+    "nuit-blanche"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 10,
+   "volume": 1.6,
+   "genere": true
+  },
+  {
+   "fichier": "piano-feutre",
+   "titre": "piano-feutre",
+   "ambiances": [
+    "emotion",
+    "piano-feutre"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 10,
+   "volume": 1.6,
+   "genere": true
+  },
+  {
+   "fichier": "nostalgie",
+   "titre": "nostalgie",
+   "ambiances": [
+    "emotion",
+    "nostalgie"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 10,
+   "volume": 1.6,
+   "genere": true
+  },
+  {
+   "fichier": "bibliotheque/historical-cultural",
+   "titre": "historical-cultural",
+   "ambiances": [
+    "epique",
+    "emotion"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 115,
+   "volume": 1.33,
+   "tempo": 103,
+   "mode": "majeur"
+  },
+  {
+   "fichier": "bibliotheque/medieval-calm",
+   "titre": "medieval-calm",
+   "ambiances": [
+    "emotion",
+    "leger",
+    "nostalgie"
+   ],
+   "comptes": [
+    "lmf",
+    "paris"
+   ],
+   "credit": "",
+   "debut": 77,
+   "volume": 0.72,
+   "tempo": 80,
+   "mode": "majeur"
+  }
+ ]
+}
