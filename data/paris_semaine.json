@@ -1,0 +1,114 @@
+{
+  "semaine": "2026-11-29 au 2026-12-05",
+  "note": "Écrit par Claude, faits vérifiés (sources en fin de fichier). Le robot publie le post du jour à 12:30 sur Le Média Paris.",
+  "posts": [
+    {
+      "date": "2026-11-29",
+      "couverture": {"texte": "Ce soldat de pierre dit aux Parisiens quand la Seine déborde", "rouges": ["pierre", "Seine"], "image": "Zouave du pont de l'Alma"},
+      "slides": [
+        {"texte": "Sous le pont de l'Alma se tient le Zouave, une statue de 1856 signée Georges Diebolt.", "rouges": ["Zouave", "1856"], "image": "Pont de l'Alma"},
+        {"texte": "Il représente un soldat de la guerre de Crimée. À l'origine, ils étaient quatre à garder le pont.", "rouges": ["Crimée", "quatre"], "image": "Guerre de Crimée"},
+        {"texte": "Depuis, les Parisiens s'en servent de repère : quand il a les pieds dans l'eau, la Seine est en crue.", "rouges": ["repère", "crue"], "image": "Seine"},
+        {"texte": "Quand l'eau atteint ses cuisses, les bateaux ne peuvent plus naviguer.", "rouges": ["cuisses"], "image": "Bateau-mouche"},
+        {"texte": "Le 28 janvier 1910, l'eau monte jusqu'à ses épaules : la Seine atteint 8,62 mètres.", "rouges": ["épaules", "8,62"], "image": "Crue de la Seine de 1910"},
+        {"texte": "Quand le pont est reconstruit, entre 1970 et 1974, il est le seul des quatre soldats à y être replacé.", "rouges": ["seul"], "image": "Paris"}
+      ],
+      "question_finale": {"texte": "Tu l'avais déjà remarqué ?", "rouges": ["remarqué"]},
+      "legende": "Le Zouave du pont de l'Alma veille sur la Seine depuis 1856. En 1910, l'eau lui arrivait aux épaules 🌊\n\nTu passes devant sans le voir ? Envoie ce post à quelqu'un qui habite Paris 👇",
+      "hashtags": "#paris #histoiredeparis #parisinsolite #seine #patrimoine"
+    },
+    {
+      "date": "2026-11-30",
+      "couverture": {"texte": "Ce morceau de marbre a appris le mètre aux Parisiens", "rouges": ["marbre", "mètre"], "image": "Mètre étalon"},
+      "slides": [
+        {"texte": "Au 36 rue de Vaugirard, face au Sénat, un marbre gravé du mot « MÈTRE » est fixé au mur.", "rouges": ["36", "MÈTRE"], "image": "Rue de Vaugirard"},
+        {"texte": "À la Révolution, la France invente une mesure unique pour remplacer des centaines d'unités locales.", "rouges": ["Révolution", "unique"], "image": "Système métrique"},
+        {"texte": "Problème : personne n'a jamais vu un mètre. Il faut le montrer aux habitants.", "rouges": ["jamais vu"], "image": "Révolution française"},
+        {"texte": "Entre 1796 et 1797, seize mètres en marbre sont posés dans les lieux les plus fréquentés de Paris.", "rouges": ["seize", "marbre"], "image": "Palais du Luxembourg"},
+        {"texte": "Il n'en reste que deux. Celui de la rue de Vaugirard est le seul encore à sa place d'origine. L'autre est place Vendôme.", "rouges": ["deux", "origine"], "image": "Place Vendôme"}
+      ],
+      "question_finale": {"texte": "Tu passes devant sans le voir ?", "rouges": ["voir"]},
+      "legende": "Avant 1796, personne ne savait à quoi ressemblait un mètre. Alors la Révolution l'a gravé dans le marbre, dans les rues de Paris 📏\n\nEnvoie-le à celui qui mesure tout au centimètre près 👇",
+      "hashtags": "#paris #histoiredeparis #parisinsolite #revolutionfrancaise #patrimoine"
+    },
+    {
+      "date": "2026-12-01",
+      "couverture": {"texte": "La rue la plus étroite de Paris fait 1,80 mètre de large", "rouges": ["étroite", "1,80"], "image": "Rue du Chat-qui-Pêche"},
+      "slides": [
+        {"texte": "C'est la rue du Chat-qui-Pêche, dans le 5e arrondissement, entre le quai Saint-Michel et la rue de la Huchette.", "rouges": ["Chat-qui-Pêche"], "image": "Rue de la Huchette"},
+        {"texte": "Elle mesure 29 mètres de long et seulement 1,80 mètre de large.", "rouges": ["29", "1,80"], "image": "Quai Saint-Michel"},
+        {"texte": "Ouverte en 1540, elle donnait directement sur la Seine.", "rouges": ["1540", "Seine"], "image": "Seine"},
+        {"texte": "Son nom viendrait d'une ancienne enseigne. Une légende parle d'un chat noir qui pêchait dans le fleuve.", "rouges": ["enseigne", "chat noir"], "image": "Quartier latin"},
+        {"texte": "On la présente souvent comme la rue la plus étroite de Paris, même si d'autres passages lui disputent le titre.", "rouges": ["étroite"], "image": "5e arrondissement de Paris"}
+      ],
+      "question_finale": {"texte": "Tu y es déjà passé ?", "rouges": ["passé"]},
+      "legende": "1,80 mètre de large, 29 mètres de long : la rue du Chat-qui-Pêche se traverse en quelques pas 🐈‍⬛\n\nTague quelqu'un avec qui tu irais la voir 👇",
+      "hashtags": "#paris #histoiredeparis #parisinsolite #quartierlatin #patrimoine"
+    },
+    {
+      "date": "2026-12-02",
+      "couverture": {"texte": "Paris a sa propre statue de la Liberté, et elle regarde New York", "rouges": ["Liberté", "New York"], "image": "Île aux Cygnes"},
+      "slides": [
+        {"texte": "Sur l'île aux Cygnes, au milieu de la Seine, se dresse une réplique de la statue de la Liberté.", "rouges": ["île aux Cygnes"], "image": "Statue de la Liberté"},
+        {"texte": "Elle est inaugurée en 1889, pour le centenaire de la Révolution, trois ans après celle de New York.", "rouges": ["1889", "centenaire"], "image": "Frédéric Auguste Bartholdi"},
+        {"texte": "Elle mesure 11,50 mètres, environ quatre fois moins que l'originale.", "rouges": ["11,50"], "image": "Pont de Grenelle"},
+        {"texte": "Sa tablette porte deux dates : 4 juillet 1776 et 14 juillet 1789.", "rouges": ["1776", "1789"], "image": "Déclaration d'indépendance des États-Unis"},
+        {"texte": "Elle est tournée vers l'ouest, en direction de sa grande sœur de New York.", "rouges": ["ouest", "grande sœur"], "image": "Pont de Bir-Hakeim"}
+      ],
+      "question_finale": {"texte": "Tu savais qu'elle existait ?", "rouges": ["existait"]},
+      "legende": "La statue de la Liberté est française, et Paris en a gardé une petite sœur 🗽 Elle regarde vers New York depuis 1889.\n\nEnvoie-le à ton pote qui rêve d'aller à New York 👇",
+      "hashtags": "#paris #histoiredeparis #parisinsolite #statuedelaliberte #patrimoine"
+    },
+    {
+      "date": "2026-12-03",
+      "couverture": {"texte": "Un amphithéâtre romain se cache en plein Paris", "rouges": ["romain", "Paris"], "image": "Arènes de Lutèce"},
+      "slides": [
+        {"texte": "Les arènes de Lutèce, dans le 5e arrondissement, datent de l'époque gallo-romaine.", "rouges": ["Lutèce", "gallo-romaine"], "image": "Lutèce"},
+        {"texte": "On y donnait des spectacles et des combats. Elles auraient pu accueillir jusqu'à 17 000 spectateurs.", "rouges": ["17 000"], "image": "Amphithéâtre romain"},
+        {"texte": "Oubliées pendant des siècles, elles sont redécouvertes en 1869, lors du percement de la rue Monge.", "rouges": ["1869", "rue Monge"], "image": "Rue Monge"},
+        {"texte": "Une compagnie d'omnibus veut alors y construire un dépôt. Victor Hugo fait partie de ceux qui se battent pour les sauver.", "rouges": ["Victor Hugo"], "image": "Victor Hugo"},
+        {"texte": "Avec les thermes de Cluny, ce sont les seuls édifices romains conservés à Paris. Aujourd'hui, on y joue à la pétanque.", "rouges": ["seuls", "pétanque"], "image": "Thermes de Cluny"}
+      ],
+      "question_finale": {"texte": "Tu y es déjà allé ?", "rouges": ["allé"]},
+      "legende": "En plein 5e arrondissement, il reste un amphithéâtre romain. Et Victor Hugo a aidé à le sauver 🏛️\n\nEnvoie-le à quelqu'un qui pense connaître Paris par cœur 👇",
+      "hashtags": "#paris #histoiredeparis #parisinsolite #lutece #patrimoine"
+    },
+    {
+      "date": "2026-12-04",
+      "couverture": {"texte": "Une muraille du Moyen Âge est encore debout dans le Marais", "rouges": ["Moyen Âge", "Marais"], "image": "Enceinte de Philippe Auguste"},
+      "slides": [
+        {"texte": "En 1190, avant de partir en croisade, le roi Philippe Auguste décide de protéger Paris par une enceinte.", "rouges": ["1190", "croisade"], "image": "Philippe II Auguste"},
+        {"texte": "Pour la première fois, une muraille entoure les deux rives de la ville.", "rouges": ["deux rives"], "image": "Troisième croisade"},
+        {"texte": "Sur la rive droite, elle mesure environ 2,8 kilomètres et compte 77 tours.", "rouges": ["2,8", "77 tours"], "image": "Rue des Jardins-Saint-Paul"},
+        {"texte": "Le plus long morceau visible se trouve rue des Jardins-Saint-Paul, avec deux tours, au bord d'un terrain de sport.", "rouges": ["Jardins-Saint-Paul"], "image": "Le Marais (Paris)"},
+        {"texte": "D'autres vestiges se cachent sous le Louvre, rue Clovis, et même dans des immeubles et des boutiques.", "rouges": ["Louvre", "boutiques"], "image": "Palais du Louvre"}
+      ],
+      "question_finale": {"texte": "Tu l'avais déjà vue ?", "rouges": ["vue"]},
+      "legende": "Plus de 800 ans plus tard, la muraille de Philippe Auguste est toujours là, au bord d'un terrain de foot du Marais 🏰\n\nEnvoie-le à celui qui joue là-bas sans le savoir 👇",
+      "hashtags": "#paris #histoiredeparis #parisinsolite #marais #patrimoine"
+    },
+    {
+      "date": "2026-12-05",
+      "couverture": {"texte": "La plus vieille maison de Paris a été construite en 1407", "rouges": ["vieille", "1407"], "image": "Maison de Nicolas Flamel"},
+      "slides": [
+        {"texte": "Elle se trouve au 51 rue de Montmorency, dans le 3e arrondissement.", "rouges": ["51", "Montmorency"], "image": "Rue de Montmorency"},
+        {"texte": "Elle a été bâtie par Nicolas Flamel, écrivain public et libraire, et sa femme Pernelle.", "rouges": ["Nicolas Flamel"], "image": "Nicolas Flamel"},
+        {"texte": "Le couple ne l'a jamais habitée : elle servait à loger gratuitement des pauvres.", "rouges": ["gratuitement"], "image": "Le Marais (Paris)"},
+        {"texte": "Après sa mort, la légende a fait de Flamel un alchimiste qui aurait trouvé la pierre philosophale.", "rouges": ["alchimiste", "pierre philosophale"], "image": "Pierre philosophale"},
+        {"texte": "Longtemps, une maison de la rue Volta passait pour la plus ancienne. Aujourd'hui, la plupart des historiens donnent le titre à celle-ci.", "rouges": ["rue Volta"], "image": "3e arrondissement de Paris"}
+      ],
+      "question_finale": {"texte": "Tu connaissais son histoire ?", "rouges": ["histoire"]},
+      "legende": "Plus de 600 ans et toujours debout : la maison de Nicolas Flamel, l'homme que la légende a transformé en alchimiste 🧙\n\nEnvoie-le à un fan de Harry Potter 👇",
+      "hashtags": "#paris #histoiredeparis #parisinsolite #nicolasflamel #patrimoine"
+    }
+  ],
+  "sources": [
+    "Zouave : pariszigzag.fr ; paris.fr « Une vie en Seine : le Zouave » ; napoleon.org (reconstruction 1970-1974)",
+    "Mètre étalon : justice.gouv.fr (mètre de la place Vendôme) ; atlasobscura.com",
+    "Rue du Chat-qui-Pêche : Wikipédia ; timeout.fr ; pariszigzag.fr (débat sur le titre)",
+    "Statue de la Liberté : Wikipédia (île aux Cygnes) ; cityzeum.com ; frenchmoments.eu (tablette)",
+    "Arènes de Lutèce : Larousse ; paris.fr ; pariszigzag.fr ; timeout.com (pétanque)",
+    "Enceinte de Philippe Auguste : paris.fr (2 800 m, 77 tours) ; pop.culture.gouv.fr ; viamichelin",
+    "Maison de Nicolas Flamel : offi.fr (débat rue Volta) ; parisjetaime.com (logement des pauvres)"
+  ]
+}

@@ -1,0 +1,367 @@
+{
+ "note": "Réserve écrite et vérifiée par Claude : utilisée seulement quand la génération échoue (quota Gemini vide). Chaque carrousel ne sert qu'une fois. Claude la remplit chaque samedi.",
+ "carrousels": [
+  {
+   "fiche": {
+    "sujet": "Le domaine national français en Terre sainte",
+    "famille": "L'influence cachée de la France à l'étranger",
+    "sources": "Assemblée nationale (question écrite 55716) ; aleteia.org (22/01/2020) ; Wikipédia (Église Sainte-Anne de Jérusalem)"
+   },
+   "c": {
+    "nom_sujet": "Domaine national français en Terre sainte",
+    "couverture": {
+     "texte": "La France possède 4 territoires en plein Jérusalem",
+     "rouges": [
+      "4 territoires",
+      "Jérusalem"
+     ],
+     "image": "Église Sainte-Anne de Jérusalem"
+    },
+    "slides": [
+     {
+      "texte": "On les appelle le « domaine national français en Terre sainte ».",
+      "rouges": [
+       "domaine national français"
+      ],
+      "image": "Jérusalem"
+     },
+     {
+      "texte": "Il compte quatre sites : l'église Sainte-Anne, l'Éléona, le tombeau des Rois et l'abbaye d'Abou Gosh.",
+      "rouges": [
+       "quatre sites"
+      ],
+      "image": "Église du Pater Noster"
+     },
+     {
+      "texte": "Le premier, l'église Sainte-Anne, est offert à Napoléon III en 1856 par le sultan ottoman.",
+      "rouges": [
+       "Napoléon III",
+       "1856"
+      ],
+      "image": "Napoléon III"
+     },
+     {
+      "texte": "Un cadeau pour remercier la France de son aide pendant la guerre de Crimée.",
+      "rouges": [
+       "guerre de Crimée"
+      ],
+      "image": "Abdülmecid Ier"
+     },
+     {
+      "texte": "En 1996, Jacques Chirac refuse d'entrer à Sainte-Anne tant que des soldats israéliens s'y trouvent.",
+      "rouges": [
+       "Jacques Chirac",
+       "refuse"
+      ],
+      "image": "Jacques Chirac"
+     },
+     {
+      "texte": "En 2020, Emmanuel Macron demande à son tour aux policiers israéliens de sortir de l'église.",
+      "rouges": [
+       "Emmanuel Macron"
+      ],
+      "image": "Emmanuel Macron"
+     },
+     {
+      "texte": "Depuis 1856, le drapeau français flotte au-dessus de Sainte-Anne.",
+      "rouges": [
+       "drapeau français"
+      ],
+      "image": "Vieille ville de Jérusalem"
+     }
+    ],
+    "question_finale": {
+     "texte": "Tu le savais ?",
+     "rouges": [
+      "savais"
+     ]
+    },
+    "legende": "En plein Jérusalem, quatre lieux appartiennent à la France : l'église Sainte-Anne, l'Éléona, le tombeau des Rois et l'abbaye d'Abou Gosh. Le premier a été offert à Napoléon III en 1856. Et deux présidents français ont défendu ce statut sur place, Jacques Chirac en 1996 et Emmanuel Macron en 2020.\n\nEnvoie-le à quelqu'un qui pense connaître la France par cœur 👇",
+    "hashtags": "#HistoireDeFrance #Jérusalem #NapoléonIII #Patrimoine #LeMediaFrancais"
+   }
+  },
+  {
+   "fiche": {
+    "sujet": "L'île des Faisans, française six mois par an",
+    "famille": "L'influence cachée de la France à l'étranger",
+    "sources": "Public Sénat ; herodote.net (7 novembre 1659) ; seloger.com (dates d'alternance) ; RTBF"
+   },
+   "c": {
+    "nom_sujet": "Île des Faisans",
+    "couverture": {
+     "texte": "Cette île change de pays tous les six mois",
+     "rouges": [
+      "six mois"
+     ],
+     "image": "Île des Faisans"
+    },
+    "slides": [
+     {
+      "texte": "C'est l'île des Faisans, au milieu de la Bidassoa, le fleuve qui sépare la France de l'Espagne.",
+      "rouges": [
+       "île des Faisans",
+       "Bidassoa"
+      ],
+      "image": "Bidassoa"
+     },
+     {
+      "texte": "Elle est espagnole du 1er février au 31 juillet, puis française du 1er août au 31 janvier.",
+      "rouges": [
+       "espagnole",
+       "française"
+      ],
+      "image": "Hendaye"
+     },
+     {
+      "texte": "C'est le plus petit condominium du monde : un territoire partagé par deux pays.",
+      "rouges": [
+       "plus petit condominium"
+      ],
+      "image": "Irun"
+     },
+     {
+      "texte": "Le 7 novembre 1659, la France et l'Espagne y signent le traité des Pyrénées, après 24 ans de guerre.",
+      "rouges": [
+       "1659",
+       "traité des Pyrénées"
+      ],
+      "image": "Traité des Pyrénées"
+     },
+     {
+      "texte": "En 1660, Louis XIV et Philippe IV d'Espagne s'y retrouvent pour sceller la paix et le mariage du roi avec l'infante Marie-Thérèse.",
+      "rouges": [
+       "Louis XIV",
+       "Marie-Thérèse"
+      ],
+      "image": "Louis XIV"
+     },
+     {
+      "texte": "Aujourd'hui, deux commandants de marine, un français et un espagnol, y portent tour à tour le titre de « vice-roi ».",
+      "rouges": [
+       "vice-roi"
+      ],
+      "image": "Marie-Thérèse d'Autriche (1638-1683)"
+     }
+    ],
+    "question_finale": {
+     "texte": "Tu la connaissais ?",
+     "rouges": [
+      "connaissais"
+     ]
+    },
+    "legende": "L'île des Faisans est espagnole du 1er février au 31 juillet, et française du 1er août au 31 janvier. C'est là que la France et l'Espagne ont signé le traité des Pyrénées en 1659 🇫🇷🇪🇸\n\nTague quelqu'un du Pays basque 👇",
+    "hashtags": "#HistoireDeFrance #PaysBasque #LouisXIV #Insolite #LeMediaFrancais"
+   }
+  },
+  {
+   "fiche": {
+    "sujet": "Camerone, la bataille fondatrice de la Légion étrangère",
+    "famille": "Héroïsme et unités d'élite",
+    "sources": "herodote.net (30 avril 1863) ; cheminsdememoire.gouv.fr ; Wikipédia (Bataille de Camerone, Jean Danjou)"
+   },
+   "c": {
+    "nom_sujet": "Bataille de Camerone",
+    "couverture": {
+     "texte": "65 soldats français contre 2 000 : la bataille qui a créé une légende",
+     "rouges": [
+      "65",
+      "2 000"
+     ],
+     "image": "Bataille de Camerone"
+    },
+    "slides": [
+     {
+      "texte": "Le 30 avril 1863, au Mexique, une compagnie de la Légion étrangère escorte un convoi de l'armée française.",
+      "rouges": [
+       "30 avril 1863",
+       "Légion étrangère"
+      ],
+      "image": "Expédition du Mexique"
+     },
+     {
+      "texte": "Attaqués par environ 2 000 Mexicains, les 65 hommes du capitaine Danjou se retranchent dans une ferme.",
+      "rouges": [
+       "2 000",
+       "Danjou"
+      ],
+      "image": "Jean Danjou"
+     },
+     {
+      "texte": "On leur propose de se rendre. Ils refusent. Danjou est tué peu après.",
+      "rouges": [
+       "refusent"
+      ],
+      "image": "Légion étrangère"
+     },
+     {
+      "texte": "Le soir, il ne reste que cinq légionnaires en état de combattre, à court de munitions.",
+      "rouges": [
+       "cinq"
+      ],
+      "image": "Camarón de Tejeda"
+     },
+     {
+      "texte": "Ils chargent à la baïonnette. Les survivants ne se rendent qu'à une condition : garder leurs armes et soigner leurs blessés.",
+      "rouges": [
+       "baïonnette",
+       "garder leurs armes"
+      ],
+      "image": "Képi blanc"
+     },
+     {
+      "texte": "Chaque 30 avril, toute la Légion célèbre Camerone et présente la main de bois du capitaine Danjou.",
+      "rouges": [
+       "main de bois"
+      ],
+      "image": "Musée de la Légion étrangère"
+     }
+    ],
+    "question_finale": {
+     "texte": "Tu connaissais Camerone ?",
+     "rouges": [
+      "Camerone"
+     ]
+    },
+    "legende": "Le 30 avril 1863, 65 légionnaires tiennent tête à environ 2 000 soldats mexicains à Camerone. Les cinq derniers chargent à la baïonnette. Depuis, chaque 30 avril, la Légion étrangère présente la main de bois de leur capitaine, Jean Danjou ⚔️\n\nEnvoie-le à quelqu'un qui a déjà pensé à la Légion 👇",
+    "hashtags": "#LégionÉtrangère #Camerone #HistoireDeFrance #Armée #LeMediaFrancais"
+   }
+  },
+  {
+   "fiche": {
+    "sujet": "Le français, première langue officielle des Jeux olympiques",
+    "famille": "L'influence cachée de la France à l'étranger",
+    "sources": "Charte olympique (règle 23) ; Assemblée nationale (questions écrites) ; sports.gouv.fr ; culture.gouv.fr (20/02/2024)"
+   },
+   "c": {
+    "nom_sujet": "Langue française aux Jeux olympiques",
+    "couverture": {
+     "texte": "Aux Jeux olympiques, une langue passe avant l'anglais",
+     "rouges": [
+      "Jeux olympiques",
+      "avant l'anglais"
+     ],
+     "image": "Anneaux olympiques"
+    },
+    "slides": [
+     {
+      "texte": "Les langues officielles du Comité international olympique sont le français et l'anglais.",
+      "rouges": [
+       "français",
+       "anglais"
+      ],
+      "image": "Comité international olympique"
+     },
+     {
+      "texte": "Et en cas de désaccord entre les deux textes, c'est la version française qui fait foi.",
+      "rouges": [
+       "version française"
+      ],
+      "image": "Charte olympique"
+     },
+     {
+      "texte": "On le doit à Pierre de Coubertin, qui fonde le CIO à Paris en 1894.",
+      "rouges": [
+       "Pierre de Coubertin",
+       "1894"
+      ],
+      "image": "Pierre de Coubertin"
+     },
+     {
+      "texte": "À l'époque, le français est la grande langue de la diplomatie et des élites dans le monde.",
+      "rouges": [
+       "diplomatie"
+      ],
+      "image": "Sorbonne"
+     },
+     {
+      "texte": "Résultat : aux Jeux, les communications officielles, les cérémonies et la signalétique se font aussi en français.",
+      "rouges": [
+       "cérémonies"
+      ],
+      "image": "Jeux olympiques d'été de 2024"
+     }
+    ],
+    "question_finale": {
+     "texte": "Tu l'avais remarqué ?",
+     "rouges": [
+      "remarqué"
+     ]
+    },
+    "legende": "Aux Jeux olympiques, le français est l'une des deux langues officielles. Et si les textes français et anglais ne disent pas la même chose, c'est le français qui l'emporte. Merci Pierre de Coubertin 🏅\n\nEnvoie-le à ton pote fan de sport 👇",
+    "hashtags": "#JeuxOlympiques #Coubertin #LangueFrançaise #HistoireDeFrance #LeMediaFrancais"
+   }
+  },
+  {
+   "fiche": {
+    "sujet": "Le cimetière américain de Colleville-sur-Mer n'est pas un territoire américain",
+    "famille": "L'État français comme tu ne le connais pas",
+    "sources": "abmc.gov ; Wikipédia (Normandy American Cemetery : concession illimitée, gratuite, sans taxe) ; tendanceouest.com (9 387 soldats)"
+   },
+   "c": {
+    "nom_sujet": "Cimetière américain de Colleville-sur-Mer",
+    "couverture": {
+     "texte": "Ce cimetière de Normandie est-il un morceau des États-Unis ?",
+     "rouges": [
+      "Normandie",
+      "États-Unis"
+     ],
+     "image": "Cimetière américain de Colleville-sur-Mer"
+    },
+    "slides": [
+     {
+      "texte": "Le cimetière américain de Colleville-sur-Mer domine Omaha Beach, l'une des plages du Débarquement.",
+      "rouges": [
+       "Colleville-sur-Mer",
+       "Omaha Beach"
+      ],
+      "image": "Omaha Beach"
+     },
+     {
+      "texte": "9 387 soldats américains y reposent.",
+      "rouges": [
+       "9 387"
+      ],
+      "image": "Débarquement de Normandie"
+     },
+     {
+      "texte": "On entend souvent que c'est un territoire américain. C'est faux.",
+      "rouges": [
+       "faux"
+      ],
+      "image": "Calvados (département)"
+     },
+     {
+      "texte": "La France a accordé aux États-Unis une concession sur le terrain, pour une durée illimitée, gratuite et sans impôt.",
+      "rouges": [
+       "durée illimitée",
+       "gratuite"
+      ],
+      "image": "American Battle Monuments Commission"
+     },
+     {
+      "texte": "Le terrain reste français. Il est géré par une agence du gouvernement américain, qui entretient chaque tombe.",
+      "rouges": [
+       "reste français"
+      ],
+      "image": "Colleville-sur-Mer"
+     },
+     {
+      "texte": "Le cimetière a été inauguré en 1956.",
+      "rouges": [
+       "1956"
+      ],
+      "image": "Bataille de Normandie"
+     }
+    ],
+    "question_finale": {
+     "texte": "Tu y es déjà allé ?",
+     "rouges": [
+      "allé"
+     ]
+    },
+    "legende": "Non, le cimetière américain de Colleville-sur-Mer n'est pas un morceau des États-Unis. La France a accordé aux Américains une concession illimitée, gratuite et sans impôt. 9 387 soldats y reposent, face à Omaha Beach 🇫🇷🇺🇸\n\nEnvoie-le à quelqu'un qui croyait le contraire 👇",
+    "hashtags": "#Normandie #OmahaBeach #Débarquement #HistoireDeFrance #LeMediaFrancais"
+   }
+  }
+ ]
+}
