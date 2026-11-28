@@ -1,0 +1,57 @@
+name: Le Média Paris
+
+on:
+  schedule:
+    - cron: "30 11 * * *"   # 12:30 à Paris (heure d'hiver) : le post du jour
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "test = fabrique les slides sans publier ; publier = publie le post du jour"
+        default: "test"
+        type: choice
+        options: [test, publier]
+
+concurrency:
+  group: lmf-paris
+  cancel-in-progress: false
+
+jobs:
+  paris:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SHEET_URL: ${{ secrets.SHEET_URL }}
+      SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
+      IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Post du jour
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.mode }}" = "test" ]; then
+            python -m lmf.main paris-test
+          else
+            python -m lmf.main paris
+          fi
+      - name: Slides du test (téléchargeables)
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'test'
+        uses: actions/upload-artifact@v4
+        with:
+          name: slides-paris
+          path: sortie/paris/
+
+      - name: Relevé vers La Carte
+        if: always()
+        continue-on-error: true
+        env:
+          PASSERELLE: ${{ secrets.LMF_PASSERELLE }}
+          STATUT: ${{ job.status == 'success' && 'ok' || 'erreur' }}
+        run: |
+          [ -z "$PASSERELLE" ] && exit 0
+          ARGS=(--data-urlencode "statut=$STATUT")
+          [ "$STATUT" = "erreur" ] && ARGS+=(--data-urlencode "message=La tâche « ${{ github.workflow }} » a échoué (détail dans GitHub Actions)")
+          curl -sSL -G --max-time 30 "$PASSERELLE" "${ARGS[@]}" || true
