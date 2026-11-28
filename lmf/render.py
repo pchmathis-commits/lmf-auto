@@ -159,6 +159,11 @@ def _etiquette(img, texte):
     d.text((C.MARGE_GAUCHE + 18, 79), texte, font=f, fill=C.BLANC)
 
 
+def etiquette(img, texte):
+    """Petite étiquette rouge en haut à gauche (ex. rappel d'abonnement sur la slide 2)."""
+    _etiquette(img, texte)
+
+
 def _taille(base, echelle):
     try:
         e = float(echelle or 1)
