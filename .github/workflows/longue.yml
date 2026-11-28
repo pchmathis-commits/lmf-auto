@@ -55,6 +55,14 @@ jobs:
       - name: Reconnaissance vocale (sous-titres calés sur ta voix)
         if: inputs.etape == 'voix' || inputs.etape == 'montage'
         run: pip install faster-whisper
+      - uses: actions/cache@v4
+        if: inputs.etape != 'seance' && inputs.etape != 'bouton'
+        with:
+          path: ~/.u2net
+          key: rembg-isnet-v1
+      - name: Détourage des miniatures
+        if: inputs.etape != 'seance' && inputs.etape != 'bouton'
+        run: pip install rembg onnxruntime
       - name: Vidéo longue — ${{ inputs.etape }}
         run: python -m lmf.longue "${{ inputs.etape }}" "${{ inputs.valeur }}"
       - name: Enregistrer le suivi
