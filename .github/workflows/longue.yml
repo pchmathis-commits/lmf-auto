@@ -1,0 +1,76 @@
+name: Vidéo longue
+
+on:
+  workflow_dispatch:
+    inputs:
+      etape:
+        description: "Étape"
+        type: choice
+        options: [test, seance, voix, montage, bouton]
+        default: test
+      valeur:
+        description: "Épisode (ex. andorre) ou valeur du bouton — vide = automatique"
+        required: false
+        default: ""
+
+concurrency:
+  group: video-longue
+  cancel-in-progress: false
+
+jobs:
+  longue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    permissions:
+      contents: write
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_KEY_YT || secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY }}
+      SHEET_URL: ${{ secrets.SHEET_URL }}
+      SHEET_SECRET: ${{ secrets.SHEET_SECRET }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Outils vidéo (ffmpeg complet, voix de test)
+        if: inputs.etape != 'seance' && inputs.etape != 'bouton'
+        run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg espeak-ng
+      - uses: actions/cache@v4
+        with:
+          path: assets/Montserrat.ttf
+          key: montserrat-v1
+      - uses: actions/cache@v4
+        if: inputs.etape == 'voix' || inputs.etape == 'montage'
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-small-v1
+      - run: pip install -r requirements.txt fonttools
+      - name: Reconnaissance vocale (sous-titres calés sur ta voix)
+        if: inputs.etape == 'voix' || inputs.etape == 'montage'
+        run: pip install faster-whisper
+      - name: Vidéo longue — ${{ inputs.etape }}
+        run: python -m lmf.longue "${{ inputs.etape }}" "${{ inputs.valeur }}"
+      - name: Enregistrer le suivi
+        if: always() && inputs.etape != 'test'
+        run: |
+          git config user.name "lmf-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/longues.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Vidéo longue : suivi mis à jour"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && exit 0; sleep 5; done
+      - uses: actions/upload-artifact@v4
+        if: inputs.etape == 'test'
+        with:
+          name: video-longue-test
+          path: |
+            out/longues/*/*.mp4
+            out/longues/*/miniature_*.jpg
+          if-no-files-found: ignore
