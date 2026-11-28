@@ -188,6 +188,11 @@ Dossier de faits (seule source autorisée) :
 {dossier}
 
 Réponds en JSON : {{"miniatures": ["3 textes de miniature de 2 à 5 mots en capitales, très accrocheurs, différents"],
+"miniature": {{"fond": {{"wiki": "lieu de l'histoire", "nature": "lieu", "commons": "..."}},
+  "sujet": {{"wiki": "LA personne célèbre (ou l'objet) qu'on reconnaît au premier coup d'œil", "nature": "personne", "commons": "..."}},
+  "objet": {{"wiki": "l'objet / drapeau / monument qui raconte l'histoire", "nature": "objet", "commons": "..."}},
+  "couronne": false, "textes": ["2 à 4 MOTS", "2 à 4 MOTS", "2 À 3 MOTS AVANT LE GRAND CHIFFRE"],
+  "mot_fort": "LE mot qui intrigue", "grand": "la date ou le chiffre le plus frappant"}},
 "photo_miniature": {{"wiki": "...", "nature": "...", "commons": "..."}},
 "tags": ["8 mots-clés"], "sources": ["Nom : adresse", "..."],
 "blocs": [{{"chapitre": "...", "segments": [{{"texte": "...", "visuel": {{...}}}}]}}]}}""", temperature=0.6)
@@ -209,7 +214,7 @@ SCRIPT :
     blocs = script.get("blocs") or []
     if len(blocs) < 4 or not all(b.get("segments") for b in blocs):
         raise RuntimeError("Script incomplet renvoyé par Gemini")
-    for k in ("miniatures", "photo_miniature", "tags", "sources"):
+    for k in ("miniatures", "miniature", "photo_miniature", "tags", "sources"):
         if script.get(k):
             ep[k] = script[k]
     ep["blocs"] = blocs
@@ -843,7 +848,202 @@ def montage(d, ep, voix_locales=None, televerser=True):
 # ---------------------------------------------------------------------------
 # 5. Miniatures (1280×720)
 # ---------------------------------------------------------------------------
+JAUNE = (255, 210, 0)
+
+
+def _decouper(img):
+    """Détoure une personne ou un objet (rembg, gratuit). None si impossible."""
+    try:
+        from rembg import new_session, remove
+        global _session_rembg
+        if "_session_rembg" not in globals():
+            _session_rembg = new_session("isnet-general-use")
+        rgba = remove(img.convert("RGB"), session=_session_rembg)
+        boite = rgba.split()[3].point(lambda p: 255 if p > 40 else 0).getbbox()
+        if not boite or (boite[2] - boite[0]) * (boite[3] - boite[1]) < 0.05 * img.width * img.height:
+            return None
+        return rgba.crop(boite)
+    except Exception as ex:
+        print(f"Détourage impossible ({ex})")
+        return None
+
+
+def _avec_contour(rgba, epaisseur=10, couleur=(255, 255, 255)):
+    """Contour blanc épais + ombre portée : le « sticker » des miniatures YouTube."""
+    m = epaisseur * 3
+    w, h = rgba.size
+    toile = Image.new("RGBA", (w + 2 * m, h + 2 * m), (0, 0, 0, 0))
+    alpha = Image.new("L", toile.size, 0)
+    alpha.paste(rgba.split()[3], (m, m))
+    gros = alpha.filter(ImageFilter.MaxFilter(2 * (epaisseur // 2) + 1)).filter(ImageFilter.MaxFilter(2 * (epaisseur // 2) + 1))
+    ombre = gros.filter(ImageFilter.GaussianBlur(epaisseur * 1.5)).point(lambda p: int(p * 0.7))
+    toile.paste(Image.new("RGBA", toile.size, (0, 0, 0, 255)), (int(epaisseur * 0.6), int(epaisseur * 0.9)), ombre)
+    toile.paste(Image.new("RGBA", toile.size, couleur + (255,)), (0, 0), gros)
+    toile.alpha_composite(Image.new("RGBA", toile.size, (0, 0, 0, 0)))
+    toile.paste(rgba, (m, m), rgba)
+    return toile
+
+
+def _cadre_photo(img, largeur, angle=0):
+    """Repli quand le détourage échoue : photo cadrée avec bord blanc, légèrement penchée."""
+    img = img.convert("RGB")
+    h = int(largeur * img.height / img.width)
+    p = img.resize((largeur, h), Image.LANCZOS)
+    bord = Image.new("RGBA", (largeur + 24, h + 24), (255, 255, 255, 255))
+    bord.paste(p, (12, 12))
+    return bord.rotate(angle, expand=True, resample=Image.BICUBIC)
+
+
+def _couronne(largeur):
+    """Couronne dorée dessinée (pas d'image à droits)."""
+    w, h = largeur, int(largeur * 0.72)
+    c = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(c)
+    or_, fonce = (255, 196, 20, 255), (130, 80, 0, 255)
+    pointes = [(0.04, 0.30), (0.24, 0.62), (0.50, 0.12), (0.76, 0.62), (0.96, 0.30)]
+    poly = [(w * 0.08, h * 0.95), (w * 0.04, h * 0.30)] + [(w * x, h * y) for x, y in pointes[1:]] + [(w * 0.92, h * 0.95)]
+    d.polygon(poly, fill=or_, outline=fonce, width=max(4, w // 60))
+    d.rectangle([w * 0.08, h * 0.80, w * 0.92, h * 0.97], fill=(240, 170, 0, 255), outline=fonce, width=max(4, w // 60))
+    for x, y in pointes:
+        r = w * 0.055
+        d.ellipse([w * x - r, h * y - r, w * x + r, h * y + r], fill=or_, outline=fonce, width=max(3, w // 80))
+    for k, coul in enumerate([(220, 20, 40, 255), (20, 60, 200, 255), (220, 20, 40, 255)]):
+        x = w * (0.28 + 0.22 * k)
+        d.ellipse([x - w * 0.05, h * 0.84, x + w * 0.05, h * 0.94], fill=coul)
+    return c
+
+
+def _fleche(d, p0, p1, epaisseur=22):
+    """Flèche rouge épaisse avec contour noir, de p0 vers p1."""
+    ang = math.atan2(p1[1] - p0[1], p1[0] - p0[0])
+    tete = epaisseur * 2.6
+    base = (p1[0] - tete * math.cos(ang), p1[1] - tete * math.sin(ang))
+    gauche = (base[0] + tete * 0.75 * math.sin(ang), base[1] - tete * 0.75 * math.cos(ang))
+    droite = (base[0] - tete * 0.75 * math.sin(ang), base[1] + tete * 0.75 * math.cos(ang))
+    for coul, e in (((0, 0, 0), epaisseur + 10), (C.ROUGE, epaisseur)):
+        d.line([p0, base], fill=coul, width=e)
+    d.polygon([p1, gauche, droite], fill=C.ROUGE, outline=(0, 0, 0), width=5)
+
+
+def _gros_texte(img, texte, x, y, largeur_max, taille_max, mot_fort=None, centre=False):
+    """Texte énorme blanc à contour noir ; le mot fort sur un pavé rouge. Renvoie la hauteur utilisée."""
+    d = ImageDraw.Draw(img)
+    taille = taille_max
+    while True:
+        f = render.police(taille)
+        lignes = render._couper_lignes(texte, f, largeur_max)
+        if (len(lignes) <= 2 and all(f.getlength(" ".join(l)) <= largeur_max for l in lignes)) or taille <= 60:
+            break
+        taille -= 6
+    fort = render._normaliser(mot_fort) if mot_fort else None
+    for ligne in lignes:
+        larg = f.getlength(" ".join(ligne))
+        cx = x + (largeur_max - larg) / 2 if centre else x
+        for mot in ligne:
+            wm = f.getlength(mot)
+            if fort and render._normaliser(mot) == fort:
+                d.rectangle([cx - 12, y + taille * 0.08, cx + wm + 12, y + taille * 1.08], fill=C.ROUGE)
+                d.text((cx, y), mot, font=f, fill=C.BLANC, stroke_width=0)
+            else:
+                d.text((cx, y), mot, font=f, fill=C.BLANC, stroke_width=max(6, taille // 14), stroke_fill=(0, 0, 0))
+            cx += wm + f.getlength(" ")
+        y += taille * 1.12
+    return len(lignes) * taille * 1.12
+
+
+def _coller_rgba(img, rgba, x, y):
+    img.paste(rgba, (int(x), int(y)), rgba)
+
+
 def miniatures(ep, dossier):
+    """3 miniatures 1280×720 aux codes YouTube : un visage ou un objet détouré avec contour blanc, un élément qui
+    raconte l'histoire (couronne, drapeau, objet), 2 à 4 mots énormes, une flèche, contraste fort."""
+    cfg = ep.get("miniature") or {}
+    if not cfg.get("sujet"):
+        return miniatures_simples(ep, dossier)
+    W, Hm = 1280, 720
+    fond_ph = _photo(ep, dict(cfg.get("fond") or ep.get("photo_miniature") or {}, type="photo"))
+    sujet_ph = _photo(ep, dict(cfg["sujet"], type="photo"))
+    objet_ph = _photo(ep, dict(cfg["objet"], type="photo")) if cfg.get("objet") else None
+    if sujet_ph is None:
+        return miniatures_simples(ep, dossier)
+    sujet = _decouper(sujet_ph)
+    objet = _decouper(objet_ph) if objet_ph is not None and cfg.get("objet", {}).get("detourer", True) else None
+    textes = (cfg.get("textes") or ep.get("miniatures") or [ep["titre"].upper()])[:3]
+    while len(textes) < 3:
+        textes.append(textes[0])
+
+    def fond():
+        if fond_ph is None:
+            return _fond_marine().resize((W, Hm)).convert("RGBA")
+        f = etalonner(cadrer(fond_ph), fort=True).resize((W, Hm), Image.LANCZOS)
+        f = Image.blend(f, Image.new("RGB", (W, Hm), (5, 15, 45)), 0.38)
+        return f.convert("RGBA")
+
+    def sujet_a(hauteur):
+        if sujet is not None:
+            s = sujet.resize((int(sujet.width * hauteur / sujet.height), hauteur), Image.LANCZOS)
+            return _avec_contour(s, 12)
+        return _cadre_photo(sujet_ph, int(hauteur * 0.75), -4).convert("RGBA")
+
+    def objet_a(largeur, angle):
+        if objet_ph is None:
+            return None
+        if objet is not None:
+            o = objet.resize((largeur, int(objet.height * largeur / objet.width)), Image.LANCZOS)
+            return _avec_contour(o, 9).rotate(angle, expand=True, resample=Image.BICUBIC)
+        return _cadre_photo(objet_ph, largeur, angle).convert("RGBA")
+
+    def mot_fort(t):
+        mots = [m for m in t.split() if len(re.sub(r"\W", "", m)) > 2]
+        return cfg.get("mot_fort") if cfg.get("mot_fort") and cfg["mot_fort"].upper() in t.upper() else (max(mots, key=len) if mots else None)
+
+    sorties = []
+    # A : sujet à droite, très grand, couronne/objet au-dessus ; texte énorme à gauche
+    img = fond()
+    s = sujet_a(700)
+    sx, sy = W - s.width + 40, Hm - s.height + 60
+    _coller_rgba(img, s, sx, sy)
+    if cfg.get("couronne"):
+        c = _couronne(int(s.width * 0.42)).rotate(-12, expand=True, resample=Image.BICUBIC)
+        _coller_rgba(img, c, sx + s.width * 0.30, max(-10, sy - c.height * 0.35))
+    _gros_texte(img, textes[0].upper(), 48, 150, 640, 150, mot_fort(textes[0]))
+    sorties.append(img)
+    # B : sujet à gauche, l'objet qui raconte l'histoire à droite, flèche rouge entre les deux
+    img = fond()
+    s = sujet_a(660)
+    _coller_rgba(img, s, -40, Hm - s.height + 60)
+    o = objet_a(430, 8)
+    if o is not None:
+        _coller_rgba(img, o, W - o.width - 50, 60)
+        _fleche(ImageDraw.Draw(img), (s.width - 60, Hm * 0.50), (W - o.width - 20, 60 + o.height * 0.55))
+    elif cfg.get("couronne"):
+        c = _couronne(360).rotate(10, expand=True, resample=Image.BICUBIC)
+        _coller_rgba(img, c, W - c.width - 80, 70)
+        _fleche(ImageDraw.Draw(img), (s.width - 60, Hm * 0.50), (W - c.width - 60, 70 + c.height * 0.6))
+    _gros_texte(img, textes[1].upper(), s.width - 80, Hm - 290, W - s.width + 40, 118, mot_fort(textes[1]), centre=True)
+    sorties.append(img)
+    # C : un nombre / mot géant doré + sujet à droite
+    img = fond()
+    s = sujet_a(680)
+    _coller_rgba(img, s, W - s.width + 30, Hm - s.height + 60)
+    grand = str(cfg.get("grand") or "?")
+    d = ImageDraw.Draw(img)
+    taille = _taille_pour(grand, 300, 700)
+    f = render.police(taille)
+    d.text((50, 300), grand, font=f, fill=JAUNE, stroke_width=12, stroke_fill=(0, 0, 0))
+    _gros_texte(img, textes[2].upper(), 50, 120, 700, 110, mot_fort(textes[2]))
+    sorties.append(img)
+
+    chemins = []
+    for n, img in enumerate(sorties, 1):
+        chemin = os.path.join(dossier, f"miniature_{n}.jpg")
+        img.convert("RGB").save(chemin, quality=93)
+        chemins.append(chemin)
+    return chemins
+
+
+def miniatures_simples(ep, dossier):
     """3 miniatures 1280×720 aux codes YouTube : une photo forte, 2 à 4 mots énormes, un mot en rouge, contraste fort."""
     pm = ep.get("photo_miniature") or next((s["visuel"] for b in ep["blocs"] for s in b["segments"]
                                             if s["visuel"].get("type") == "photo"), {})
