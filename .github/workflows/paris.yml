@@ -1,9 +1,7 @@
 name: Le Média Paris
 
 on:
-  schedule:
-    - cron: "30 11 * * *"   # 12:30 à Paris (heure d'hiver) : le post du jour
-  workflow_dispatch:
+  workflow_dispatch:   # lancé chaque jour vers 12:30 par l'horloge du Sheet (mode publier)
     inputs:
       mode:
         description: "test = fabrique les slides sans publier ; publier = publie le post du jour"
@@ -32,13 +30,13 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Post du jour
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.mode }}" = "test" ]; then
+          if [ "${{ inputs.mode }}" = "test" ]; then
             python -m lmf.main paris-test
           else
             python -m lmf.main paris
           fi
       - name: Slides du test (téléchargeables)
-        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'test'
+        if: inputs.mode == 'test'
         uses: actions/upload-artifact@v4
         with:
           name: slides-paris
