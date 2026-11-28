@@ -85,12 +85,14 @@ def _legende(base, hashtags, credits):
 # ---------------------------------------------------------------------------
 def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_ligne=False, c=None, photos_avant=None):
     post_id = _id("carrousel")
+    claude = bool(fiche.get("ecrit_par_claude"))   # réserve écrite et vérifiée par Claude : zéro appel Gemini
     c = c or contenu.rediger_carrousel(fiche)
-    c = contenu.controler_carrousel(c)
+    if not claude:
+        c = contenu.controler_carrousel(c)
     donnees = {"genre": "carrousel", "c": c,
                "fiche": {k: fiche.get(k) for k in ("sujet", "famille", "etiquette", "prefixe_legende", "sources",
                                                     "couverture", "faits") if fiche.get(k)}}
-    if len(c["couverture"]["texte"].split()) > 14:  # garde-fou : couverture trop longue → on la fait raccourcir
+    if not claude and len(c["couverture"]["texte"].split()) > 14:  # garde-fou : couverture trop longue → on la fait raccourcir
         try:
             court = contenu.gemini.texte(
                 "Raccourcis cette accroche Instagram à 12 mots maximum, même sens, garde le mystère, "
@@ -105,7 +107,7 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     if fiche.get("famille") == "Ton mois":
         contexte = ("Jeu « ton mois de naissance = ton … » : l'association mois → élément est un jeu, pas une affirmation. "
                     "Vérifie seulement que chaque élément cité existe réellement et appartient bien au thème.")
-    ok, rapport = contenu.verifier(textes, contexte)
+    ok, rapport = (True, "Écrit et vérifié par Claude (réserve)") if claude else contenu.verifier(textes, contexte)
 
     requetes = [c["couverture"].get("image", fiche["sujet"])] + [s.get("image", fiche["sujet"]) for s in c["slides"]]
     # Modification : on garde la même photo pour chaque slide dont la requête d'image n'a pas changé
@@ -132,7 +134,11 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
     if not sans_reseau and a_chercher:   # 2) sinon la recherche habituelle
         for i in a_chercher:
             cands[i] = images.candidats(requetes[i])
-        sous = contenu.choisir_images([requetes[i] for i in a_chercher], [cands[i] for i in a_chercher], fiche["sujet"])
+        try:
+            sous = contenu.choisir_images([requetes[i] for i in a_chercher], [cands[i] for i in a_chercher], fiche["sujet"])
+        except Exception as ex:   # quota Gemini vide : on prend la 1re image trouvée pour cette requête précise
+            print(f"Choix d'images sans Gemini ({ex})")
+            sous = [cands[i][0] if cands[i] else None for i in a_chercher]
         for i, ch in zip(a_chercher, sous):
             choix[i] = ch
     for i, av in enumerate(gardees):
@@ -199,8 +205,11 @@ def creer_carrousel(fiche, ligne_sujet=None, sans_reseau=False, sans_mise_en_lig
         photos[0] = photos[0].convert("L").convert("RGB")  # portrait d'archive en noir et blanc
     slides = [render.slide_couverture(photos[0], c["couverture"]["texte"], c["couverture"].get("rouges"),
                                       etiquette=fiche.get("etiquette"), echelle=c["couverture"].get("taille", 1))]
-    for photo, s in zip(photos[1:], c["slides"]):
-        slides.append(render.slide_texte(photo, s["texte"], s.get("rouges"), echelle=s.get("taille", 1)))
+    for k, (photo, s) in enumerate(zip(photos[1:], c["slides"])):
+        img = render.slide_texte(photo, s["texte"], s.get("rouges"), echelle=s.get("taille", 1))
+        if k == 0 and getattr(C, "CTA_SLIDE_2", ""):
+            render.etiquette(img, C.CTA_SLIDE_2)   # rappel d'abonnement discret, en haut de la 2e slide
+        slides.append(img)
     q = c.get("question_finale") or {"texte": "Et toi, tu le savais ?", "rouges": ["savais"]}
     slides.append(render.slide_finale(q["texte"], q.get("rouges")))
     for i, img in enumerate(slides, 1):
@@ -429,7 +438,27 @@ def commande_reel_test():
 
 
 TYPES = {"carrousel": "commande_carrousel", "actu": "commande_actu", "actu_carrousel": "commande_actu_carrousel",
-         "reel": "commande_reel"}
+         "reel": "commande_reel", "reserve": "commande_carrousel_reserve"}
+
+RESERVE = os.path.join(RACINE, "data", "carrousels_reserve.json")
+
+
+def commande_carrousel_reserve():
+    """Secours : un carrousel écrit à l'avance par Claude (data/carrousels_reserve.json), utilisé quand la
+    génération échoue (quota Gemini vide). Zéro appel Gemini. Chaque carrousel ne sert qu'une fois."""
+    from . import sheet
+    with open(RESERVE, encoding="utf-8") as f:
+        reserve = json.load(f)["carrousels"]
+    titres = {t.strip().lower() for t in sheet.titres_sujets()}
+    for r in reserve:
+        fiche = dict(r["fiche"], ecrit_par_claude=True)
+        if fiche["sujet"].strip().lower() in titres:
+            continue
+        fiche["statut"] = "Utilisé"
+        ligne = sheet.ajouter_sujet({k: v for k, v in fiche.items() if k != "ecrit_par_claude"})
+        sheet.ajouter_post(creer_carrousel(fiche, ligne, c=r["c"]))
+        return
+    raise RuntimeError("réserve de carrousels épuisée : Claude doit la remplir samedi")
 
 
 def apercu_telegram(e, post):
@@ -488,7 +517,9 @@ def commande_preparer():
         try:
             post, derniere = None, None
             # un 2e essai en secours (pas pour le Reel : il essaie déjà jusqu'à 3 sujets lui-même)
-            for essai in ([type_] if type_ == "reel" else [type_, type_] if type_ == "carrousel" else [type_, "actu"]):
+            # si tout échoue (quota Gemini vide), un carrousel de la réserve écrite par Claude prend la place
+            for essai in ([type_] if type_ == "reel" else [type_, type_, "reserve"] if type_ == "carrousel"
+                          else [type_, "actu", "reserve"]):
                 try:
                     post = _creer(essai, prevu)
                 except Exception as ex:
@@ -688,6 +719,8 @@ COMMANDES = {
     "publier": commande_publier, "tester": commande_tester, "demo": commande_demo,
     "reel": commande_reel, "reel-test": commande_reel_test, "youtube-test": commande_youtube_test,
     "prolonger-jeton": lambda: __import__("lmf.instagram", fromlist=["x"]).prolonger_jeton(),
+    "paris": lambda: __import__("lmf.paris", fromlist=["x"]).publier_du_jour(),
+    "paris-test": lambda: __import__("lmf.paris", fromlist=["x"]).publier_du_jour(test=True),
 }
 
 if __name__ == "__main__":
