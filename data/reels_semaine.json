@@ -1,322 +1,5 @@
 [
  {
-  "date": "2026-11-25",
-  "format": "anecdote",
-  "sujet": "Les taxis de la Marne",
-  "musique": "thriller",
-  "scenes": [
-   {
-    "type": "photo",
-    "entite": "Renault Type AG",
-    "nature": "objet",
-    "texte": [
-     "Les *taxis parisiens*",
-     "sont partis",
-     "à la *guerre*…"
-    ],
-    "tag": "TAXIS DE LA MARNE"
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "1914",
-    "tag": "SEPTEMBRE",
-    "texte": [
-     "L'armée allemande",
-     "menace *Paris*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Joseph Gallieni",
-    "nature": "personne",
-    "tag": "GÉNÉRAL GALLIENI",
-    "texte": [
-     "Le gouverneur de Paris",
-     "a une idée *folle* :",
-     "réquisitionner",
-     "les *taxis*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "6 ET 7 SEPTEMBRE",
-    "texte": [
-     "Des *centaines* de taxis",
-     "partent des *Invalides*",
-     "de nuit, vers le front"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "4 OU 5 PAR VOITURE",
-    "texte": [
-     "Ils transportent",
-     "des *milliers*",
-     "de soldats"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Première bataille de la Marne",
-    "nature": "evenement",
-    "texte": [
-     "Leur rôle militaire",
-     "fut *modeste*…",
-     "mais ils deviennent",
-     "un *symbole* national"
-    ]
-   }
-  ],
-  "legende": "Début septembre 1914, l'armée allemande menace Paris. Le général Gallieni, gouverneur militaire de la capitale, réquisitionne des centaines de taxis parisiens, pour la plupart des Renault. Les nuits des 6 et 7 septembre, ils partent des Invalides et emmènent des milliers de soldats, 4 ou 5 par voiture, vers le front de la bataille de la Marne. Leur rôle militaire fut modeste, mais les « taxis de la Marne » sont devenus le symbole de tout un pays mobilisé. Un exemplaire est encore exposé au musée de l'Armée, aux Invalides. Tu le savais ?",
-  "hashtags": "#TaxisDeLaMarne #PremiereGuerreMondiale #HistoireDeFrance #Paris #Renault",
-  "sources": "musee-armee.fr (fiche « Le taxi de la Marne ») ; slate.fr/story/91723"
- },
- {
-  "date": "2026-11-26",
-  "format": "francais",
-  "sujet": "Pierre Charles L'Enfant, le Français qui a dessiné Washington",
-  "musique": "nuit-blanche",
-  "scenes": [
-   {
-    "type": "photo",
-    "entite": "Capitole des États-Unis",
-    "nature": "lieu",
-    "texte": [
-     "*Pierre Charles L'Enfant*,",
-     "le Français qui a",
-     "dessiné *Washington*"
-    ],
-    "tag": "PIERRE CHARLES L'ENFANT"
-   },
-   {
-    "type": "photo",
-    "entite": "Pierre Charles L'Enfant",
-    "nature": "personne",
-    "texte": [
-     "Né à *Paris* en 1754,",
-     "il part se battre pour",
-     "l'*indépendance*",
-     "américaine"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "George Washington",
-    "nature": "personne",
-    "tag": "1791",
-    "texte": [
-     "*George Washington*",
-     "lui confie le plan",
-     "de la nouvelle *capitale*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "National Mall",
-    "nature": "lieu",
-    "texte": [
-     "Il imagine ses grandes",
-     "*avenues* et le *Mall*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "1792",
-    "texte": [
-     "Trop exigeant, il est",
-     "*renvoyé* un an",
-     "plus tard"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "1825",
-    "tag": "SA MORT",
-    "texte": [
-     "Il meurt *sans le sou*,",
-     "presque oublié"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Cimetière national d'Arlington",
-    "nature": "lieu",
-    "tag": "1909",
-    "texte": [
-     "En 1909, il est enfin",
-     "inhumé à *Arlington*,",
-     "face à *sa* ville"
-    ]
-   }
-  ],
-  "legende": "Pierre Charles L'Enfant, né à Paris en 1754, part en 1777 combattre pour l'indépendance américaine. En 1791, George Washington lui confie le plan de la nouvelle capitale fédérale : c'est lui qui imagine ses grandes avenues et le National Mall. Jugé trop exigeant, il est renvoyé dès l'année suivante, et meurt sans le sou en 1825. Ce n'est qu'en 1909 que le Congrès le fait inhumer au cimetière d'Arlington, face à la ville qu'il a dessinée. Tu connaissais son nom ?",
-  "hashtags": "#PierreCharlesLEnfant #Washington #FrancaisOublies #HistoireDeFrance #EtatsUnis",
-  "sources": "britannica.com (Pierre Charles L'Enfant) ; arlingtoncemetery.mil"
- },
- {
-  "date": "2026-11-27",
-  "format": "anecdote",
-  "sujet": "Nicolas Appert et la conserve, née pour l'armée",
-  "musique": "filature",
-  "scenes": [
-   {
-    "type": "photo",
-    "entite": "Boîte de conserve",
-    "nature": "objet",
-    "texte": [
-     "La *boîte de conserve*",
-     "est née d'un concours",
-     "pour l'*armée*"
-    ],
-    "tag": "NICOLAS APPERT"
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "1795",
-    "tag": "LE CONCOURS",
-    "texte": [
-     "L'État promet",
-     "*12 000 francs* à qui",
-     "conservera la nourriture",
-     "des soldats"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Nicolas Appert",
-    "nature": "personne",
-    "tag": "NICOLAS APPERT",
-    "texte": [
-     "Un *confiseur* parisien",
-     "cherche pendant",
-     "près de *15 ans*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "SA MÉTHODE",
-    "texte": [
-     "Des aliments enfermés",
-     "dans des bocaux",
-     "*hermétiques*, puis",
-     "*chauffés*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Napoléon Ier",
-    "nature": "personne",
-    "tag": "1810",
-    "texte": [
-     "Sous *Napoléon*,",
-     "il reçoit enfin",
-     "les *12 000 francs*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "LA CONDITION",
-    "texte": [
-     "Rendre sa méthode",
-     "*publique* : il publie",
-     "son livre en 1810"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "LE COUP DUR",
-    "texte": [
-     "La même année, à",
-     "*Londres*, Peter Durand",
-     "brevète la boîte",
-     "en *fer-blanc*"
-    ]
-   }
-  ],
-  "legende": "En 1795, l'État promet 12 000 francs à qui trouvera un moyen de conserver la nourriture des soldats. Nicolas Appert, confiseur à Paris, cherche pendant près de 15 ans : il enferme les aliments dans des bocaux hermétiques, puis les chauffe. En 1810, sous Napoléon, il reçoit enfin les 12 000 francs, à condition de rendre sa méthode publique, et publie son livre. La même année, à Londres, Peter Durand dépose le brevet de la boîte en fer-blanc. Tu savais que la conserve était née pour l'armée ?",
-  "hashtags": "#NicolasAppert #Napoleon #Inventions #HistoireDeFrance #Conserve",
-  "sources": "napoleon.org (Appert et l'invention de la conserve) ; herodote.net (30 janvier 1810)"
- },
- {
-  "date": "2026-11-28",
-  "format": "ville",
-  "sujet": "Carcassonne, la cité sauvée de la démolition",
-  "musique": "piano-feutre",
-  "scenes": [
-   {
-    "type": "photo",
-    "entite": "Cité de Carcassonne",
-    "nature": "lieu",
-    "texte": [
-     "*Carcassonne* servait",
-     "de *carrière* de pierre",
-     "au XIXe siècle"
-    ],
-    "tag": "CARCASSONNE"
-   },
-   {
-    "type": "carte",
-    "entite": "Carcassonne",
-    "tag": "CARCASSONNE",
-    "texte": [
-     "Dans l'*Aude*,",
-     "en *Occitanie*"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "52",
-    "tag": "TOURS",
-    "texte": [
-     "sur *3 km*",
-     "de double rempart"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Château comtal de Carcassonne",
-    "nature": "lieu",
-    "texte": [
-     "Et un château",
-     "du *XIIe siècle*",
-     "en son cœur"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Eugène Viollet-le-Duc",
-    "nature": "personne",
-    "tag": "1853",
-    "texte": [
-     "*Viollet-le-Duc*",
-     "lance sa *restauration*"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "58 ANS",
-    "tag": "1853 – 1911",
-    "texte": [
-     "de *chantier*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Basilique Saint-Nazaire-et-Saint-Celse de Carcassonne",
-    "nature": "lieu",
-    "tag": "UNESCO 1997",
-    "texte": [
-     "Elle est inscrite",
-     "au *patrimoine mondial*",
-     "en *1997*"
-    ]
-   }
-  ],
-  "legende": "Au XIXe siècle, la Cité de Carcassonne tombe en ruine et sert de carrière de pierre. En 1853, l'architecte Eugène Viollet-le-Duc lance sa restauration, poursuivie par son élève Paul Boeswillwald jusqu'en 1911 : 58 ans de chantier pour sauver ses 3 km de double rempart, ses 52 tours et son château du XIIe siècle. Inscrite au patrimoine mondial de l'UNESCO en 1997, elle accueille aujourd'hui des millions de visiteurs. Tu l'as déjà visitée ?",
-  "hashtags": "#Carcassonne #Occitanie #Patrimoine #HistoireDeFrance #VilleDeFrance",
-  "sources": "monuments-nationaux.fr (fiche de visite, château et remparts) ; whc.unesco.org/fr/list/345"
- },
- {
   "date": "2026-11-29",
   "format": "francais",
   "sujet": "Nicéphore Niépce et la première photographie",
@@ -478,5 +161,518 @@
   "legende": "Le lundi 21 août 1911, jour de fermeture, la Joconde disparaît du Louvre. Le vol n'est remarqué que le lendemain, et le poète Guillaume Apollinaire est même emprisonné quelques jours. Le voleur est Vincenzo Peruggia, un vitrier italien qui avait travaillé au Louvre. En décembre 1913, il tente de vendre le tableau à un marchand de Florence, qui le fait authentifier par le directeur des Offices : Peruggia est arrêté. La Joconde revient au Louvre le 4 janvier 1914, plus célèbre que jamais. Tu connaissais cette histoire ?",
   "hashtags": "#Joconde #Louvre #MonaLisa #HistoireDeFrance #Paris",
   "sources": "herodote.net (21 août 1911) ; history.com (The heist that made the Mona Lisa famous)"
+ },
+ {
+  "date": "2026-12-01",
+  "format": "anecdote",
+  "sujet": "Vrai ou faux : le président français est prince d'Andorre",
+  "musique": "enquete",
+  "scenes": [
+   {
+    "type": "texte",
+    "tag": "VRAI OU FAUX ?",
+    "texte": [
+     "Le *président français*",
+     "est aussi *prince*",
+     "d'un autre pays"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "RÉPONDS EN COMMENTAIRE",
+    "texte": [
+     "Tu as *3 secondes*…"
+    ]
+   },
+   {
+    "type": "chiffre",
+    "chiffre": "VRAI",
+    "tag": "RÉPONSE"
+   },
+   {
+    "type": "photo",
+    "entite": "Andorre",
+    "nature": "lieu",
+    "tag": "ANDORRE",
+    "texte": [
+     "Il est *co-prince*",
+     "d'Andorre"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Diocèse d'Urgell",
+    "nature": "lieu",
+    "tag": "L'AUTRE CO-PRINCE",
+    "texte": [
+     "Il partage le titre avec",
+     "l'*évêque d'Urgell*,",
+     "en Espagne"
+    ]
+   },
+   {
+    "type": "chiffre",
+    "chiffre": "1278",
+    "tag": "DEPUIS",
+    "texte": [
+     "Un accord signé entre",
+     "le *comte de Foix*",
+     "et l'évêque"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Henri IV",
+    "nature": "personne",
+    "tag": "HENRI IV",
+    "texte": [
+     "Devenu roi, le comte de Foix",
+     "fait passer le titre",
+     "au *chef de l'État français*"
+    ]
+   },
+   {
+    "type": "fin",
+    "cta": "S'ABONNER"
+   }
+  ],
+  "legende": "Vrai ou faux : le président français est aussi prince d'un autre pays ? VRAI. Il est co-prince d'Andorre, avec l'évêque d'Urgell. Le titre vient d'un accord de 1278 entre le comte de Foix et l'évêque ; quand le comte de Foix Henri de Navarre devient le roi Henri IV, le titre passe au chef de l'État français. Tu le savais ?",
+  "hashtags": "#Andorre #VraiOuFaux #HistoireDeFrance #Président #Culture",
+  "sources": "Wikipédia (Coprinces d'Andorre, paréages de 1278)"
+ },
+ {
+  "date": "2026-12-02",
+  "format": "anecdote",
+  "sujet": "Qui suis-je ? Un ingénieur français en 4 indices (Gustave Eiffel)",
+  "musique": "filature",
+  "scenes": [
+   {
+    "type": "texte",
+    "tag": "QUI SUIS-JE ?",
+    "texte": [
+     "Un *ingénieur français*",
+     "en *4 indices*"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "INDICE 1",
+    "texte": [
+     "J'ai conçu le *squelette*",
+     "de la *statue de la Liberté*"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Viaduc de Garabit",
+    "nature": "lieu",
+    "tag": "INDICE 2",
+    "texte": [
+     "J'ai construit ce *viaduc*",
+     "dans le *Cantal*"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "INDICE 3",
+    "texte": [
+     "Ma plus célèbre œuvre",
+     "a été inaugurée",
+     "pour l'*Exposition de 1889*"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "INDICE 4",
+    "texte": [
+     "Elle porte *mon nom*…"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Gustave Eiffel",
+    "nature": "personne",
+    "tag": "GUSTAVE EIFFEL",
+    "texte": [
+     "*Gustave Eiffel* !",
+     "Tu as trouvé à quel indice ?"
+    ]
+   },
+   {
+    "type": "fin",
+    "cta": "S'ABONNER"
+   }
+  ],
+  "legende": "Qui suis-je ? Gustave Eiffel ! Avant sa tour, il a conçu la structure interne de la statue de la Liberté et construit le viaduc de Garabit, dans le Cantal. Tu as trouvé à quel indice ? Dis-le en commentaire 👇",
+  "hashtags": "#GustaveEiffel #QuiSuisJe #TourEiffel #HistoireDeFrance #Quiz",
+  "sources": "Wikipédia (Gustave Eiffel, viaduc de Garabit, statue de la Liberté)"
+ },
+ {
+  "date": "2026-12-03",
+  "format": "anecdote",
+  "sujet": "Le duel : la tour Eiffel ou la statue de la Liberté, laquelle est la plus vieille ?",
+  "musique": "nuit-blanche",
+  "scenes": [
+   {
+    "type": "texte",
+    "tag": "LE DUEL",
+    "texte": [
+     "*Tour Eiffel* ou",
+     "*statue de la Liberté* :",
+     "laquelle est la *plus vieille* ?"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Tour Eiffel",
+    "nature": "lieu",
+    "tag": "TOUR EIFFEL"
+   },
+   {
+    "type": "photo",
+    "entite": "Statue de la Liberté",
+    "nature": "oeuvre",
+    "tag": "STATUE DE LA LIBERTÉ"
+   },
+   {
+    "type": "texte",
+    "tag": "VOTE EN COMMENTAIRE",
+    "texte": [
+     "*1* pour la tour Eiffel",
+     "*2* pour la Liberté"
+    ]
+   },
+   {
+    "type": "chiffre",
+    "chiffre": "1886",
+    "tag": "LA LIBERTÉ",
+    "texte": [
+     "Inaugurée à *New York*",
+     "le 28 octobre 1886"
+    ]
+   },
+   {
+    "type": "chiffre",
+    "chiffre": "1889",
+    "tag": "LA TOUR EIFFEL",
+    "texte": [
+     "Inaugurée pour l'*Exposition",
+     "universelle* de 1889"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "VERDICT",
+    "texte": [
+     "La *Liberté* gagne",
+     "de *3 ans*… et les deux",
+     "doivent tout à *Eiffel*"
+    ]
+   },
+   {
+    "type": "fin",
+    "cta": "S'ABONNER"
+   }
+  ],
+  "legende": "Le duel : la statue de la Liberté (1886) est plus vieille que la tour Eiffel (1889) ! Et les deux doivent beaucoup à Gustave Eiffel, qui a conçu la structure de la statue. Tu avais voté quoi ? 👇",
+  "hashtags": "#TourEiffel #StatueDeLaLiberte #LeDuel #HistoireDeFrance #Quiz",
+  "sources": "Wikipédia (Statue de la Liberté : inauguration 28 octobre 1886 ; Tour Eiffel : 1889)"
+ },
+ {
+  "date": "2026-12-04",
+  "format": "anecdote",
+  "sujet": "Dans l'ordre : 4 inventions françaises de la plus ancienne à la plus récente",
+  "musique": "piano-feutre",
+  "scenes": [
+   {
+    "type": "texte",
+    "tag": "DANS L'ORDRE !",
+    "texte": [
+     "Classe ces *4 inventions françaises*",
+     "de la *plus ancienne*",
+     "à la *plus récente*"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "A · B · C · D",
+    "texte": [
+     "A. le *cinéma*",
+     "B. la *carte à puce*",
+     "C. le *stéthoscope*",
+     "D. la *photographie*"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "RÉPONDS EN COMMENTAIRE",
+    "texte": [
+     "Tu as *5 secondes*…"
+    ]
+   },
+   {
+    "type": "chiffre",
+    "chiffre": "1816",
+    "tag": "1. LE STÉTHOSCOPE",
+    "texte": [
+     "Inventé par *Laennec*"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Nicéphore Niépce",
+    "nature": "personne",
+    "tag": "2. LA PHOTOGRAPHIE",
+    "texte": [
+     "*Niépce*, vers *1826*"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Auguste et Louis Lumière",
+    "nature": "autre",
+    "tag": "3. LE CINÉMA",
+    "texte": [
+     "Les *frères Lumière*, *1895*"
+    ]
+   },
+   {
+    "type": "chiffre",
+    "chiffre": "1974",
+    "tag": "4. LA CARTE À PUCE",
+    "texte": [
+     "Brevetée par *Roland Moreno*"
+    ]
+   },
+   {
+    "type": "fin",
+    "cta": "S'ABONNER"
+   }
+  ],
+  "legende": "Dans l'ordre : le stéthoscope (Laennec, 1816), la photographie (Niépce, vers 1826), le cinéma (frères Lumière, 1895) et la carte à puce (Roland Moreno, 1974). Tu as eu bon ? 👇",
+  "hashtags": "#InventionsFrançaises #Quiz #HistoireDeFrance #Science #Culture",
+  "sources": "Wikipédia (René Laennec ; Point de vue du Gras ; Cinématographe ; Roland Moreno)"
+ },
+ {
+  "date": "2026-12-05",
+  "format": "anecdote",
+  "sujet": "Vrai ou faux : la plus longue frontière de la France est avec le Brésil",
+  "musique": "enquete",
+  "scenes": [
+   {
+    "type": "texte",
+    "tag": "VRAI OU FAUX ?",
+    "texte": [
+     "La plus longue *frontière*",
+     "terrestre de la France",
+     "est avec le *Brésil*"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "RÉPONDS EN COMMENTAIRE",
+    "texte": [
+     "Tu as *3 secondes*…"
+    ]
+   },
+   {
+    "type": "chiffre",
+    "chiffre": "VRAI",
+    "tag": "RÉPONSE"
+   },
+   {
+    "type": "photo",
+    "entite": "Guyane",
+    "nature": "lieu",
+    "tag": "GUYANE",
+    "texte": [
+     "Grâce à la *Guyane*,",
+     "en Amérique du Sud"
+    ]
+   },
+   {
+    "type": "chiffre",
+    "chiffre": "730 KM",
+    "tag": "FRANCE – BRÉSIL",
+    "texte": [
+     "Plus que la frontière",
+     "avec l'*Espagne*"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Pont de l'Oyapock",
+    "nature": "lieu",
+    "tag": "LE PONT DE L'OYAPOCK",
+    "texte": [
+     "Un pont relie",
+     "la *France* au *Brésil*"
+    ]
+   },
+   {
+    "type": "fin",
+    "cta": "S'ABONNER"
+   }
+  ],
+  "legende": "Vrai ou faux : la plus longue frontière terrestre de la France est avec le Brésil ? VRAI ! Grâce à la Guyane, la France partage environ 730 km de frontière avec le Brésil, plus qu'avec l'Espagne. Tu le savais ? 👇",
+  "hashtags": "#Guyane #Brésil #VraiOuFaux #Géographie #France",
+  "sources": "Wikipédia (Frontière entre le Brésil et la France ; Frontière entre l'Espagne et la France)"
+ },
+ {
+  "date": "2026-12-06",
+  "format": "anecdote",
+  "sujet": "Classement : les 5 rois de France qui ont régné le plus longtemps",
+  "musique": "nostalgie",
+  "scenes": [
+   {
+    "type": "texte",
+    "tag": "CLASSEMENT",
+    "texte": [
+     "Les *5 rois de France*",
+     "qui ont régné",
+     "le *plus longtemps*"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Philippe II Auguste",
+    "nature": "personne",
+    "tag": "5. PHILIPPE AUGUSTE",
+    "texte": [
+     "*43 ans* de règne",
+     "(1180-1223)"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Louis IX",
+    "nature": "personne",
+    "tag": "4. SAINT LOUIS",
+    "texte": [
+     "*44 ans* de règne",
+     "(1226-1270)"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Philippe Ier (roi des Francs)",
+    "nature": "personne",
+    "tag": "3. PHILIPPE IER",
+    "texte": [
+     "*48 ans* de règne",
+     "(1060-1108)"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Louis XV",
+    "nature": "personne",
+    "tag": "2. LOUIS XV",
+    "texte": [
+     "*59 ans* de règne",
+     "(1715-1774)"
+    ]
+   },
+   {
+    "type": "chiffre",
+    "chiffre": "72 ANS",
+    "tag": "1. LOUIS XIV",
+    "texte": [
+     "Le *Roi-Soleil*,",
+     "de *1643 à 1715*"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Louis XIV",
+    "nature": "personne",
+    "tag": "LE ROI-SOLEIL",
+    "texte": [
+     "Roi à *4 ans*,",
+     "il règne *72 ans*"
+    ]
+   },
+   {
+    "type": "fin",
+    "cta": "S'ABONNER"
+   }
+  ],
+  "legende": "Les 5 plus longs règnes des rois de France : Louis XIV (72 ans), Louis XV (59 ans), Philippe Ier (48 ans), Saint Louis (44 ans) et Philippe Auguste (43 ans). Lequel t'a surpris ? 👇",
+  "hashtags": "#RoisDeFrance #LouisXIV #Classement #HistoireDeFrance #Monarchie",
+  "sources": "Wikipédia (Liste des monarques de France, dates de règne)"
+ },
+ {
+  "date": "2026-12-07",
+  "format": "ville",
+  "sujet": "Devine la ville en 4 indices : Lyon",
+  "musique": "filature",
+  "scenes": [
+   {
+    "type": "texte",
+    "tag": "DEVINE LA VILLE",
+    "texte": [
+     "Une grande *ville française*",
+     "en *4 indices*"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "INDICE 1",
+    "texte": [
+     "Les Romains en ont fait",
+     "la *capitale des Gaules*"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "INDICE 2",
+    "texte": [
+     "Ses *traboules* permettent",
+     "de traverser les immeubles"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "INDICE 3",
+    "texte": [
+     "Le *premier film* des frères",
+     "Lumière y a été tourné"
+    ]
+   },
+   {
+    "type": "texte",
+    "tag": "INDICE 4",
+    "texte": [
+     "Chaque *8 décembre*,",
+     "elle s'illumine"
+    ]
+   },
+   {
+    "type": "carte",
+    "entite": "Lyon",
+    "tag": "LYON",
+    "texte": [
+     "*Lyon* !",
+     "Tu as trouvé à quel indice ?"
+    ]
+   },
+   {
+    "type": "photo",
+    "entite": "Fête des Lumières",
+    "nature": "evenement",
+    "tag": "FÊTE DES LUMIÈRES",
+    "texte": [
+     "Rendez-vous",
+     "le *8 décembre*"
+    ]
+   },
+   {
+    "type": "fin",
+    "cta": "S'ABONNER"
+   }
+  ],
+  "legende": "Devine la ville : c'était Lyon ! Capitale des Gaules, ville des traboules, du premier film des frères Lumière… et de la Fête des Lumières chaque 8 décembre. Tu as trouvé à quel indice ? 👇",
+  "hashtags": "#Lyon #DevineLaVille #FêteDesLumières #HistoireDeFrance #Quiz",
+  "sources": "Wikipédia (Lugdunum ; Traboule ; La Sortie de l'usine Lumière à Lyon ; Fête des Lumières)"
  }
 ]
