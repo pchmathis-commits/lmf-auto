@@ -1,5 +1,6 @@
 """Publication Instagram via l'API officielle (connexion « Instagram Login »)."""
 import datetime as dt
+import json
 import re
 import time
 
@@ -15,11 +16,32 @@ class ErreurInstagram(Exception):
     pass
 
 
-def _jeton():
-    jeton = sheet.lire_jeton()
+# Compte utilisé : None = Le Média Français (par défaut), "paris" = Le Média Paris.
+_COMPTE = {"nom": None, "uid": None}
+
+
+def utiliser_compte(nom):
+    """Bascule la publication vers un autre compte du groupe (None = Le Média Français)."""
+    _COMPTE["nom"], _COMPTE["uid"] = nom, None
+
+
+def _jeton(compte="actuel"):
+    nom = _COMPTE["nom"] if compte == "actuel" else compte
+    jeton = sheet.lire_jeton(nom)
     if not jeton:
-        raise ErreurInstagram("Jeton Instagram absent : exécute « Définir le jeton Instagram » dans le Sheet")
+        menu = "Définir le jeton Le Média Paris" if nom == "paris" else "Définir le jeton Instagram"
+        raise ErreurInstagram(f"Jeton Instagram absent : exécute « {menu} » dans le Sheet")
     return jeton
+
+
+def _uid():
+    """Identifiant Instagram du compte utilisé (lu une fois via /me pour les comptes autres que le principal)."""
+    if _COMPTE["nom"] is None:
+        return C.IG_USER_ID
+    if not _COMPTE["uid"]:
+        r = requests.get(f"{BASE}/me", params={"fields": "user_id,username", "access_token": _jeton()}, timeout=60)
+        _COMPTE["uid"] = str(_verifier(r)["user_id"])
+    return _COMPTE["uid"]
 
 
 def _verifier(r):
@@ -42,7 +64,7 @@ def _creer(donnees, essais=4):
     souci passager, on réessaie (jusqu'à 4 fois, 30 s, 60 s, 90 s d'écart) au lieu d'échouer tout de suite."""
     for essai in range(essais):
         try:
-            r = requests.post(f"{BASE}/{C.IG_USER_ID}/media", data=donnees, timeout=120)
+            r = requests.post(f"{BASE}/{_uid()}/media", data=donnees, timeout=120)
             return _verifier(r)["id"]
         except (ErreurInstagram, requests.RequestException) as ex:
             if essai + 1 >= essais or not any(m in str(ex).lower() for m in TRANSITOIRE):
@@ -65,7 +87,7 @@ def _attendre(conteneur, jeton, maximum=60):
 
 def _publier_conteneur(conteneur, jeton):
     _attendre(conteneur, jeton)
-    r = requests.post(f"{BASE}/{C.IG_USER_ID}/media_publish",
+    r = requests.post(f"{BASE}/{_uid()}/media_publish",
                       data={"creation_id": conteneur, "access_token": jeton}, timeout=120)
     media_id = _verifier(r)["id"]
     r = requests.get(f"{BASE}/{media_id}", params={"fields": "permalink", "access_token": jeton}, timeout=60)
@@ -92,13 +114,31 @@ def publier_image(url, legende):
     return _publier_conteneur(conteneur, jeton)
 
 
-def publier_reel(url_video, legende):
+def publier_reel(url_video, legende, essai=None):
     """Publie un Reel. La vidéo est envoyée directement à Instagram (envoi « resumable »), sans dépendre d'un
-    hébergeur ; si cet envoi échoue, Instagram va la chercher lui-même à son adresse publique."""
+    hébergeur ; si cet envoi échoue, Instagram va la chercher lui-même à son adresse publique.
+
+    essai (Trial Reel) : le Reel est d'abord montré uniquement aux non-abonnés, puis diffusé automatiquement
+    à tes abonnés s'il marche bien (SS_PERFORMANCE). Si Instagram refuse l'essai (limite atteinte, compte non
+    éligible), on republie en Reel normal."""
+    if essai is None:
+        essai = getattr(C, "TRIAL_REELS", False)
+    try:
+        return _publier_reel(url_video, legende, essai)
+    except ErreurInstagram as ex:
+        if essai and "trial" in str(ex).lower():
+            print(f"Trial Reel refusé ({ex}) : publication en Reel normal.")
+            return _publier_reel(url_video, legende, False)
+        raise
+
+
+def _publier_reel(url_video, legende, essai):
     jeton = _jeton()
     video = requests.get(url_video, timeout=300).content
     base = {"media_type": "REELS", "caption": legende, "share_to_feed": "true", "thumb_offset": "800",
             "access_token": jeton}
+    if essai:
+        base["trial_params"] = json.dumps({"graduation_strategy": "SS_PERFORMANCE"})
     try:
         conteneur = _creer({**base, "upload_type": "resumable"})
         r = requests.post(f"https://rupload.facebook.com/ig-api-upload/{C.GRAPH_VERSION}/{conteneur}", data=video,
@@ -107,6 +147,8 @@ def publier_reel(url_video, legende):
         if r.status_code != 200 or not r.json().get("success", True):
             raise ErreurInstagram(f"envoi de la vidéo refusé : {r.text[:200]}")
     except Exception as ex:
+        if essai and "trial" in str(ex).lower():
+            raise ErreurInstagram(str(ex))
         print(f"Envoi direct impossible ({ex}) : Instagram va chercher la vidéo à son adresse.")
         conteneur = _creer({**base, "video_url": url_video})
     _attendre(conteneur, jeton, maximum=120)   # le traitement d'une vidéo prend 1 à 5 minutes
@@ -124,7 +166,7 @@ def deja_publie(legende, heures=48):
         return None
     try:
         jeton = _jeton()
-        r = requests.get(f"{BASE}/{C.IG_USER_ID}/media", timeout=60, params={
+        r = requests.get(f"{BASE}/{_uid()}/media", timeout=60, params={
             "fields": "caption,timestamp,permalink", "limit": 25, "access_token": jeton})
         limite = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=heures)
         for m in _verifier(r).get("data", []):
@@ -143,10 +185,19 @@ def tester():
 
 
 def prolonger_jeton():
-    """Le jeton dure 60 jours ; on le prolonge chaque semaine."""
-    jeton = _jeton()
-    r = requests.get(f"{C.GRAPH_URL}/refresh_access_token",
-                     params={"grant_type": "ig_refresh_token", "access_token": jeton}, timeout=60)
-    nouveau = _verifier(r)["access_token"]
-    sheet.ecrire_jeton(nouveau)
+    """Le jeton dure 60 jours ; on le prolonge chaque semaine, pour chaque compte du groupe."""
+    for compte in (None, "paris"):
+        try:
+            jeton = sheet.lire_jeton(compte)
+        except Exception as ex:
+            print(f"Jeton {compte or 'principal'} illisible : {ex}")
+            continue
+        if not jeton:
+            if compte is None:
+                raise ErreurInstagram("Jeton Instagram principal absent")
+            continue
+        r = requests.get(f"{C.GRAPH_URL}/refresh_access_token",
+                         params={"grant_type": "ig_refresh_token", "access_token": jeton}, timeout=60)
+        sheet.ecrire_jeton(_verifier(r)["access_token"], compte)
+        print(f"Jeton {compte or 'Le Média Français'} prolongé")
     return True
