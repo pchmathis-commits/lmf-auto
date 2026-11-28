@@ -644,7 +644,7 @@
    "genere": true
   },
   {
-   "fichier": "bibliotheque/historical-cultural",
+   "fichier": "historical-cultural",
    "titre": "historical-cultural",
    "ambiances": [
     "epique",
@@ -661,7 +661,7 @@
    "mode": "majeur"
   },
   {
-   "fichier": "bibliotheque/medieval-calm",
+   "fichier": "medieval-calm",
    "titre": "medieval-calm",
    "ambiances": [
     "emotion",
