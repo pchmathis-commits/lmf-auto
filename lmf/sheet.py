@@ -63,9 +63,10 @@ def maj_post(post_id, **champs):
     return appel("updatePost", id=post_id, champs=champs)
 
 
-def lire_jeton():
-    return appel("getToken")
+def lire_jeton(compte=None):
+    """compte : None = Le Média Français, "paris" = Le Média Paris."""
+    return appel("getToken", compte=compte or "")
 
 
-def ecrire_jeton(jeton):
-    return appel("setToken", token=jeton)
+def ecrire_jeton(jeton, compte=None):
+    return appel("setToken", token=jeton, compte=compte or "")
