@@ -1,678 +1,678 @@
 [
- {
-  "date": "2026-11-29",
-  "format": "francais",
-  "sujet": "Nicéphore Niépce et la première photographie",
-  "musique": "nostalgie",
-  "scenes": [
-   {
-    "type": "photo",
-    "entite": "Point de vue du Gras",
-    "nature": "oeuvre",
-    "texte": [
-     "La plus ancienne *photo*",
-     "du monde est *française* :",
-     "signée *Nicéphore Niépce*"
+  {
+    "date": "2026-11-29",
+    "format": "francais",
+    "sujet": "Nicéphore Niépce et la première photographie",
+    "musique": "nostalgie",
+    "scenes": [
+      {
+        "type": "photo",
+        "entite": "Point de vue du Gras",
+        "nature": "oeuvre",
+        "texte": [
+          "La plus ancienne *photo*",
+          "du monde est *française* :",
+          "signée *Nicéphore Niépce*"
+        ],
+        "tag": "NICÉPHORE NIÉPCE"
+      },
+      {
+        "type": "photo",
+        "entite": "Nicéphore Niépce",
+        "nature": "personne",
+        "tag": "CHALON-SUR-SAÔNE",
+        "texte": [
+          "Un inventeur",
+          "de *Chalon-sur-Saône*,",
+          "né en *1765*"
+        ]
+      },
+      {
+        "type": "carte",
+        "entite": "Saint-Loup-de-Varennes",
+        "tag": "SAINT-LOUP-DE-VARENNES",
+        "texte": [
+          "Prise depuis la fenêtre",
+          "de sa *maison*,",
+          "vers *1827*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "SON SECRET",
+        "texte": [
+          "Une plaque d'étain",
+          "couverte de *bitume*",
+          "exposée à la *lumière*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "TEMPS DE POSE",
+        "texte": [
+          "Des *heures*…",
+          "peut-être même",
+          "des *jours*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "1952",
+        "texte": [
+          "L'image est *oubliée*,",
+          "puis retrouvée",
+          "en *1952*"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Louis Daguerre",
+        "nature": "personne",
+        "texte": [
+          "Mais c'est *Daguerre*,",
+          "son associé, qui",
+          "deviendra *célèbre*"
+        ]
+      }
     ],
-    "tag": "NICÉPHORE NIÉPCE"
-   },
-   {
-    "type": "photo",
-    "entite": "Nicéphore Niépce",
-    "nature": "personne",
-    "tag": "CHALON-SUR-SAÔNE",
-    "texte": [
-     "Un inventeur",
-     "de *Chalon-sur-Saône*,",
-     "né en *1765*"
-    ]
-   },
-   {
-    "type": "carte",
-    "entite": "Saint-Loup-de-Varennes",
-    "tag": "SAINT-LOUP-DE-VARENNES",
-    "texte": [
-     "Prise depuis la fenêtre",
-     "de sa *maison*,",
-     "vers *1827*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "SON SECRET",
-    "texte": [
-     "Une plaque d'étain",
-     "couverte de *bitume*",
-     "exposée à la *lumière*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "TEMPS DE POSE",
-    "texte": [
-     "Des *heures*…",
-     "peut-être même",
-     "des *jours*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "1952",
-    "texte": [
-     "L'image est *oubliée*,",
-     "puis retrouvée",
-     "en *1952*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Louis Daguerre",
-    "nature": "personne",
-    "texte": [
-     "Mais c'est *Daguerre*,",
-     "son associé, qui",
-     "deviendra *célèbre*"
-    ]
-   }
-  ],
-  "legende": "Vers 1827, depuis une fenêtre de sa maison du Gras, à Saint-Loup-de-Varennes, Nicéphore Niépce réalise la plus ancienne photographie connue au monde : une plaque d'étain couverte de bitume, exposée à la lumière pendant des heures, peut-être des jours. L'image est ensuite oubliée et n'est retrouvée qu'en 1952. Niépce meurt en 1833, et c'est son associé Louis Daguerre qui deviendra célèbre avec le daguerréotype. Tu connaissais Niépce ?",
-  "hashtags": "#Niepce #Photographie #FrancaisOublies #Inventions #HistoireDeFrance",
-  "sources": "hrc.utexas.edu/niepce-heliograph ; universalis.fr"
- },
- {
-  "date": "2026-11-30",
-  "format": "anecdote",
-  "sujet": "Le vol de la Joconde",
-  "musique": "thriller",
-  "scenes": [
-   {
-    "type": "photo",
-    "entite": "La Joconde",
-    "nature": "oeuvre",
-    "texte": [
-     "La *Joconde* a disparu",
-     "du Louvre pendant",
-     "*plus de 2 ans*"
+    "legende": "Vers 1827, depuis une fenêtre de sa maison du Gras, à Saint-Loup-de-Varennes, Nicéphore Niépce réalise la plus ancienne photographie connue au monde : une plaque d'étain couverte de bitume, exposée à la lumière pendant des heures, peut-être des jours. L'image est ensuite oubliée et n'est retrouvée qu'en 1952. Niépce meurt en 1833, et c'est son associé Louis Daguerre qui deviendra célèbre avec le daguerréotype. Tu connaissais Niépce ?",
+    "hashtags": "#Niepce #Photographie #FrancaisOublies #Inventions #HistoireDeFrance",
+    "sources": "hrc.utexas.edu/niepce-heliograph ; universalis.fr"
+  },
+  {
+    "date": "2026-11-30",
+    "format": "anecdote",
+    "sujet": "Le vol de la Joconde",
+    "musique": "thriller",
+    "scenes": [
+      {
+        "type": "photo",
+        "entite": "La Joconde",
+        "nature": "oeuvre",
+        "texte": [
+          "La *Joconde* a disparu",
+          "du Louvre pendant",
+          "*plus de 2 ans*"
+        ],
+        "tag": "LA JOCONDE"
+      },
+      {
+        "type": "photo",
+        "entite": "Musée du Louvre",
+        "nature": "lieu",
+        "tag": "21 AOÛT 1911",
+        "texte": [
+          "Un *lundi*, musée fermé,",
+          "elle *disparaît*",
+          "du Louvre"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "PERSONNE NE VOIT RIEN",
+        "texte": [
+          "Le vol n'est remarqué",
+          "que le *lendemain*"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Guillaume Apollinaire",
+        "nature": "personne",
+        "tag": "SUSPECT",
+        "texte": [
+          "Le poète *Apollinaire*",
+          "est même *emprisonné*",
+          "quelques jours"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Vincenzo Peruggia",
+        "nature": "personne",
+        "tag": "LE VOLEUR",
+        "texte": [
+          "*Vincenzo Peruggia*,",
+          "un vitrier qui avait",
+          "travaillé au *Louvre*"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Galerie des Offices",
+        "nature": "lieu",
+        "tag": "DÉCEMBRE 1913",
+        "texte": [
+          "Il tente de la vendre",
+          "à *Florence*… et se",
+          "fait *arrêter*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "4 JANVIER 1914",
+        "texte": [
+          "Elle revient au Louvre,",
+          "*plus célèbre*",
+          "que jamais"
+        ]
+      }
     ],
-    "tag": "LA JOCONDE"
-   },
-   {
-    "type": "photo",
-    "entite": "Musée du Louvre",
-    "nature": "lieu",
-    "tag": "21 AOÛT 1911",
-    "texte": [
-     "Un *lundi*, musée fermé,",
-     "elle *disparaît*",
-     "du Louvre"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "PERSONNE NE VOIT RIEN",
-    "texte": [
-     "Le vol n'est remarqué",
-     "que le *lendemain*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Guillaume Apollinaire",
-    "nature": "personne",
-    "tag": "SUSPECT",
-    "texte": [
-     "Le poète *Apollinaire*",
-     "est même *emprisonné*",
-     "quelques jours"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Vincenzo Peruggia",
-    "nature": "personne",
-    "tag": "LE VOLEUR",
-    "texte": [
-     "*Vincenzo Peruggia*,",
-     "un vitrier qui avait",
-     "travaillé au *Louvre*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Galerie des Offices",
-    "nature": "lieu",
-    "tag": "DÉCEMBRE 1913",
-    "texte": [
-     "Il tente de la vendre",
-     "à *Florence*… et se",
-     "fait *arrêter*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "4 JANVIER 1914",
-    "texte": [
-     "Elle revient au Louvre,",
-     "*plus célèbre*",
-     "que jamais"
-    ]
-   }
-  ],
-  "legende": "Le lundi 21 août 1911, jour de fermeture, la Joconde disparaît du Louvre. Le vol n'est remarqué que le lendemain, et le poète Guillaume Apollinaire est même emprisonné quelques jours. Le voleur est Vincenzo Peruggia, un vitrier italien qui avait travaillé au Louvre. En décembre 1913, il tente de vendre le tableau à un marchand de Florence, qui le fait authentifier par le directeur des Offices : Peruggia est arrêté. La Joconde revient au Louvre le 4 janvier 1914, plus célèbre que jamais. Tu connaissais cette histoire ?",
-  "hashtags": "#Joconde #Louvre #MonaLisa #HistoireDeFrance #Paris",
-  "sources": "herodote.net (21 août 1911) ; history.com (The heist that made the Mona Lisa famous)"
- },
- {
-  "date": "2026-12-01",
-  "format": "anecdote",
-  "sujet": "Vrai ou faux : le président français est prince d'Andorre",
-  "musique": "enquete",
-  "scenes": [
-   {
-    "type": "texte",
-    "tag": "VRAI OU FAUX ?",
-    "texte": [
-     "Le *président français*",
-     "est aussi *prince*",
-     "d'un autre pays"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "RÉPONDS EN COMMENTAIRE",
-    "texte": [
-     "Tu as *3 secondes*…"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "VRAI",
-    "tag": "RÉPONSE"
-   },
-   {
-    "type": "photo",
-    "entite": "Andorre",
-    "nature": "lieu",
-    "tag": "ANDORRE",
-    "texte": [
-     "Il est *co-prince*",
-     "d'Andorre"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Diocèse d'Urgell",
-    "nature": "lieu",
-    "tag": "L'AUTRE CO-PRINCE",
-    "texte": [
-     "Il partage le titre avec",
-     "l'*évêque d'Urgell*,",
-     "en Espagne"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "1278",
-    "tag": "DEPUIS",
-    "texte": [
-     "Un accord signé entre",
-     "le *comte de Foix*",
-     "et l'évêque"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Henri IV",
-    "nature": "personne",
-    "tag": "HENRI IV",
-    "texte": [
-     "Devenu roi, le comte de Foix",
-     "fait passer le titre",
-     "au *chef de l'État français*"
-    ]
-   },
-   {
-    "type": "fin",
-    "cta": "S'ABONNER"
-   }
-  ],
-  "legende": "Vrai ou faux : le président français est aussi prince d'un autre pays ? VRAI. Il est co-prince d'Andorre, avec l'évêque d'Urgell. Le titre vient d'un accord de 1278 entre le comte de Foix et l'évêque ; quand le comte de Foix Henri de Navarre devient le roi Henri IV, le titre passe au chef de l'État français. Tu le savais ?",
-  "hashtags": "#Andorre #VraiOuFaux #HistoireDeFrance #Président #Culture",
-  "sources": "Wikipédia (Coprinces d'Andorre, paréages de 1278)"
- },
- {
-  "date": "2026-12-02",
-  "format": "anecdote",
-  "sujet": "Qui suis-je ? Un ingénieur français en 4 indices (Gustave Eiffel)",
-  "musique": "filature",
-  "scenes": [
-   {
-    "type": "texte",
-    "tag": "QUI SUIS-JE ?",
-    "texte": [
-     "Un *ingénieur français*",
-     "en *4 indices*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "INDICE 1",
-    "texte": [
-     "J'ai conçu le *squelette*",
-     "de la *statue de la Liberté*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Viaduc de Garabit",
-    "nature": "lieu",
-    "tag": "INDICE 2",
-    "texte": [
-     "J'ai construit ce *viaduc*",
-     "dans le *Cantal*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "INDICE 3",
-    "texte": [
-     "Ma plus célèbre œuvre",
-     "a été inaugurée",
-     "pour l'*Exposition de 1889*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "INDICE 4",
-    "texte": [
-     "Elle porte *mon nom*…"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Gustave Eiffel",
-    "nature": "personne",
-    "tag": "GUSTAVE EIFFEL",
-    "texte": [
-     "*Gustave Eiffel* !",
-     "Tu as trouvé à quel indice ?"
-    ]
-   },
-   {
-    "type": "fin",
-    "cta": "S'ABONNER"
-   }
-  ],
-  "legende": "Qui suis-je ? Gustave Eiffel ! Avant sa tour, il a conçu la structure interne de la statue de la Liberté et construit le viaduc de Garabit, dans le Cantal. Tu as trouvé à quel indice ? Dis-le en commentaire 👇",
-  "hashtags": "#GustaveEiffel #QuiSuisJe #TourEiffel #HistoireDeFrance #Quiz",
-  "sources": "Wikipédia (Gustave Eiffel, viaduc de Garabit, statue de la Liberté)"
- },
- {
-  "date": "2026-12-03",
-  "format": "anecdote",
-  "sujet": "Le duel : la tour Eiffel ou la statue de la Liberté, laquelle est la plus vieille ?",
-  "musique": "nuit-blanche",
-  "scenes": [
-   {
-    "type": "texte",
-    "tag": "LE DUEL",
-    "texte": [
-     "*Tour Eiffel* ou",
-     "*statue de la Liberté* :",
-     "laquelle est la *plus vieille* ?"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Tour Eiffel",
-    "nature": "lieu",
-    "tag": "TOUR EIFFEL"
-   },
-   {
-    "type": "photo",
-    "entite": "Statue de la Liberté",
-    "nature": "oeuvre",
-    "tag": "STATUE DE LA LIBERTÉ"
-   },
-   {
-    "type": "texte",
-    "tag": "VOTE EN COMMENTAIRE",
-    "texte": [
-     "*1* pour la tour Eiffel",
-     "*2* pour la Liberté"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "1886",
-    "tag": "LA LIBERTÉ",
-    "texte": [
-     "Inaugurée à *New York*",
-     "le 28 octobre 1886"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "1889",
-    "tag": "LA TOUR EIFFEL",
-    "texte": [
-     "Inaugurée pour l'*Exposition",
-     "universelle* de 1889"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "VERDICT",
-    "texte": [
-     "La *Liberté* gagne",
-     "de *3 ans*… et les deux",
-     "doivent tout à *Eiffel*"
-    ]
-   },
-   {
-    "type": "fin",
-    "cta": "S'ABONNER"
-   }
-  ],
-  "legende": "Le duel : la statue de la Liberté (1886) est plus vieille que la tour Eiffel (1889) ! Et les deux doivent beaucoup à Gustave Eiffel, qui a conçu la structure de la statue. Tu avais voté quoi ? 👇",
-  "hashtags": "#TourEiffel #StatueDeLaLiberte #LeDuel #HistoireDeFrance #Quiz",
-  "sources": "Wikipédia (Statue de la Liberté : inauguration 28 octobre 1886 ; Tour Eiffel : 1889)"
- },
- {
-  "date": "2026-12-04",
-  "format": "anecdote",
-  "sujet": "Dans l'ordre : 4 inventions françaises de la plus ancienne à la plus récente",
-  "musique": "piano-feutre",
-  "scenes": [
-   {
-    "type": "texte",
-    "tag": "DANS L'ORDRE !",
-    "texte": [
-     "Classe ces *4 inventions françaises*",
-     "de la *plus ancienne*",
-     "à la *plus récente*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "A · B · C · D",
-    "texte": [
-     "A. le *cinéma*",
-     "B. la *carte à puce*",
-     "C. le *stéthoscope*",
-     "D. la *photographie*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "RÉPONDS EN COMMENTAIRE",
-    "texte": [
-     "Tu as *5 secondes*…"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "1816",
-    "tag": "1. LE STÉTHOSCOPE",
-    "texte": [
-     "Inventé par *Laennec*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Nicéphore Niépce",
-    "nature": "personne",
-    "tag": "2. LA PHOTOGRAPHIE",
-    "texte": [
-     "*Niépce*, vers *1826*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Auguste et Louis Lumière",
-    "nature": "autre",
-    "tag": "3. LE CINÉMA",
-    "texte": [
-     "Les *frères Lumière*, *1895*"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "1974",
-    "tag": "4. LA CARTE À PUCE",
-    "texte": [
-     "Brevetée par *Roland Moreno*"
-    ]
-   },
-   {
-    "type": "fin",
-    "cta": "S'ABONNER"
-   }
-  ],
-  "legende": "Dans l'ordre : le stéthoscope (Laennec, 1816), la photographie (Niépce, vers 1826), le cinéma (frères Lumière, 1895) et la carte à puce (Roland Moreno, 1974). Tu as eu bon ? 👇",
-  "hashtags": "#InventionsFrançaises #Quiz #HistoireDeFrance #Science #Culture",
-  "sources": "Wikipédia (René Laennec ; Point de vue du Gras ; Cinématographe ; Roland Moreno)"
- },
- {
-  "date": "2026-12-05",
-  "format": "anecdote",
-  "sujet": "Vrai ou faux : la plus longue frontière de la France est avec le Brésil",
-  "musique": "enquete",
-  "scenes": [
-   {
-    "type": "texte",
-    "tag": "VRAI OU FAUX ?",
-    "texte": [
-     "La plus longue *frontière*",
-     "terrestre de la France",
-     "est avec le *Brésil*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "RÉPONDS EN COMMENTAIRE",
-    "texte": [
-     "Tu as *3 secondes*…"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "VRAI",
-    "tag": "RÉPONSE"
-   },
-   {
-    "type": "photo",
-    "entite": "Guyane",
-    "nature": "lieu",
-    "tag": "GUYANE",
-    "texte": [
-     "Grâce à la *Guyane*,",
-     "en Amérique du Sud"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "730 KM",
-    "tag": "FRANCE – BRÉSIL",
-    "texte": [
-     "Plus que la frontière",
-     "avec l'*Espagne*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Pont de l'Oyapock",
-    "nature": "lieu",
-    "tag": "LE PONT DE L'OYAPOCK",
-    "texte": [
-     "Un pont relie",
-     "la *France* au *Brésil*"
-    ]
-   },
-   {
-    "type": "fin",
-    "cta": "S'ABONNER"
-   }
-  ],
-  "legende": "Vrai ou faux : la plus longue frontière terrestre de la France est avec le Brésil ? VRAI ! Grâce à la Guyane, la France partage environ 730 km de frontière avec le Brésil, plus qu'avec l'Espagne. Tu le savais ? 👇",
-  "hashtags": "#Guyane #Brésil #VraiOuFaux #Géographie #France",
-  "sources": "Wikipédia (Frontière entre le Brésil et la France ; Frontière entre l'Espagne et la France)"
- },
- {
-  "date": "2026-12-06",
-  "format": "anecdote",
-  "sujet": "Classement : les 5 rois de France qui ont régné le plus longtemps",
-  "musique": "nostalgie",
-  "scenes": [
-   {
-    "type": "texte",
-    "tag": "CLASSEMENT",
-    "texte": [
-     "Les *5 rois de France*",
-     "qui ont régné",
-     "le *plus longtemps*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Philippe II Auguste",
-    "nature": "personne",
-    "tag": "5. PHILIPPE AUGUSTE",
-    "texte": [
-     "*43 ans* de règne",
-     "(1180-1223)"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Louis IX",
-    "nature": "personne",
-    "tag": "4. SAINT LOUIS",
-    "texte": [
-     "*44 ans* de règne",
-     "(1226-1270)"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Philippe Ier (roi des Francs)",
-    "nature": "personne",
-    "tag": "3. PHILIPPE IER",
-    "texte": [
-     "*48 ans* de règne",
-     "(1060-1108)"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Louis XV",
-    "nature": "personne",
-    "tag": "2. LOUIS XV",
-    "texte": [
-     "*59 ans* de règne",
-     "(1715-1774)"
-    ]
-   },
-   {
-    "type": "chiffre",
-    "chiffre": "72 ANS",
-    "tag": "1. LOUIS XIV",
-    "texte": [
-     "Le *Roi-Soleil*,",
-     "de *1643 à 1715*"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Louis XIV",
-    "nature": "personne",
-    "tag": "LE ROI-SOLEIL",
-    "texte": [
-     "Roi à *4 ans*,",
-     "il règne *72 ans*"
-    ]
-   },
-   {
-    "type": "fin",
-    "cta": "S'ABONNER"
-   }
-  ],
-  "legende": "Les 5 plus longs règnes des rois de France : Louis XIV (72 ans), Louis XV (59 ans), Philippe Ier (48 ans), Saint Louis (44 ans) et Philippe Auguste (43 ans). Lequel t'a surpris ? 👇",
-  "hashtags": "#RoisDeFrance #LouisXIV #Classement #HistoireDeFrance #Monarchie",
-  "sources": "Wikipédia (Liste des monarques de France, dates de règne)"
- },
- {
-  "date": "2026-12-07",
-  "format": "ville",
-  "sujet": "Devine la ville en 4 indices : Lyon",
-  "musique": "filature",
-  "scenes": [
-   {
-    "type": "texte",
-    "tag": "DEVINE LA VILLE",
-    "texte": [
-     "Une grande *ville française*",
-     "en *4 indices*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "INDICE 1",
-    "texte": [
-     "Les Romains en ont fait",
-     "la *capitale des Gaules*"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "INDICE 2",
-    "texte": [
-     "Ses *traboules* permettent",
-     "de traverser les immeubles"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "INDICE 3",
-    "texte": [
-     "Le *premier film* des frères",
-     "Lumière y a été tourné"
-    ]
-   },
-   {
-    "type": "texte",
-    "tag": "INDICE 4",
-    "texte": [
-     "Chaque *8 décembre*,",
-     "elle s'illumine"
-    ]
-   },
-   {
-    "type": "carte",
-    "entite": "Lyon",
-    "tag": "LYON",
-    "texte": [
-     "*Lyon* !",
-     "Tu as trouvé à quel indice ?"
-    ]
-   },
-   {
-    "type": "photo",
-    "entite": "Fête des Lumières",
-    "nature": "evenement",
-    "tag": "FÊTE DES LUMIÈRES",
-    "texte": [
-     "Rendez-vous",
-     "le *8 décembre*"
-    ]
-   },
-   {
-    "type": "fin",
-    "cta": "S'ABONNER"
-   }
-  ],
-  "legende": "Devine la ville : c'était Lyon ! Capitale des Gaules, ville des traboules, du premier film des frères Lumière… et de la Fête des Lumières chaque 8 décembre. Tu as trouvé à quel indice ? 👇",
-  "hashtags": "#Lyon #DevineLaVille #FêteDesLumières #HistoireDeFrance #Quiz",
-  "sources": "Wikipédia (Lugdunum ; Traboule ; La Sortie de l'usine Lumière à Lyon ; Fête des Lumières)"
- }
+    "legende": "Le lundi 21 août 1911, jour de fermeture, la Joconde disparaît du Louvre. Le vol n'est remarqué que le lendemain, et le poète Guillaume Apollinaire est même emprisonné quelques jours. Le voleur est Vincenzo Peruggia, un vitrier italien qui avait travaillé au Louvre. En décembre 1913, il tente de vendre le tableau à un marchand de Florence, qui le fait authentifier par le directeur des Offices : Peruggia est arrêté. La Joconde revient au Louvre le 4 janvier 1914, plus célèbre que jamais. Tu connaissais cette histoire ?",
+    "hashtags": "#Joconde #Louvre #MonaLisa #HistoireDeFrance #Paris",
+    "sources": "herodote.net (21 août 1911) ; history.com (The heist that made the Mona Lisa famous)"
+  },
+  {
+    "date": "2026-12-01",
+    "format": "anecdote",
+    "sujet": "Vrai ou faux : le président français est prince d'Andorre",
+    "musique": "leger",
+    "scenes": [
+      {
+        "type": "texte",
+        "tag": "VRAI OU FAUX ?",
+        "texte": [
+          "Le *président français*",
+          "est aussi *prince*",
+          "d'un autre pays"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "RÉPONDS EN COMMENTAIRE",
+        "texte": [
+          "Tu as *3 secondes*…"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "chiffre": "VRAI",
+        "tag": "RÉPONSE"
+      },
+      {
+        "type": "photo",
+        "entite": "Andorre",
+        "nature": "lieu",
+        "tag": "ANDORRE",
+        "texte": [
+          "Il est *co-prince*",
+          "d'Andorre"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Diocèse d'Urgell",
+        "nature": "lieu",
+        "tag": "L'AUTRE CO-PRINCE",
+        "texte": [
+          "Il partage le titre avec",
+          "l'*évêque d'Urgell*,",
+          "en Espagne"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "chiffre": "1278",
+        "tag": "DEPUIS",
+        "texte": [
+          "Un accord signé entre",
+          "le *comte de Foix*",
+          "et l'évêque"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Henri IV",
+        "nature": "personne",
+        "tag": "HENRI IV",
+        "texte": [
+          "Devenu roi, le comte de Foix",
+          "fait passer le titre",
+          "au *chef de l'État français*"
+        ]
+      },
+      {
+        "type": "fin",
+        "cta": "S'ABONNER"
+      }
+    ],
+    "legende": "Vrai ou faux : le président français est aussi prince d'un autre pays ? VRAI. Il est co-prince d'Andorre, avec l'évêque d'Urgell. Le titre vient d'un accord de 1278 entre le comte de Foix et l'évêque ; quand le comte de Foix Henri de Navarre devient le roi Henri IV, le titre passe au chef de l'État français. Tu le savais ?",
+    "hashtags": "#Andorre #VraiOuFaux #HistoireDeFrance #Président #Culture",
+    "sources": "Wikipédia (Coprinces d'Andorre, paréages de 1278)"
+  },
+  {
+    "date": "2026-12-02",
+    "format": "anecdote",
+    "sujet": "Qui suis-je ? Un ingénieur français en 4 indices (Gustave Eiffel)",
+    "musique": "filature",
+    "scenes": [
+      {
+        "type": "texte",
+        "tag": "QUI SUIS-JE ?",
+        "texte": [
+          "Un *ingénieur français*",
+          "en *4 indices*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "INDICE 1",
+        "texte": [
+          "J'ai conçu le *squelette*",
+          "de la *statue de la Liberté*"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Viaduc de Garabit",
+        "nature": "lieu",
+        "tag": "INDICE 2",
+        "texte": [
+          "J'ai construit ce *viaduc*",
+          "dans le *Cantal*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "INDICE 3",
+        "texte": [
+          "Ma plus célèbre œuvre",
+          "a été inaugurée",
+          "pour l'*Exposition de 1889*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "INDICE 4",
+        "texte": [
+          "Elle porte *mon nom*…"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Gustave Eiffel",
+        "nature": "personne",
+        "tag": "GUSTAVE EIFFEL",
+        "texte": [
+          "*Gustave Eiffel* !",
+          "Tu as trouvé à quel indice ?"
+        ]
+      },
+      {
+        "type": "fin",
+        "cta": "S'ABONNER"
+      }
+    ],
+    "legende": "Qui suis-je ? Gustave Eiffel ! Avant sa tour, il a conçu la structure interne de la statue de la Liberté et construit le viaduc de Garabit, dans le Cantal. Tu as trouvé à quel indice ? Dis-le en commentaire 👇",
+    "hashtags": "#GustaveEiffel #QuiSuisJe #TourEiffel #HistoireDeFrance #Quiz",
+    "sources": "Wikipédia (Gustave Eiffel, viaduc de Garabit, statue de la Liberté)"
+  },
+  {
+    "date": "2026-12-03",
+    "format": "anecdote",
+    "sujet": "Le duel : la tour Eiffel ou la statue de la Liberté, laquelle est la plus vieille ?",
+    "musique": "epique",
+    "scenes": [
+      {
+        "type": "texte",
+        "tag": "LE DUEL",
+        "texte": [
+          "*Tour Eiffel* ou",
+          "*statue de la Liberté* :",
+          "laquelle est la *plus vieille* ?"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Tour Eiffel",
+        "nature": "lieu",
+        "tag": "TOUR EIFFEL"
+      },
+      {
+        "type": "photo",
+        "entite": "Statue de la Liberté",
+        "nature": "oeuvre",
+        "tag": "STATUE DE LA LIBERTÉ"
+      },
+      {
+        "type": "texte",
+        "tag": "VOTE EN COMMENTAIRE",
+        "texte": [
+          "*1* pour la tour Eiffel",
+          "*2* pour la Liberté"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "chiffre": "1886",
+        "tag": "LA LIBERTÉ",
+        "texte": [
+          "Inaugurée à *New York*",
+          "le 28 octobre 1886"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "chiffre": "1889",
+        "tag": "LA TOUR EIFFEL",
+        "texte": [
+          "Inaugurée pour l'*Exposition",
+          "universelle* de 1889"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "VERDICT",
+        "texte": [
+          "La *Liberté* gagne",
+          "de *3 ans*… et les deux",
+          "doivent tout à *Eiffel*"
+        ]
+      },
+      {
+        "type": "fin",
+        "cta": "S'ABONNER"
+      }
+    ],
+    "legende": "Le duel : la statue de la Liberté (1886) est plus vieille que la tour Eiffel (1889) ! Et les deux doivent beaucoup à Gustave Eiffel, qui a conçu la structure de la statue. Tu avais voté quoi ? 👇",
+    "hashtags": "#TourEiffel #StatueDeLaLiberte #LeDuel #HistoireDeFrance #Quiz",
+    "sources": "Wikipédia (Statue de la Liberté : inauguration 28 octobre 1886 ; Tour Eiffel : 1889)"
+  },
+  {
+    "date": "2026-12-04",
+    "format": "anecdote",
+    "sujet": "Dans l'ordre : 4 inventions françaises de la plus ancienne à la plus récente",
+    "musique": "leger",
+    "scenes": [
+      {
+        "type": "texte",
+        "tag": "DANS L'ORDRE !",
+        "texte": [
+          "Classe ces *4 inventions françaises*",
+          "de la *plus ancienne*",
+          "à la *plus récente*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "A · B · C · D",
+        "texte": [
+          "A. le *cinéma*",
+          "B. la *carte à puce*",
+          "C. le *stéthoscope*",
+          "D. la *photographie*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "RÉPONDS EN COMMENTAIRE",
+        "texte": [
+          "Tu as *5 secondes*…"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "chiffre": "1816",
+        "tag": "1. LE STÉTHOSCOPE",
+        "texte": [
+          "Inventé par *Laennec*"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Nicéphore Niépce",
+        "nature": "personne",
+        "tag": "2. LA PHOTOGRAPHIE",
+        "texte": [
+          "*Niépce*, vers *1826*"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Auguste et Louis Lumière",
+        "nature": "autre",
+        "tag": "3. LE CINÉMA",
+        "texte": [
+          "Les *frères Lumière*, *1895*"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "chiffre": "1974",
+        "tag": "4. LA CARTE À PUCE",
+        "texte": [
+          "Brevetée par *Roland Moreno*"
+        ]
+      },
+      {
+        "type": "fin",
+        "cta": "S'ABONNER"
+      }
+    ],
+    "legende": "Dans l'ordre : le stéthoscope (Laennec, 1816), la photographie (Niépce, vers 1826), le cinéma (frères Lumière, 1895) et la carte à puce (Roland Moreno, 1974). Tu as eu bon ? 👇",
+    "hashtags": "#InventionsFrançaises #Quiz #HistoireDeFrance #Science #Culture",
+    "sources": "Wikipédia (René Laennec ; Point de vue du Gras ; Cinématographe ; Roland Moreno)"
+  },
+  {
+    "date": "2026-12-05",
+    "format": "anecdote",
+    "sujet": "Vrai ou faux : la plus longue frontière de la France est avec le Brésil",
+    "musique": "leger",
+    "scenes": [
+      {
+        "type": "texte",
+        "tag": "VRAI OU FAUX ?",
+        "texte": [
+          "La plus longue *frontière*",
+          "terrestre de la France",
+          "est avec le *Brésil*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "RÉPONDS EN COMMENTAIRE",
+        "texte": [
+          "Tu as *3 secondes*…"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "chiffre": "VRAI",
+        "tag": "RÉPONSE"
+      },
+      {
+        "type": "photo",
+        "entite": "Guyane",
+        "nature": "lieu",
+        "tag": "GUYANE",
+        "texte": [
+          "Grâce à la *Guyane*,",
+          "en Amérique du Sud"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "chiffre": "730 KM",
+        "tag": "FRANCE – BRÉSIL",
+        "texte": [
+          "Plus que la frontière",
+          "avec l'*Espagne*"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Pont de l'Oyapock",
+        "nature": "lieu",
+        "tag": "LE PONT DE L'OYAPOCK",
+        "texte": [
+          "Un pont relie",
+          "la *France* au *Brésil*"
+        ]
+      },
+      {
+        "type": "fin",
+        "cta": "S'ABONNER"
+      }
+    ],
+    "legende": "Vrai ou faux : la plus longue frontière terrestre de la France est avec le Brésil ? VRAI ! Grâce à la Guyane, la France partage environ 730 km de frontière avec le Brésil, plus qu'avec l'Espagne. Tu le savais ? 👇",
+    "hashtags": "#Guyane #Brésil #VraiOuFaux #Géographie #France",
+    "sources": "Wikipédia (Frontière entre le Brésil et la France ; Frontière entre l'Espagne et la France)"
+  },
+  {
+    "date": "2026-12-06",
+    "format": "anecdote",
+    "sujet": "Classement : les 5 rois de France qui ont régné le plus longtemps",
+    "musique": "epique",
+    "scenes": [
+      {
+        "type": "texte",
+        "tag": "CLASSEMENT",
+        "texte": [
+          "Les *5 rois de France*",
+          "qui ont régné",
+          "le *plus longtemps*"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Philippe II Auguste",
+        "nature": "personne",
+        "tag": "5. PHILIPPE AUGUSTE",
+        "texte": [
+          "*43 ans* de règne",
+          "(1180-1223)"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Louis IX",
+        "nature": "personne",
+        "tag": "4. SAINT LOUIS",
+        "texte": [
+          "*44 ans* de règne",
+          "(1226-1270)"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Philippe Ier (roi des Francs)",
+        "nature": "personne",
+        "tag": "3. PHILIPPE IER",
+        "texte": [
+          "*48 ans* de règne",
+          "(1060-1108)"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Louis XV",
+        "nature": "personne",
+        "tag": "2. LOUIS XV",
+        "texte": [
+          "*59 ans* de règne",
+          "(1715-1774)"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "chiffre": "72 ANS",
+        "tag": "1. LOUIS XIV",
+        "texte": [
+          "Le *Roi-Soleil*,",
+          "de *1643 à 1715*"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Louis XIV",
+        "nature": "personne",
+        "tag": "LE ROI-SOLEIL",
+        "texte": [
+          "Roi à *4 ans*,",
+          "il règne *72 ans*"
+        ]
+      },
+      {
+        "type": "fin",
+        "cta": "S'ABONNER"
+      }
+    ],
+    "legende": "Les 5 plus longs règnes des rois de France : Louis XIV (72 ans), Louis XV (59 ans), Philippe Ier (48 ans), Saint Louis (44 ans) et Philippe Auguste (43 ans). Lequel t'a surpris ? 👇",
+    "hashtags": "#RoisDeFrance #LouisXIV #Classement #HistoireDeFrance #Monarchie",
+    "sources": "Wikipédia (Liste des monarques de France, dates de règne)"
+  },
+  {
+    "date": "2026-12-07",
+    "format": "ville",
+    "sujet": "Devine la ville en 4 indices : Lyon",
+    "musique": "filature",
+    "scenes": [
+      {
+        "type": "texte",
+        "tag": "DEVINE LA VILLE",
+        "texte": [
+          "Une grande *ville française*",
+          "en *4 indices*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "INDICE 1",
+        "texte": [
+          "Les Romains en ont fait",
+          "la *capitale des Gaules*"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "INDICE 2",
+        "texte": [
+          "Ses *traboules* permettent",
+          "de traverser les immeubles"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "INDICE 3",
+        "texte": [
+          "Le *premier film* des frères",
+          "Lumière y a été tourné"
+        ]
+      },
+      {
+        "type": "texte",
+        "tag": "INDICE 4",
+        "texte": [
+          "Chaque *8 décembre*,",
+          "elle s'illumine"
+        ]
+      },
+      {
+        "type": "carte",
+        "entite": "Lyon",
+        "tag": "LYON",
+        "texte": [
+          "*Lyon* !",
+          "Tu as trouvé à quel indice ?"
+        ]
+      },
+      {
+        "type": "photo",
+        "entite": "Fête des Lumières",
+        "nature": "evenement",
+        "tag": "FÊTE DES LUMIÈRES",
+        "texte": [
+          "Rendez-vous",
+          "le *8 décembre*"
+        ]
+      },
+      {
+        "type": "fin",
+        "cta": "S'ABONNER"
+      }
+    ],
+    "legende": "Devine la ville : c'était Lyon ! Capitale des Gaules, ville des traboules, du premier film des frères Lumière… et de la Fête des Lumières chaque 8 décembre. Tu as trouvé à quel indice ? 👇",
+    "hashtags": "#Lyon #DevineLaVille #FêteDesLumières #HistoireDeFrance #Quiz",
+    "sources": "Wikipédia (Lugdunum ; Traboule ; La Sortie de l'usine Lumière à Lyon ; Fête des Lumières)"
+  }
 ]
