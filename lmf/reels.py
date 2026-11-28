@@ -243,10 +243,55 @@ def _police(dossier):
         print(f"Police Montserrat indisponible ({ex}) : police de secours")
 
 
-def choisir_musique(etat):
-    dispo = sorted(f[:-4] for f in os.listdir(MUSIQUES) if f.endswith(".mp3")) if os.path.isdir(MUSIQUES) else []
-    recentes = etat.get("musiques", [])[-2:]
-    choix = [m for m in dispo if m not in recentes] or dispo
+# Ambiances : les noms utilisés dans les scripts renvoient aux dossiers de ta bibliothèque (assets/musique/<ambiance>/).
+# Si le dossier n'existe pas ou est vide, on prend la musique générée du même nom (assets/musique/<nom>.mp3).
+AMBIANCES = {"enquete": "mystere", "thriller": "mystere", "filature": "mystere", "nuit-blanche": "mystere",
+             "piano-feutre": "emotion", "nostalgie": "emotion", "epique": "epique", "leger": "leger",
+             "emotion": "emotion", "mystere": "mystere", "actu": "actu", "annees-80": "annees-80"}
+
+
+def _musiques():
+    """Toutes les musiques disponibles, en chemins relatifs sans « .mp3 » (ex. « epique/titre » ou « enquete »)."""
+    tout = []
+    for racine, _, fichiers in os.walk(MUSIQUES):
+        for f in fichiers:
+            if f.lower().endswith(".mp3"):
+                tout.append(os.path.relpath(os.path.join(racine, f), MUSIQUES)[:-4].replace(os.sep, "/"))
+    return sorted(tout)
+
+
+def _catalogue():
+    """assets/musique/catalogue.json : pistes avec ambiances, comptes, crédit, meilleur départ et volume."""
+    try:
+        with open(os.path.join(MUSIQUES, "catalogue.json"), encoding="utf-8") as f:
+            pistes = json.load(f).get("pistes", [])
+    except (OSError, ValueError):
+        return {}
+    return {p["fichier"]: p for p in pistes if os.path.exists(os.path.join(MUSIQUES, p["fichier"] + ".mp3"))}
+
+
+def infos_musique(musique):
+    return _catalogue().get(musique or "", {})
+
+
+def choisir_musique(etat, demande=None, compte="lmf"):
+    """1) catalogue filtré par ambiance + compte ; 2) dossier de l'ambiance ; 3) musiques générées à la racine."""
+    cat = _catalogue()
+    recentes = etat.get("musiques", [])[-3:]
+    amb = AMBIANCES.get(demande, demande) if demande else None
+    cands = []
+    if cat:
+        du_compte = [m for m, p in cat.items() if compte in p.get("comptes", [])]
+        if amb:
+            cands = [m for m in du_compte if amb in cat[m].get("ambiances", []) or demande in cat[m].get("ambiances", [])]
+        if not cands:   # aucune ne correspond : musique de code (générée, sans crédit)
+            cands = [m for m in du_compte if cat[m].get("genere")]
+    if not cands:
+        dispo = _musiques()
+        if amb:
+            cands = [m for m in dispo if m.startswith(amb + "/")] or [m for m in dispo if m == demande]
+        cands = cands or [m for m in dispo if "/" not in m] or dispo
+    choix = [m for m in cands if m not in recentes] or cands
     return random.choice(choix) if choix else None
 
 
@@ -277,10 +322,12 @@ def rendre(spec, dossier, sortie, musique=None):
         b.close()
     fichier = os.path.join(MUSIQUES, f"{musique}.mp3") if musique else None
     if fichier and os.path.exists(fichier):
-        debut = random.choice([8, 10, 12, 20, 30])
+        info = infos_musique(musique)
+        debut = info.get("debut", random.choice([8, 10, 12, 20, 30]))   # meilleur passage de 32 s, mesuré à l'analyse
+        gain = info.get("volume", 1.6)
         subprocess.run([ff, "-v", "error", "-y", "-i", muette, "-ss", str(debut), "-i", fichier, "-map", "0:v", "-map", "1:a",
                         "-c:v", "copy", "-c:a", "aac", "-b:a", "160k",
-                        "-af", f"volume=1.6,afade=t=in:st=0:d=0.4,afade=t=out:st={max(0, duree - 1.5):.2f}:d=1.5",
+                        "-af", f"volume={gain},afade=t=in:st=0:d=0.4,afade=t=out:st={max(0, duree - 1.5):.2f}:d=1.5",
                         "-shortest", "-movflags", "+faststart", sortie], check=True)
     else:
         shutil.copy(muette, sortie)
@@ -390,9 +437,7 @@ def creer(post_id, prevu, format_=None, consigne="", donnees_avant=None):
     else:
         raise RuntimeError("pas assez d'images sûres : " + " ; ".join(essais))
     scenes.append({"type": "fin", "dur": 2.8, "capY": 1100, "center": True, "texte": FIN[format_], "cta": "ABONNE-TOI"})
-    musique = (planifie or {}).get("musique") or choisir_musique(etat)
-    if musique and not os.path.exists(os.path.join(MUSIQUES, f"{musique}.mp3")):
-        musique = choisir_musique(etat)
+    musique = choisir_musique(etat, (planifie or {}).get("musique"))
     spec = {"fond": FOND, "scenes": scenes}
     sortie = os.path.join(dossier, f"{post_id}.mp4")
     duree = rendre(spec, dossier, sortie, musique)
@@ -404,8 +449,9 @@ def creer(post_id, prevu, format_=None, consigne="", donnees_avant=None):
     legende = script.get("legende", "").strip()
     credits = sorted({c for c in credits if c})
     txt = (legende + "\n\n👉 Abonne-toi à " + C.COMPTE + " : chaque jour, une histoire de France que tu ne connais pas."
-           + "\n\n" + script.get("hashtags", "").strip()
-           + ("\n\nCrédits images : " + " · ".join(credits) if credits else ""))[:2200]
+           + ("\n\n🎵 Musique : " + infos_musique(musique)["credit"] if infos_musique(musique).get("credit") else "")
+           + ("\n\nCrédits images : " + " · ".join(credits) if credits else "")
+           + "\n\n" + script.get("hashtags", "").strip())[:2200]
     url = heberger(sortie)
     etat["sujets"] = (etat.get("sujets", []) + [script.get("sujet", "")])[-300:]
     etat["musiques"] = (etat.get("musiques", []) + [musique])[-10:]
